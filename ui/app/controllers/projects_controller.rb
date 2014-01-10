@@ -4,7 +4,21 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        render text: params[:post].inspect
+        # render text: params[:project].inspect
+        @project = Project.new project_params 
+        @project.save
+        redirect_to @project
     end
+
+
+    def show
+      @project = Project.find(params[:id])
+    end
+
+private
+
+  def project_params
+      params.require(:project).permit(:title,:text)
+  end
 
 end
