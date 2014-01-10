@@ -1,0 +1,16 @@
+<h1>Listing posts</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @projects.each do |item| %>
+    <tr>
+      <td><%= item.title %></td>
+      <td><%= item.text %></td>
+    </tr>
+  <% end %>
+</table>
+
