@@ -29,7 +29,7 @@
  <p>       
     <strong>Sources:</strong>
     <ol>   
-    <% @project.sources.each do |item| %>
+    <% @project.sources.reverse.each do |item| %>
       <li>
         <%= link_to item.url , item.url, title: "SCM TYPE: #{item.scm_type}" %>
         <%= link_to 'Delete', [ item.project, item], method: :delete, data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %>

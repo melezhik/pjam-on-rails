@@ -11,7 +11,7 @@
 <p>
 <strong>Sources:</strong>
 <ol>
-<% @project.sources.each do |item| %>
+<% @project.sources.reverse.each do |item| %>
   <li>
     <%= link_to item.url , item.url, title: "SCM TYPE: #{item.scm_type}" %>
   </li>  
