@@ -1,22 +1,33 @@
 class ProjectsController < ApplicationController
 
     def new
+        @project = Project.new
     end
 
     def create
         # render text: params[:project].inspect
         @project = Project.new project_params 
-        @project.save
-        redirect_to @project
+        if @project.save
+            redirect_to @project
+        else
+            render 'new'
+        end
     end
 
 
     def show
-      @project = Project.find(params[:id])
+        @project = Project.find(params[:id])
     end
 
     def index
-      @projects = Project.all
+        @projects = Project.all
+    end
+
+
+    def destroy 
+        @project = Project.find(params[:id])
+        project.destroy
+        redirect_to projects_path
     end
 
 private

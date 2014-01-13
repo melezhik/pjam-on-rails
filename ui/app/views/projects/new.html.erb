@@ -1,17 +1,4 @@
-<%= form_for :project, url: projects_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
- 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
+<h1>New project</h1>
+<%= render 'form' %>
 <%= link_to 'Back', projects_path %>
+
