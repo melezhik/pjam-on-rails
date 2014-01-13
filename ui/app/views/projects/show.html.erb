@@ -13,7 +13,7 @@
 <ol>
 <% @project.sources.each do |item| %>
   <li>
-    <%= link_to item.url , item.url %> ( <%= item.scm_type %> )
+    <%= link_to item.url , item.url, title: "SCM TYPE: #{item.scm_type}" %>
   </li>  
 <% end %>
 </ol>

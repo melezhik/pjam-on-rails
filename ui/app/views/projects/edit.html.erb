@@ -1,12 +1,12 @@
-<h1>Edit project</h1>
+<h1>Edit project #<%= @project[:id] %></h1>
  
 <%= render 'form' %>
 
 <h2>Add a source</h2>
 <%= form_for([@project, @project.sources.build]) do |f| %>
   <p>
-    <%= f.label :scm_type %><br />
-    <%= f.text_field :scm_type %>
+    <%= f.label :scm_type %>
+    <%= f.select :scm_type, options_for_select(%w[svn git]) %>
   </p>
   <p>
     <%= f.label :url %><br />
