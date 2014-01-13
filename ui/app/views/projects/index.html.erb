@@ -10,6 +10,9 @@
     <tr>
       <td><%= item.title %></td>
       <td><%= item.text %></td>
+      <td><%= link_to 'Show', project_path(item) %></td>
+      <td><%= link_to 'Edit', edit_project_path(item) %></td>
+      <td><%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    'Are you shure ?' }  %></td>
     </tr>
   <% end %>
 </table>
