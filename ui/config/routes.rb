@@ -1,15 +1,17 @@
 Ui::Application.routes.draw do
 
-  get "projects/new"
-  get "welcome/index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+    root 'welcome#index'
 
-  resources :projects
- 
+    resources :projects do
+        resources :sources
+    end
+     
+
   # root to: "welcome#index"
 
   # Example of regular route:

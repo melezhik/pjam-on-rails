@@ -8,5 +8,17 @@
   <%= @project.text %>
 </p>
 
-<%= link_to 'Back', projects_path %>
+<p>
+<strong>Sources:</strong>
+<ol>
+<% @project.sources.each do |item| %>
+  <li>
+    <%= link_to item.url , item.url %> ( <%= item.scm_type %> )
+  </li>  
+<% end %>
+</ol>
+</p>
+
+<%= link_to 'Project List', projects_path %>
+<%= link_to 'Edit', edit_project_path(@project) %>
 

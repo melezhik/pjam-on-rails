@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110120348) do
+ActiveRecord::Schema.define(version: 20140113123033) do
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -19,5 +19,15 @@ ActiveRecord::Schema.define(version: 20140110120348) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sources", force: true do |t|
+    t.string   "url"
+    t.text     "scm_type"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sources", ["project_id"], name: "index_sources_on_project_id"
 
 end
