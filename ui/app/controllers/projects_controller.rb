@@ -40,7 +40,9 @@ class ProjectsController < ApplicationController
     def destroy 
         @project = Project.find(params[:id])
         @project.destroy
-        redirect_to projects_path
+        @message = "project #{params[:id]} successfully deleted"
+        render erb: @message
+        #redirect_to projects_path
     end
 
 private
