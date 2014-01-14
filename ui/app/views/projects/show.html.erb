@@ -1,13 +1,9 @@
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @project.text %>
-</p>
+<pre>
+  Title: <%= @project.title %>
+  Description: <%= @project.text %>
+</pre>
 
+<%- unless @project.sources_ordered.empty? %>
 <p>
 <strong>Sources:</strong>
 <ol>
@@ -18,6 +14,6 @@
 <% end %>
 </ol>
 </p>
-
+<%- end %>
 <%= link_to 'Edit Project', edit_project_path(@project) %>
 
