@@ -40,4 +40,24 @@ class SourcesController < ApplicationController
         redirect_to [:edit, @project]
     end
 
+    def on
+        @project = Project.find(params[:project_id])
+        @source = @project.sources.find(params[:id])
+        if @source.update({:state => true })
+            redirect_to [:edit, @project]
+        else
+            render :edit            
+        end
+    end
+
+    def off
+        @project = Project.find(params[:project_id])
+        @source = @project.sources.find(params[:id])
+        if @source.update({:state => false})
+            redirect_to [:edit, @project]
+        else
+            render :edit            
+        end
+    end
+
 end

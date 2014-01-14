@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114093907) do
+ActiveRecord::Schema.define(version: 20140114114319) do
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -20,15 +20,7 @@ ActiveRecord::Schema.define(version: 20140114093907) do
     t.datetime "updated_at"
   end
 
-  create_table "sources", force: true do |t|
-    t.string   "url"
-    t.text     "scm_type"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "sn",         default: 0
-  end
-
-  add_index "sources", ["project_id"], name: "index_sources_on_project_id"
+# Could not dump table "sources" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

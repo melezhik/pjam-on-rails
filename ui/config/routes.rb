@@ -11,6 +11,8 @@ Ui::Application.routes.draw do
         resources :sources do
             member do
                 post 'up'
+                post 'on'
+                post 'off'
             end
         end
     end

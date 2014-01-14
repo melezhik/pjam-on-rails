@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
         @project = Project.find(params[:id])
         
         if @project.update(project_params)
-            redirect_to @project
+            redirect_to [:edit, @project]
         else
             render 'edit'
         end
