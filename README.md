@@ -1,5 +1,5 @@
-pjamer
-======
+PerlJam
+=======
 
-web ui for pjam tool.
+continues integration for PERL.
 
