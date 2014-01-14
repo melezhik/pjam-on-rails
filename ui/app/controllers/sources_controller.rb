@@ -37,7 +37,7 @@ class SourcesController < ApplicationController
 
         end
 
-        redirect_to @project
+        redirect_to [:edit, @project]
     end
 
 end
