@@ -26,6 +26,7 @@
 
 <% end %>
 
+ <%- unless @project.sources_ordered.empty? %>
  <p>       
     <strong>Sources:</strong>
     <ol>   
@@ -43,3 +44,4 @@
     <% end %>
     </ol>
  </p>
+ <% end %>
