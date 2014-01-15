@@ -8,8 +8,10 @@ class ProjectsController < ApplicationController
         # render text: params[:project].inspect
         @project = Project.new project_params 
         if @project.save
+            flash[:notice] = "project # #{@project.id} has been successfully created"
             redirect_to @project
         else
+            flash[:aler] = "error has been occured when creating project"
             render 'new'
         end
     end
@@ -18,8 +20,10 @@ class ProjectsController < ApplicationController
         @project = Project.find(params[:id])
         
         if @project.update(project_params)
+            flash[:notice] = "project # #{@project.id} has been successfully updated"
             redirect_to [:edit, @project]
         else
+            flash[:aler] = "error has been occured when updating project # #{@project.id} data"
             render 'edit'
         end
     end
@@ -40,8 +44,8 @@ class ProjectsController < ApplicationController
     def destroy 
         @project = Project.find(params[:id])
         @project.destroy
-        @message = "project # #{params[:id]} successfully deleted"
-        render erb: @message
+        flash[:notice] = "project # #{@project.id} has been successfully removed"
+        redirect_to controller: "projects"
     end
 
 private

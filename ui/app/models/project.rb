@@ -1,5 +1,8 @@
 class Project < ActiveRecord::Base
+
     has_many  :sources
+    has_many :builds
+
     validates :title, presence: true , length: { minimum: 2 }
 
     def sources_ordered

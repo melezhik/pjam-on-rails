@@ -14,6 +14,7 @@
       <td><%= item.text %></td>
       <td>[<%= link_to 'Show', project_path(item) %></td>
       <td><%= link_to 'Edit', edit_project_path(item) %></td>
+      <td><%= link_to 'Build', [item, item.builds.build], method: :post %></td>
       <td><%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %>]</td>
     </tr>
   <% end %>

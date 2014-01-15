@@ -8,6 +8,9 @@ Ui::Application.routes.draw do
     root 'welcome#index'
 
     resources :projects do
+
+        resources :builds
+
         resources :sources do
             member do
                 post 'up'
