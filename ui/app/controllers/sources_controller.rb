@@ -3,6 +3,7 @@ class SourcesController < ApplicationController
     def create
         @project = Project.find params[:project_id]
         @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
+        flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
         redirect_to project_path @project
     end
 
@@ -10,9 +11,10 @@ class SourcesController < ApplicationController
 
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
+        url = @source.url
         @source.destroy
-        @message = "source # #{params[:id]} successfully deleted"
-        render erb: @message
+        flash[:notice] = "source ID:#{params[:id]}; Url: #{url} has been successfully deleted"
+        redirect_to project_path @project
     end
     
     # used to set order in sources list; lift the source to 1 level up
@@ -36,7 +38,7 @@ class SourcesController < ApplicationController
             end
 
         end
-
+        flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url} now has order number: #{@source.sn}"
         redirect_to [:edit, @project]
     end
 
@@ -44,8 +46,10 @@ class SourcesController < ApplicationController
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
         if @source.update({:state => true })
+            flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url} has been sucessfully enabled"
             redirect_to [:edit, @project]
         else
+            flash[:alert] = "error has been occured when enabling source ID:#{params[:id]}; Url: #{@source.url}"
             render :edit            
         end
     end
@@ -54,8 +58,10 @@ class SourcesController < ApplicationController
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
         if @source.update({:state => false})
+            flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url}  has been sucessfully disabled"
             redirect_to [:edit, @project]
         else
+            flash[:alert] = "error has been occured when disabling source ID:#{params[:id]}; Url: #{@source.url}"
             render :edit            
         end
     end
