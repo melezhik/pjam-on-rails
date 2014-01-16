@@ -2,9 +2,9 @@ class BuildAsync < Struct.new( :project, :build  )
 
     def perform
         Delayed::Worker.logger.info "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
-        #projects.sources_ordered.select {|ss| ss[:state] == 'enabled' }.each  do |s|
-        #     Delayed::Worker.logger.info  "process source: #{s[:url]}"
-        #end
+        project.sources_ordered.select {|ss| ss[:state] == 't' }.each  do |s|
+             Delayed::Worker.logger.info  "process source: #{s[:url]}"
+        end
     end
 
     def success(job)
