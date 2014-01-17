@@ -9,6 +9,7 @@ class BuildAsync < Struct.new( :project, :build )
         project.sources_ordered.select {|ss| ss[:state] == 't' }.each  do |s|
              log :info,  "process source: #{s[:url]}"
         end
+        mark_build_as_scheduled
         if (1 + Random.rand(11)).even?
             raise "random fail"
         end
@@ -19,7 +20,7 @@ class BuildAsync < Struct.new( :project, :build )
 
     def success(job)
         log :info, "successfully complited async build for project ID:#{project.id} build ID:#{build.id}"
-        make_as_succeeded
+        mark_build_as_succeeded
     end        
 
 
@@ -29,7 +30,7 @@ class BuildAsync < Struct.new( :project, :build )
 
     def failure(job)
         log :error,  "failured async build for project ID:#{project.id} build ID:#{build.id} )))):"
-        make_as_failed
+        mark_build_as_failed
     end
 
     def max_attempts
@@ -51,12 +52,17 @@ class BuildAsync < Struct.new( :project, :build )
         build.save
     end
 
-    def make_as_failed
+    def mark_build_as_scheduled
+        build.update({ :state => 'scheduled' })
+        build.save
+    end
+
+    def mark_build_as_failed
         build.update({ :state => 'failed' })
         build.save
     end
 
-    def make_as_succeeded
+    def mark_build_as_succeeded
         build.update({ :state => 'succeeded' })
         build.save
     end
