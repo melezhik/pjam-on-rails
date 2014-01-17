@@ -1,27 +1,48 @@
+require 'term/ansicolor'
+
 class BuildAsync < Struct.new( :project, :build  )
 
+    extend Term::ANSIColor
+
     def perform
-        Delayed::Worker.logger.info "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
+        log :info, "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
         project.sources_ordered.select {|ss| ss[:state] == 't' }.each  do |s|
-             Delayed::Worker.logger.info  "process source: #{s[:url]}"
+             log :info,  "process source: #{s[:url]}"
         end
+        raise 'fail'
+    end
+
+    def after(job)
+         log :info, "successfully schedulled async build for project ID:#{project.id} build ID:#{build.id}"
     end
 
     def success(job)
-        Delayed::Worker.logger.info "successfully complited async build for project ID:#{project.id} build ID:#{build.id}"
+        log :info, "successfully complited async build for project ID:#{project.id} build ID:#{build.id}"
     end        
 
 
-    def error(job)
-        Delayed::Worker.logger.info "errored async build"
-    end
+    #def error(job)
+    #    log :error, "errored async build ):"
+    #end
 
     def failure(job)
-        Delayed::Worker.logger.info "failured async build for project ID:#{project.id} build ID:#{build.id}"
+        log :error,  "failured async build for project ID:#{project.id} build ID:#{build.id} )))):"
     end
 
     def max_attempts
         return 1
     end
 
+    def log method, line
+        c = Term::ANSIColor
+        if method == :error
+            Delayed::Worker.logger.send( method, (c.red +  c.bold + line  + c.clear) )
+        elsif method == :warning
+            Delayed::Worker.logger.send( method, (c.brown +  c.bold + line  + c.clear) )
+        elsif method == :debug
+            Delayed::Worker.logger.send( method, (c.yellow +  c.bold + line  + c.clear) )
+        else
+            Delayed::Worker.logger.send( method, (c.green +  c.bold + line  + c.clear) )
+        end
+    end
 end
