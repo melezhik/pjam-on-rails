@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115132422) do
+ActiveRecord::Schema.define(version: 20140117114947) do
 
   create_table "builds", force: true do |t|
-    t.integer  "state"
+    t.string   "state",      default: "unknown"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "log"
   end
 
   add_index "builds", ["project_id"], name: "index_builds_on_project_id"
