@@ -12,4 +12,10 @@ class BuildsController < ApplicationController
     
     end
 
+    def show
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+
+    end
+
 end

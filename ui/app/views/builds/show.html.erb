@@ -1,0 +1,20 @@
+<pre>
+  <strong>Number:</strong> <%= @build.id %>
+  <strong>State:</strong> <%= @build.state %>
+</pre>
+
+<%- unless @build.log.nil? %>
+<pre>
+  <strong>Log:</strong>
+<% @build.log.split("\n").each do |line| %>
+    <%= line %>
+<% end %>
+</pre>
+<%- end %>
+
+[ 
+
+ <%= link_to 'Back To Project', project_path(@project) %> 
+
+]
+
