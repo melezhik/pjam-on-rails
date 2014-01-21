@@ -1,1 +1,0 @@
-        <div class="info"><span>Время последнего обновления статистики: [% C.model("Bampo::StatLog").get_column('timestamp').max OR 'unknown' %]</span></div>

@@ -1,8 +1,0 @@
-      <div class="inner dialog_inner">
-        <div class="wrap lp-top panel-header">
-          <div class="inner title"><strong>Новая контрольная точка</strong></div>
-        </div>
-        <div class="wrap lp-center">
-        [% form %]
-        </div>
-      </div>
