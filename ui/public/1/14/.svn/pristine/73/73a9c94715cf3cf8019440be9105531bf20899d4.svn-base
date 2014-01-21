@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>404 Страница не найдена.</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+
+<div id="dialogs" style="display:block;">
+	<div class="wrap lp-center dialog dialog-errmessage" id="d_login" style="display:block;">
+		<div class="inner dialog_inner">
+			<div class="wrap lp-top panel-header">
+				<div class="inner title"><strong>лидовый интерфейс</strong></div>
+			</div>
+			<div class="wrap lp-center">
+				<div class="mform form_identification">
+
+					<dl class="inline">
+						<!--
+						<dt class="label">
+							<ins class="sprite32bit size32x32 i32_att"><i></i></ins>
+						</dt>
+						-->
+						<dd class="value">
+							<div><b>404 Страница не найдена</b></div>
+							<div class="gray">Неправильно набран адрес, или такой страницы больше не существует.</div>
+						</dd>
+					</dl>
+
+					<dl class="inline">
+						<dd class="value">
+							<div>
+								<input type="button" value="На стартовую страницу..." onClick="window.top.document.location.href='/'">
+							</div>
+						</dd>
+					</dl>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

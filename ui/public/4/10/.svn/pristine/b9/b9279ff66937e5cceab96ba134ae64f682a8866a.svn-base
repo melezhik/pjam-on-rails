@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Leads - manager</title>
+    <link rel="stylesheet" type="text/css" media="All" href="/css/style.css" />
+    <script type="text/javascript" language="JavaScript" src="/js/prototype.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/js/ui.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/js/dialog.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/js/utils.js"></script>
+    <script type="text/javascript" language="JavaScript" src="/js/calendar.js"></script>
+  </head>
+  <body>
+<!-- ======================================================================= -->
+
+[% content %]
+
+<!-- ======================================================================= -->
+  </body>
+</html>

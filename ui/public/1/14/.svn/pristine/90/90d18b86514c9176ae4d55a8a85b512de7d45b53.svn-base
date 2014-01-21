@@ -1,0 +1,92 @@
+              <div class="filter" id="filter"><input type="checkbox" id="enableExtraFilterCB" title="отобразить дополнительные фильтры" onClick="enableExtraFilterCBHandler(this.checked)" /><label for="enableExtraFilterCB">Доп фильтры</label></div>
+              <div class="filter_items" id="extra_filter_items" style="display:none">
+                <div class="f_name">
+                  <dl class="inline">
+                    <dt class="label r"><label for="f_advert_name">Название размещения:</label></dt>
+                    <dd class="value"><input id="f_advert_name" name="advert_name" type="text" value="[% filter.advert_name %]" title="Введите часть названия размещения" /></dd>
+                  </dl>
+                  <dl class="inline">
+                    <dt class="label r"><label for="f_cpoint_name">Название КТ:</label></dt>
+                    <dd class="value"><input id="f_cpoint_name" name="cpoint_name" type="text" value="[% filter.cpoint_name %]" title="Введите часть названия КТ" /></dd>
+                  </dl>
+                  <dl class="inline">
+                    <dt class="label r"><label for="f_site_paid">Оплачиваемые КТ:</label></dt>
+                    <dd class="value">
+                        <input id="f_site_paid" type="checkbox" [% IF filter.site_paid %] checked="" [% END %] onchange="javascript: $('site_paid').value = $('f_site_paid').checked ? '1' : ''" title="Отобразить только оплачиваемые КТ" style="width: 16px;"/>
+                        <input id="site_paid" type="hidden" name="site_paid" value="[% filter.site_paid %]" />
+                    </dd>
+                  </dl>
+                </div>
+                <div class="f_geo">
+                  [% geo_hash = { };
+                     FOREACH id IN filter.geo_id;
+                       geo_hash.$id = 1;
+                     END
+                  %]
+                  <select name="geo_id" id="f_geo_format" size=5 multiple="true">
+                    <option class="opthint" value="">все географии</option>
+                    [% FOREACH geo IN geos.sort('title') %]
+                    <option value="[% geo.id %]" [% IF geo_hash.exists(geo.id) %] selected="" [% END %]>[% geo.title %]</option>
+                    [% END %]
+                  </select>
+                </div>
+                <div class="f_banners">
+                  [% banners_hash = { };
+                     FOREACH id IN filter.banner_format_id;
+                       banners_hash.$id = 1;
+                     END
+                  %]
+                  <select name="banner_format_id" id="f_banner_format" size=5 multiple="true">
+                    <option class="opthint" value="">все форматы баннеров</option>
+                    [% FOREACH banner_format IN banner_formats.sort('title') %]
+                    <option value="[% banner_format.id %]" [% IF banner_format.archived %] data-archived="1" [% END %] [% IF banners_hash.exists(banner_format.id) %] selected="" [% END %]>[% banner_format.title %]</option>
+                    [% END %]
+                  </select>
+                </div>
+                <div class="f_prod">
+                  [% products_hash = { };
+                     FOREACH id IN filter.product_id;
+                       products_hash.$id = 1;
+                     END
+                  %]
+                  <select name="product_id" id="f_product" size=5 multiple="true">
+                    <option class="opthint" value="">все каналы</option>
+                    [% FOREACH product IN products.sort('title') %]
+                    <option value="[% product.id %]" [% IF product.archived %] data-archived="1" [% END %] [% IF products_hash.exists(product.id) %] selected="" [% END %]>[% product.title %]</option>
+                    [% END %]
+                  </select>
+                </div>
+                <div class="f_channel_group">
+                  [% channel_groups_hash = { };
+                     FOREACH id IN filter.channel_group_id;
+                       channel_groups_hash.$id = 1;
+                     END
+                  %]
+                  <select name="channel_group_id" id="f_channel_group" size=5 multiple="true">
+                    <option class="opthint" value="">все группы каналов</option>
+                    [% FOREACH channel_group IN channel_groups.sort('title') %]
+                    <option value="[% channel_group.id %]" [% IF channel_group.archived %] data-archived="1" [% END %] [% IF channel_groups_hash.exists(channel_group.id) %] selected="" [% END %]>[% channel_group.title %]</option>
+                    [% END %]
+                  </select>
+                </div>
+                <div class="f_placement_targeting">
+                  [% channel_groups_hash = { };
+                     FOREACH id IN filter.placement_targeting_id;
+                       placement_targetings_hash.$id = 1;
+                     END
+                  %]
+                  <select name="placement_targeting_id" id="f_placement_targeting" size=5 multiple="true">
+                    <option class="opthint" value="">все настройки размещений</option>
+                    [% FOREACH placement_targeting IN placement_targetings.sort('title') %]
+                    <option value="[% placement_targeting.id %]" [% IF placement_targeting.archived %] data-archived="1" [% END %] [% IF placement_targetings_hash.exists(placement_targeting.id) %] selected="" [% END %]>[% placement_targeting.title %]</option>
+                    [% END %]
+                  </select>
+                </div>
+                <div class="f_submit"><input type="button" value="Фильтровать список" onClick="document.filter.submit();"/><input type="button" value="Сбросить фильтры" onClick="resetExtraFields();document.filter.submit();"/></div>
+
+              </div>
+              <script language="Javascript">
+                document.observe('dom:loaded', function() {
+                    document.fire('extra_filters:render');
+                });
+              </script>

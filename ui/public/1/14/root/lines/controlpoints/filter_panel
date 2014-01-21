@@ -1,0 +1,46 @@
+        <div class="wrap lp-top panel-global_actions">
+          <form name="filter" method="get" action="[% C.uri_for_action(C.action) %]">
+            <div class="inner mform">
+              <div class="list_settings">
+                <label>Вид списка:</label>
+                <select name="list_format" id="list_format" onchange="document.filter.submit();">
+                  [% list_formats = [
+                       { value = 'own', title = 'мои контрольные точки' },
+                       { value = 'agency', title = 'контрольные точки подразделения' },
+                       { value = 'all', title = 'все контрольные точки' },
+                       { value = 'client', title = 'контрольные точки по клиентам' }
+                     ]
+                  %]
+                  [% FOREACH format IN list_formats %]
+                  <option value="[% format.value %]" [% IF format.value == 'client' AND filter.list_format != 'client' %] disabled="" [% ELSIF format.value == filter.list_format %] selected="" [% END %]>[% format.title %]</option>
+                  [% END %]
+                </select>
+                <select class="clients" onchange="submitOnSelect(this)" id="list_clients">
+                  <option class="opthint" value="">выберите клиента</option>
+                  [% USE String %]
+                  [% FOREACH agency IN agencies.sort('title') %]
+                  [% agency_id = String.new(agency.id) %]
+                  <option class="group" value="[% agency.id %]" [% IF agency_id.upper == filter.agency_id %] selected="" [% END %]>[% agency.title %]</option>
+                    [% FOREACH client IN agency.clients.sort('title') %]
+                    [% client_id = String.new(client.id) %]
+                    <option [% IF client.archived %] class="inactive" [% END %] value="[% client.id %]" [% IF client_id.upper == filter.client_id %] selected="" [% END %]>[% client.title %]</option>
+                    [% END %]
+                  </optgroup>
+                  [% END %]
+                </select>
+                <input type="checkbox" id="enableArchivedCB" title="показать архивных клиентов" onclick="enableArchivedCBHandler(this.checked)"/><label for="enableArchivedCB">архивные клиенты</label>
+
+              </div>
+              [% INCLUDE _inc/_stat_filter %]
+              <div class="statistics">
+                <input type="checkbox" id="selector_view_all" [% IF filter.show_empty %] checked="" [% END %] onchange="javascript: $('show_empty').value = $('selector_view_all').checked ? '1' : '0'; document.filter.submit()" title="Будут показаны контрольные точки без статистики"/><label for="selector_view_all">Показывать&nbsp;все</label>
+              </div>
+              [% INCLUDE _inc/_extra_filters %]
+            </div>
+            <input id="show_empty" type="hidden" name="show_empty" value="[% filter.show_empty %]" />
+            <input id="agency_id" type="hidden" name="agency_id" value="[% filter.agency_id %]" />
+            <input id="client_id" type="hidden" name="client_id" value="[% filter.client_id %]" />
+            <input id="sorted_column" type="hidden" name="sorted_column" value="[% filter.sorted_column %]"/>
+            <script language="Javascript" src="/js/controlpoints.js"></script>
+          </form>
+        </div>

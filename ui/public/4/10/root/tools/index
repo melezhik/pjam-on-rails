@@ -1,0 +1,61 @@
+[% INCLUDE _inc/_html_head %]
+  <body>
+    <div class="wrap lp-center panel-page">
+      <div class="inner">
+        <div class="wrap lp-top panel-global_head">
+          <div class="inner">
+            [% INCLUDE _inc/_header %]
+            <ul class="capsule_list_segmented">
+               <li class="first" onClick="location.href='[% C.uri_for_action('/lines/controlpoints/index') %]'"><span>Активные контрольные точки</span></li
+              ><li onClick="location.href='[% C.uri_for_action('/mediaplans/index') %]'"><span>Медиапланы</span></li
+              ><li onClick="location.href='[% C.uri_for_action('/advertisers/index') %]'"><span>Клиенты</span></li
+              ><li class="selected last" onClick="location.href='[% C.request.uri %]'"><span>Инструменты</span></li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+[% INCLUDE _inc/_dialogs %]
+
+    <script type="text/javascript" src="/js/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="/js/tools.js"></script>
+    <hr style="margin-top: 1em;"/>
+    <h3>Импортирование затрат по размещениям</h3>
+    <div>
+        Выберите файл с данными (формат CSV):
+        <button onclick="document.getElementById('inpUpload').click()">Выбрать файл</button>
+        <span style="margin-left: 2em"><input type="checkbox" id="isAutoUpload"/><label for="isAutoUpload">Не проверять содержимое</label></span>
+    </div>
+    <input id="inpUpload" style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])"/>
+
+    <div id="restable" style="display: none">
+        <table class="fixed striped">
+            <colgroup>
+                <col style="width: .4;"></col>
+                <col style="width: .3;"></col>
+                <col style="width: .3;"></col>
+                <col style="width: 8em;"></col>
+                <col style="width: 8em;"></col>
+                <col style="width: 8em;"></col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <td><div class="colheader">Клиент</div></td>
+                    <td><div class="colheader">Медиаплан</div></td>
+                    <td><div class="colheader">Размещение</div></td>
+                    <td class="r"><div class="colheader">Дата</div></td>
+                    <td class="r"><div class="colheader">Сумма</div></td>
+                    <td class="r"><div class="colheader">В системе</div></td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="footer">
+            <button id="btnSubmit">Подтвердить импорт данных</button>
+        </div>
+    </div>
+    <div id="resApprove"></div>
+</body>

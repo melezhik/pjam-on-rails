@@ -1,0 +1,91 @@
+---
+  id: client_stat
+  method: POST
+  attrs: { name: 'clientStatForm', class: 'inner mform' }
+  output_processors: [ Indent ]
+  auto_id: '%f_%n'
+  languages: [ ru ]
+  model_config:
+    resultset: ClientStat
+
+  default_args:
+    elements:
+      Text:
+        filters:
+          - type: TrimEdges
+
+  constraints:
+    - type: Required
+      name: date
+
+    - type: Integer
+      name: leads_client
+      message: "Поле должно быть целым не отрицательным значением"
+
+  inflators:
+    - type: DateTime
+      name: date
+      parser:
+        strptime: '%Y-%m-%d'
+      strptime:
+        pattern: '%Y-%m-%d'
+      locale: ru
+
+  deflator:
+    - type: Strftime
+      name: date
+      strftime: '%Y-%m-%d'
+
+  validators:
+    - type: '+BampoManager::FormFu::Validator::ClientStat::Date'
+      name: date
+      message: "дата не позже вчера"
+
+    - type: '+BampoManager::FormFu::Validator::ClientStat::Amount'
+      name: leads_client
+      message: "Поле должно быть целым не отрицательным значением"
+
+  attributes:
+    onsubmit: "return false"
+
+  elements:
+    - type: Hidden
+      name: lineId
+      force_default: 1
+
+    - type: Text
+      name: line_title
+      label: "Название КТ:"
+      attrs: { class: '', readonly: 1 }
+      force_default: 1
+
+    - type: Multi
+      label: "Дата:"
+      container_tag: div
+      container_attributes:
+        class: dropdown_input
+        id: date_holder
+      javascript: "initDateSelect({elmValue: 'date', holder: '#date_holder', extra: {maxDate: '-1d', onSelect: function() {reload_dialog(dialog_url, 'd_client_stat', {date: $('client_stat_dialog_date').value, reload_form: 1})} }});"
+      elements:
+        - type: Hidden
+          name: date
+          id: client_stat_dialog_date
+
+    - type: Text
+      name: leads_client
+      id:   client_stat_dialog_leads
+      label: "Количество лидов за день:"
+      attrs: { class: '' }
+      force_default: 1
+
+    - type: Multi
+      elements:
+        - type: Submit
+          value: Сохранить
+          attributes_xml:
+            onclick: "var leads = $('client_stat_dialog_leads'); if (isNaN(parseInt(leads.value,10)) || parseInt(leads.value,10) < 0 || (parseInt(leads.value,10) >= parseInt((leads.defaultValue || 0),10)) || confirm('Изменить количество лидов на меньшее значение?')) submit_dialog(this.form,'d_client_stat');"
+
+        - type: Reset
+          value: Отмена
+          attributes_xml:
+            onclick: hideDialog('d_client_stat')

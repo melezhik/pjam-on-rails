@@ -5,22 +5,27 @@ class BuildAsync < Struct.new( :project, :build )
     extend Term::ANSIColor
 
     def perform
-        mark_build_as_scheduled
-        log :info, "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
         pj = BuildPjam.new
         pj.run self, project
-        mark_build_as_succeeded
+    end
+
+    def before(job)
+        mark_build_as_scheduled
+        log :info, "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
     end
 
     def after(job)
+        log :info, "finished async build for project ID:#{project.id} build ID:#{build.id}"
     end
 
     def success(job)
+        mark_build_as_succeeded
+        log :info, "successeded async build for project ID:#{project.id} build ID:#{build.id}"
     end        
 
 
     def error(job, ex)
-             log :error, ex.message
+             log :error, "#{ex.class} : #{ex.message}"
              log :error, ex.backtrace
     end
 

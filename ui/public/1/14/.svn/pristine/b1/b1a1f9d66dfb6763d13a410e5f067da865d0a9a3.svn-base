@@ -1,0 +1,40 @@
+---
+  id: login
+  method: POST
+  attrs: { name: 'loginForm', class: 'inner mform' }
+  output_processors: [ Indent ]
+  auto_id: '%f_%n'
+  languages: ['ru']
+  attributes:
+    onsubmit: "return false"
+
+  default_args:
+    elements:
+      Text:
+        filters:
+          - type: TrimEdges
+
+  elements:
+    - type: Label
+      name: title
+      value: "Для входа в личный кабинет введите логин и пароль"
+      retain_default: 1
+      tag: div
+      attrs: { class: 'hint' }
+
+    - type: Text
+      name: username
+      label: "Логин:"
+      attrs: { tabindex: 1, class: 'wide' }
+      constraints:
+        - type: Required
+
+    - type: Password
+      name: password
+      label: "Пароль:"
+      attrs: { tabindex: 2, class: 'wide' }
+
+    - type: Submit
+      value: Войти
+      attributes_xml:
+        onclick: submit_dialog(this.form,'d_login');

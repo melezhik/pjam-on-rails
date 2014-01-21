@@ -1,0 +1,14 @@
+package BampoManager::Controller::Tools;
+
+use Moose;
+use namespace::autoclean;
+
+BEGIN { extends 'BampoManager::Controller::Base' }
+
+
+#/////////////////////////////////////////////////////////////////////
+sub index :Path {}
+
+#/////////////////////////////////////////////////////////////////////
+
+__PACKAGE__->meta->make_immutable;

@@ -1,0 +1,6 @@
+<dl class="inline">
+  <dt class="label r[% IF self.attributes.required %] required[% END %]">[% self.label %]</dt>
+  <dd class="value">
+    <[% self.tag %] name="[% self.nested_name %]"[% process_attrs(self.attributes) %]>[% self.value %]</[% self.tag %]>
+  </dd>
+</dl>

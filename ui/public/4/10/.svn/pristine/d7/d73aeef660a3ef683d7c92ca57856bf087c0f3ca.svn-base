@@ -1,0 +1,6 @@
+            <ul class="capsule_list_segmented">
+               <li class="first" onClick="location.href='[% C.uri_for_action('/lines/controlpoints/index') %]'"><span>Активные контрольные точки</span></li
+              ><li onClick="location.href='[% C.uri_for_action('/mediaplans/index') %]'"><span>Медиапланы</span></li
+              ><li onClick="location.href='[% C.uri_for_action('/advertisers/index') %]'"><span>Клиенты</span></li
+              ><li class="last" onClick="location.href='[% C.uri_for_action('/tools/index') %]'"><span>Инструменты</span></li>
+            </ul>

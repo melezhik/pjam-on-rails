@@ -1,0 +1,122 @@
+---
+  method: POST
+  attrs: { name: 'advertiserForm', class: 'inner mform' }
+  output_processors: [ Indent ]
+  auto_id: '%f_%n'
+  languages: [ ru ]
+  model_config:
+    resultset: Advertiser
+
+  default_args:
+    elements:
+      Text:
+        filters:
+          - type: TrimEdges
+      Select:
+        constraints:
+          - type: AutoSet
+
+  constraints:
+    - type: Required
+      names: [title, agencyId]
+
+    - type: SingleValue
+      names: [revision, title, name, email, username, password]
+
+    - type: Email
+      name: email
+
+    - type: AllOrNone
+      name: [ username ]
+      others: [ password ]
+      message: Не все поля заполнены
+
+  elements:
+    - type: Hidden
+      name: revision
+      default: 0
+
+    - type: Text
+      name: title
+      label: "Название:"
+      attrs: { class: 'wide', required: 1 }
+
+    - type: Checkbox
+      name: archived
+      label: "архивный"
+      reverse_single: 1
+
+    - type: Select
+      name: agencyId
+      label: "Агентство:"
+      attrs: { class: 'wide', required: 1 }
+      model_config:
+        resultset: Agency
+        label_column: title
+
+    - type: Text
+      name: name
+      label: "Контактное лицо:"
+      attrs: { class: 'wide' }
+      model_config:
+        null_if_empty: 1
+
+    - type: Text
+      name: email
+      label: "e-mail:"
+      attrs: { class: 'wide' }
+      model_config:
+        null_if_empty: 1
+
+    - type: Fieldset
+      legend: Гостевой доступ
+      elements:
+        - type: Text
+          name: username
+          label: "Логин:"
+          attrs: { class: 'half' }
+          model_config:
+            null_if_empty: 1
+
+        - type: Text
+          name: password
+          label: "Пароль:"
+          attrs: { class: 'half' }
+          model_config:
+            null_if_empty: 1
+
+        - type: Checkbox
+          name: show_leads
+          label: "показывать лиды"
+          default: 1
+          reverse_single: 1
+
+        - type: Checkbox
+          name: show_exp
+          label: "показывать показы"
+          default: 1
+          reverse_single: 1
+
+        - type: Checkbox
+          name: show_clk
+          label: "показывать клики"
+          default: 1
+          reverse_single: 1
+
+        - type: Checkbox
+          name: show_CTR
+          label: "показывать CTR"
+          default: 1
+          reverse_single: 1
+
+        - type: Checkbox
+          name: show_LR
+          label: "показывать LR"
+          default: 1
+          reverse_single: 1
+
+        - type: Checkbox
+          name: show_CR
+          label: "показывать CR"
+          default: 1
+          reverse_single: 1

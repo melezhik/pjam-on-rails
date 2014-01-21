@@ -1,0 +1,20 @@
+---
+  id: create_advertiser
+  load_config_file:
+    - advertiser/form.yaml
+  attributes:
+    onsubmit: "return false"
+
+  elements:
+    - type: Multi
+      elements:
+        - type: Submit
+          value: Добавить
+          attributes_xml:
+            onclick: submit_dialog(this.form,'d_client');
+
+        - type: Reset
+          value: Отмена
+          attributes_xml:
+            onclick: hideDialog('d_client')
+

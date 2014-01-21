@@ -1,0 +1,60 @@
+<div id="dialogs" style="display:none;">
+  <div id="mask" style="display:none;"></div>
+
+<!-- Медиаплан [начало] -->
+    <div class="wrap lp-center dialog dialog-mediaplan" id="d_mediaplan" style="display:none;">
+    </div>
+<!-- Медиаплан [конец] -->
+
+<!-- Клиент [начало] -->
+    <div class="wrap lp-center dialog dialog-client" id="d_client" style="display:none;">
+    </div>
+<!-- Клиент [конец] -->
+
+<!-- Клиентская статистика [начало] -->
+    <div class="wrap lp-center dialog dialog-client-stat" id="d_client_stat" style="display:none;">
+    </div>
+<!-- Клиентская статистика [конец] -->
+
+<!-- Контрольная точка [начало] -->
+    <div class="wrap lp-center dialog dialog-cpoint" id="d_cpoint" style="display:none;">
+    </div>
+<!-- Контрольная точка [конец] -->
+
+<!-- Размещение [начало] -->
+    <div class="wrap lp-center dialog dialog-ad" id="d_ad" style="display:none;">
+    </div>
+<!-- Размещение [конец] -->
+
+<!-- Затраты [начало] -->
+    <div class="wrap lp-center dialog dialog-costs" id="d_costs" style="display:none;">
+    </div>
+<!-- Затраты [конец] -->
+
+
+<!-- Календарь [начало] -->
+<div style="display:none; position:absolute; left: 0px; top: 20px;">
+  <table class="calendar">
+    <tbody>
+      <tr><td class="navYM">
+        <div><ins class="sprite32bit size16x16 i16_left_arrow_selected"><i></i></ins><ins class="sprite32bit size16x16 i16_right_arrow_selected"><i></i></ins>2006</div>
+        <div><ins class="sprite32bit size16x16 i16_left_arrow_selected"><i></i></ins><ins class="sprite32bit size16x16 i16_right_arrow_selected"><i></i></ins>Июль</div>
+      </td></tr>
+      <tr><td class="month">
+        <table>
+          <tr class="week"><td class="day">Пн</td><td class="day">Вт</td><td class="day">Ср</td><td class="day">Чт</td><td class="day">Пт</td><td class="end">Сб</td><td class="end">Вс</td></tr>
+          <tr><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">1</td><td  onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">2</td></tr>
+          <tr><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">3</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">4</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">5</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">6</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">7</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">8</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">9</td></tr>
+          <tr><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">10</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">11</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">12</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">13</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">14</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">15</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">16</td></tr>
+          <tr><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">17</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">18</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">19</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">20</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">21</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">22</td><td onmouseout="this.className='cursetday end';" onmouseover="this.className='cursetday over';" class="cursetday end">23</td></tr>
+          <tr><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">24</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">25</td><td class="current">26</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">27</td><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">28</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">29</td><td onmouseout="this.className='end';" onmouseover="this.className='over';" class="end">30</td></tr>
+          <tr><td onmouseout="this.className='day';" onmouseover="this.className='over';" class="day">31</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+        </table>
+      </td></tr>
+      <tr class="today"><td onclick="setTodayFromCalendar();" onmouseout="this.className = 'norm';" onmouseover="this.className='over';" class="norm">сегодня</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- Календарь [конец] -->
+
+</div>

@@ -1,0 +1,29 @@
+---
+  elements:
+    - type: Fieldset
+      id: fieldsetCosts
+      legend: Внешние затраты
+      elements:
+        - type: Select
+          name: costsAccountId
+          label: "Клиент:"
+          attrs: { class: 'wide', required: 1 }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+
+        - type: Select
+          name: costsCampaignId
+          label: "Кампания:"
+          attrs: { class: 'wide', required: 1 }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+
+        - type: Text
+          name: costsCampaignName
+          label: "Название кампании:"
+          attrs: { class: 'wide', required: 1 }
+
+        - type: Text
+          name: costsPlacementName
+          label: "Название размещения:"
+          attrs: { class: 'wide', required: 1 }

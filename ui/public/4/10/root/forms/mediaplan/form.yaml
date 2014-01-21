@@ -1,0 +1,97 @@
+---
+  method: POST
+  attrs: { name: 'mediaplanForm', class: 'inner mform' }
+  output_processors: [ Indent ]
+  auto_id: '%f_%n'
+  languages: [ ru ]
+  model_config:
+    resultset: Mediaplan
+
+  default_args:
+    elements:
+      Text:
+        filters:
+          - type: TrimEdges
+      Select:
+        constraints:
+          - type: AutoSet
+
+  constraints:
+    - type: Required
+      names: [title, status, agencyId, advertiserId, salesManagerId]
+
+    - type: SingleValue
+      names: [revision, title, status, advertiserId, salesManagerId, trafficManagerId]
+
+  elements:
+    - type: Hidden
+      name: revision
+      default: 0
+
+    - type: Text
+      name: title
+      label: "Название:"
+      attrs: { class: 'wide', required: 1 }
+
+    - type: Select
+      name: status
+      label: "Статус:"
+      attrs: { required: 1 }
+      default: new
+      options:
+        - [ new, 'Новый' ]
+        - [ archived, 'Архивный' ]
+
+    - type: Select
+      name: agencyId
+      label: "Агентство:"
+      attrs: { class: 'wide', required: 1 }
+      model_config:
+        resultset: Agency
+        label_column: title
+
+    - type: Select
+      name: advertiserId
+      label: "Клиент:"
+      attrs: { class: 'wide', required: 1 }
+      empty_first: 1
+      empty_first_label: -- не назначен --
+      model_config:
+        resultset: Advertiser
+        label_column: title
+        attributes: { order_by: [ 'title' ] }
+
+    - type: Select
+      name: salesManagerId
+      label: "Продавец:"
+      attrs: { class: 'wide', required: 1 }
+      empty_first: 1
+      empty_first_label: -- не назначен --
+      model_config:
+        resultset: Person
+        label_column: title
+        attributes: { order_by: [ 'title' ] }
+
+    - type: Select
+      name: accountManagerId
+      label: "Аккаунт-менеджер:"
+      attrs: { class: 'wide' }
+      empty_first: 1
+      empty_first_label: -- не назначен --
+      model_config:
+        resultset: Person
+        label_column: title
+        attributes: { order_by: [ 'title' ] }
+        null_if_empty: 1
+
+    - type: Select
+      name: trafficManagerId
+      label: "Специалист:"
+      attrs: { class: 'wide' }
+      empty_first: 1
+      empty_first_label: -- не назначен --
+      model_config:
+        resultset: Person
+        label_column: title
+        attributes: { order_by: [ 'title' ] }
+        null_if_empty: 1

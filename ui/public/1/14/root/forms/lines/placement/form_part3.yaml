@@ -1,0 +1,97 @@
+---
+  constraints:
+    - type: Required
+      names: [startDate, adId, adType]
+
+  inflators:
+    - type: DateTime
+      names: [ startDate, stopDate ]
+      parser:
+        strptime: '%Y-%m-%d'
+      strptime:
+        pattern: '%Y-%m-%d'
+      locale: ru
+
+  deflator:
+    - type: Strftime
+      names: [ startDate, stopDate ]
+      strftime: '%Y-%m-%d'
+
+  validators:
+    - type: '+BampoManager::FormFu::Validator::Placement::Ad'
+      name: adId
+      message: "компания не существует"
+
+    - type: '+BampoManager::FormFu::Validator::Placement::Profile'
+      name: profileId
+      message: "профайл не существует"
+
+
+  elements:
+    - type: Fieldset
+      legend: Период действия
+      elements:
+        - type: Multi
+          label: "Дата начала:"
+          container_tag: div
+          container_attributes:
+            class: dropdown_input
+            id: start_holder
+          attrs: { required: 1 }
+          elements:
+            - name: startDate
+              type: Hidden
+              attrs: { required: 1 }
+
+        - type: Multi
+          label: "Дата окончания:"
+          container_tag: div
+          container_attributes:
+            class: dropdown_input
+            id: stop_holder
+          javascript: "initDateRange({elmValue: 'startDate', holder: '#start_holder'}, {elmValue: 'stopDate', holder: '#stop_holder'});"
+          elements:
+            - name: stopDate
+              type: Hidden
+              attrs: { data-reset-enable: 1 }
+
+
+    - type: Fieldset
+      legend: Кампания в Адривере
+      elements:
+        - type: Text
+          name: adId
+          label: "adID:"
+          attrs: { class: '', required: 1 }
+          constraint:
+            - type: Integer
+              message: "Значение должно быть целым числом"
+
+        - type: Text
+          name: profileId
+          label: "profileID:"
+          attrs: { class: '' }
+          model_config:
+            null_if_empty: 1
+          constraint:
+            - type: Integer
+              message: "Значение должно быть целым числом"
+
+        - type: Radiogroup
+          container_tag: div
+          label_tag: label
+          label: "Тип:"
+          name: adType
+          default: simple
+          options:
+            - [ simple, 'обычная' ]
+            - [ network, 'сетевая' ]
+          attrs:
+            required: 1
+
+        - type: Textarea
+          name: targeting
+          label: "Таргетинги:"
+          comment: Описание в свободной форме
+          rows: 7
+          attrs: { class: 'wide' }

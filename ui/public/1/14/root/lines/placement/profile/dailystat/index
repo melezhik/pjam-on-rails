@@ -1,0 +1,167 @@
+[% INCLUDE _inc/_html_head %]
+  <body>
+    <div class="wrap lp-center panel-page">
+      <div class="inner">
+        <div class="wrap lp-top panel-global_head">
+          <div class="inner">
+            [% INCLUDE _inc/_header %]
+            [% INCLUDE _inc/_tabs_panel %]
+          </div>
+        </div>
+        <div class="wrap lp-top panel-mediaplan_head">
+          <div class="inner mform">
+            <dl class="inline">
+              <dt class="label">Медиаплан:</dt>
+              <dd class="value"><a href="[% C.uri_for_action('/mediaplan/index', [title.mediaplan_id]) %]">[% title.mediaplan %]</a></dd>
+            </dl>
+            <dl class="inline">
+              <dt class="label">Контрольная точка:</dt>
+              <dd class="value"><a href="[% C.uri_for_action('/lines/cpoint/index', [title.cpoint_id]) %]">[% title.cpoint %]</a></dd>
+            </dl>
+            <dl class="inline">
+              <dt class="label">Размещение:</dt>
+              <dd class="value">[% title.placement %]</dd>
+            </dl>
+            <dl class="inline">
+              <dt class="label">Профайл:</dt>
+              <dd class="value">[% title.profile %]</dd>
+            </dl>
+            <dl class="inline">
+              <dt class="label">Клиент:</dt>
+              <dd class="value">[% title.advertiser %]</dd>
+            </dl>
+            <dl class="inline">
+              <dt class="label">Продавец:</dt>
+              <dd class="value">[% title.sales_manager %] <span class="email">(<a href="mailto:[% title.sales_manager_email %]">[% title.sales_manager_email %]</a>)</span></dd>
+            </dl>
+            <dl class="inline">
+              <dt class="label">Аккаунт-менеджер:</dt>
+              <dd class="value">[% title.account_manager %] <span class="email">(<a href="mailto:[% title.account_manager_email %]">[% title.account_manager_email %]</a>)</span></dd>
+            </dl>
+            <dl class="inline">
+              [% price_types = {
+                  'CPM' = 'показы'
+                  'CPC' = 'клики'
+                  'RS' = '50/50'
+                }
+              %]
+              <dt class="label">Тип цены:</dt>
+              <dd class="value">[% price_types.${title.price_type} %]</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="wrap lp-top panel-global_actions">
+          <form name="filter" method="get" action="[% C.uri_for_action(C.action, [title.placement_id, title.profile_id]) %]">
+            <div class="inner mform">
+              [% INCLUDE _inc/_stat_filter %]
+            </div>
+            <input id="cpoint_id" type="hidden" name="cpoint_id" value="[% title.cpoint_id %]" />
+          </form>
+          <script language="Javascript" src="/js/placement_profile_daily.js"></script>
+        </div>
+
+        [% INCLUDE _inc/_stat_update_time %]
+        <div class="wrap lp-top">
+          <div class="inner panel-thead">
+            <table class="fixed" style="display: none; width: auto;">
+            </table>
+          </div>
+        </div>
+        <div class="wrap lp-center">
+          <div class="inner panel-tbody">
+            <table class="fixed striped"  style="display: none; width: auto;">
+             <colgroup>
+               <col/>
+             </colgroup>
+             <colgroup>
+               <col/>
+               <col/>
+               <col/>
+               <col/>
+               <col/>
+
+               <col class="leads" />
+               <col/>
+               <col/>
+
+               <col/>
+               <col/>
+
+               <col/>
+               <col/>
+               <col/>
+               <col/>
+             </colgroup>
+             <thead>
+               <tr>
+                 <td style="width: 12em;" class="r"><div class="colheader r">Дата</div></td>
+
+                 <td style="width: 8em;" class="r collapsable"><div class="colheader">Показы</div></td>
+                 <td style="width: 6em;" class="r collapsable"><div class="colheader">Клики</div></td>
+                 <td style="width: 6em;" class="r collapsable"><div class="colheader">CTR, %</div></td>
+                 <td style="width: 6em;" class="r collapsable" title="Estimated Costs"><div class="colheader">Estim. Costs</div></td>
+                 <td style="width: 6em;" class="r collapsable"><div class="colheader">CPM</div></td>
+
+                 <td style="width: 8em;" class="r collapsable"><div class="colheader">Leads</div></td>
+                 <td style="width: 7em;" class="r collapsable" title="Estimated Lead Cost"><div class="colheader">Estim. LC</div></td>
+                 <td style="width: 5em;" class="r collapsable"><div class="colheader">Deviation</div></td>
+
+                 <td style="width: 7em;" class="r collapsable"><div class="colheader">Lead Rate, %</div></td>
+                 <td style="width: 8em;" class="r collapsable"><div class="colheader">Conversion Rate, %</div></td>
+
+                 <td style="width: 7em;" class="r collapsable"><div class="colheader">Leads Reach</div></td>
+                 <td style="width: 7em;" class="r collapsable"><div class="colheader">Leads Unique</div></td>
+                 <td style="width: 8em;" class="r collapsable"><div class="colheader">Leads Non Unique</div></td>
+                 <td style="width: 8em;" class="r collapsable"><div class="colheader">Leads Proper</div></td>
+               </tr>
+             </thead>
+              <tbody>
+                [% total = data.pop %]
+                [% FOREACH row IN data.sort('date') %]
+                <tr class="[% IF C.model("Holidays").is_holiday(row.date) %] correct[% END %]">
+                  <td class="numeric">[% row.date %]</td>
+                  <td class="numeric">[% row.impressions %]</td>
+                  <td class="numeric">[% row.clicks %]</td>
+                  <td class="numeric">[% row.CTR %]<span class="percent">%</span></td>
+                  <td class="numeric">[% row.costs_est %]</td>
+                  <td class="numeric">[% row.CPM %]</td>
+                  <td class="numeric">[% row.leads %]</td>
+                  <td class="numeric">[% row.lead_cost_est %]</td>
+                  <td class="numeric">[% row.deviation %]</td>
+                  <td class="numeric">[% row.lead_rate %]<span class="percent">%</span></td>
+                  <td class="numeric">[% row.conversion_rate %]<span class="percent">%</span></td>
+                  <td class="numeric">[% row.leads_reach %]</td>
+                  <td class="numeric">[% row.leads_uniq %]</td>
+                  <td class="numeric">[% row.leads_nu %]</td>
+                  <td class="numeric">[% row.leads_proper %]</td>
+                </tr>
+                [% END %]
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td class="numeric">&#8721;</td>
+                  <td class="numeric">[% total.impressions %]</td>
+                  <td class="numeric">[% total.clicks %]</td>
+                  <td class="numeric">[% total.CTR %]<span class="percent">%</span></td>
+                  <td class="numeric">[% total.costs_est %]</td>
+                  <td class="numeric">[% total.CPM %]</td>
+                  <td class="numeric">[% total.leads %]</td>
+                  <td class="numeric">[% total.lead_cost_est %]</td>
+                  <td class="numeric">[% total.deviation %]</td>
+                  <td class="numeric">[% total.lead_rate %]<span class="percent">%</span></td>
+                  <td class="numeric">[% total.conversion_rate %]<span class="percent">%</span></td>
+                  <td class="numeric">[% total.leads_reach %]</td>
+                  <td class="numeric">[% total.leads_uniq %]</td>
+                  <td class="numeric">[% total.leads_nu %]</td>
+                  <td class="numeric">[% total.leads_proper %]</td>
+                </tr>
+              </tfoot>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+
+[% INCLUDE _inc/_dialogs %]
+  </body>
+</html>

@@ -1,0 +1,7 @@
+[% IF self.reverse_single %]
+    <[% self.label_tag %] class="[% IF self.attributes.required %]required[% END %]">[% self.label %]</[% self.label_tag %]>
+[% ELSE %]
+<dt class="label r[% IF self.attributes.required %] required[% END %]">
+    <[% self.label_tag %][% process_attrs(self.label_attributes) %]>[% self.label %]</[% self.label_tag %]>
+</dt>
+[% END %]

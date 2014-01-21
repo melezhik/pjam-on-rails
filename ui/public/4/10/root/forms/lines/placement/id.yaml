@@ -1,0 +1,7 @@
+---
+
+  elements:
+    - type: Label
+      name: id
+      label: "Id:"
+      retain_default: 1

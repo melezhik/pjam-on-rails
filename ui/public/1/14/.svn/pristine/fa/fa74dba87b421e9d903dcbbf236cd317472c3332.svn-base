@@ -1,0 +1,8 @@
+      <div class="inner dialog_inner">
+        <div class="wrap lp-top panel-header">
+          <div class="inner title"><strong>Новый клиент</strong></div>
+        </div>
+        <div class="wrap lp-center">
+        [% form %]
+        </div>
+      </div>

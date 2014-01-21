@@ -1,0 +1,16 @@
+[% INCLUDE _inc/_html_head %]
+  <body>
+    <div id="dialogs" style="display:block;">
+      <div class="wrap lp-center dialog dialog-login" id="d_login" style="display:block;">
+        <div class="inner dialog_inner">
+          <div class="wrap lp-top panel-header">
+            <div class="inner title"><strong>лидовый интерфейс</strong></div>
+          </div>
+          <div class="wrap lp-center">
+            [% form %]
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

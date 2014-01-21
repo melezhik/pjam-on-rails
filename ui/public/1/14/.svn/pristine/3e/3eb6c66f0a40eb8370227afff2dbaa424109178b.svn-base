@@ -1,0 +1,14 @@
+_build
+Build
+MANIFEST
+MANIFEST.bak
+MANIFEST.SKIP.bak
+blib
+META.yml
+META.json
+MYMETA.yml
+MYMETA.json
+googlebanners_costs.conf
+logs
+bampomanager.log
+cpanlib

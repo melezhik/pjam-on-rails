@@ -1,0 +1,4 @@
+            <h1 class="header">лидовый интерфейс<div class="version">[% C.VERSION %]</div></h1>
+            <span class="user">
+            [%- IF C.check_user_roles('admin') %]Администратор: [% ELSE %]Пользователь: [% END -%]
+            [%= C.user.get('email') OR C.user.get('title') %] (<a href="/logout">Выйти</a>)</span>

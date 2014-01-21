@@ -1,0 +1,141 @@
+---
+  method: POST
+  attrs: { name: 'placementForm', class: 'inner mform' }
+  output_processors: [ Indent ]
+  auto_id: '%f_%n'
+  languages: [ ru ]
+  model_config:
+    resultset: Line
+
+  default_args:
+    elements:
+      Text:
+        filters:
+          - type: TrimEdges
+      Radiogroup:
+        auto_id: '%f_%n_%c'
+
+  constraints:
+    - type: Required
+      names: [title, priceProductId, bannerFormatId, priceType]
+
+    - type: AutoSet
+      names: [priceProductId, bannerFormatId, costsSourceId]
+
+    - type: SingleValue
+      names: [revision, title]
+
+
+  elements:
+    - type: Hidden
+      name: revision
+      default: 0
+
+    - type: Hidden
+      name: mediaplanId
+
+    - type: Hidden
+      name: type
+      default: adAdriver
+
+    - type: Text
+      name: title
+      label: "Название:"
+      attrs: { class: 'wide', required: 1 }
+
+    - type: Checkbox
+      name: exp2clk
+      label: "Показы в клики:"
+
+
+    - type: Fieldset
+      legend: Продукт и цена
+      elements:
+        - type: Select
+          name: bannerFormatId
+          label: "Формат баннера:"
+          attrs: { class: 'wide', required: 1 }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+          model_config:
+            resultset: BannerFormat
+            label_column: title
+            attributes: { order_by: [ 'title' ] }
+
+        - type: Select
+          name: priceProductId
+          label: "Канал:"
+          attrs: { class: 'wide', required: 1 }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+          model_config:
+            resultset: Product
+            label_column: title
+            attributes: { order_by: [ 'title' ] }
+
+        - type: Select
+          name: channelGroupId
+          label: "Группа каналов:"
+          attrs: { class: 'wide', required: 1 }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+          model_config:
+            resultset: ChannelGroup
+            label_column: title
+            attributes: { order_by: [ 'title' ] }
+
+        - type: Select
+          name: placementTargetingId
+          label: "Настройка:"
+          attrs: { class: 'wide', required: 1 }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+          model_config:
+            resultset: PlacementTargeting
+            label_column: title
+            attributes: { order_by: [ 'title' ] }
+
+        - type: Radiogroup
+          container_tag: div
+          label_tag: label
+          label: "Тип цены:"
+          name: priceType
+          options:
+            - [ CPM, 'показы' ]
+            - [ CPC, 'клики' ]
+            - [ RS, '50/50' ]
+          attrs:
+            required: 1
+
+        - type: Text
+          name: priceAmount
+          label: "Количество:"
+          attrs: { class: '' }
+          constraint:
+            - type: Integer
+              message: "Поле должно быть целым не отрицательным значением"
+          model_config:
+            null_if_empty: 1
+
+        - type: Text
+          name: pricePurchase
+          label: "Цена покупки:"
+          attrs: { class: '' }
+          constraint:
+            - type: Number
+              message: "Поле должно быть числовым значением, разделитель - точка"
+          model_config:
+            null_if_empty: 1
+
+        - type: Select
+          name: costsSourceId
+          label: "Источник затрат:"
+          attrs: { class: 'wide' }
+          empty_first: 1
+          empty_first_label: -- не назначен --
+          retain_default: 1
+          model_config:
+            resultset: CostsSource
+            label_column: title
+            attributes: { order_by: [ 'title' ] }
+            null_if_empty: 1
