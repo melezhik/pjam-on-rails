@@ -1,5 +1,5 @@
-require 'svn'
 require 'fileutils'
+require 'crack'
 
 class BuildPjam
 
@@ -10,12 +10,12 @@ class BuildPjam
              build_async.log :info,  "is going to process source: #{s[:url]}"
              source_local_path = "#{Rails.public_path}/projects/#{project[:id]}/#{s[:id]}"
              FileUtils.mkdir_p source_local_path       
-             `svn co #{s[:url]} #{source_local_path}`
              build_async.log :debug,  "has created source local path: #{source_local_path}"
-             repo = Svn::Repo.open("#{source_local_path}/.svn/")
-             build_async.log :debug,  "has checked out #{s[:url]} into #{source_local_path}"
-             lr = repo.revision
-             build_async.log :debug,  "last revision: #{lr.props.inspect}"
+             xml = `svn --xml info #{s[:url]}`.force_encoding("UTF-8")
+             build_async.log :debug,  "repository info: #{xml}"
+             repo_info = Crack::XML.parse xml
+             rev = repo_info["info"]["entry"]["commit"]["revision"]
+             build_async.log :debug,  "last revision: #{rev}"
             
         end
         

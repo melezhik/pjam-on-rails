@@ -55,10 +55,8 @@ gem 'delayed_job_active_record'
 
 gem "daemons"
 
-gem "term-ansicolor"
+gem "crack"
 
 
-gem "svn", "~> 0.2.0"
 
-gem "harleytt-ansitags"
 

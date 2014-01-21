@@ -1,8 +1,7 @@
-require 'term/ansicolor'
+# coding: UTF-8
 
 class BuildAsync < Struct.new( :project, :build )
 
-    extend Term::ANSIColor
 
     def perform
         pj = BuildPjam.new
@@ -20,7 +19,7 @@ class BuildAsync < Struct.new( :project, :build )
 
     def success(job)
         mark_build_as_succeeded
-        log :info, "successeded async build for project ID:#{project.id} build ID:#{build.id}"
+        log :info, "succeeded async build for project ID:#{project.id} build ID:#{build.id}"
     end        
 
 
