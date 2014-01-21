@@ -4,12 +4,10 @@
 </pre>
 
 <%- unless @build.log.nil? %>
-<pre>
   <strong>Log:</strong>
-<% @build.log.split("\n").each do |line| %>
-    <%= line %>
-<% end %>
-</pre>
+    <pre>
+    <%= @build.log %>
+    </pre>
 <%- end %>
 
 [ 

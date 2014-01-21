@@ -15,7 +15,6 @@ class BuildsController < ApplicationController
     def show
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])
-
     end
 
 end

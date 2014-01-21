@@ -57,3 +57,8 @@ gem "daemons"
 
 gem "term-ansicolor"
 
+
+gem "svn", "~> 0.2.0"
+
+gem "harleytt-ansitags"
+
