@@ -9,7 +9,7 @@ class BuildAsync < Struct.new( :project, :build )
     end
 
     def before(job)
-        mark_build_as_scheduled
+        mark_build_as_processing
         log :info, "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
     end
 
@@ -51,8 +51,8 @@ class BuildAsync < Struct.new( :project, :build )
         build.save
     end
 
-    def mark_build_as_scheduled
-        build.update({ :state => 'scheduled' })
+    def mark_build_as_processing
+        build.update({ :state => 'processing' })
         build.save
     end
 
