@@ -17,4 +17,10 @@ class BuildsController < ApplicationController
         @build = Build.find(params[:id])
     end
 
+    def destroy
+        @project = Project.find(params[:project_id])
+        Build.find(params[:id]).destroy
+        flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
+        redirect_to project_path(@project)
+    end
 end

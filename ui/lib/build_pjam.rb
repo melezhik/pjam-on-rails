@@ -8,7 +8,7 @@ class BuildPjam
 
         project.sources_ordered.each  do |s|
              build_async.log :info,  "is going to process source: #{s[:url]}"
-             source_local_path = "#{Rails.public_path}/#{project[:id]}/#{s[:id]}"
+             source_local_path = "#{Rails.public_path}/projects/#{project[:id]}/#{s[:id]}"
              FileUtils.mkdir_p source_local_path       
              `svn co #{s[:url]} #{source_local_path}`
              build_async.log :debug,  "has created source local path: #{source_local_path}"

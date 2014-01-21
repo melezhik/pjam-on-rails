@@ -13,12 +13,15 @@
 <%- end %>
 
 <%- unless @project.builds.empty? %>
-<pre>
+<ol>
     <strong>Builds:</strong>
     <% @project.builds.reverse.each do |item| %>
-        <%= link_to "ID: #{item.id}", [@project, item] %> [ <%= item[:state] %> ] 
+        <li>
+        <%= link_to "ID: #{item.id}", [@project, item] %> -  <%= item[:state] %> |
+        <%= link_to "delete", [@project, item], :method => :delete %> 
+        </li>
     <% end %>
-</pre>
+</ol>
 <% end %>
 
 [ 
