@@ -4,8 +4,8 @@ class BuildAsync < Struct.new( :project, :build )
 
 
     def perform
-        pj = BuildPjam.new
-        pj.run self, project, build
+        pj = BuildPjam.new self, project, build
+        pj.run 
     end
 
     def before(job)
@@ -38,6 +38,7 @@ class BuildAsync < Struct.new( :project, :build )
 
     def log method, line
         outline = line || ' '
+        outline.chomp!
         log_data = build[:log] || "\n"
         if method == :error
             build.update( { :log => log_data + "\n" + "ERROR: #{outline}" } )
