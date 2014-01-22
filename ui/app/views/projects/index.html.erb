@@ -2,20 +2,36 @@
 
 <h1>Projects List</h1>
  
-<table>
+<table collspan=4 cellpadding=4>
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Last Build</th>
+    <th>Actions</th>
   </tr>
  
+  <% i = 0 %>
   <% @projects.each do |item| %>
-    <tr>
+    <% i+=1; if i.even? %>    
+        <% color = 'lightgreen' %>
+    <% else %>
+        <% color = 'lightgray' %>
+    <% end %>
+    <tr bgcolor="<%= color %>">
       <td><%= item.title %></td>
       <td><%= item.text %></td>
-      <td>[<%= link_to 'Show', project_path(item) %></td>
-      <td><%= link_to 'Edit', edit_project_path(item) %></td>
-      <td><%= link_to 'Build', [item, item.builds.build], method: :post %></td>
-      <td><%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %>]</td>
+      <td>
+        <% if ! item.last_build.nil? %>
+            <%= link_to "ID: #{item.last_build.id}", [item, item.last_build] %> -  <%= item.last_build[:state] %> at <%= item.last_build[:updated_at] %>
+        <% else %>
+            ---
+        <% end %>
+      </td>
+      <td><%= link_to 'Show', project_path(item) %> |
+        <%= link_to 'Edit', edit_project_path(item) %> |
+        <%= link_to 'Build', [item, item.builds.build], method: :post %> | 
+        <%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %>
+      </td>
     </tr>
   <% end %>
 </table>
