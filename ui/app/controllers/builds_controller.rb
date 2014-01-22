@@ -1,3 +1,4 @@
+require 'fileutils'
 class BuildsController < ApplicationController
 
 
@@ -19,7 +20,9 @@ class BuildsController < ApplicationController
 
     def destroy
         @project = Project.find(params[:project_id])
-        Build.find(params[:id]).destroy
+        build = Build.find(params[:id])
+        FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
+        build.destroy
         flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
         redirect_to project_path(@project)
     end

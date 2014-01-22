@@ -7,13 +7,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
     def run
 
-         project_local_path = "#{Rails.public_path}/projects/#{project[:id]}"
-         build_local_path = "#{project_local_path}/builds/#{build.id}"
-         FileUtils.mkdir_p "#{project_local_path}/repo"
-         FileUtils.mkdir_p "#{build_local_path}"
-         build_async.log :info,  "build local path has been successfully created: #{build_local_path}"
-         unless File.exist? "#{project_local_path}/repo/.pinto"
-             _execute_command "pinto --root=#{project_local_path}/repo/ init"
+         FileUtils.mkdir_p "#{project.local_path}/repo"
+         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}"
+         build_async.log :info,  "project local path has been successfully created: #{build.local_path}"
+         build_async.log :info,  "build local path has been successfully created: #{project.local_path}/#{build.local_path}"
+         unless File.exist? "#{project.local_path}/repo/.pinto"
+             _execute_command "pinto --root=#{project.local_path}/repo/ init"
              build_async.log :debug, "pinto repository has been successfully initialized"
          end
 
@@ -21,10 +20,10 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
         project.sources_enabled.each  do |s|
 
              build_async.log :info,  "processing source: #{s[:url]}"
-             source_local_path = "#{build_local_path}/sources/#{s[:id]}"
-             FileUtils.rm_rf source_local_path
-             FileUtils.mkdir_p source_local_path       
-             build_async.log :debug,  "source local path: #{source_local_path} has been successfully created"
+             FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{s.local_path}"
+             FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/#{s.local_path}"       
+             build_async.log :debug,  "source local path: #{project.local_path}/#{build.local_path}/#{s.local_path} has been successfully created"
+             _execute_command "svn info #{s[:url]}" # check if repository available
              xml = `svn --xml info #{s[:url]}`.force_encoding("UTF-8")
              build_async.log :debug,  "repository info: #{xml}"
              repo_info = Crack::XML.parse xml
@@ -33,7 +32,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
              if (! s.last_rev.nil?) and s.last_rev == rev
                 build_async.log :debug, "this revison is already processed, nothing to do here"
              else
-                 _execute_command "svn co #{s.url} #{source_local_path} -q"
+                 _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
                  build_async.log :debug, "source has been successfully checked out"
              end
 
@@ -48,7 +47,6 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
             while line = stdout_err.gets
-                puts line
                 build_async.log :debug, line
             end
             exit_status = wait_thr.value

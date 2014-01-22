@@ -37,9 +37,10 @@ class BuildAsync < Struct.new( :project, :build )
     end
 
     def log method, line
-        outline = line || ' '
-        outline.chomp!
-        log_data = build[:log] || "\n"
+
+        outline = line || ""
+        log_data = build[:log] || ""
+        line.chomp!
         if method == :error
             build.update( { :log => log_data + "\n" + "ERROR: #{outline}" } )
         elsif method == :warning

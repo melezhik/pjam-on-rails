@@ -25,4 +25,7 @@ class Project < ActiveRecord::Base
         end
     end
 
+    def local_path
+        "#{Rails.public_path}/projects/#{id}"
+    end
 end
