@@ -20,7 +20,7 @@ class BuildPjam
          end
 
 
-        project.sources_ordered.select {|ss| ss.state == 't' }.each  do |s|
+        project.sources_enabled.each  do |s|
 
              build_async.log :info,  "processing source: #{s[:url]}"
              source_local_path = "#{build_local_path}/sources/#{s[:id]}"

@@ -1,6 +1,11 @@
 <pre>
   <strong>Title:</strong> <%= @project.title %>
   <strong>Description:</strong> <%= @project.text %>
+        <% if ! @project.distribution.nil? %>
+  <strong>Distribution Source:</strong> <%= @project.distribution_url %>
+        <% else %>
+  <strong>Distribution Source:</strong> not set
+        <% end %>
 </pre>
 
 <%- unless @project.sources_ordered.empty? %>

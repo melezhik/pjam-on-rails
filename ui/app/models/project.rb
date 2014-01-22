@@ -13,4 +13,12 @@ class Project < ActiveRecord::Base
         sources_ordered.select { |s| s[:state] == 't'  }
     end
 
+    def distribution_url
+        begin
+            sources.find(distribution)[:url]
+        rescue ActiveRecord::RecordNotFound => ex
+            nil
+        end
+    end
+
 end

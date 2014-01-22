@@ -29,7 +29,11 @@
  <%- unless @project.sources_enabled.empty? %>
     <p>
         <%= f.label :distribution %>
-        <%= f.select :distribution, options_for_select(s_list) %>
+        <% if ! @project.distribution.nil? %>
+            <%= f.select :distribution, options_for_select(s_list,@project.distribution) %>
+        <% else %>
+            <%= f.select :distribution, options_for_select(s_list) %>
+        <% end %>
     </p>
  <% end %>
   <p>
