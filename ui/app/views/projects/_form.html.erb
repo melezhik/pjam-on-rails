@@ -1,3 +1,10 @@
+ <%- unless @project.sources_enabled.empty? %>
+    <% s_list = [] %>
+    <% @project.sources_enabled.each do |item| %>
+        <% s_list << [item[:url],item[:id]] %>
+    <% end %>
+ <% end %>
+
 <%= form_for @project do |f| %>
   <% if @project.errors.any? %>
   <div id="error_explanation">
@@ -19,7 +26,12 @@
     <%= f.label :text %><br>
     <%= f.text_area :text, :size => "100x10" %>
   </p>
-
+ <%- unless @project.sources_enabled.empty? %>
+    <p>
+        <%= f.label :distribution %>
+        <%= f.select :distribution, options_for_select(s_list) %>
+    </p>
+ <% end %>
   <p>
     <%= f.submit %>
   </p>
@@ -45,4 +57,5 @@
     </ol>
  </p>
  <% end %>
+
 

@@ -5,7 +5,7 @@ class BuildAsync < Struct.new( :project, :build )
 
     def perform
         pj = BuildPjam.new
-        pj.run self, project
+        pj.run self, project, build
     end
 
     def before(job)

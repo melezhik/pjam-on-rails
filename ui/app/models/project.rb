@@ -8,4 +8,9 @@ class Project < ActiveRecord::Base
     def sources_ordered
         sources.sort { |x, y| ( y[:sn] <=> x[:sn] ) || (y[:id] <=> x[:id])  }
     end
+
+    def sources_enabled
+        sources_ordered.select { |s| s[:state] == 't'  }
+    end
+
 end

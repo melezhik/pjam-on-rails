@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121131025) do
+ActiveRecord::Schema.define(version: 20140122081207) do
 
   create_table "builds", force: true do |t|
     t.string   "state",      default: "unknown"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140121131025) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "distribution"
   end
 
 # Could not dump table "sources" because of following NoMethodError
