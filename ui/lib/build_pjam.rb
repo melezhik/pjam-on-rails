@@ -5,6 +5,12 @@ require 'open3'
 class BuildPjam < Struct.new( :build_async, :project, :build )
 
 
+    @@FORCE_MODE = false
+
+    def self.set_force_mode mode
+        @@FORCE_MODE = mode
+    end
+
     def run
 
          FileUtils.mkdir_p "#{project.local_path}/repo"
@@ -25,20 +31,24 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
              build_async.log :debug,  "source local path: #{project.local_path}/#{build.local_path}/#{s.local_path} has been successfully created"
              _execute_command "svn info #{s[:url]}" # check if repository available
              xml = `svn --xml info #{s[:url]}`.force_encoding("UTF-8")
-             build_async.log :debug,  "repository info: #{xml}"
              repo_info = Crack::XML.parse xml
              rev = repo_info["info"]["entry"]["commit"]["revision"]
              build_async.log :debug,  "last revision: #{rev}"
-             #if (! s.last_rev.nil?) and s.last_rev == rev
-               # build_async.log :debug, "this revison is already processed, nothing to do here"
-             #else
+             if (@@FORCE_MODE == false and  ! s.last_rev.nil?) and s.last_rev == rev
+                 build_async.log :debug, "this revison is already processed, nothing to do here"
+             else
+                 if (! s.last_rev.nil? and ! rev.nil? )
+                    build_async.log :debug,  "changes for #{s.url} between #{rev} and #{s.last_rev}"
+                    _execute_command "svn diff #{s.url} -r #{s.last_rev}:#{rev}"
+                 end
+
                  _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
                  build_async.log :debug, "source has been successfully checked out"
                  distro_name = _create_distribution project, build, s
                  build_async.log :debug, "distribution archive #{distro_name} has been successfully created"
                  s.update({ :last_rev => rev })    
                  s.save
-             #end
+             end
 
         end
         
