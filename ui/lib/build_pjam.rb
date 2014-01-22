@@ -44,8 +44,17 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
                  _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
                  build_async.log :debug, "source has been successfully checked out"
-                 distro_name = _create_distribution project, build, s
-                 build_async.log :debug, "distribution archive #{distro_name} has been successfully created"
+
+                 archive_name = _create_distribution_archive project, build, s
+                 build_async.log :debug, "distribution archive #{archive_name} has been successfully created"
+
+                 if _remove_distribution_from_pinto_repo(project, archive_name) == true
+                     build_async.log :debug, "distribution archive #{archive_name} has been successfully removed from pinto repository"
+                 end
+
+                 _add_distribution_to_pinto_repo project, build, s, archive_name
+                 build_async.log :debug, "distribution archive #{archive_name} has been successfully added to pinto repository"
+
                  s.update({ :last_rev => rev })    
                  s.save
              end
@@ -54,7 +63,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
         
     end
 
-      def _execute_command(cmd)
+      def _execute_command(cmd, raise_ex = true)
 
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
             while line = stdout_err.gets
@@ -62,14 +71,14 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
             end
             exit_status = wait_thr.value
             unless exit_status.success?
-              raise "command #{cmd} failed"
+              raise "command #{cmd} failed" if raise_ex == true
            end
         end
 
     end
 
 
-    def _create_distribution project, build, source
+    def _create_distribution_archive project, build, source
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
@@ -79,6 +88,17 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
         cmd <<  "./Build dist --quiet 1>/dev/null"
         _execute_command(cmd.join(' && '))
         distro_name = `cd #{project.local_path}/#{build.local_path}/#{source.local_path} && ls *.gz`.chomp!
+    end
+
+    def _remove_distribution_from_pinto_repo project, archive_name
+        _execute_command("pinto -r #{project.pinto_repo_root} delete -v --no-color PINTO/#{archive_name}", false) # do not raise exception in case distribution does not exist at repo
+    end
+
+    def _add_distribution_to_pinto_repo project, build, source, archive_name
+        cmd = []
+        cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
+        cmd <<  "pinto -r #{project.pinto_repo_root} add --author PINTO -v --use-default-message --no-color --recurse #{archive_name}"
+        _execute_command(cmd.join(' && '))
     end
 
 end

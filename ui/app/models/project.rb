@@ -28,4 +28,9 @@ class Project < ActiveRecord::Base
     def local_path
         "#{Rails.public_path}/projects/#{id}"
     end
+
+    def pinto_repo_root
+        "#{local_path}/repo"
+    end
+
 end
