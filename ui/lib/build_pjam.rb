@@ -14,7 +14,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
     def run
 
          FileUtils.mkdir_p "#{project.local_path}/repo"
-         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}"
+         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
          build_async.log :info,  "project local path has been successfully created: #{build.local_path}"
          build_async.log :info,  "build local path has been successfully created: #{project.local_path}/#{build.local_path}"
          unless File.exist? "#{project.local_path}/repo/.pinto"
@@ -22,7 +22,8 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
              build_async.log :debug, "pinto repository has been successfully initialized"
          end
 
-
+        distributions_list = []
+        distribution_archive = nil
         project.sources_enabled.each  do |s|
 
              build_async.log :info,  "processing source: #{s[:url]}"
@@ -33,12 +34,13 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
              xml = `svn --xml info #{s[:url]}`.force_encoding("UTF-8")
              repo_info = Crack::XML.parse xml
              rev = repo_info["info"]["entry"]["commit"]["revision"]
-             build_async.log :debug,  "last revision: #{rev}"
+             build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
              if (@@FORCE_MODE == false and  ! s.last_rev.nil?) and s.last_rev == rev
                  build_async.log :debug, "this revison is already processed, nothing to do here"
              else
                  if (! s.last_rev.nil? and ! rev.nil? )
                     build_async.log :debug,  "changes for #{s.url} between #{rev} and #{s.last_rev}"
+                    _execute_command "svn log #{s.url} -r #{s.last_rev}:#{rev}"
                     _execute_command "svn diff #{s.url} -r #{s.last_rev}:#{rev}"
                  end
 
@@ -57,10 +59,20 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
                  s.update({ :last_rev => rev })    
                  s.save
+                 distributions_list << archive_name
+                 distribution_archive = archive_name if project.distribution_source.url == s.url
+                                
              end
 
         end
-        
+
+        distributions_list.each do |archive_name|
+            _install_pinto_distribution project, archive_name 
+        end
+
+        distribution_archive_local_path = _create_final_distribution project, distribution_archive
+        build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
+
     end
 
       def _execute_command(cmd, raise_ex = true)
@@ -99,6 +111,24 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "pinto -r #{project.pinto_repo_root} add --author PINTO -v --use-default-message --no-color --recurse #{archive_name}"
         _execute_command(cmd.join(' && '))
+    end
+
+    def _install_pinto_distribution project, archive_name
+        _execute_command("pinto -r #{project.pinto_repo_root} install -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+    end
+
+    def _create_final_distribution project, archive_name
+        cmd = []
+        cmd <<  "cd #{project.local_path}/#{build.local_path}/artefacts/"
+        cmd << "cp #{project.pinto_repo_root}/authors/id/P/PI/PINTO/#{archive_name} ."
+        cmd << "gunzip  #{archive_name}"
+        cmd << "tar -xf #{archive_name.sub('.gz','')}"
+        cmd << "cd #{archive_name.sub('.tar.gz','')}"
+        cmd << "cp -r #{project.local_path}/cpanlib ."
+        cmd << "cd ../"
+        cmd << "tar -czf #{archive_name}  #{archive_name.sub('.tar.gz','')}"
+        _execute_command(cmd.join(' && '))
+        "#{project.local_path}/#{build.local_path}/artefacts/#{archive_name}"        
     end
 
 end

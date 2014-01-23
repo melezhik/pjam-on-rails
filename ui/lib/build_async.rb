@@ -8,8 +8,8 @@ class BuildAsync < Struct.new( :project, :build )
         pj.run 
     end
 
-    def before(job)
-        mark_build_as_processing
+    def before(job) 
+        mark_build_as_in_processing
         log :info, "scheduled async build for project ID:#{project.id} build ID:#{build.id}"
     end
 
@@ -59,8 +59,8 @@ class BuildAsync < Struct.new( :project, :build )
         build.save
     end
 
-    def mark_build_as_processing
-        build.update({ :state => 'processing' })
+    def mark_build_as_in_processing
+        build.update({ :state => 'in processing' })
         build.save
     end
 

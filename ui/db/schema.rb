@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122081207) do
+ActiveRecord::Schema.define(version: 20140122135933) do
 
   create_table "builds", force: true do |t|
-    t.string   "state",      default: "unknown"
+    t.string   "state",      default: "scheduled"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"

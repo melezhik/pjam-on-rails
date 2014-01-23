@@ -17,9 +17,13 @@ class Project < ActiveRecord::Base
         builds.last
     end
 
+    def distribution_source
+        sources.find distribution
+    end
+
     def distribution_url
         begin
-            sources.find(distribution)[:url]
+            distribution_source[:url]
         rescue ActiveRecord::RecordNotFound => ex
             nil
         end
