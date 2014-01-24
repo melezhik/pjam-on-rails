@@ -26,4 +26,12 @@ class BuildsController < ApplicationController
         flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
         redirect_to project_path(@project)
     end
+
+
+    def files   
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+        send_file "#{@project.local_path}/#{@build.local_path}/artefacts/#{@build.distribution_name}"
+    end
+
 end
