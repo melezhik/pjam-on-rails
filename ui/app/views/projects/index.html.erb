@@ -30,7 +30,7 @@
       </td>
       <td>
         <% if ! item.last_build.nil? and ! item.last_build.distribution_name.nil? %>
-            <%= link_to "#{item.last_build.distribution_name}", [ :files, item, item.last_build  ]  %>
+             <%= link_to "#{item.last_build.distribution_name}", url_for([item,item.last_build]) + '/artefacts/' + item.last_build.distribution_name  %>
         <% else %>
             ---
         <% end %>

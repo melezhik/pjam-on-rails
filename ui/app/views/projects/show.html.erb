@@ -59,7 +59,7 @@
             </td>
             <td>
             <% if item.distribution_name.nil? == false %>
-                <%= link_to "#{item.distribution_name}", "#{item.download_path}"  %>
+                <%= link_to "#{item.distribution_name}", url_for([@project,item]) + '/artefacts/' + item.distribution_name  %>
             <% else %>
                 ---
             <% end %>
