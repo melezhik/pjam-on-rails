@@ -9,11 +9,7 @@ Ui::Application.routes.draw do
 
     resources :projects do
 
-        resources :builds do
-            member do
-                get 'files'
-            end
-        end
+        resources :builds
 
         resources :sources do
             member do

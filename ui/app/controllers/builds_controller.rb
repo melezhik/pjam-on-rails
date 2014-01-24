@@ -28,10 +28,4 @@ class BuildsController < ApplicationController
     end
 
 
-    def files   
-        @project = Project.find(params[:project_id])
-        @build = Build.find(params[:id])
-        send_file "#{@project.local_path}/#{@build.local_path}/artefacts/#{@build.distribution_name}"
-    end
-
 end

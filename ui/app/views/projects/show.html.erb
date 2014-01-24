@@ -59,7 +59,7 @@
             </td>
             <td>
             <% if item.distribution_name.nil? == false %>
-                <%= link_to "#{item.distribution_name}", [ :files, @project, item  ]  %>
+                <%= link_to "#{item.distribution_name}", "#{item.download_path}"  %>
             <% else %>
                 ---
             <% end %>
