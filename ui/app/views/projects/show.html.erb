@@ -1,7 +1,7 @@
 <pre>
   <strong>Title:</strong> <%= @project.title %>
   <strong>Description:</strong> <%= @project.text %>
-        <% if ! @project.distribution.nil? %>
+        <% if @project.has_distribution_source? == true %>
   <strong>Distribution Source:</strong> <%= @project.distribution_url %>
         <% else %>
   <strong>Distribution Source:</strong> not set
@@ -17,23 +17,57 @@
 </pre>
 <%- end %>
 
-<%- unless @project.builds.empty? %>
-<ol>
-    <strong>Builds:</strong>
-    <% @project.builds.reverse.each do |item| %>
-        <li>
-        <%= link_to "ID: #{item.id}", [@project, item] %> -  <%= item[:state] %> at <%= item[:updated_at] %> |
-        <%= link_to "delete", [@project, item], :method => :delete %> 
-        </li>
-    <% end %>
-</ol>
-<% end %>
-
 [ 
 
  <%= link_to 'Edit Project', edit_project_path(@project) %> | 
- <%= link_to 'Build Project', [@project, @project.builds.build], method: :post  %> |
- <%= link_to 'Delete', project_path(@project), method: :delete, data: { confirm:    "You are about to delete project # #{@project[:id]}. Are you shure ?" }  %>
+ <%= link_to 'Run New Build', url_for([@project, :builds]), method: :post  %> |
+ <%= link_to 'Delete Project', project_path(@project), method: :delete, data: { confirm:    "You are about to delete project # #{@project[:id]}. Are you shure ?" }  %>
 
 ]
+
+
+<%- unless @project.builds.empty? %>
+<% i = 0 %>
+<br><br><br>
+<pre>
+  <strong>Builds History:</strong>
+</pre>
+
+    <table collspan=4 cellpadding=4>
+      <tr>
+        <th>NN</th>
+        <th>Log</th>
+        <th>Status</th>
+        <th>Time</th>
+        <th>Artefacts</th>
+        <th>Actions</th>
+      </tr>
+    <% @project.builds.reverse.each do |item| %>
+        <tr>
+            <% i+=1 %>
+            <td>
+                <%= i %>
+            </td>
+            <td>
+                <%= link_to "ID: #{item.id}", [@project, item] %>
+            </td>
+            <td>
+                <%= item[:state] %> at <%= item[:updated_at] %>
+            </td>
+            <td>
+                <%= item[:updated_at] %>
+            </td>
+            <td>
+            <% if item.distribution_name.nil? == false %>
+                <%= link_to "#{item.distribution_name}", [ :files, @project, item  ]  %>
+            <% else %>
+                ---
+            <% end %>
+            </td>
+            <td>
+                <%= link_to "delete", [@project, item], :method => :delete %> 
+            </td>
+            </tr>
+    <% end %>
+<% end %>
 

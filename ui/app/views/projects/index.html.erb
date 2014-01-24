@@ -7,6 +7,7 @@
     <th>Title</th>
     <th>Text</th>
     <th>Last Build</th>
+    <th>Artefacts</th>
     <th>Actions</th>
   </tr>
  
@@ -22,11 +23,19 @@
       <td><%= item.text %></td>
       <td>
         <% if ! item.last_build.nil? %>
-            <%= link_to "ID: #{item.last_build.id}", [item, item.last_build] %> -  <%= item.last_build[:state] %> at <%= item.last_build[:updated_at] %>
+            <%= link_to "ID: #{item.last_build.id}", [item, item.last_build] %> - <%= item.last_build[:state] %> at <%= item.last_build[:updated_at] %>
         <% else %>
             ---
         <% end %>
       </td>
+      <td>
+        <% if ! item.last_build.nil? and ! item.last_build.distribution_name.nil? %>
+            <%= link_to "#{item.last_build.distribution_name}", [ :files, item, item.last_build  ]  %>
+        <% else %>
+            ---
+        <% end %>
+      </td>
+
       <td><%= link_to 'Show', project_path(item) %> |
         <%= link_to 'Edit', edit_project_path(item) %> |
         <%= link_to 'Build', [item, item.builds.build], method: :post %> | 

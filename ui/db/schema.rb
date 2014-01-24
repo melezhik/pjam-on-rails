@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122135933) do
+ActiveRecord::Schema.define(version: 20140124100600) do
 
   create_table "builds", force: true do |t|
-    t.string   "state",      default: "scheduled"
+    t.string   "state",             default: "scheduled"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "log"
+    t.string   "distribution_name"
   end
 
   add_index "builds", ["project_id"], name: "index_builds_on_project_id"
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140122135933) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "distribution"
+    t.integer  "distribution_source_id"
   end
 
 # Could not dump table "sources" because of following NoMethodError

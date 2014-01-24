@@ -13,6 +13,8 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
     def run
 
+         raise "distribution source should be set for this project" if project.has_distribution_source? == false
+
          FileUtils.mkdir_p "#{project.local_path}/repo"
          FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
          build_async.log :info,  "project local path has been successfully created: #{build.local_path}"
@@ -72,6 +74,10 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
         distribution_archive_local_path = _create_final_distribution project, distribution_archive
         build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
+        FileUtils.ln_s distribution_archive_local_path, "#{project.local_path}/current.txt", :force => true
+        build_async.log :debug, "symlink #{project.local_path}/current.txt successfully created"
+        build.update({ :distribution_name => distribution_archive })
+        build.save
 
     end
 
