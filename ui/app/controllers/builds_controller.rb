@@ -27,5 +27,4 @@ class BuildsController < ApplicationController
         redirect_to project_path(@project)
     end
 
-
 end

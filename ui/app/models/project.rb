@@ -17,6 +17,14 @@ class Project < ActiveRecord::Base
         builds.last
     end
 
+    def last_successfull_build
+        builds.select {|b| b.state == 'succeeded' and ! b.distribution_name.nil?  }.last
+    end
+
+    def has_last_successfull_build?
+         last_successfull_build.nil? == false
+    end
+
     def has_distribution_source?
         begin
             distribution_source

@@ -48,6 +48,12 @@ class ProjectsController < ApplicationController
         redirect_to controller: "projects"
     end
 
+    def last_successfull_build
+        @project = Project.find(params[:id])
+        render text: root_url + 'projects/' + "#{@project.id}" + '/builds/' + "#{@project.last_successfull_build.id}" +  '/artefacts/' + @project.last_successfull_build.distribution_name
+    end
+
+
 private
 
   def project_params

@@ -16,6 +16,11 @@
 <% end %>
 </pre>
 <%- end %>
+<%- if @project.has_last_successfull_build? == true %>
+<pre>
+  <strong><%= link_to 'Last Successfull Build', project_path(@project) + '/last_successfull_build'  %> </strong> 
+</pre>
+<% end %>
 
 [ 
 
@@ -30,7 +35,7 @@
 <% i = 0 %>
 <br><br><br>
 <pre>
-  <strong>Builds History:</strong>
+  <strong>Builds History.</strong>
 </pre>
 
     <table collspan=4 cellpadding=4>

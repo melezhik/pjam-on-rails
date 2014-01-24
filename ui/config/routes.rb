@@ -9,8 +9,13 @@ Ui::Application.routes.draw do
 
     resources :projects do
 
-        resources :builds
+        member do
+            get 'last_successfull_build'
+        end
 
+        resources :builds do
+        end
+        
         resources :sources do
             member do
                 post 'up'
