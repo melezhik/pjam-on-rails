@@ -51,7 +51,8 @@ class Project < ActiveRecord::Base
     end
 
     def pinto_repo_root
-        "#{local_path}/repo"
+        "#{Rails.public_path}/repo"
     end
 
 end
+

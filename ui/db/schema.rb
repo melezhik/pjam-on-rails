@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124100600) do
+ActiveRecord::Schema.define(version: 20140127071214) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -40,13 +40,8 @@ ActiveRecord::Schema.define(version: 20140124100600) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-  create_table "projects", force: true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "distribution_source_id"
-  end
+# Could not dump table "projects" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 # Could not dump table "sources" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

@@ -15,22 +15,17 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
          raise "distribution source should be set for this project" if project.has_distribution_source? == false
 
-         FileUtils.mkdir_p "#{project.local_path}/repo"
-         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
-         build_async.log :info,  "project local path has been successfully created: #{build.local_path}"
-         build_async.log :info,  "build local path has been successfully created: #{project.local_path}/#{build.local_path}"
-         unless File.exist? "#{project.local_path}/repo/.pinto"
-             _execute_command "pinto --root=#{project.local_path}/repo/ init"
-             build_async.log :debug, "pinto repository has been successfully initialized"
-         end
+         _initialize
 
         distributions_list = []
-        distribution_archive = nil
+        distribution_archive = []
         project.sources_enabled.each  do |s|
 
              build_async.log :info,  "processing source: #{s[:url]}"
+
              FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{s.local_path}"
              FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/#{s.local_path}"       
+
              build_async.log :debug,  "source local path: #{project.local_path}/#{build.local_path}/#{s.local_path} has been successfully created"
              _execute_command "svn info #{s[:url]}" # check if repository available
              xml = `svn --xml info #{s[:url]}`.force_encoding("UTF-8")
@@ -49,30 +44,29 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
                  _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
                  build_async.log :debug, "source has been successfully checked out"
 
-                 archive_name = _create_distribution_archive project, build, s
+                 archive_name = _create_distribution_archive s
                  build_async.log :debug, "distribution archive #{archive_name} has been successfully created"
 
-                 if _remove_distribution_from_pinto_repo(project, archive_name) == true
-                     build_async.log :debug, "distribution archive #{archive_name} has been successfully removed from pinto repository"
-                 end
 
-                 _add_distribution_to_pinto_repo project, build, s, archive_name
-                 build_async.log :debug, "distribution archive #{archive_name} has been successfully added to pinto repository"
+                 _remove_distribution_from_pinto_repo archive_name, rev
+
+                 archive_name_with_revision = _add_distribution_to_pinto_repo s, archive_name, rev
+                 build_async.log :debug, "distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
 
                  s.update({ :last_rev => rev })    
                  s.save
-                 distributions_list << archive_name
-                 distribution_archive = archive_name if project.distribution_source.url == s.url
+                 distributions_list << archive_name_with_revision
+                 distribution_archive = [ archive_name_with_revision, archive_name ] if project.distribution_source.url == s.url
                                 
              end
 
         end
 
         distributions_list.each do |archive_name|
-            _install_pinto_distribution project, archive_name 
+            _install_pinto_distribution archive_name 
         end
 
-        distribution_archive_local_path = _create_final_distribution project, distribution_archive
+        distribution_archive_local_path = _create_final_distribution distribution_archive
         build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
         FileUtils.ln_s distribution_archive_local_path, "#{project.local_path}/current.txt", :force => true
         build_async.log :debug, "symlink #{project.local_path}/current.txt successfully created"
@@ -96,7 +90,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
     end
 
 
-    def _create_distribution_archive project, build, source
+    def _create_distribution_archive source
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
@@ -108,34 +102,62 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
         distro_name = `cd #{project.local_path}/#{build.local_path}/#{source.local_path} && ls *.gz`.chomp!
     end
 
-    def _remove_distribution_from_pinto_repo project, archive_name
-        _execute_command("pinto -r #{project.pinto_repo_root} delete -v --no-color PINTO/#{archive_name}", false) # do not raise exception in case distribution does not exist at repo
+
+    def _remove_distribution_from_pinto_repo archive_name, rev
+        archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
+        cmd =  "pinto -r #{project.pinto_repo_root} delete PINTO/#{archive_name_with_revision}"
+        _execute_command(cmd, false)
     end
 
-    def _add_distribution_to_pinto_repo project, build, source, archive_name
+    def _add_distribution_to_pinto_repo source, archive_name, rev
+        archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
-        cmd <<  "pinto -r #{project.pinto_repo_root} add --author PINTO -v --use-default-message --no-color --recurse #{archive_name}"
+        cmd << "mv #{archive_name} #{archive_name_with_revision}"
+        cmd <<  "pinto -r #{project.pinto_repo_root} add -s #{project.id} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
+        archive_name_with_revision
     end
 
-    def _install_pinto_distribution project, archive_name
-        _execute_command("pinto -r #{project.pinto_repo_root} install -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+    def _install_pinto_distribution archive_name
+        _execute_command("pinto -r #{project.pinto_repo_root} install -s #{project.id} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
-    def _create_final_distribution project, archive_name
+    def _create_final_distribution distribution_archive
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/artefacts/"
-        cmd << "cp #{project.pinto_repo_root}/authors/id/P/PI/PINTO/#{archive_name} ."
-        cmd << "gunzip  #{archive_name}"
-        cmd << "tar -xf #{archive_name.sub('.gz','')}"
-        cmd << "cd #{archive_name.sub('.tar.gz','')}"
+        cmd << "cp #{project.pinto_repo_root}/authors/id/P/PI/PINTO/#{distribution_archive[0]} ."
+        cmd << "gunzip  #{distribution_archive[0]}"
+        cmd << "tar -xf #{distribution_archive[0].sub('.gz','')}"
+        cmd << "cd #{distribution_archive[1].sub('.tar.gz','')}"
         cmd << "cp -r #{project.local_path}/cpanlib ."
         cmd << "cd ../"
-        cmd << "tar -czf #{archive_name}  #{archive_name.sub('.tar.gz','')}"
+        cmd << "tar -czf #{distribution_archive[1]}  #{distribution_archive[1].sub('.tar.gz','')}"
         _execute_command(cmd.join(' && '))
-        "#{project.local_path}/#{build.local_path}/artefacts/#{archive_name}"        
+        "#{project.local_path}/#{build.local_path}/artefacts/#{distribution_archive[1]}"        
     end
+
+
+    def _initialize
+
+         FileUtils.mkdir_p "#{project.local_path}/repo"
+         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
+
+         build_async.log :info,  "project local path has been successfully created: #{project.local_path}"
+         build_async.log :info,  "build local path has been successfully created: #{project.local_path}/#{build.local_path}"
+
+         unless File.exist? "#{project.pinto_repo_root}/.pinto"
+             _execute_command "pinto --root=#{project.pinto_repo_root} init"
+             build_async.log :debug, "pinto repository has been successfully created with root at: #{project.pinto_repo_root}"
+         end
+
+         unless File.exist? "#{project.pinto_repo_root}/stacks/#{project.id}"
+             _execute_command "pinto --root=#{project.pinto_repo_root} new #{project.id}"
+             build_async.log :debug, "stack named #{project.id} has been successfully created"
+         end
+
+    end
+
 
 end
 

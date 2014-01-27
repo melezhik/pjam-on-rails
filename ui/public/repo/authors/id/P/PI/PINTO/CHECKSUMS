@@ -1,0 +1,11 @@
+# CHECKSUMS file written on Mon Jan 27 08:16:03 2014 GMT by CPAN::Checksums (v2.08)
+$cksum = {
+  'Adriver-Test-v0.1.0.65654.tar.gz' => {
+    'md5' => '49130fa91dd6df6f852675827a2257c3',
+    'md5-ungz' => 'e9af14868ff754ee09bda2f203390d05',
+    'mtime' => '2014-01-27',
+    'sha256' => '109bf753623623f24a612f828494a03c8488473b58a89f2cd5a9d443ca450479',
+    'sha256-ungz' => '233c07ab4b4e2b1971de879138df6bf7416ca38371a663e58254187803341875',
+    'size' => 1669
+  }
+};

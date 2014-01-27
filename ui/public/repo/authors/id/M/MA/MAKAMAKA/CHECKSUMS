@@ -1,0 +1,11 @@
+# CHECKSUMS file written on Mon Jan 27 07:55:07 2014 GMT by CPAN::Checksums (v2.08)
+$cksum = {
+  'JSON-2.90.tar.gz' => {
+    'md5' => 'e1512169a623e790a3f69b599cc1d3b9',
+    'md5-ungz' => 'ee68996f69a89eea07313bc611ea3455',
+    'mtime' => '2013-10-31',
+    'sha256' => '4ddbb3cb985a79f69a34e7c26cde1c81120d03487e87366f9a119f90f7bdfe88',
+    'sha256-ungz' => '4388c4cd368c1a17d6116a1ebff60db5becdae7548ba7c6e1acc85b8bbd20fe2',
+    'size' => 85333
+  }
+};
