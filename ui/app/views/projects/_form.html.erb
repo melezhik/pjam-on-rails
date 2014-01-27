@@ -30,9 +30,9 @@
     <p>
         <%= f.label :distribution %>
         <% if @project.has_distribution_source? == true %>
-            <%= f.select :distribution, options_for_select(s_list,@project.distribution_source_id) %>
+            <%= f.select :distribution_source_id, options_for_select(s_list,@project.distribution_source_id) %>
         <% else %>
-            <%= f.select :distribution, options_for_select(s_list) %>
+            <%= f.select :distribution_source_id, options_for_select(s_list) %>
         <% end %>
     </p>
  <% end %>
