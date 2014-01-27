@@ -1,11 +1,19 @@
-# CHECKSUMS file written on Mon Jan 27 08:16:03 2014 GMT by CPAN::Checksums (v2.08)
+# CHECKSUMS file written on Mon Jan 27 13:55:26 2014 GMT by CPAN::Checksums (v2.08)
 $cksum = {
   'Adriver-Test-v0.1.0.65654.tar.gz' => {
-    'md5' => '49130fa91dd6df6f852675827a2257c3',
-    'md5-ungz' => 'e9af14868ff754ee09bda2f203390d05',
+    'md5' => '10265b543330f08aac0d43ffe4f23a5c',
+    'md5-ungz' => 'fcf160d663aef0e75ca79e13714def0c',
     'mtime' => '2014-01-27',
-    'sha256' => '109bf753623623f24a612f828494a03c8488473b58a89f2cd5a9d443ca450479',
-    'sha256-ungz' => '233c07ab4b4e2b1971de879138df6bf7416ca38371a663e58254187803341875',
-    'size' => 1669
+    'sha256' => 'c73a4f8e87158ad439e13def04b661cbbddf181b65e022fa872c4ada55e75db1',
+    'sha256-ungz' => '0dbae14611f0d6fbffce28408f6456729be230bafe7e9a47f0604814a73d3fe4',
+    'size' => 1676
+  },
+  'BampoManager-v0.19.6.65529.tar.gz' => {
+    'md5' => 'dfd0d0c1eab6dd9483bdbd60bec57e8e',
+    'md5-ungz' => '39994366dd9fb2746949a9b96444fe99',
+    'mtime' => '2014-01-27',
+    'sha256' => 'c8d5e05a72f669d89897b8eba87177a127d3416a7dbd7252df4367385709d300',
+    'sha256-ungz' => '41334b57dca11c4ffc51a4708f00978f334bbe59ea9ed41a86d3de3bc4d0340d',
+    'size' => 189245
   }
 };

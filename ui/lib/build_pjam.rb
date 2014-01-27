@@ -70,7 +70,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
         build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
         FileUtils.ln_s distribution_archive_local_path, "#{project.local_path}/current.txt", :force => true
         build_async.log :debug, "symlink #{project.local_path}/current.txt successfully created"
-        build.update({ :distribution_name => distribution_archive })
+        build.update({ :distribution_name => distribution_archive[1] })
         build.save
 
     end
