@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 public/projects
+public/repo
 
