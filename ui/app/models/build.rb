@@ -4,7 +4,7 @@ class Build < ActiveRecord::Base
 
     has_many :logs
 
-    validates :comment, presence: true , length: { minimum: 10 }
+#    validates :comment, presence: true , length: { minimum: 10 }
     
     def local_path
         "builds/#{id}"

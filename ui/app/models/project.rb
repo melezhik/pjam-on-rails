@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
     end
 
     def sources_enabled
-        sources_ordered.select { |s| s[:state] == 't'  }
+        sources_ordered.select { |s| s[:state] == true  }
     end
 
     def last_build
