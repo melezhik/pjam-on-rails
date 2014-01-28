@@ -45,6 +45,7 @@
         <th>Status</th>
         <th>Updated</th>
         <th>Artefacts</th>
+        <th>Locked</th>
         <th>Actions</th>
       </tr>
     <% @project.builds.reverse.each do |item| %>
@@ -70,12 +71,20 @@
             <% end %>
             </td>
             <td>
+                <% if item.locked?  %>
+                    yes 
+                <% else %>
+                    no
+                <% end %>
+            </td>
+            <td>
                 <%= link_to "delete", [@project, item], :method => :delete %> |
                 <% if item.locked?  %>
                     <%= link_to "unlock", [:unlock, @project, item ], :method => :post , :title => 'keep this build forever' %> 
                 <% else %>
                     <%= link_to "lock", [:lock, @project, item], :method => :post , :title => 'keep this build forever'  %> 
-                <% end %>
+                <% end %> |
+                <%= link_to "annotate", edit_project_build_path(@project, item)  %> 
             </td>
             </tr>
     <% end %>

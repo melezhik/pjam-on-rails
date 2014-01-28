@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128102543) do
+ActiveRecord::Schema.define(version: 20140128123710) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140128102543) do
     t.datetime "updated_at"
     t.string   "distribution_name"
     t.boolean  "locked",            default: false
+    t.text     "comment"
   end
 
   add_index "builds", ["project_id"], name: "index_builds_on_project_id"

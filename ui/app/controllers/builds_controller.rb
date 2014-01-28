@@ -19,6 +19,25 @@ class BuildsController < ApplicationController
         @log_entries = @build.recent_log_entries
     end
 
+    def edit
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+    end
+
+    def update 
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+        
+        if @build.update(builds_params)
+            flash[:notice] = "build # #{@build.id} has been successfully annotated"
+            redirect_to @project
+        else
+            flash[:aler] = "error has been occured when annotation build # #{@build.id}"
+            render 'edit'
+        end
+    end
+
+
     def full_log
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])
@@ -57,5 +76,11 @@ class BuildsController < ApplicationController
             redirect_to [@project]
         end
     end
+
+private
+
+  def builds_params
+      params.require( :build ).permit( :comment )
+  end
 
 end
