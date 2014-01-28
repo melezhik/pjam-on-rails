@@ -12,7 +12,7 @@ class Build < ActiveRecord::Base
 
 
     def recent_log_entries
-         logs.limit(recent_log_entries_number)
+         logs.order(created_at: :desc).limit(recent_log_entries_number).reverse
     end
 
     def all_log_entries
@@ -20,7 +20,7 @@ class Build < ActiveRecord::Base
     end
 
     def recent_log_entries_number
-        10
+        100
     end
 end
 
