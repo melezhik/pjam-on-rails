@@ -4,4 +4,8 @@ class Source < ActiveRecord::Base
     def local_path
         "sources/#{id}"
     end
+
+    def enabled?
+        state == true
+    end
 end

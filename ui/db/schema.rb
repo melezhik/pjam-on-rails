@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128081645) do
+ActiveRecord::Schema.define(version: 20140128102543) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140128081645) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "distribution_name"
+    t.boolean  "locked",            default: false
   end
 
   add_index "builds", ["project_id"], name: "index_builds_on_project_id"
@@ -52,7 +53,17 @@ ActiveRecord::Schema.define(version: 20140128081645) do
 # Could not dump table "projects" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
-# Could not dump table "sources" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "sources", force: true do |t|
+    t.string   "url"
+    t.text     "scm_type"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sn",         default: 0
+    t.boolean  "state",      default: true
+    t.string   "last_rev"
+  end
+
+  add_index "sources", ["project_id"], name: "index_sources_on_project_id"
 
 end

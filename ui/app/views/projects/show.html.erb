@@ -70,7 +70,12 @@
             <% end %>
             </td>
             <td>
-                <%= link_to "delete", [@project, item], :method => :delete %> 
+                <%= link_to "delete", [@project, item], :method => :delete %> |
+                <% if item.locked?  %>
+                    <%= link_to "unlock", [:unlock, @project, item ], :method => :post , :title => 'keep this build forever' %> 
+                <% else %>
+                    <%= link_to "lock", [:lock, @project, item], :method => :post , :title => 'keep this build forever'  %> 
+                <% end %>
             </td>
             </tr>
     <% end %>

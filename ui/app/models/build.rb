@@ -22,5 +22,9 @@ class Build < ActiveRecord::Base
     def recent_log_entries_number
         100
     end
+
+    def locked?
+        locked == true
+    end
 end
 

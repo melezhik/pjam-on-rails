@@ -16,6 +16,8 @@ Ui::Application.routes.draw do
         resources :builds do
             member do
                 get 'full_log'
+                post 'lock'
+                post 'unlock'
             end
 
             resources :logs do

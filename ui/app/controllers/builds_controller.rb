@@ -34,4 +34,28 @@ class BuildsController < ApplicationController
         redirect_to project_path(@project)
     end
 
+    def lock
+        @project = Project.find(params[:project_id])
+        @build = @project.builds.find(params[:id])
+        if @build.update({:locked => true })
+            flash[:notice] = "build ID:#{params[:id]}; has been sucessfully locked"
+            redirect_to [@project]
+        else
+            flash[:alert] = "error has been occured when locking build ID:#{params[:id]}"
+            redirect_to [@project]
+        end
+    end
+
+    def unlock
+        @project = Project.find(params[:project_id])
+        @build = @project.builds.find(params[:id])
+        if @build.update({:locked => false })
+            flash[:notice] = "build ID:#{params[:id]}; has been sucessfully unlocked"
+            redirect_to [@project]
+        else
+            flash[:alert] = "error has been occured when unlocking build ID:#{params[:id]}"
+            redirect_to [@project]
+        end
+    end
+
 end

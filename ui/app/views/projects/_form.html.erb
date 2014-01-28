@@ -51,7 +51,7 @@
         <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}" %>
         [ <%= link_to 'Delete', [ item.project, item], method: :delete, data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %>
         <%= link_to 'Up', [ :up, item.project, item   ], method: :post   %>
-        <% if item[:state] == 't'  %>
+        <% if item.enabled?  %>
             <%= link_to 'Off', [ :off, item.project, item   ], method: :post, title: "click to disable this source"  %>
         <% else %>
             <%= link_to 'On', [ :on, item.project, item   ], method: :post,  title: "click to enable this source" %>
