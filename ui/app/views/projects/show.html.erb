@@ -46,6 +46,7 @@
         <th>Updated</th>
         <th>Artefacts</th>
         <th>Locked</th>
+        <th>Annotation</th>
         <th>Actions</th>
       </tr>
     <% @project.builds.reverse.each do |item| %>
@@ -75,6 +76,13 @@
                     yes 
                 <% else %>
                     no
+                <% end %>
+            </td>
+            <td>
+                <% if ! item.comment.nil?  %>
+                    <pre><%= item.comment %></pre>
+                <% else %>
+                    ---
                 <% end %>
             </td>
             <td>
