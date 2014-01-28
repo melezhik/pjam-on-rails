@@ -43,7 +43,7 @@
         <th>NN</th>
         <th>Log</th>
         <th>Status</th>
-        <th>Time</th>
+        <th>Updated</th>
         <th>Artefacts</th>
         <th>Actions</th>
       </tr>
@@ -57,7 +57,7 @@
                 <%= link_to "ID: #{item.id}", [@project, item] %>
             </td>
             <td>
-                <%= item[:state] %> at <%= item[:updated_at] %>
+                <%= item[:state] %>
             </td>
             <td>
                 <%= item[:updated_at] %>

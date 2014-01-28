@@ -36,26 +36,18 @@ class BuildAsync < Struct.new( :project, :build )
         return 1
     end
 
-    def log method, line
+    def log level, chunk
 
-        if line.class == Array
-            outline = line.join "\n"
+        if chunk.class == Array
+            log_chunk = chunk.join "\n"
         else
-            outline = line || ""
+            log_chunk = chunk || ""
         end
-        log_data = build[:log] || ""
 
-        outline.chomp!
-
-        if method == :error
-            build.update( { :log => log_data + "\n" + "ERROR: #{outline}" } )
-        elsif method == :warning
-            build.update( { :log => log_data + "\n" + "WARN: #{outline}" } )
-        elsif method == :debug
-            build.update( { :log => log_data + "\n" + "DEBUG: #{outline}" } )
-        else
-            build.update( { :log => log_data + "\n" + "INFO: #{outline}" } )
-        end
+        log_chunk.chomp!
+        log_entry = build.logs.create
+        log_entry.update( { :level => level, :chunk => log_chunk } )
+        log_entry.save
         build.save
     end
 

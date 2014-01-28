@@ -16,6 +16,13 @@ class BuildsController < ApplicationController
     def show
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])
+        @log_entries = @build.recent_log_entries
+    end
+
+    def full_log
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+        @log_entries = @build.all_log_entries
     end
 
     def destroy

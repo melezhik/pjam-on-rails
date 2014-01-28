@@ -105,7 +105,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
 
     def _remove_distribution_from_pinto_repo archive_name, rev
         archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
-        cmd =  "pinto -r #{project.pinto_repo_root} delete PINTO/#{archive_name_with_revision}"
+        cmd =  "pinto -r #{project.pinto_repo_root} delete PINTO/#{archive_name_with_revision} --no-color"
         _execute_command(cmd, false)
     end
 

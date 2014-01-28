@@ -14,6 +14,13 @@ Ui::Application.routes.draw do
         end
 
         resources :builds do
+            member do
+                get 'full_log'
+            end
+
+            resources :logs do
+            end
+    
         end
         
         resources :sources do

@@ -6,7 +6,7 @@
 </pre>
 
 <%- if @build.has_logs? %>
-  <strong>Logs. Last <%= @build.recent_log_entries_number %> entries.</strong> | <%= link_to 'All Log Entries', url_for(['full_log', @project,@build]) %>
+  <strong>Logs.</strong> 
     <pre>
     <% @log_entries.each do |l| %>
         [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
