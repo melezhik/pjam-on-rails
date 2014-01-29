@@ -9,6 +9,9 @@ Ui::Application.routes.draw do
 
     resources :projects do
 
+        resource :configuration do
+        end
+
         member do
             get 'last_successfull_build'
         end
