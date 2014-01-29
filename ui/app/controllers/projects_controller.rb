@@ -1,4 +1,6 @@
+
 class ProjectsController < ApplicationController
+
 
     def new
         @project = Project.new
@@ -11,7 +13,7 @@ class ProjectsController < ApplicationController
             flash[:notice] = "project # #{@project.id} has been successfully created"
             redirect_to @project
         else
-            flash[:aler] = "error has been occured when creating project"
+            flash[:alert] = "error has been occured when creating project"
             render 'new'
         end
     end
@@ -23,7 +25,7 @@ class ProjectsController < ApplicationController
             flash[:notice] = "project # #{@project.id} has been successfully updated"
             redirect_to [:edit, @project]
         else
-            flash[:aler] = "error has been occured when updating project # #{@project.id} data"
+            flash[:alert] = "error has been occured when updating project # #{@project.id} data"
             render 'edit'
         end
     end

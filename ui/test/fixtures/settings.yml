@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  perl5lib: MyText
+  skip_missing_prerequisites: MyText
+  pinto_downsteram_repositories: MyText
+
+two:
+  perl5lib: MyText
+  skip_missing_prerequisites: MyText
+  pinto_downsteram_repositories: MyText

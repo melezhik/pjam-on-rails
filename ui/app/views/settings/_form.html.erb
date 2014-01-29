@@ -1,0 +1,34 @@
+
+<%= form_for @settings, url: settings_path(@settings) do |f| %>
+  <% if @settings.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@settings.errors.count, "error") %> prohibited
+      this settings from being saved:</h2>
+    <ul>
+    <% @settings.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :perl5lib %><br>
+    <%= f.text_field :perl5lib, :size => "100" %>
+  </p>
+  <p>
+    <%= f.label :skip_missing_prerequisites %><br>
+    <%= f.text_field :skip_missing_prerequisites, :size => "100" %>
+  </p>
+  <p>
+    <%= f.label :pinto_downsteram_repositories %><br>
+    <%= f.text_field :pinto_downsteram_repositories, :size => "100" %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+
+

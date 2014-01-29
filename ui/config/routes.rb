@@ -7,10 +7,11 @@ Ui::Application.routes.draw do
   # You can have the root of your site routed with "root"
     root 'welcome#index'
 
+    resource :settings do
+    end
+
     resources :projects do
 
-        resource :configuration do
-        end
 
         member do
             get 'last_successfull_build'

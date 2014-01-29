@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128123710) do
+ActiveRecord::Schema.define(version: 20140129110735) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20140128123710) do
 
 # Could not dump table "projects" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "settings", force: true do |t|
+    t.text     "perl5lib"
+    t.text     "skip_missing_prerequisites"
+    t.text     "pinto_downsteram_repositories"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sources", force: true do |t|
     t.string   "url"
