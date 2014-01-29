@@ -2,7 +2,7 @@ require 'fileutils'
 require 'crack'
 require 'open3'
 
-class BuildPjam < Struct.new( :build_async, :project, :build )
+class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
 
 
     @@FORCE_MODE = false
@@ -14,6 +14,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
     def run
 
          raise "distribution source should be set for this project" if project.has_distribution_source? == false
+         build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
 
          _initialize
 
@@ -32,7 +33,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build )
              repo_info = Crack::XML.parse xml
              rev = repo_info["info"]["entry"]["commit"]["revision"]
              build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
-             if (@@FORCE_MODE == false and  ! s.last_rev.nil?) and s.last_rev == rev
+             if (settings.force_mode == false and  ! s.last_rev.nil?) and s.last_rev == rev
                  build_async.log :debug, "this revison is already processed, nothing to do here"
              else
                  if (! s.last_rev.nil? and ! rev.nil? )

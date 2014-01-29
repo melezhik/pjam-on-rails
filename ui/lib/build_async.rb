@@ -1,10 +1,10 @@
 # coding: UTF-8
 
-class BuildAsync < Struct.new( :project, :build )
+class BuildAsync < Struct.new( :project, :build, :settings )
 
 
     def perform
-        pj = BuildPjam.new self, project, build
+        pj = BuildPjam.new self, project, build, settings 
         pj.run 
     end
 
