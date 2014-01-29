@@ -4,17 +4,11 @@ require 'open3'
 
 class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
 
-
-    @@FORCE_MODE = false
-
-    def self.set_force_mode mode
-        @@FORCE_MODE = mode
-    end
-
     def run
 
          raise "distribution source should be set for this project" if project.has_distribution_source? == false
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
+         build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
 
          _initialize
 
@@ -33,7 +27,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
              repo_info = Crack::XML.parse xml
              rev = repo_info["info"]["entry"]["commit"]["revision"]
              build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
-             if (settings.force_mode == false and  ! s.last_rev.nil?) and s.last_rev == rev
+             if (settings.force_mode == false and  ! s.last_rev.nil?) and s.last_rev == rev and ! ( project.distribution_source.url == s.url )
                  build_async.log :debug, "this revison is already processed, nothing to do here"
              else
                  if (! s.last_rev.nil? and ! rev.nil? )
@@ -115,7 +109,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd << "mv #{archive_name} #{archive_name_with_revision}"
-        cmd <<  "pinto -r #{project.pinto_repo_root} add -s #{project.id} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
+        cmd <<  "pinto -r #{project.pinto_repo_root} add -s #{project.id} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
         archive_name_with_revision
     end

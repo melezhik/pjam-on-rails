@@ -15,7 +15,7 @@ class SettingsController < ApplicationController
     def create
         @settings = Setting.new settings_params 
         if @settings.save
-            flash[:notice] = "settings has been successfully saved"
+            flash[:notice] = "settings have been successfully saved"
             redirect_to root_url
         else
             flash[:alert] = "error has been occured when save settings"
@@ -26,7 +26,7 @@ class SettingsController < ApplicationController
     def update 
         @settings = Setting.take
         if @settings.update(settings_params)
-            flash[:notice] = "settings has been successfully updated"
+            flash[:notice] = "settings have been successfully updated"
             redirect_to root_url
         else
             flash[:alert] = "error has been occured when updating settings"

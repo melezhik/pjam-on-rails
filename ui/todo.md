@@ -9,13 +9,12 @@
 # features
 
 ## builds
-- lock/unlock build 
+- lock/unlock build +
 
 ## pinto
 - pin / upin дистрибутива в проекте через пинтов
 - показывать список пакетов, дистрибутивов через пинто
 
-## initializer
-- perl5lib может быть задана в инициализаторе
-- default_cpan_mirror может быть задана в инициализаторе
+## settings
+- задавать PINTO_DEBUG
 
