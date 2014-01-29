@@ -23,6 +23,10 @@
     <%= f.label :pinto_downsteram_repositories %><br>
     <%= f.text_field :pinto_downsteram_repositories, :size => "100" %>
   </p>
+  <p>
+    <%= f.check_box :force_mode, { :value => true , :checked => @settings[:force_mode] } %>
+    <%= f.label(:force_mode, "forcefully create builds, even no changes in SCM") %>
+  </p>
  
   <p>
     <%= f.submit %>

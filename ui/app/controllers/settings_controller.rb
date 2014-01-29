@@ -38,7 +38,7 @@ class SettingsController < ApplicationController
 private
 
   def settings_params
-      params.require(:setting).permit( :perl5lib, :skip_missing_prerequisites, :pinto_downsteram_repositories )
+      params.require(:setting).permit( :perl5lib, :skip_missing_prerequisites, :pinto_downsteram_repositories, :force_mode )
   end
 
 end

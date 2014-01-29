@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129110735) do
+ActiveRecord::Schema.define(version: 20140129123134) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140129110735) do
     t.text     "pinto_downsteram_repositories"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "force_mode",                    default: false
   end
 
   create_table "sources", force: true do |t|
