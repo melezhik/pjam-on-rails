@@ -47,10 +47,16 @@ class BuildsController < ApplicationController
     def destroy
         @project = Project.find(params[:project_id])
         build = Build.find(params[:id])
-        FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
-        build.destroy
-        flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
+
+        if build.locked?
+            flash[:alert] = "cannot delete locked build! ID:#{params[:id]}"
+        else
+            FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
+            build.destroy
+            flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
+        end
         redirect_to project_path(@project)
+
     end
 
     def lock

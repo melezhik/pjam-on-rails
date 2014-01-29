@@ -30,5 +30,10 @@ class Build < ActiveRecord::Base
     def locked?
         locked == true
     end
+
+
+    def short_comment
+        (comment.split "\n").first + ' ... '
+    end
 end
 
