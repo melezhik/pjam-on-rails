@@ -38,16 +38,18 @@ class BuildAsync < Struct.new( :project, :build, :settings )
 
     def log level, chunk
 
+        lines = [] 
         if chunk.class == Array
-            log_chunk = chunk.join "\n"
+            lines  =  chunk
         else
-            log_chunk = chunk || ""
+            lines =  ((chunk || "").split "\n")
         end
-
-        log_chunk.chomp!
-        log_entry = build.logs.create
-        log_entry.update( { :level => level, :chunk => log_chunk } )
-        log_entry.save
+        lines.map {|ll| ll || "" }.each do |l|
+            l.chomp!
+            log_entry = build.logs.create
+            log_entry.update( { :level => level, :chunk => l } )
+            log_entry.save
+        end
         build.save
     end
 

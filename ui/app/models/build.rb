@@ -24,7 +24,7 @@ class Build < ActiveRecord::Base
     end
 
     def recent_log_entries_number
-        100
+        70
     end
 
     def locked?
