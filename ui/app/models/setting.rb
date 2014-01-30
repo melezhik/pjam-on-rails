@@ -4,7 +4,7 @@ class Setting < ActiveRecord::Base
         if skip_missing_prerequisites.nil?
             ''
         else
-            skip_missing_prerequisites.split(/\s+/).map { |i| "-k=#{i.chomp}"  }.join " "
+            skip_missing_prerequisites.split(/\s+/).map { |i| "--skip-missing-prerequisites=#{i.chomp}"  }.join " "
         end
     end
 
