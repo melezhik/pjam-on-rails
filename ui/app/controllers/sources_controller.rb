@@ -5,9 +5,9 @@ class SourcesController < ApplicationController
         @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
 
         begin
-            @project.sources.find(@project[:distribution])
+            @project.sources.find(@project[:distribution_source_id])
         rescue ActiveRecord::RecordNotFound => ex
-            @project.update({:distribution => @source[:id]})
+            @project.update({:distribution_source_id => @source[:id]})
             @project.save
         end
 
