@@ -6,8 +6,8 @@ Continues integration for PERL.
 * creates builds for perl applications using pinto under the hood 
 * asynchronous execution of builds tasks
 * SCM integration ( subversion )
-* send notifications - _todo_
-* keep artefacts
+* sends notifications - _todo_
+* keeps artefacts
 * nice gui, powered by ruby on rails
 
 
