@@ -1,9 +1,17 @@
-<h2>Build Log ID: <%= @build.id %> for Project <%= link_to "ID: #{@project.id}", project_path(@project) %></h2>
+<strong>Build Log </strong> |  <%= link_to 'Back To Project', project_path(@project) %>
 
 <pre>
-  <strong>Number:</strong> <%= @build.id %>
+  <strong>Project ID:</strong> <%= @project.id %>
+  <strong>Build ID:</strong> <%= @build.id %>
   <strong>State:</strong> <%= @build.state %>
 </pre>
+
+<% if ! @build.comment.nil?  %>
+  <strong>Annotation:</strong> 
+<pre>
+<%= @build.comment %>
+</pre>
+<% end %>
 
 <%- if @build.has_logs? %>
   <strong>Logs. Last <%= @build.recent_log_entries_number %> entries.</strong> | <%= link_to 'All Log Entries', url_for(['full_log', @project,@build]) %>
