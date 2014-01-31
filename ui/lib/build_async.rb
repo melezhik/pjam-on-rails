@@ -71,12 +71,14 @@ class BuildAsync < Struct.new( :project, :build, :settings )
     end
 
     def notify
-        #robot = Jabber::Client::new(Jabber::JID::new('***'))
-        #robot.connect
-        #robot.auth("****")
-        #message = Jabber::Message::new('***', "HELLO WORLD")
-        #message.set_type(:chat)
-        #robot.send message
+        robot = Jabber::Client::new(Jabber::JID::new(settings.jabber_login))
+        robot.connect
+        robot.auth(settings.jabber_password)
+        settings.recipients.split('/s+').each do |r|
+            message = Jabber::Message::new(r, "build ID:#{build.id} #{build.state} at #{build.updated_at}")
+            message.set_type(:chat)
+            robot.send message
+        end
 
     end
 

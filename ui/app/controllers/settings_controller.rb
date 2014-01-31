@@ -28,7 +28,7 @@ class SettingsController < ApplicationController
         @settings = Setting.take
         if @settings.update(settings_params)
             @settings.update_pinto_config
-            flash[:notice] = "settings have been successfully updated"
+            flash[:notice] = "settings have been successfully updated;"
             redirect_to root_url
         else
             flash[:alert] = "error has been occured when updating settings"
@@ -40,7 +40,14 @@ class SettingsController < ApplicationController
 private
 
   def settings_params
-      params.require(:setting).permit( :perl5lib, :skip_missing_prerequisites, :pinto_downsteram_repositories, :force_mode )
+      params.require(:setting).permit( 
+            :perl5lib, :skip_missing_prerequisites, :pinto_downsteram_repositories, 
+            :force_mode,
+            :notify, 
+            :jabber_login,
+            :jabber_password,
+            :recipients
+     )
   end
 
 end

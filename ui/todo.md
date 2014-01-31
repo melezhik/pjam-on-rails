@@ -1,5 +1,6 @@
 # fixes
 - drop initialzed column in projects table; I failed to do that with db:migrate engine
+- drop jabber_server column in settings table;
 
 # improvements
 - build logs should be multiple entries, inserts are faster than updates; +
