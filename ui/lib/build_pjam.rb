@@ -8,6 +8,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
 
          raise "distribution source should be set for this project" if project.has_distribution_source? == false
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
+         build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
 
          _initialize
@@ -100,7 +101,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
 
     def _remove_distribution_from_pinto_repo archive_name, rev
         archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
-        cmd =  "pinto -r #{project.pinto_repo_root} delete PINTO/#{archive_name_with_revision} --no-color"
+        cmd =  "pinto -r #{settings.pinto_repo_root} delete PINTO/#{archive_name_with_revision} --no-color"
         _execute_command(cmd, false)
     end
 
@@ -109,19 +110,19 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd << "mv #{archive_name} #{archive_name_with_revision}"
-        cmd <<  "pinto -r #{project.pinto_repo_root} add -s #{project.id} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
+        cmd <<  "pinto -r #{settings.pinto_repo_root} add -s #{project.id} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
         archive_name_with_revision
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("pinto -r #{project.pinto_repo_root} install -s #{project.id} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("pinto -r #{settings.pinto_repo_root} install -s #{project.id} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _create_final_distribution distribution_archive
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/artefacts/"
-        cmd << "cp #{project.pinto_repo_root}/authors/id/P/PI/PINTO/#{distribution_archive[0]} ."
+        cmd << "cp #{settings.pinto_repo_root}/authors/id/P/PI/PINTO/#{distribution_archive[0]} ."
         cmd << "gunzip  #{distribution_archive[0]}"
         cmd << "tar -xf #{distribution_archive[0].sub('.gz','')}"
         cmd << "cd #{distribution_archive[1].sub('.tar.gz','')}"
@@ -141,13 +142,13 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
          build_async.log :info,  "project local path has been successfully created: #{project.local_path}"
          build_async.log :info,  "build local path has been successfully created: #{project.local_path}/#{build.local_path}"
 
-         unless File.exist? "#{project.pinto_repo_root}/.pinto"
-             _execute_command "pinto --root=#{project.pinto_repo_root} init"
-             build_async.log :debug, "pinto repository has been successfully created with root at: #{project.pinto_repo_root}"
+         unless File.exist? "#{settings.pinto_repo_root}/.pinto"
+             _execute_command "pinto --root=#{settings.pinto_repo_root} init"
+             build_async.log :debug, "pinto repository has been successfully created with root at: #{settings.pinto_repo_root}"
          end
 
-         unless File.exist? "#{project.pinto_repo_root}/stacks/#{project.id}"
-             _execute_command "pinto --root=#{project.pinto_repo_root} new #{project.id}"
+         unless File.exist? "#{settings.pinto_repo_root}/stacks/#{project.id}"
+             _execute_command "pinto --root=#{settings.pinto_repo_root} new #{project.id}"
              build_async.log :debug, "stack named #{project.id} has been successfully created"
          end
 

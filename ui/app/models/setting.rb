@@ -8,4 +8,8 @@ class Setting < ActiveRecord::Base
         end
     end
 
+    def pinto_repo_root
+        "#{Rails.public_path}/repo"
+    end
+
 end
