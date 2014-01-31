@@ -60,3 +60,5 @@ gem "crack"
 gem "erubis"
 
 
+gem "xmpp4r"
+

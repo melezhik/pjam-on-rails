@@ -62,6 +62,11 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
             _install_pinto_distribution archive_name 
         end
 
+        if distribution_archive.empty?
+            raise "distribution archive not found!" 
+        end
+
+
         distribution_archive_local_path = _create_final_distribution distribution_archive
         build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
         FileUtils.ln_s distribution_archive_local_path, "#{project.local_path}/current.txt", :force => true

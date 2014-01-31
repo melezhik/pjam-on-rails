@@ -1,4 +1,5 @@
 # coding: UTF-8
+require 'xmpp4r'
 
 class BuildAsync < Struct.new( :project, :build, :settings )
 
@@ -15,6 +16,7 @@ class BuildAsync < Struct.new( :project, :build, :settings )
 
     def after(job)
         log :info, "finished async build for project ID:#{project.id} build ID:#{build.id}"
+        notify
     end
 
     def success(job)
@@ -66,6 +68,16 @@ class BuildAsync < Struct.new( :project, :build, :settings )
     def mark_build_as_succeeded
         build.update({ :state => 'succeeded' })
         build.save
+    end
+
+    def notify
+        #robot = Jabber::Client::new(Jabber::JID::new('***'))
+        #robot.connect
+        #robot.auth("****")
+        #message = Jabber::Message::new('***', "HELLO WORLD")
+        #message.set_type(:chat)
+        #robot.send message
+
     end
 
 end
