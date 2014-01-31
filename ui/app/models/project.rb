@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
 
-    has_many  :sources
-    has_many :builds
+    has_many  :sources , :dependent => :destroy
+    has_many :builds, :dependent => :destroy
 
     validates :title, presence: true , length: { minimum: 2 }
 
