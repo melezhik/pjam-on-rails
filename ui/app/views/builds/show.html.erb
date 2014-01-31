@@ -1,4 +1,4 @@
-<strong>Build Log </strong> |  <%= link_to 'Back To Project', project_path(@project) %>
+<strong>Build Log </strong> | <%= link_to 'Back To Project', project_path(@project) %>
 
 <pre>
   <strong>Project ID:</strong> <%= @project.id %>
@@ -14,7 +14,7 @@
 <% end %>
 
 <%- if @build.has_logs? %>
-  <strong>Logs. Last <%= @build.recent_log_entries_number %> entries.</strong> | <%= link_to 'All Log Entries', url_for(['full_log', @project,@build]) %>
+  <strong>Logs. Last <%= @build.recent_log_entries_number %> entries.</strong> | <%= link_to 'Full Log', full_log_project_build_path(@project,@build) %>
     <pre>
     <% @log_entries.each do |l| %>
         [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
