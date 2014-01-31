@@ -57,6 +57,6 @@ gem "daemons"
 
 gem "crack"
 
-
+gem "erubis"
 
 

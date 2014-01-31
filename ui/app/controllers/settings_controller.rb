@@ -15,6 +15,7 @@ class SettingsController < ApplicationController
     def create
         @settings = Setting.new settings_params 
         if @settings.save
+            @settings.update_pinto_config
             flash[:notice] = "settings have been successfully saved"
             redirect_to root_url
         else
@@ -26,6 +27,7 @@ class SettingsController < ApplicationController
     def update 
         @settings = Setting.take
         if @settings.update(settings_params)
+            @settings.update_pinto_config
             flash[:notice] = "settings have been successfully updated"
             redirect_to root_url
         else
