@@ -1,13 +1,13 @@
 # pjam-on-rails
 
-Continues integration for PERL.
+Continues integration server for PERL.
 
 # Features
-* creates builds for perl applications using pinto under the hood 
-* asynchronous execution of builds tasks
+* creates builds for perl applications using pinto 
+* asynchronous execution of build tasks
 * SCM integration ( subversion )
-* sends notifications - _todo_
+* sends builds notifications by jabber
 * keeps artefacts
-* nice gui, powered by ruby on rails
-
-
+* it's rails application, sorry catalyst guys (:
+* nice gui, powered by bootstrap
+* keeps change logs for configuration settings _todo_
