@@ -15,12 +15,12 @@ Continues integration server for PERL.
 
 # installation
 
-  git clone https://github.com/melezhik/pjam-on-rails.git
-  cd pjam-on-rails/ui
-  rake db:migrate
-  ./bin/delayed_job start  
-  rails server
-  # visit 127.0.0.1:3000
+    git clone https://github.com/melezhik/pjam-on-rails.git
+    cd pjam-on-rails/ui
+    rake db:migrate
+    ./bin/delayed_job start  
+    rails server
+    # visit 127.0.0.1:3000
   
   
   
