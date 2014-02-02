@@ -8,6 +8,19 @@ Continues integration server for PERL.
 * SCM integration ( subversion )
 * sends builds notifications by jabber
 * keeps artefacts
-* it's rails application, sorry catalyst guys (:
-* nice gui, powered by bootstrap
-* keeps change logs for configuration settings _todo_
+* this is the ruby on rails application
+* simple, yet usefull gui powered by bootstrap
+* keeps change logs for configuration settings - _todo_
+
+
+# installation
+
+  git clone https://github.com/melezhik/pjam-on-rails.git
+  cd pjam-on-rails/ui
+  rake db:migrate
+  ./bin/delayed_job start  
+  rails server
+  # visit 127.0.0.1:3000
+  
+  
+  
