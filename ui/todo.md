@@ -6,8 +6,10 @@
 # fixes
 - drop initialized column in projects table; I failed to do that with db:migrate engine +
 - drop jabber_server column in settings table +
-- current.txt no longer need
+- current.txt is no longer needed
 - add time-stamp to artefacted archive name 
+- jabber login shuould be public for security reasons
+- store jabber password incrypted 
 
 # improvements
 - build logs should be multiple entries, inserts are faster than updates; +
