@@ -16,7 +16,7 @@ class SourcesController < ApplicationController
         else
             flash[:alert] = "error has been occured when creating source: #{@project.errors.full_messages.join ' '}"
         end
-        redirect_to project_path @project
+        redirect_to edit_project_path @project
 
     end
 
