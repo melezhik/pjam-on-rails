@@ -22,5 +22,9 @@ Continues integration server for PERL.
     rails server
     # visit 127.0.0.1:3000
   
+# prerequisites
+- nodejs
+- sqlite
+
   
   
