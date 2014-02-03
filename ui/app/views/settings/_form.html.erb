@@ -24,10 +24,6 @@
     <%= f.text_field :pinto_downsteram_repositories, :size => "100" %>
   </p>
   <p>
-    <%= f.check_box :notify, { :value => true , :checked => @settings[:notify] } %>
-    <%= f.label(:force_mode, "notify me on builds fails/successes") %>
-  </p>
-  <p>
     <%= f.label :jabber_login %><br>
     <%= f.text_field :jabber_login, :size => "50" %>
   </p>

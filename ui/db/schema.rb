@@ -52,8 +52,15 @@ ActiveRecord::Schema.define(version: 20140203080246) do
 
   add_index "logs", ["build_id"], name: "index_logs_on_build_id"
 
-# Could not dump table "projects" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "projects", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "distribution_source_id"
+    t.boolean  "notify",                 default: true
+    t.text     "recipients"
+  end
 
   create_table "settings", force: true do |t|
     t.text     "perl5lib"

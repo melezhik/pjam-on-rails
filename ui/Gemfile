@@ -47,9 +47,9 @@ end
 
 gem 'bootstrap-sass'
 
-group :development do
+#group :development do
   gem 'rails_layout'
-end
+#end
 
 gem 'delayed_job_active_record'
 
