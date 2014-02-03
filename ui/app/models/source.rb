@@ -1,7 +1,7 @@
 class Source < ActiveRecord::Base
 
     belongs_to :project
-    validates :url, presence: true, length: { minimum: 2 }
+    validates :url, presence: true
 
     def local_path
         "sources/#{id}"
