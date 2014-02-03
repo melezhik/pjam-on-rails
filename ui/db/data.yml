@@ -1,0 +1,4587 @@
+
+---
+sources:
+  columns:
+  - id
+  - url
+  - scm_type
+  - project_id
+  - created_at
+  - updated_at
+  - sn
+  - state
+  - last_rev
+  records: 
+  - - 35
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Adriver-API/tags/version-0.1.0
+    - svn
+    - 1
+    - '2014-02-03 11:50:59.463031'
+    - '2014-02-03 12:22:49.217413'
+    - 0
+    - true
+    - '65191'
+  - - 36
+    - https://svn.x/repos/Adriver-GoodsBoomerang-ShopDB/tags/version-0.2.1
+    - svn
+    - 1
+    - '2014-02-03 11:51:17.662559'
+    - '2014-02-03 12:23:02.890843'
+    - 0
+    - true
+    - '64509'
+  - - 37
+    - https://svn.x/repos/Adriver-GoodsBoomerang-GoodsDB/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 11:51:41.802919'
+    - '2014-02-03 12:23:24.266491'
+    - 0
+    - true
+    - '64528'
+  - - 38
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Serializer-JSON/tags/version-0.1.0
+    - svn
+    - 1
+    - '2014-02-03 11:52:00.575862'
+    - '2014-02-03 12:23:40.767140'
+    - 0
+    - true
+    - '65293'
+  - - 39
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/URI-redis/tags/version-0.1.0
+    - svn
+    - 1
+    - '2014-02-03 11:52:16.793959'
+    - '2014-02-03 12:23:57.491846'
+    - 0
+    - true
+    - '65332'
+  - - 40
+    - https://svn.x/repos/Adriver-GoodsBoomerang-Queue/tags/version-0.1.0
+    - svn
+    - 1
+    - '2014-02-03 11:52:39.522070'
+    - '2014-02-03 12:24:22.146636'
+    - 0
+    - true
+    - '64511'
+  - - 41
+    - https://svn.x/repos/Adriver-GoodsBoomerang-SuggestionGenerator/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 11:52:54.735646'
+    - '2014-02-03 12:24:42.167835'
+    - 0
+    - true
+    - '64519'
+  - - 42
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Event/tags/version-0.1.1
+    - svn
+    - 1
+    - '2014-02-03 11:53:14.266310'
+    - '2014-02-03 12:25:01.289098'
+    - 0
+    - true
+    - '65281'
+  - - 43
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-CHI/tags/version-0.1.2
+    - svn
+    - 1
+    - '2014-02-03 11:53:33.417236'
+    - '2014-02-03 12:25:16.403609'
+    - 0
+    - true
+    - '65224'
+  - - 44
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Stat/tags/version-0.2.2
+    - svn
+    - 1
+    - '2014-02-03 11:53:54.652995'
+    - '2014-02-03 12:25:36.611370'
+    - 0
+    - true
+    - '65305'
+  - - 45
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU/tags/version-0.2.1
+    - svn
+    - 1
+    - '2014-02-03 11:54:29.828600'
+    - '2014-02-03 12:25:50.913283'
+    - 0
+    - true
+    - '65228'
+  - - 46
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-AuditorySegment/tags/version-0.1.3
+    - svn
+    - 1
+    - '2014-02-03 11:54:47.654652'
+    - '2014-02-03 12:26:15.262133'
+    - 0
+    - true
+    - '65230'
+  - - 47
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Trait/tags/version-0.1.1
+    - svn
+    - 1
+    - '2014-02-03 11:55:07.099827'
+    - '2014-02-03 12:26:41.430741'
+    - 0
+    - true
+    - '65311'
+  - - 48
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-AuditoryUpdater/tags/version-0.1.2
+    - svn
+    - 1
+    - '2014-02-03 11:55:24.623373'
+    - '2014-02-03 12:27:03.272705'
+    - 0
+    - true
+    - '65233'
+  - - 49
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-CacheExpire/tags/version-0.1.2
+    - svn
+    - 1
+    - '2014-02-03 11:55:42.913896'
+    - '2014-02-03 12:27:26.075718'
+    - 0
+    - true
+    - '65239'
+  - - 50
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-CacheUpdater/tags/version-0.2.1
+    - svn
+    - 1
+    - '2014-02-03 11:55:52.506679'
+    - '2014-02-03 12:27:54.226633'
+    - 0
+    - true
+    - '65245'
+  - - 51
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-History/tags/version-0.2.6
+    - svn
+    - 1
+    - '2014-02-03 11:56:09.616641'
+    - '2014-02-03 12:28:22.297549'
+    - 0
+    - true
+    - '65251'
+  - - 52
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Index/tags/version-0.2.2
+    - svn
+    - 1
+    - '2014-02-03 11:56:19.869719'
+    - '2014-02-03 12:28:48.079946'
+    - 0
+    - true
+    - '65257'
+  - - 53
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Product/tags/version-0.1.5
+    - svn
+    - 1
+    - '2014-02-03 11:56:31.719485'
+    - '2014-02-03 12:29:14.164822'
+    - 0
+    - true
+    - '65263'
+  - - 54
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Suggest/tags/version-0.1.3
+    - svn
+    - 1
+    - '2014-02-03 11:56:40.303294'
+    - '2014-02-03 12:29:42.056220'
+    - 0
+    - true
+    - '65269'
+  - - 55
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-UpdateProduct/tags/version-0.1.3
+    - svn
+    - 1
+    - '2014-02-03 12:06:46.114903'
+    - '2014-02-03 12:30:07.252926'
+    - 0
+    - true
+    - '65275'
+  - - 56
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Action-Retry-Strategy-AdriverLinear/tags/version-0.1.0
+    - svn
+    - 1
+    - '2014-02-03 12:07:22.599200'
+    - '2014-02-03 12:30:32.072014'
+    - 0
+    - true
+    - '65185'
+  - - 57
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Pipeline-Stage/tags/version-0.1.5
+    - svn
+    - 1
+    - '2014-02-03 12:07:50.701003'
+    - '2014-02-03 12:30:56.178103'
+    - 0
+    - true
+    - '65287'
+  - - 58
+    - https://svn.x/repos/Adriver-GoodsBoomerang-ProductConverter/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 12:08:15.928065'
+    - '2014-02-03 12:31:16.679684'
+    - 0
+    - true
+    - '64522'
+  - - 59
+    - https://svn.x/repos/Adriver-GoodsBoomerang-Picture-Schema/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 12:08:35.574979'
+    - '2014-02-03 12:31:41.558405'
+    - 0
+    - true
+    - '64518'
+  - - 60
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/gbpicker/tags/version-0.6.0
+    - svn
+    - 1
+    - '2014-02-03 12:08:56.372422'
+    - '2014-02-03 12:32:01.907943'
+    - 0
+    - true
+    - '65338'
+  - - 61
+    - https://svn.x/repos/Adriver-GoodsBoomerang-ClusterDB/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 12:09:15.358883'
+    - '2014-02-03 12:32:23.299368'
+    - 0
+    - true
+    - '64503'
+  - - 62
+    - https://svn.x/repos/Adriver-GoodsBoomerang-FeedImport/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 12:09:29.748801'
+    - '2014-02-03 12:32:44.290527'
+    - 0
+    - true
+    - '64517'
+  - - 63
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-SNMP/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 12:09:45.924583'
+    - '2014-02-03 13:00:29.006767'
+    - 0
+    - true
+    - '65299'
+  - - 64
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Utils/tags/version-0.2.0
+    - svn
+    - 1
+    - '2014-02-03 12:10:03.079550'
+    - '2014-02-03 13:00:44.566282'
+    - 0
+    - true
+    - '65317'
+  - - 65
+    - https://svn.x/repos/boomerang-2.0-bundle/trunk
+    - svn
+    - 1
+    - '2014-02-03 12:11:16.433033'
+    - '2014-02-03 13:01:00.190531'
+    - 0
+    - true
+    - '65747'
+  - - 66
+    - https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Cache-Query/tags/version-0.1.0
+    - svn
+    - 3
+    - '2014-02-03 12:27:13.152820'
+    - '2014-02-03 12:27:13.152820'
+    - 0
+    - true
+    - 
+  - - 67
+    - https://svn.x/repos/Adriver-GoodsBoomerang-ShopDB/tags/version-0.2.1
+    - svn
+    - 3
+    - '2014-02-03 12:27:34.063099'
+    - '2014-02-03 12:27:34.063099'
+    - 0
+    - true
+    - 
+  - - 68
+    - https://svn.x/repos/Adriver-GoodsBoomerang-BannerDelivery/tags/version-0.2.0
+    - svn
+    - 3
+    - '2014-02-03 12:27:48.345063'
+    - '2014-02-03 12:27:48.345063'
+    - 0
+    - true
+    - 
+
+---
+delayed_jobs:
+  columns:
+  - id
+  - priority
+  - attempts
+  - handler
+  - last_error
+  - run_at
+  - locked_at
+  - failed_at
+  - locked_by
+  - queue
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 0
+    - 0
+    - ! "--- !ruby/struct:BuildAsync\nproject: !ruby/ActiveRecord:Project\n  attributes:\n
+      \   id: 1\n    title: gb20\n    text: бумеранг 2.0; очереди и закачка\n    created_at:
+      2014-02-03 10:40:27.563118000 Z\n    updated_at: 2014-02-03 12:11:28.156778000
+      Z\n    distribution_source_id: 65\n    notify: true\n    recipients: melezhik@adriver.ru\nbuild:
+      !ruby/ActiveRecord:Build\n  attributes:\n    id: 1\n    state: scheduled\n    project_id:
+      1\n    created_at: 2014-02-03 12:22:21.193821318 Z\n    updated_at: 2014-02-03
+      12:22:21.193821318 Z\n    distribution_name: \n    locked: false\n    comment:
+      \n    released: false\nsettings: !ruby/ActiveRecord:Setting\n  attributes:\n
+      \   id: 2\n    perl5lib: /usr/local/rle/lib/perl5\n    skip_missing_prerequisites:
+      ''\n    pinto_downsteram_repositories: http://cpan.webdev.x/CPAN\n    created_at:
+      2014-02-03 10:39:04.662881000 Z\n    updated_at: 2014-02-03 12:22:01.285540000
+      Z\n    force_mode: false\n    jabber_server: \n    jabber_login: melezhik@adriver.ru\n
+      \   jabber_password: kwef23rl\n"
+    - 
+    - '2014-02-03 12:22:21.277591'
+    - '2014-02-03 12:51:13.907599'
+    - 
+    - delayed_job host:pinto.webdev.x pid:6881
+    - 
+    - '2014-02-03 12:22:21.296387'
+    - '2014-02-03 12:22:21.296387'
+  - - 2
+    - 0
+    - 0
+    - ! "--- !ruby/struct:BuildAsync\nproject: !ruby/ActiveRecord:Project\n  attributes:\n
+      \   id: 1\n    title: gb20\n    text: бумеранг 2.0; очереди и закачка\n    created_at:
+      2014-02-03 10:40:27.563118000 Z\n    updated_at: 2014-02-03 12:11:28.156778000
+      Z\n    distribution_source_id: 65\n    notify: true\n    recipients: melezhik@adriver.ru\nbuild:
+      !ruby/ActiveRecord:Build\n  attributes:\n    id: 2\n    state: scheduled\n    project_id:
+      1\n    created_at: 2014-02-03 12:50:10.327986520 Z\n    updated_at: 2014-02-03
+      12:50:10.327986520 Z\n    distribution_name: \n    locked: false\n    comment:
+      \n    released: false\nsettings: !ruby/ActiveRecord:Setting\n  attributes:\n
+      \   id: 2\n    perl5lib: /usr/local/rle/lib/perl5\n    skip_missing_prerequisites:
+      ''\n    pinto_downsteram_repositories: http://cpan.webdev.x/CPAN\n    created_at:
+      2014-02-03 10:39:04.662881000 Z\n    updated_at: 2014-02-03 12:22:01.285540000
+      Z\n    force_mode: false\n    jabber_server: \n    jabber_login: melezhik@adriver.ru\n
+      \   jabber_password: kwef23rl\n"
+    - 
+    - '2014-02-03 12:50:10.431903'
+    - 
+    - 
+    - 
+    - 
+    - '2014-02-03 12:50:10.448143'
+    - '2014-02-03 12:50:10.448143'
+
+---
+projects:
+  columns:
+  - id
+  - title
+  - text
+  - created_at
+  - updated_at
+  - distribution_source_id
+  - notify
+  - recipients
+  records: 
+  - - 1
+    - gb20
+    - бумеранг 2.0; очереди и закачка
+    - '2014-02-03 10:40:27.563118'
+    - '2014-02-03 12:11:28.156778'
+    - 65
+    - true
+    - melezhik@adriver.ru
+  - - 3
+    - gb20-bd
+    - gb20 банер деливери
+    - '2014-02-03 12:26:20.919261'
+    - '2014-02-03 12:28:10.037663'
+    - 68
+    - true
+    - melezhik@adriver.ru
+
+---
+builds:
+  columns:
+  - id
+  - state
+  - project_id
+  - created_at
+  - updated_at
+  - distribution_name
+  - locked
+  - comment
+  - released
+  records: 
+  - - 2
+    - failed
+    - 1
+    - '2014-02-03 12:50:10.327986'
+    - '2014-02-03 13:03:57.553345'
+    - boomerang2-bundle-0.2.1.tar.gz
+    - true
+    - 
+    - false
+
+---
+logs:
+  columns:
+  - id
+  - chunk
+  - build_id
+  - created_at
+  - updated_at
+  - level
+  records: 
+  - - 932
+    - scheduled async build for project ID:1 build ID:2
+    - 2
+    - '2014-02-03 12:56:47.919423'
+    - '2014-02-03 12:56:49.446507'
+    - info
+  - - 933
+    - ! 'settings.force_mode: false'
+    - 2
+    - '2014-02-03 12:56:50.077711'
+    - '2014-02-03 12:56:50.210081'
+    - debug
+  - - 934
+    - ! 'settings.pinto_repo_root: /home/pinto/projects/pjam-on-rails/ui/public/repo'
+    - 2
+    - '2014-02-03 12:56:50.362768'
+    - '2014-02-03 12:56:50.484749'
+    - debug
+  - - 935
+    - ! 'settings.skip_missing_prerequisites: '
+    - 2
+    - '2014-02-03 12:56:50.712248'
+    - '2014-02-03 12:56:50.776239'
+    - debug
+  - - 936
+    - ! 'project local path has been successfully created: /home/pinto/projects/pjam-on-rails/ui/public/projects/1'
+    - 2
+    - '2014-02-03 12:56:50.838030'
+    - '2014-02-03 12:56:51.309654'
+    - info
+  - - 937
+    - ! 'build local path has been successfully created: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2'
+    - 2
+    - '2014-02-03 12:56:51.546878'
+    - '2014-02-03 12:56:51.639500'
+    - info
+  - - 938
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Adriver-API/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:56:52.036579'
+    - '2014-02-03 12:56:52.100798'
+    - info
+  - - 939
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/35
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:56:52.164927'
+    - '2014-02-03 12:56:52.818076'
+    - debug
+  - - 940
+    - ! 'Path: version-0.1.0'
+    - 2
+    - '2014-02-03 12:56:53.471723'
+    - '2014-02-03 12:56:54.099444'
+    - debug
+  - - 941
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Adriver-API/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:56:54.404537'
+    - '2014-02-03 12:56:55.067786'
+    - debug
+  - - 942
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:56:55.345200'
+    - '2014-02-03 12:56:55.516886'
+    - debug
+  - - 943
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:56:56.195809'
+    - '2014-02-03 12:56:56.309196'
+    - debug
+  - - 944
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:56:56.425896'
+    - '2014-02-03 12:56:56.771890'
+    - debug
+  - - 945
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:56:56.845211'
+    - '2014-02-03 12:56:56.909254'
+    - debug
+  - - 946
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:56:56.971038'
+    - '2014-02-03 12:56:57.042170'
+    - debug
+  - - 947
+    - ! 'Last Changed Rev: 65191'
+    - 2
+    - '2014-02-03 12:56:57.104067'
+    - '2014-02-03 12:56:57.175692'
+    - debug
+  - - 948
+    - ! 'Last Changed Date: 2013-12-20 13:48:00 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:56:57.278146'
+    - '2014-02-03 12:56:57.375706'
+    - debug
+  - - 949
+    - ! 'last revision extracted from repoisitory: 65191'
+    - 2
+    - '2014-02-03 12:56:57.671464'
+    - '2014-02-03 12:56:57.792183'
+    - debug
+  - - 950
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:56:57.869534'
+    - '2014-02-03 12:56:57.999966'
+    - debug
+  - - 951
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-ShopDB/tags/version-0.2.1'
+    - 2
+    - '2014-02-03 12:56:58.060340'
+    - '2014-02-03 12:56:58.116920'
+    - info
+  - - 952
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/36
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:56:58.177675'
+    - '2014-02-03 12:56:58.240453'
+    - debug
+  - - 953
+    - ! 'Path: version-0.2.1'
+    - 2
+    - '2014-02-03 12:56:58.518082'
+    - '2014-02-03 12:56:58.608507'
+    - debug
+  - - 954
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-ShopDB/tags/version-0.2.1'
+    - 2
+    - '2014-02-03 12:56:58.827323'
+    - '2014-02-03 12:56:58.883990'
+    - debug
+  - - 955
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:56:58.978287'
+    - '2014-02-03 12:56:59.157342'
+    - debug
+  - - 956
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:56:59.217504'
+    - '2014-02-03 12:56:59.308813'
+    - debug
+  - - 957
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:56:59.413777'
+    - '2014-02-03 12:56:59.474239'
+    - debug
+  - - 958
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:56:59.553390'
+    - '2014-02-03 12:56:59.642486'
+    - debug
+  - - 959
+    - ! 'Last Changed Author: fedot'
+    - 2
+    - '2014-02-03 12:56:59.704050'
+    - '2014-02-03 12:56:59.766782'
+    - debug
+  - - 960
+    - ! 'Last Changed Rev: 64509'
+    - 2
+    - '2014-02-03 12:56:59.827528'
+    - '2014-02-03 12:56:59.891776'
+    - debug
+  - - 961
+    - ! 'Last Changed Date: 2013-10-28 14:37:19 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:56:59.952030'
+    - '2014-02-03 12:57:00.015412'
+    - debug
+  - - 962
+    - ! 'last revision extracted from repoisitory: 64509'
+    - 2
+    - '2014-02-03 12:57:00.308208'
+    - '2014-02-03 12:57:00.383254'
+    - debug
+  - - 963
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:00.459884'
+    - '2014-02-03 12:57:00.516952'
+    - debug
+  - - 964
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-GoodsDB/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:57:00.610497'
+    - '2014-02-03 12:57:00.666869'
+    - info
+  - - 965
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/37
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:00.742560'
+    - '2014-02-03 12:57:00.808269'
+    - debug
+  - - 966
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 12:57:01.172180'
+    - '2014-02-03 12:57:01.258798'
+    - debug
+  - - 967
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-GoodsDB/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:57:01.319132'
+    - '2014-02-03 12:57:01.384551'
+    - debug
+  - - 968
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:01.451839'
+    - '2014-02-03 12:57:01.541713'
+    - debug
+  - - 969
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:01.627795'
+    - '2014-02-03 12:57:01.746922'
+    - debug
+  - - 970
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:01.800596'
+    - '2014-02-03 12:57:02.115109'
+    - debug
+  - - 971
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:02.377333'
+    - '2014-02-03 12:57:02.558427'
+    - debug
+  - - 972
+    - ! 'Last Changed Author: fedot'
+    - 2
+    - '2014-02-03 12:57:02.774470'
+    - '2014-02-03 12:57:03.041893'
+    - debug
+  - - 973
+    - ! 'Last Changed Rev: 64528'
+    - 2
+    - '2014-02-03 12:57:03.186314'
+    - '2014-02-03 12:57:03.424710'
+    - debug
+  - - 974
+    - ! 'Last Changed Date: 2013-10-28 16:11:40 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:57:03.750221'
+    - '2014-02-03 12:57:03.907831'
+    - debug
+  - - 975
+    - ! 'last revision extracted from repoisitory: 64528'
+    - 2
+    - '2014-02-03 12:57:04.275509'
+    - '2014-02-03 12:57:04.491602'
+    - debug
+  - - 976
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:07.729495'
+    - '2014-02-03 12:57:07.858106'
+    - debug
+  - - 977
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Serializer-JSON/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:07.976652'
+    - '2014-02-03 12:57:08.116438'
+    - info
+  - - 978
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/38
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:08.227387'
+    - '2014-02-03 12:57:08.290914'
+    - debug
+  - - 979
+    - ! 'Path: version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:08.598679'
+    - '2014-02-03 12:57:08.917145'
+    - debug
+  - - 980
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Serializer-JSON/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:09.044410'
+    - '2014-02-03 12:57:09.124280'
+    - debug
+  - - 981
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:09.177305'
+    - '2014-02-03 12:57:09.240808'
+    - debug
+  - - 982
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:09.566920'
+    - '2014-02-03 12:57:09.822783'
+    - debug
+  - - 983
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:09.975190'
+    - '2014-02-03 12:57:10.215861'
+    - debug
+  - - 984
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:10.560298'
+    - '2014-02-03 12:57:10.873381'
+    - debug
+  - - 985
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:57:11.126714'
+    - '2014-02-03 12:57:11.458163'
+    - debug
+  - - 986
+    - ! 'Last Changed Rev: 65293'
+    - 2
+    - '2014-02-03 12:57:11.794295'
+    - '2014-02-03 12:57:12.108902'
+    - debug
+  - - 987
+    - ! 'Last Changed Date: 2013-12-20 14:21:13 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:57:12.275072'
+    - '2014-02-03 12:57:12.632854'
+    - debug
+  - - 988
+    - ! 'last revision extracted from repoisitory: 65293'
+    - 2
+    - '2014-02-03 12:57:13.016751'
+    - '2014-02-03 12:57:13.272194'
+    - debug
+  - - 989
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:13.536287'
+    - '2014-02-03 12:57:13.858041'
+    - debug
+  - - 990
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/URI-redis/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:14.161577'
+    - '2014-02-03 12:57:14.415792'
+    - info
+  - - 991
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/39
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:14.636030'
+    - '2014-02-03 12:57:15.066294'
+    - debug
+  - - 992
+    - ! 'Path: version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:15.571062'
+    - '2014-02-03 12:57:15.924741'
+    - debug
+  - - 993
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/URI-redis/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:16.227223'
+    - '2014-02-03 12:57:16.332535'
+    - debug
+  - - 994
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:16.567911'
+    - '2014-02-03 12:57:16.807139'
+    - debug
+  - - 995
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:17.035293'
+    - '2014-02-03 12:57:17.189203'
+    - debug
+  - - 996
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:17.301373'
+    - '2014-02-03 12:57:17.357204'
+    - debug
+  - - 997
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:17.451123'
+    - '2014-02-03 12:57:17.498892'
+    - debug
+  - - 998
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:57:17.601131'
+    - '2014-02-03 12:57:17.825606'
+    - debug
+  - - 999
+    - ! 'Last Changed Rev: 65332'
+    - 2
+    - '2014-02-03 12:57:18.093585'
+    - '2014-02-03 12:57:18.274446'
+    - debug
+  - - 1000
+    - ! 'Last Changed Date: 2013-12-20 14:32:01 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:57:18.326048'
+    - '2014-02-03 12:57:18.440329'
+    - debug
+  - - 1001
+    - ! 'last revision extracted from repoisitory: 65332'
+    - 2
+    - '2014-02-03 12:57:18.942102'
+    - '2014-02-03 12:57:19.206151'
+    - debug
+  - - 1002
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:19.261573'
+    - '2014-02-03 12:57:19.590844'
+    - debug
+  - - 1003
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-Queue/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:19.755166'
+    - '2014-02-03 12:57:19.999358'
+    - info
+  - - 1004
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/40
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:20.352785'
+    - '2014-02-03 12:57:20.580044'
+    - debug
+  - - 1005
+    - ! 'Path: version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:21.056213'
+    - '2014-02-03 12:57:21.316255'
+    - debug
+  - - 1006
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-Queue/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:57:21.460595'
+    - '2014-02-03 12:57:21.713895'
+    - debug
+  - - 1007
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:22.147786'
+    - '2014-02-03 12:57:22.398651'
+    - debug
+  - - 1008
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:22.801669'
+    - '2014-02-03 12:57:22.979689'
+    - debug
+  - - 1009
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:23.143826'
+    - '2014-02-03 12:57:23.390580'
+    - debug
+  - - 1010
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:23.711261'
+    - '2014-02-03 12:57:23.967977'
+    - debug
+  - - 1011
+    - ! 'Last Changed Author: fedot'
+    - 2
+    - '2014-02-03 12:57:24.210170'
+    - '2014-02-03 12:57:24.541267'
+    - debug
+  - - 1012
+    - ! 'Last Changed Rev: 64511'
+    - 2
+    - '2014-02-03 12:57:24.791652'
+    - '2014-02-03 12:57:24.981893'
+    - debug
+  - - 1013
+    - ! 'Last Changed Date: 2013-10-28 14:39:36 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:57:25.166773'
+    - '2014-02-03 12:57:26.598740'
+    - debug
+  - - 1014
+    - ! 'last revision extracted from repoisitory: 64511'
+    - 2
+    - '2014-02-03 12:57:28.426098'
+    - '2014-02-03 12:57:28.514968'
+    - debug
+  - - 1015
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:28.661054'
+    - '2014-02-03 12:57:28.731400'
+    - debug
+  - - 1016
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-SuggestionGenerator/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:57:28.925858'
+    - '2014-02-03 12:57:29.038280'
+    - info
+  - - 1017
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/41
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:29.093060'
+    - '2014-02-03 12:57:29.223530'
+    - debug
+  - - 1018
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 12:57:29.503473'
+    - '2014-02-03 12:57:29.571753'
+    - debug
+  - - 1019
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-SuggestionGenerator/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:57:29.734477'
+    - '2014-02-03 12:57:29.948548'
+    - debug
+  - - 1020
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:30.184573'
+    - '2014-02-03 12:57:30.422022'
+    - debug
+  - - 1021
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:30.658623'
+    - '2014-02-03 12:57:30.898314'
+    - debug
+  - - 1022
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:31.126094'
+    - '2014-02-03 12:57:31.365092'
+    - debug
+  - - 1023
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:31.599359'
+    - '2014-02-03 12:57:31.922947'
+    - debug
+  - - 1024
+    - ! 'Last Changed Author: s.khomutov'
+    - 2
+    - '2014-02-03 12:57:32.388144'
+    - '2014-02-03 12:57:32.645049'
+    - debug
+  - - 1025
+    - ! 'Last Changed Rev: 64519'
+    - 2
+    - '2014-02-03 12:57:33.034204'
+    - '2014-02-03 12:57:33.246257'
+    - debug
+  - - 1026
+    - ! 'Last Changed Date: 2013-10-28 15:56:37 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:57:33.391642'
+    - '2014-02-03 12:57:34.100784'
+    - debug
+  - - 1027
+    - ! 'last revision extracted from repoisitory: 64519'
+    - 2
+    - '2014-02-03 12:57:34.653581'
+    - '2014-02-03 12:57:35.153870'
+    - debug
+  - - 1028
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:35.459358'
+    - '2014-02-03 12:57:35.853786'
+    - debug
+  - - 1029
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Event/tags/version-0.1.1'
+    - 2
+    - '2014-02-03 12:57:36.124419'
+    - '2014-02-03 12:57:36.356482'
+    - info
+  - - 1030
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/42
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:36.516175'
+    - '2014-02-03 12:57:36.746073'
+    - debug
+  - - 1031
+    - ! 'Path: version-0.1.1'
+    - 2
+    - '2014-02-03 12:57:37.333938'
+    - '2014-02-03 12:57:37.429751'
+    - debug
+  - - 1032
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Event/tags/version-0.1.1'
+    - 2
+    - '2014-02-03 12:57:37.534597'
+    - '2014-02-03 12:57:37.595714'
+    - debug
+  - - 1033
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:37.717161'
+    - '2014-02-03 12:57:37.770726'
+    - debug
+  - - 1034
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:37.848542'
+    - '2014-02-03 12:57:37.903926'
+    - debug
+  - - 1035
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:37.973582'
+    - '2014-02-03 12:57:38.130998'
+    - debug
+  - - 1036
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:38.241862'
+    - '2014-02-03 12:57:38.437909'
+    - debug
+  - - 1037
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:57:38.498927'
+    - '2014-02-03 12:57:38.647779'
+    - debug
+  - - 1038
+    - ! 'Last Changed Rev: 65281'
+    - 2
+    - '2014-02-03 12:57:38.710141'
+    - '2014-02-03 12:57:38.762936'
+    - debug
+  - - 1039
+    - ! 'Last Changed Date: 2013-12-20 14:08:33 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:57:38.918282'
+    - '2014-02-03 12:57:38.970928'
+    - debug
+  - - 1040
+    - ! 'last revision extracted from repoisitory: 65281'
+    - 2
+    - '2014-02-03 12:57:39.286750'
+    - '2014-02-03 12:57:39.347472'
+    - debug
+  - - 1041
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:39.411603'
+    - '2014-02-03 12:57:39.472754'
+    - debug
+  - - 1042
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-CHI/tags/version-0.1.2'
+    - 2
+    - '2014-02-03 12:57:39.533801'
+    - '2014-02-03 12:57:39.589161'
+    - info
+  - - 1043
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/43
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:39.660058'
+    - '2014-02-03 12:57:39.764065'
+    - debug
+  - - 1044
+    - ! 'Path: version-0.1.2'
+    - 2
+    - '2014-02-03 12:57:40.029827'
+    - '2014-02-03 12:57:40.104542'
+    - debug
+  - - 1045
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-CHI/tags/version-0.1.2'
+    - 2
+    - '2014-02-03 12:57:40.209797'
+    - '2014-02-03 12:57:40.320557'
+    - debug
+  - - 1046
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:40.383858'
+    - '2014-02-03 12:57:40.455936'
+    - debug
+  - - 1047
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:40.525716'
+    - '2014-02-03 12:57:40.615226'
+    - debug
+  - - 1048
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:40.746740'
+    - '2014-02-03 12:57:43.939398'
+    - debug
+  - - 1049
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:44.092718'
+    - '2014-02-03 12:57:44.271954'
+    - debug
+  - - 1050
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:57:44.525476'
+    - '2014-02-03 12:57:44.797379'
+    - debug
+  - - 1051
+    - ! 'Last Changed Rev: 65224'
+    - 2
+    - '2014-02-03 12:57:45.126129'
+    - '2014-02-03 12:57:45.372484'
+    - debug
+  - - 1052
+    - ! 'Last Changed Date: 2013-12-20 13:55:36 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:57:45.841886'
+    - '2014-02-03 12:57:46.087213'
+    - debug
+  - - 1053
+    - ! 'last revision extracted from repoisitory: 65224'
+    - 2
+    - '2014-02-03 12:57:46.743322'
+    - '2014-02-03 12:57:47.072305'
+    - debug
+  - - 1054
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:47.302243'
+    - '2014-02-03 12:57:47.463910'
+    - debug
+  - - 1055
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Stat/tags/version-0.2.2'
+    - 2
+    - '2014-02-03 12:57:47.584624'
+    - '2014-02-03 12:57:47.678829'
+    - info
+  - - 1056
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/44
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:47.793026'
+    - '2014-02-03 12:57:47.855283'
+    - debug
+  - - 1057
+    - ! 'Path: version-0.2.2'
+    - 2
+    - '2014-02-03 12:57:48.535843'
+    - '2014-02-03 12:57:48.614046'
+    - debug
+  - - 1058
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Stat/tags/version-0.2.2'
+    - 2
+    - '2014-02-03 12:57:48.959665'
+    - '2014-02-03 12:57:49.172493'
+    - debug
+  - - 1059
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:49.571570'
+    - '2014-02-03 12:57:49.805381'
+    - debug
+  - - 1060
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:50.059115'
+    - '2014-02-03 12:57:50.271634'
+    - debug
+  - - 1061
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:50.627901'
+    - '2014-02-03 12:57:50.955497'
+    - debug
+  - - 1062
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:51.312191'
+    - '2014-02-03 12:57:51.589197'
+    - debug
+  - - 1063
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:57:51.924169'
+    - '2014-02-03 12:57:52.138513'
+    - debug
+  - - 1064
+    - ! 'Last Changed Rev: 65305'
+    - 2
+    - '2014-02-03 12:57:52.511055'
+    - '2014-02-03 12:57:52.571644'
+    - debug
+  - - 1065
+    - ! 'Last Changed Date: 2013-12-20 14:23:12 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:57:52.850258'
+    - '2014-02-03 12:57:53.080097'
+    - debug
+  - - 1066
+    - ! 'last revision extracted from repoisitory: 65305'
+    - 2
+    - '2014-02-03 12:57:53.735059'
+    - '2014-02-03 12:57:54.392637'
+    - debug
+  - - 1067
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:57:54.861240'
+    - '2014-02-03 12:57:55.155187'
+    - debug
+  - - 1068
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU/tags/version-0.2.1'
+    - 2
+    - '2014-02-03 12:57:55.401018'
+    - '2014-02-03 12:57:55.838730'
+    - info
+  - - 1069
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/45
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:57:56.359170'
+    - '2014-02-03 12:57:56.679308'
+    - debug
+  - - 1070
+    - ! 'Path: version-0.2.1'
+    - 2
+    - '2014-02-03 12:57:57.038121'
+    - '2014-02-03 12:57:57.286467'
+    - debug
+  - - 1071
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU/tags/version-0.2.1'
+    - 2
+    - '2014-02-03 12:57:57.492717'
+    - '2014-02-03 12:57:57.554179'
+    - debug
+  - - 1072
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:57:57.735528'
+    - '2014-02-03 12:57:57.863605'
+    - debug
+  - - 1073
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:57:58.042427'
+    - '2014-02-03 12:57:58.196481'
+    - debug
+  - - 1074
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:57:58.258474'
+    - '2014-02-03 12:57:58.413018'
+    - debug
+  - - 1075
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:57:58.483397'
+    - '2014-02-03 12:57:58.612978'
+    - debug
+  - - 1076
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:57:58.674503'
+    - '2014-02-03 12:57:58.785777'
+    - debug
+  - - 1077
+    - ! 'Last Changed Rev: 65228'
+    - 2
+    - '2014-02-03 12:57:58.992614'
+    - '2014-02-03 12:57:59.327617'
+    - debug
+  - - 1078
+    - ! 'Last Changed Date: 2013-12-20 13:56:49 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:57:59.640340'
+    - '2014-02-03 12:57:59.780361'
+    - debug
+  - - 1079
+    - ! 'last revision extracted from repoisitory: 65228'
+    - 2
+    - '2014-02-03 12:58:00.318696'
+    - '2014-02-03 12:58:00.860030'
+    - debug
+  - - 1080
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:01.194765'
+    - '2014-02-03 12:58:01.547062'
+    - debug
+  - - 1081
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-AuditorySegment/tags/version-0.1.3'
+    - 2
+    - '2014-02-03 12:58:01.879112'
+    - '2014-02-03 12:58:02.113643'
+    - info
+  - - 1082
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/46
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:02.641128'
+    - '2014-02-03 12:58:02.968786'
+    - debug
+  - - 1083
+    - ! 'Path: version-0.1.3'
+    - 2
+    - '2014-02-03 12:58:03.601523'
+    - '2014-02-03 12:58:03.929365'
+    - debug
+  - - 1084
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-AuditorySegment/tags/version-0.1.3'
+    - 2
+    - '2014-02-03 12:58:04.150906'
+    - '2014-02-03 12:58:04.513430'
+    - debug
+  - - 1085
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:04.775313'
+    - '2014-02-03 12:58:05.110891'
+    - debug
+  - - 1086
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:06.807013'
+    - '2014-02-03 12:58:08.338143'
+    - debug
+  - - 1087
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:08.635398'
+    - '2014-02-03 12:58:08.827470'
+    - debug
+  - - 1088
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:08.888416'
+    - '2014-02-03 12:58:08.954542'
+    - debug
+  - - 1089
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:09.095248'
+    - '2014-02-03 12:58:09.154320'
+    - debug
+  - - 1090
+    - ! 'Last Changed Rev: 65230'
+    - 2
+    - '2014-02-03 12:58:09.260298'
+    - '2014-02-03 12:58:09.321177'
+    - debug
+  - - 1091
+    - ! 'Last Changed Date: 2013-12-20 13:57:17 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:09.392792'
+    - '2014-02-03 12:58:09.454855'
+    - debug
+  - - 1092
+    - ! 'last revision extracted from repoisitory: 65230'
+    - 2
+    - '2014-02-03 12:58:09.793047'
+    - '2014-02-03 12:58:09.926992'
+    - debug
+  - - 1093
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:10.028462'
+    - '2014-02-03 12:58:10.118725'
+    - debug
+  - - 1094
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Trait/tags/version-0.1.1'
+    - 2
+    - '2014-02-03 12:58:10.191601'
+    - '2014-02-03 12:58:10.252232'
+    - info
+  - - 1095
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/47
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:10.330114'
+    - '2014-02-03 12:58:10.418634'
+    - debug
+  - - 1096
+    - ! 'Path: version-0.1.1'
+    - 2
+    - '2014-02-03 12:58:10.727375'
+    - '2014-02-03 12:58:10.902122'
+    - debug
+  - - 1097
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Trait/tags/version-0.1.1'
+    - 2
+    - '2014-02-03 12:58:10.992509'
+    - '2014-02-03 12:58:11.060207'
+    - debug
+  - - 1098
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:11.126268'
+    - '2014-02-03 12:58:11.204250'
+    - debug
+  - - 1099
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:11.320507'
+    - '2014-02-03 12:58:11.387659'
+    - debug
+  - - 1100
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:11.453108'
+    - '2014-02-03 12:58:11.520802'
+    - debug
+  - - 1101
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:11.587310'
+    - '2014-02-03 12:58:11.666917'
+    - debug
+  - - 1102
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:11.751514'
+    - '2014-02-03 12:58:11.862544'
+    - debug
+  - - 1103
+    - ! 'Last Changed Rev: 65311'
+    - 2
+    - '2014-02-03 12:58:11.928776'
+    - '2014-02-03 12:58:12.102325'
+    - debug
+  - - 1104
+    - ! 'Last Changed Date: 2013-12-20 14:24:18 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:12.640957'
+    - '2014-02-03 12:58:12.886574'
+    - debug
+  - - 1105
+    - ! 'last revision extracted from repoisitory: 65311'
+    - 2
+    - '2014-02-03 12:58:13.266586'
+    - '2014-02-03 12:58:13.452302'
+    - debug
+  - - 1106
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:13.726880'
+    - '2014-02-03 12:58:13.979219'
+    - debug
+  - - 1107
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-AuditoryUpdater/tags/version-0.1.2'
+    - 2
+    - '2014-02-03 12:58:14.039088'
+    - '2014-02-03 12:58:14.279014'
+    - info
+  - - 1108
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/48
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:14.506717'
+    - '2014-02-03 12:58:14.686349'
+    - debug
+  - - 1109
+    - ! 'Path: version-0.1.2'
+    - 2
+    - '2014-02-03 12:58:18.079965'
+    - '2014-02-03 12:58:18.326356'
+    - debug
+  - - 1110
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-AuditoryUpdater/tags/version-0.1.2'
+    - 2
+    - '2014-02-03 12:58:18.416334'
+    - '2014-02-03 12:58:18.526272'
+    - debug
+  - - 1111
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:18.655544'
+    - '2014-02-03 12:58:18.719995'
+    - debug
+  - - 1112
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:18.807503'
+    - '2014-02-03 12:58:18.952840'
+    - debug
+  - - 1113
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:19.150338'
+    - '2014-02-03 12:58:19.492380'
+    - debug
+  - - 1114
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:19.766878'
+    - '2014-02-03 12:58:20.079149'
+    - debug
+  - - 1115
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:20.730190'
+    - '2014-02-03 12:58:20.952810'
+    - debug
+  - - 1116
+    - ! 'Last Changed Rev: 65233'
+    - 2
+    - '2014-02-03 12:58:21.287227'
+    - '2014-02-03 12:58:21.445357'
+    - debug
+  - - 1117
+    - ! 'Last Changed Date: 2013-12-20 13:58:01 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:21.776958'
+    - '2014-02-03 12:58:22.004334'
+    - debug
+  - - 1118
+    - ! 'last revision extracted from repoisitory: 65233'
+    - 2
+    - '2014-02-03 12:58:22.446956'
+    - '2014-02-03 12:58:22.742728'
+    - debug
+  - - 1119
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:23.027234'
+    - '2014-02-03 12:58:23.195028'
+    - debug
+  - - 1120
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-CacheExpire/tags/version-0.1.2'
+    - 2
+    - '2014-02-03 12:58:23.525342'
+    - '2014-02-03 12:58:23.819332'
+    - info
+  - - 1121
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/49
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:24.041277'
+    - '2014-02-03 12:58:24.542255'
+    - debug
+  - - 1122
+    - ! 'Path: version-0.1.2'
+    - 2
+    - '2014-02-03 12:58:25.441904'
+    - '2014-02-03 12:58:26.061965'
+    - debug
+  - - 1123
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-CacheExpire/tags/version-0.1.2'
+    - 2
+    - '2014-02-03 12:58:26.525597'
+    - '2014-02-03 12:58:26.780868'
+    - debug
+  - - 1124
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:26.849687'
+    - '2014-02-03 12:58:27.111459'
+    - debug
+  - - 1125
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:27.716921'
+    - '2014-02-03 12:58:27.819881'
+    - debug
+  - - 1126
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:27.936065'
+    - '2014-02-03 12:58:28.058993'
+    - debug
+  - - 1127
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:28.346647'
+    - '2014-02-03 12:58:28.427897'
+    - debug
+  - - 1128
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:28.582781'
+    - '2014-02-03 12:58:28.934898'
+    - debug
+  - - 1129
+    - ! 'Last Changed Rev: 65239'
+    - 2
+    - '2014-02-03 12:58:28.999519'
+    - '2014-02-03 12:58:29.243693'
+    - debug
+  - - 1130
+    - ! 'Last Changed Date: 2013-12-20 13:59:15 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:29.407888'
+    - '2014-02-03 12:58:29.645085'
+    - debug
+  - - 1131
+    - ! 'last revision extracted from repoisitory: 65239'
+    - 2
+    - '2014-02-03 12:58:30.263080'
+    - '2014-02-03 12:58:30.500066'
+    - debug
+  - - 1132
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:30.859746'
+    - '2014-02-03 12:58:31.286347'
+    - debug
+  - - 1133
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-CacheUpdater/tags/version-0.2.1'
+    - 2
+    - '2014-02-03 12:58:31.546702'
+    - '2014-02-03 12:58:31.758632'
+    - info
+  - - 1134
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/50
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:32.092851'
+    - '2014-02-03 12:58:32.360025'
+    - debug
+  - - 1135
+    - ! 'Path: version-0.2.1'
+    - 2
+    - '2014-02-03 12:58:32.840394'
+    - '2014-02-03 12:58:32.919545'
+    - debug
+  - - 1136
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-CacheUpdater/tags/version-0.2.1'
+    - 2
+    - '2014-02-03 12:58:33.158615'
+    - '2014-02-03 12:58:33.319294'
+    - debug
+  - - 1137
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:33.523359'
+    - '2014-02-03 12:58:33.794965'
+    - debug
+  - - 1138
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:34.005607'
+    - '2014-02-03 12:58:34.066305'
+    - debug
+  - - 1139
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:34.221574'
+    - '2014-02-03 12:58:34.463854'
+    - debug
+  - - 1140
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:34.915325'
+    - '2014-02-03 12:58:35.250190'
+    - debug
+  - - 1141
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:35.516154'
+    - '2014-02-03 12:58:35.997685'
+    - debug
+  - - 1142
+    - ! 'Last Changed Rev: 65245'
+    - 2
+    - '2014-02-03 12:58:36.290215'
+    - '2014-02-03 12:58:36.783316'
+    - debug
+  - - 1143
+    - ! 'Last Changed Date: 2013-12-20 14:00:21 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:36.846398'
+    - '2014-02-03 12:58:37.010139'
+    - debug
+  - - 1144
+    - ! 'last revision extracted from repoisitory: 65245'
+    - 2
+    - '2014-02-03 12:58:37.438480'
+    - '2014-02-03 12:58:37.815420'
+    - debug
+  - - 1145
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:37.992600'
+    - '2014-02-03 12:58:38.049644'
+    - debug
+  - - 1146
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-History/tags/version-0.2.6'
+    - 2
+    - '2014-02-03 12:58:38.240491'
+    - '2014-02-03 12:58:38.384754'
+    - info
+  - - 1147
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/51
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:38.446990'
+    - '2014-02-03 12:58:38.616008'
+    - debug
+  - - 1148
+    - ! 'Path: version-0.2.6'
+    - 2
+    - '2014-02-03 12:58:38.974273'
+    - '2014-02-03 12:58:39.033058'
+    - debug
+  - - 1149
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-History/tags/version-0.2.6'
+    - 2
+    - '2014-02-03 12:58:39.186969'
+    - '2014-02-03 12:58:39.240827'
+    - debug
+  - - 1150
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:39.313306'
+    - '2014-02-03 12:58:39.375940'
+    - debug
+  - - 1151
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:39.554780'
+    - '2014-02-03 12:58:39.877947'
+    - debug
+  - - 1152
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:40.200345'
+    - '2014-02-03 12:58:40.512421'
+    - debug
+  - - 1153
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:40.655389'
+    - '2014-02-03 12:58:40.994329'
+    - debug
+  - - 1154
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:41.322524'
+    - '2014-02-03 12:58:41.724873'
+    - debug
+  - - 1155
+    - ! 'Last Changed Rev: 65251'
+    - 2
+    - '2014-02-03 12:58:42.080394'
+    - '2014-02-03 12:58:42.376674'
+    - debug
+  - - 1156
+    - ! 'Last Changed Date: 2013-12-20 14:01:49 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:42.564078'
+    - '2014-02-03 12:58:42.877197'
+    - debug
+  - - 1157
+    - ! 'last revision extracted from repoisitory: 65251'
+    - 2
+    - '2014-02-03 12:58:43.494669'
+    - '2014-02-03 12:58:43.652213'
+    - debug
+  - - 1158
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:43.823085'
+    - '2014-02-03 12:58:43.985519'
+    - debug
+  - - 1159
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Index/tags/version-0.2.2'
+    - 2
+    - '2014-02-03 12:58:44.175319'
+    - '2014-02-03 12:58:44.393761'
+    - info
+  - - 1160
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/52
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:44.550021'
+    - '2014-02-03 12:58:44.785529'
+    - debug
+  - - 1161
+    - ! 'Path: version-0.2.2'
+    - 2
+    - '2014-02-03 12:58:45.154634'
+    - '2014-02-03 12:58:46.840353'
+    - debug
+  - - 1162
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Index/tags/version-0.2.2'
+    - 2
+    - '2014-02-03 12:58:48.497651'
+    - '2014-02-03 12:58:48.656838'
+    - debug
+  - - 1163
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:48.907925'
+    - '2014-02-03 12:58:49.075691'
+    - debug
+  - - 1164
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:49.149717'
+    - '2014-02-03 12:58:49.318864'
+    - debug
+  - - 1165
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:49.391150'
+    - '2014-02-03 12:58:49.476758'
+    - debug
+  - - 1166
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:49.557432'
+    - '2014-02-03 12:58:49.634934'
+    - debug
+  - - 1167
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:49.712397'
+    - '2014-02-03 12:58:49.782051'
+    - debug
+  - - 1168
+    - ! 'Last Changed Rev: 65257'
+    - 2
+    - '2014-02-03 12:58:49.849413'
+    - '2014-02-03 12:58:49.923278'
+    - debug
+  - - 1169
+    - ! 'Last Changed Date: 2013-12-20 14:02:57 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:50.089410'
+    - '2014-02-03 12:58:50.193890'
+    - debug
+  - - 1170
+    - ! 'last revision extracted from repoisitory: 65257'
+    - 2
+    - '2014-02-03 12:58:50.467354'
+    - '2014-02-03 12:58:50.559926'
+    - debug
+  - - 1171
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:58:50.625334'
+    - '2014-02-03 12:58:50.684809'
+    - debug
+  - - 1172
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Product/tags/version-0.1.5'
+    - 2
+    - '2014-02-03 12:58:50.748886'
+    - '2014-02-03 12:58:50.814956'
+    - info
+  - - 1173
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/53
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:58:50.881636'
+    - '2014-02-03 12:58:50.943196'
+    - debug
+  - - 1174
+    - ! 'Path: version-0.1.5'
+    - 2
+    - '2014-02-03 12:58:54.159256'
+    - '2014-02-03 12:58:54.348236'
+    - debug
+  - - 1175
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Product/tags/version-0.1.5'
+    - 2
+    - '2014-02-03 12:58:54.527728'
+    - '2014-02-03 12:58:54.676317'
+    - debug
+  - - 1176
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:58:54.923128'
+    - '2014-02-03 12:58:55.317084'
+    - debug
+  - - 1177
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:58:55.476870'
+    - '2014-02-03 12:58:55.960192'
+    - debug
+  - - 1178
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:58:56.350111'
+    - '2014-02-03 12:58:56.648352'
+    - debug
+  - - 1179
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:58:56.924318'
+    - '2014-02-03 12:58:57.256267'
+    - debug
+  - - 1180
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:58:57.530076'
+    - '2014-02-03 12:58:57.881573'
+    - debug
+  - - 1181
+    - ! 'Last Changed Rev: 65263'
+    - 2
+    - '2014-02-03 12:58:58.077733'
+    - '2014-02-03 12:58:58.288349'
+    - debug
+  - - 1182
+    - ! 'Last Changed Date: 2013-12-20 14:03:53 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:58:58.499622'
+    - '2014-02-03 12:58:58.822918'
+    - debug
+  - - 1183
+    - ! 'last revision extracted from repoisitory: 65263'
+    - 2
+    - '2014-02-03 12:58:59.420356'
+    - '2014-02-03 12:58:59.718265'
+    - debug
+  - - 1184
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:00.025269'
+    - '2014-02-03 12:59:00.259364'
+    - debug
+  - - 1185
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Suggest/tags/version-0.1.3'
+    - 2
+    - '2014-02-03 12:59:00.324859'
+    - '2014-02-03 12:59:00.557188'
+    - info
+  - - 1186
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/54
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:00.718965'
+    - '2014-02-03 12:59:01.033230'
+    - debug
+  - - 1187
+    - ! 'Path: version-0.1.3'
+    - 2
+    - '2014-02-03 12:59:01.699222'
+    - '2014-02-03 12:59:01.935904'
+    - debug
+  - - 1188
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-Suggest/tags/version-0.1.3'
+    - 2
+    - '2014-02-03 12:59:02.131502'
+    - '2014-02-03 12:59:02.301722'
+    - debug
+  - - 1189
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:02.887393'
+    - '2014-02-03 12:59:03.324628'
+    - debug
+  - - 1190
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:03.482768'
+    - '2014-02-03 12:59:04.019337'
+    - debug
+  - - 1191
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:04.475357'
+    - '2014-02-03 12:59:04.683091'
+    - debug
+  - - 1192
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:04.971170'
+    - '2014-02-03 12:59:05.495678'
+    - debug
+  - - 1193
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:59:05.758069'
+    - '2014-02-03 12:59:06.084271'
+    - debug
+  - - 1194
+    - ! 'Last Changed Rev: 65269'
+    - 2
+    - '2014-02-03 12:59:06.505049'
+    - '2014-02-03 12:59:06.839857'
+    - debug
+  - - 1195
+    - ! 'Last Changed Date: 2013-12-20 14:04:52 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:59:07.263610'
+    - '2014-02-03 12:59:07.630946'
+    - debug
+  - - 1196
+    - ! 'last revision extracted from repoisitory: 65269'
+    - 2
+    - '2014-02-03 12:59:08.154265'
+    - '2014-02-03 12:59:08.325588'
+    - debug
+  - - 1197
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:08.533403'
+    - '2014-02-03 12:59:08.751046'
+    - debug
+  - - 1198
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-UpdateProduct/tags/version-0.1.3'
+    - 2
+    - '2014-02-03 12:59:08.972361'
+    - '2014-02-03 12:59:09.138843'
+    - info
+  - - 1199
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/55
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:09.415885'
+    - '2014-02-03 12:59:09.625486'
+    - debug
+  - - 1200
+    - ! 'Path: version-0.1.3'
+    - 2
+    - '2014-02-03 12:59:10.112554'
+    - '2014-02-03 12:59:10.375711'
+    - debug
+  - - 1201
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-EPU-UpdateProduct/tags/version-0.1.3'
+    - 2
+    - '2014-02-03 12:59:10.637381'
+    - '2014-02-03 12:59:10.897115'
+    - debug
+  - - 1202
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:11.249458'
+    - '2014-02-03 12:59:11.731076'
+    - debug
+  - - 1203
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:12.060406'
+    - '2014-02-03 12:59:12.306134'
+    - debug
+  - - 1204
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:12.822608'
+    - '2014-02-03 12:59:13.167299'
+    - debug
+  - - 1205
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:13.522391'
+    - '2014-02-03 12:59:13.672218'
+    - debug
+  - - 1206
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:59:14.047828'
+    - '2014-02-03 12:59:14.267215'
+    - debug
+  - - 1207
+    - ! 'Last Changed Rev: 65275'
+    - 2
+    - '2014-02-03 12:59:14.462058'
+    - '2014-02-03 12:59:14.807066'
+    - debug
+  - - 1208
+    - ! 'Last Changed Date: 2013-12-20 14:07:22 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:59:15.229026'
+    - '2014-02-03 12:59:15.612797'
+    - debug
+  - - 1209
+    - ! 'last revision extracted from repoisitory: 65275'
+    - 2
+    - '2014-02-03 12:59:16.222607'
+    - '2014-02-03 12:59:17.871513'
+    - debug
+  - - 1210
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:18.004723'
+    - '2014-02-03 12:59:18.075042'
+    - debug
+  - - 1211
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Action-Retry-Strategy-AdriverLinear/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:59:18.172209'
+    - '2014-02-03 12:59:18.520084'
+    - info
+  - - 1212
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/56
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:18.601493'
+    - '2014-02-03 12:59:18.946570'
+    - debug
+  - - 1213
+    - ! 'Path: version-0.1.0'
+    - 2
+    - '2014-02-03 12:59:19.284870'
+    - '2014-02-03 12:59:19.441762'
+    - debug
+  - - 1214
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Action-Retry-Strategy-AdriverLinear/tags/version-0.1.0'
+    - 2
+    - '2014-02-03 12:59:19.515932'
+    - '2014-02-03 12:59:19.596500'
+    - debug
+  - - 1215
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:19.704468'
+    - '2014-02-03 12:59:19.764350'
+    - debug
+  - - 1216
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:19.829636'
+    - '2014-02-03 12:59:19.900404'
+    - debug
+  - - 1217
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:19.971780'
+    - '2014-02-03 12:59:20.039419'
+    - debug
+  - - 1218
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:20.121538'
+    - '2014-02-03 12:59:20.189604'
+    - debug
+  - - 1219
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:59:20.330072'
+    - '2014-02-03 12:59:20.397865'
+    - debug
+  - - 1220
+    - ! 'Last Changed Rev: 65185'
+    - 2
+    - '2014-02-03 12:59:20.463038'
+    - '2014-02-03 12:59:20.525155'
+    - debug
+  - - 1221
+    - ! 'Last Changed Date: 2013-12-20 13:45:50 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:59:20.590463'
+    - '2014-02-03 12:59:20.773524'
+    - debug
+  - - 1222
+    - ! 'last revision extracted from repoisitory: 65185'
+    - 2
+    - '2014-02-03 12:59:21.085867'
+    - '2014-02-03 12:59:21.158500'
+    - debug
+  - - 1223
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:21.325532'
+    - '2014-02-03 12:59:21.399772'
+    - debug
+  - - 1224
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Pipeline-Stage/tags/version-0.1.5'
+    - 2
+    - '2014-02-03 12:59:21.466435'
+    - '2014-02-03 12:59:21.524895'
+    - info
+  - - 1225
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/57
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:21.687919'
+    - '2014-02-03 12:59:21.766951'
+    - debug
+  - - 1226
+    - ! 'Path: version-0.1.5'
+    - 2
+    - '2014-02-03 12:59:22.034631'
+    - '2014-02-03 12:59:22.276477'
+    - debug
+  - - 1227
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Pipeline-Stage/tags/version-0.1.5'
+    - 2
+    - '2014-02-03 12:59:22.697692'
+    - '2014-02-03 12:59:22.941721'
+    - debug
+  - - 1228
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:23.288687'
+    - '2014-02-03 12:59:23.544213'
+    - debug
+  - - 1229
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:23.706933'
+    - '2014-02-03 12:59:23.878925'
+    - debug
+  - - 1230
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:24.147488'
+    - '2014-02-03 12:59:24.379479'
+    - debug
+  - - 1231
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:24.540066'
+    - '2014-02-03 12:59:24.864154'
+    - debug
+  - - 1232
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:59:25.031920'
+    - '2014-02-03 12:59:25.091532'
+    - debug
+  - - 1233
+    - ! 'Last Changed Rev: 65287'
+    - 2
+    - '2014-02-03 12:59:26.680627'
+    - '2014-02-03 12:59:28.591431'
+    - debug
+  - - 1234
+    - ! 'Last Changed Date: 2013-12-20 14:19:57 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:59:28.665387'
+    - '2014-02-03 12:59:28.932765'
+    - debug
+  - - 1235
+    - ! 'last revision extracted from repoisitory: 65287'
+    - 2
+    - '2014-02-03 12:59:29.405665'
+    - '2014-02-03 12:59:29.649358'
+    - debug
+  - - 1236
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:30.059253'
+    - '2014-02-03 12:59:30.290926'
+    - debug
+  - - 1237
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-ProductConverter/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:30.446082'
+    - '2014-02-03 12:59:30.613810'
+    - info
+  - - 1238
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/58
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:30.944620'
+    - '2014-02-03 12:59:31.090839'
+    - debug
+  - - 1239
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:31.486169'
+    - '2014-02-03 12:59:31.641227'
+    - debug
+  - - 1240
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-ProductConverter/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:31.976316'
+    - '2014-02-03 12:59:32.157747'
+    - debug
+  - - 1241
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:32.246370'
+    - '2014-02-03 12:59:32.471903'
+    - debug
+  - - 1242
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:32.770818'
+    - '2014-02-03 12:59:32.932918'
+    - debug
+  - - 1243
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:33.262616'
+    - '2014-02-03 12:59:33.738702'
+    - debug
+  - - 1244
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:34.296865'
+    - '2014-02-03 12:59:34.624351'
+    - debug
+  - - 1245
+    - ! 'Last Changed Author: s.khomutov'
+    - 2
+    - '2014-02-03 12:59:34.819649'
+    - '2014-02-03 12:59:35.087111'
+    - debug
+  - - 1246
+    - ! 'Last Changed Rev: 64522'
+    - 2
+    - '2014-02-03 12:59:35.155047'
+    - '2014-02-03 12:59:35.312059'
+    - debug
+  - - 1247
+    - ! 'Last Changed Date: 2013-10-28 16:02:38 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:59:35.381758'
+    - '2014-02-03 12:59:35.532203'
+    - debug
+  - - 1248
+    - ! 'last revision extracted from repoisitory: 64522'
+    - 2
+    - '2014-02-03 12:59:36.089276'
+    - '2014-02-03 12:59:36.307938'
+    - debug
+  - - 1249
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:36.641547'
+    - '2014-02-03 12:59:37.096613'
+    - debug
+  - - 1250
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-Picture-Schema/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:37.428291'
+    - '2014-02-03 12:59:37.752830'
+    - info
+  - - 1251
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/59
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:38.083115'
+    - '2014-02-03 12:59:38.311195'
+    - debug
+  - - 1252
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:38.675519'
+    - '2014-02-03 12:59:38.863162'
+    - debug
+  - - 1253
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-Picture-Schema/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:39.078669'
+    - '2014-02-03 12:59:39.138034'
+    - debug
+  - - 1254
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:39.203872'
+    - '2014-02-03 12:59:39.271268'
+    - debug
+  - - 1255
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:39.328966'
+    - '2014-02-03 12:59:39.669516'
+    - debug
+  - - 1256
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:40.004708'
+    - '2014-02-03 12:59:40.265664'
+    - debug
+  - - 1257
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:40.423460'
+    - '2014-02-03 12:59:40.721434'
+    - debug
+  - - 1258
+    - ! 'Last Changed Author: fedot'
+    - 2
+    - '2014-02-03 12:59:40.906460'
+    - '2014-02-03 12:59:41.148924'
+    - debug
+  - - 1259
+    - ! 'Last Changed Rev: 64518'
+    - 2
+    - '2014-02-03 12:59:41.477849'
+    - '2014-02-03 12:59:41.712772'
+    - debug
+  - - 1260
+    - ! 'Last Changed Date: 2013-10-28 15:05:35 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:59:41.962435'
+    - '2014-02-03 12:59:42.264399'
+    - debug
+  - - 1261
+    - ! 'last revision extracted from repoisitory: 64518'
+    - 2
+    - '2014-02-03 12:59:42.544388'
+    - '2014-02-03 12:59:42.728313'
+    - debug
+  - - 1262
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:42.976629'
+    - '2014-02-03 12:59:43.319268'
+    - debug
+  - - 1263
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/gbpicker/tags/version-0.6.0'
+    - 2
+    - '2014-02-03 12:59:43.528091'
+    - '2014-02-03 12:59:43.870108'
+    - info
+  - - 1264
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/60
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:44.107790'
+    - '2014-02-03 12:59:44.315463'
+    - debug
+  - - 1265
+    - ! 'Path: version-0.6.0'
+    - 2
+    - '2014-02-03 12:59:44.792462'
+    - '2014-02-03 12:59:45.103441'
+    - debug
+  - - 1266
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/gbpicker/tags/version-0.6.0'
+    - 2
+    - '2014-02-03 12:59:45.580274'
+    - '2014-02-03 12:59:45.815670'
+    - debug
+  - - 1267
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:46.194704'
+    - '2014-02-03 12:59:46.552802'
+    - debug
+  - - 1268
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:46.915704'
+    - '2014-02-03 12:59:47.248430'
+    - debug
+  - - 1269
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:47.403827'
+    - '2014-02-03 12:59:47.471837'
+    - debug
+  - - 1270
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:47.539611'
+    - '2014-02-03 12:59:47.860384'
+    - debug
+  - - 1271
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 12:59:48.032961'
+    - '2014-02-03 12:59:48.135484'
+    - debug
+  - - 1272
+    - ! 'Last Changed Rev: 65338'
+    - 2
+    - '2014-02-03 12:59:48.202311'
+    - '2014-02-03 12:59:48.260305'
+    - debug
+  - - 1273
+    - ! 'Last Changed Date: 2013-12-20 14:33:44 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 12:59:48.373522'
+    - '2014-02-03 12:59:48.531514'
+    - debug
+  - - 1274
+    - ! 'last revision extracted from repoisitory: 65338'
+    - 2
+    - '2014-02-03 12:59:48.907261'
+    - '2014-02-03 12:59:49.081987'
+    - debug
+  - - 1275
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:49.153413'
+    - '2014-02-03 12:59:49.219445'
+    - debug
+  - - 1276
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-ClusterDB/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:49.278667'
+    - '2014-02-03 12:59:49.354107'
+    - info
+  - - 1277
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/61
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:49.513203'
+    - '2014-02-03 12:59:49.827850'
+    - debug
+  - - 1278
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:50.267501'
+    - '2014-02-03 12:59:50.671079'
+    - debug
+  - - 1279
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-ClusterDB/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:50.836725'
+    - '2014-02-03 12:59:51.077715'
+    - debug
+  - - 1280
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 12:59:51.815406'
+    - '2014-02-03 12:59:52.127055'
+    - debug
+  - - 1281
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 12:59:52.386588'
+    - '2014-02-03 12:59:52.688381'
+    - debug
+  - - 1282
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 12:59:52.873668'
+    - '2014-02-03 12:59:53.111271'
+    - debug
+  - - 1283
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 12:59:53.368622'
+    - '2014-02-03 12:59:53.676233'
+    - debug
+  - - 1284
+    - ! 'Last Changed Author: fedot'
+    - 2
+    - '2014-02-03 12:59:54.028356'
+    - '2014-02-03 12:59:54.176967'
+    - debug
+  - - 1285
+    - ! 'Last Changed Rev: 64503'
+    - 2
+    - '2014-02-03 12:59:54.331898'
+    - '2014-02-03 12:59:54.727340'
+    - debug
+  - - 1286
+    - ! 'Last Changed Date: 2013-10-28 14:08:26 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 12:59:54.976653'
+    - '2014-02-03 12:59:55.128540'
+    - debug
+  - - 1287
+    - ! 'last revision extracted from repoisitory: 64503'
+    - 2
+    - '2014-02-03 12:59:55.631542'
+    - '2014-02-03 12:59:56.043376'
+    - debug
+  - - 1288
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 12:59:57.033254'
+    - '2014-02-03 12:59:58.476725'
+    - debug
+  - - 1289
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-FeedImport/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 12:59:59.377657'
+    - '2014-02-03 12:59:59.436495'
+    - info
+  - - 1290
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/62
+      has been successfully created'
+    - 2
+    - '2014-02-03 12:59:59.607433'
+    - '2014-02-03 12:59:59.881372'
+    - debug
+  - - 1291
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:00.145725'
+    - '2014-02-03 13:00:00.214699'
+    - debug
+  - - 1292
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-FeedImport/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:00.287538'
+    - '2014-02-03 13:00:00.359509'
+    - debug
+  - - 1293
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 13:00:00.499213'
+    - '2014-02-03 13:00:00.653437'
+    - debug
+  - - 1294
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 13:00:00.890232'
+    - '2014-02-03 13:00:01.043166'
+    - debug
+  - - 1295
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 13:00:01.198470'
+    - '2014-02-03 13:00:04.120746'
+    - debug
+  - - 1296
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 13:00:04.335461'
+    - '2014-02-03 13:00:04.636839'
+    - debug
+  - - 1297
+    - ! 'Last Changed Author: fedot'
+    - 2
+    - '2014-02-03 13:00:05.046524'
+    - '2014-02-03 13:00:05.593981'
+    - debug
+  - - 1298
+    - ! 'Last Changed Rev: 64517'
+    - 2
+    - '2014-02-03 13:00:05.886104'
+    - '2014-02-03 13:00:06.369831'
+    - debug
+  - - 1299
+    - ! 'Last Changed Date: 2013-10-28 15:03:49 +0400 (Mon, 28 Oct 2013)'
+    - 2
+    - '2014-02-03 13:00:06.934804'
+    - '2014-02-03 13:00:07.242820'
+    - debug
+  - - 1300
+    - ! 'last revision extracted from repoisitory: 64517'
+    - 2
+    - '2014-02-03 13:00:07.845942'
+    - '2014-02-03 13:00:08.019356'
+    - debug
+  - - 1301
+    - this revison is already processed, nothing to do here
+    - 2
+    - '2014-02-03 13:00:08.200076'
+    - '2014-02-03 13:00:08.405487'
+    - debug
+  - - 1302
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-SNMP/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:08.645345'
+    - '2014-02-03 13:00:08.708724'
+    - info
+  - - 1303
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/63
+      has been successfully created'
+    - 2
+    - '2014-02-03 13:00:08.776651'
+    - '2014-02-03 13:00:08.925459'
+    - debug
+  - - 1304
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:09.194838'
+    - '2014-02-03 13:00:09.303231'
+    - debug
+  - - 1305
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-SNMP/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:09.390710'
+    - '2014-02-03 13:00:09.583768'
+    - debug
+  - - 1306
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 13:00:09.906241'
+    - '2014-02-03 13:00:10.147654'
+    - debug
+  - - 1307
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 13:00:10.370513'
+    - '2014-02-03 13:00:10.727166'
+    - debug
+  - - 1308
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 13:00:10.885357'
+    - '2014-02-03 13:00:11.142466'
+    - debug
+  - - 1309
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 13:00:11.703899'
+    - '2014-02-03 13:00:12.042064'
+    - debug
+  - - 1310
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 13:00:12.244789'
+    - '2014-02-03 13:00:12.494318'
+    - debug
+  - - 1311
+    - ! 'Last Changed Rev: 65299'
+    - 2
+    - '2014-02-03 13:00:12.970063'
+    - '2014-02-03 13:00:13.202116'
+    - debug
+  - - 1312
+    - ! 'Last Changed Date: 2013-12-20 14:22:11 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 13:00:13.526892'
+    - '2014-02-03 13:00:14.071761'
+    - debug
+  - - 1313
+    - ! 'last revision extracted from repoisitory: 65299'
+    - 2
+    - '2014-02-03 13:00:14.560995'
+    - '2014-02-03 13:00:16.686723'
+    - debug
+  - - 1314
+    - source has been successfully checked out
+    - 2
+    - '2014-02-03 13:00:18.954066'
+    - '2014-02-03 13:00:19.080151'
+    - debug
+  - - 1315
+    - distribution archive Adriver-GoodsBoomerang-SNMP-v0.2.0.tar.gz has been successfully
+      created
+    - 2
+    - '2014-02-03 13:00:19.614962'
+    - '2014-02-03 13:00:19.851952'
+    - debug
+  - - 1316
+    - Distribution PINTO/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz is not in
+      the repository
+    - 2
+    - '2014-02-03 13:00:23.400442'
+    - '2014-02-03 13:00:23.579927'
+    - debug
+  - - 1317
+    - Registering PINTO/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz on stack 1
+    - 2
+    - '2014-02-03 13:00:28.142957'
+    - '2014-02-03 13:00:28.324349'
+    - debug
+  - - 1318
+    - Descending into prerequisites for PINTO/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz
+    - 2
+    - '2014-02-03 13:00:28.409642'
+    - '2014-02-03 13:00:28.470789'
+    - debug
+  - - 1319
+    - distribution archive Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz has been
+      successfully added to pinto repository
+    - 2
+    - '2014-02-03 13:00:28.714714'
+    - '2014-02-03 13:00:28.812400'
+    - debug
+  - - 1320
+    - ! 'processing source: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Utils/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:29.064580'
+    - '2014-02-03 13:00:29.145680'
+    - info
+  - - 1321
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/64
+      has been successfully created'
+    - 2
+    - '2014-02-03 13:00:29.206673'
+    - '2014-02-03 13:00:29.312424'
+    - debug
+  - - 1322
+    - ! 'Path: version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:29.602198'
+    - '2014-02-03 13:00:29.704310'
+    - debug
+  - - 1323
+    - ! 'URL: https://svn.x/repos/Adriver-GoodsBoomerang-2.0/trunk/Adriver-GoodsBoomerang-Utils/tags/version-0.2.0'
+    - 2
+    - '2014-02-03 13:00:29.772951'
+    - '2014-02-03 13:00:29.840278'
+    - debug
+  - - 1324
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 13:00:29.908643'
+    - '2014-02-03 13:00:29.965410'
+    - debug
+  - - 1325
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 13:00:30.033716'
+    - '2014-02-03 13:00:30.095596'
+    - debug
+  - - 1326
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 13:00:30.172804'
+    - '2014-02-03 13:00:30.237218'
+    - debug
+  - - 1327
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 13:00:30.305428'
+    - '2014-02-03 13:00:30.379435'
+    - debug
+  - - 1328
+    - ! 'Last Changed Author: lamoz'
+    - 2
+    - '2014-02-03 13:00:30.442093'
+    - '2014-02-03 13:00:30.520523'
+    - debug
+  - - 1329
+    - ! 'Last Changed Rev: 65317'
+    - 2
+    - '2014-02-03 13:00:30.584069'
+    - '2014-02-03 13:00:30.641429'
+    - debug
+  - - 1330
+    - ! 'Last Changed Date: 2013-12-20 14:25:36 +0400 (Fri, 20 Dec 2013)'
+    - 2
+    - '2014-02-03 13:00:30.708275'
+    - '2014-02-03 13:00:30.766352'
+    - debug
+  - - 1331
+    - ! 'last revision extracted from repoisitory: 65317'
+    - 2
+    - '2014-02-03 13:00:31.056355'
+    - '2014-02-03 13:00:31.140290'
+    - debug
+  - - 1332
+    - source has been successfully checked out
+    - 2
+    - '2014-02-03 13:00:31.761170'
+    - '2014-02-03 13:00:31.840304'
+    - debug
+  - - 1333
+    - distribution archive Adriver-GoodsBoomerang-Utils-v0.2.0.tar.gz has been successfully
+      created
+    - 2
+    - '2014-02-03 13:00:32.329223'
+    - '2014-02-03 13:00:32.495139'
+    - debug
+  - - 1334
+    - Distribution PINTO/Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz is not in
+      the repository
+    - 2
+    - '2014-02-03 13:00:35.616540'
+    - '2014-02-03 13:00:38.887530'
+    - debug
+  - - 1335
+    - Registering PINTO/Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz on stack
+      1
+    - 2
+    - '2014-02-03 13:00:42.942590'
+    - '2014-02-03 13:00:43.276682'
+    - debug
+  - - 1336
+    - Descending into prerequisites for PINTO/Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz
+    - 2
+    - '2014-02-03 13:00:43.526635'
+    - '2014-02-03 13:00:43.773671'
+    - debug
+  - - 1337
+    - distribution archive Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz has been
+      successfully added to pinto repository
+    - 2
+    - '2014-02-03 13:00:44.113713'
+    - '2014-02-03 13:00:44.404676'
+    - debug
+  - - 1338
+    - ! 'processing source: https://svn.x/repos/boomerang-2.0-bundle/trunk'
+    - 2
+    - '2014-02-03 13:00:44.801292'
+    - '2014-02-03 13:00:45.041744'
+    - info
+  - - 1339
+    - ! 'source local path: /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/sources/65
+      has been successfully created'
+    - 2
+    - '2014-02-03 13:00:45.300993'
+    - '2014-02-03 13:00:45.649807'
+    - debug
+  - - 1340
+    - ! 'Path: trunk'
+    - 2
+    - '2014-02-03 13:00:46.212321'
+    - '2014-02-03 13:00:46.506508'
+    - debug
+  - - 1341
+    - ! 'URL: https://svn.x/repos/boomerang-2.0-bundle/trunk'
+    - 2
+    - '2014-02-03 13:00:46.684767'
+    - '2014-02-03 13:00:47.115640'
+    - debug
+  - - 1342
+    - ! 'Repository Root: https://svn.x/repos'
+    - 2
+    - '2014-02-03 13:00:47.562448'
+    - '2014-02-03 13:00:47.790225'
+    - debug
+  - - 1343
+    - ! 'Repository UUID: 63fd5d2f-161c-0410-9853-b5978b39f99c'
+    - 2
+    - '2014-02-03 13:00:48.021834'
+    - '2014-02-03 13:00:48.178096'
+    - debug
+  - - 1344
+    - ! 'Revision: 65747'
+    - 2
+    - '2014-02-03 13:00:48.320963'
+    - '2014-02-03 13:00:48.407655'
+    - debug
+  - - 1345
+    - ! 'Node Kind: directory'
+    - 2
+    - '2014-02-03 13:00:48.504177'
+    - '2014-02-03 13:00:48.648725'
+    - debug
+  - - 1346
+    - ! 'Last Changed Author: melezhik'
+    - 2
+    - '2014-02-03 13:00:49.259682'
+    - '2014-02-03 13:00:49.491353'
+    - debug
+  - - 1347
+    - ! 'Last Changed Rev: 65747'
+    - 2
+    - '2014-02-03 13:00:49.867924'
+    - '2014-02-03 13:00:50.097854'
+    - debug
+  - - 1348
+    - ! 'Last Changed Date: 2014-02-03 16:12:30 +0400 (Mon, 03 Feb 2014)'
+    - 2
+    - '2014-02-03 13:00:50.375619'
+    - '2014-02-03 13:00:50.630949'
+    - debug
+  - - 1349
+    - ! 'last revision extracted from repoisitory: 65747'
+    - 2
+    - '2014-02-03 13:00:51.206049'
+    - '2014-02-03 13:00:51.532839'
+    - debug
+  - - 1350
+    - source has been successfully checked out
+    - 2
+    - '2014-02-03 13:00:52.232027'
+    - '2014-02-03 13:00:52.613707'
+    - debug
+  - - 1351
+    - distribution archive boomerang2-bundle-0.2.1.tar.gz has been successfully created
+    - 2
+    - '2014-02-03 13:00:53.359667'
+    - '2014-02-03 13:00:53.598053'
+    - debug
+  - - 1352
+    - Distribution PINTO/boomerang2-bundle-0.2.1.65747.tar.gz is not in the repository
+    - 2
+    - '2014-02-03 13:00:56.724037'
+    - '2014-02-03 13:00:56.873001'
+    - debug
+  - - 1353
+    - Registering PINTO/boomerang2-bundle-0.2.1.65747.tar.gz on stack 1
+    - 2
+    - '2014-02-03 13:00:59.165947'
+    - '2014-02-03 13:00:59.261015'
+    - debug
+  - - 1354
+    - Descending into prerequisites for PINTO/boomerang2-bundle-0.2.1.65747.tar.gz
+    - 2
+    - '2014-02-03 13:00:59.350566'
+    - '2014-02-03 13:00:59.405876'
+    - debug
+  - - 1355
+    - No changes were made
+    - 2
+    - '2014-02-03 13:00:59.473694'
+    - '2014-02-03 13:00:59.531749'
+    - debug
+  - - 1356
+    - distribution archive boomerang2-bundle-0.2.1.65747.tar.gz has been successfully
+      added to pinto repository
+    - 2
+    - '2014-02-03 13:00:59.599019'
+    - '2014-02-03 13:00:59.790080'
+    - debug
+  - - 1357
+    - No changes were made
+    - 2
+    - '2014-02-03 13:01:02.016787'
+    - '2014-02-03 13:01:02.329758'
+    - debug
+  - - 1358
+    - cpanm (App::cpanminus) 1.7001 on perl 5.010001 built for x86_64-linux-gnu-thread-multi
+    - 2
+    - '2014-02-03 13:01:02.599665'
+    - '2014-02-03 13:01:02.838209'
+    - debug
+  - - 1359
+    - Work directory is /home/pinto/.cpanm/work/1391432462.8110
+    - 2
+    - '2014-02-03 13:01:03.165346'
+    - '2014-02-03 13:01:03.329266'
+    - debug
+  - - 1360
+    - You have make /usr/bin/make
+    - 2
+    - '2014-02-03 13:01:03.514726'
+    - '2014-02-03 13:01:03.735665'
+    - debug
+  - - 1361
+    - You have /usr/bin/wget
+    - 2
+    - '2014-02-03 13:01:04.029008'
+    - '2014-02-03 13:01:04.315035'
+    - debug
+  - - 1362
+    - ! 'You have /bin/tar: tar (GNU tar) 1.23'
+    - 2
+    - '2014-02-03 13:01:04.648616'
+    - '2014-02-03 13:01:04.837932'
+    - debug
+  - - 1363
+    - Copyright (C) 2010 Free Software Foundation, Inc.
+    - 2
+    - '2014-02-03 13:01:05.133583'
+    - '2014-02-03 13:01:05.373407'
+    - debug
+  - - 1364
+    - ! 'License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.'
+    - 2
+    - '2014-02-03 13:01:05.591971'
+    - '2014-02-03 13:01:05.894231'
+    - debug
+  - - 1365
+    - ! 'This is free software: you are free to change and redistribute it.'
+    - 2
+    - '2014-02-03 13:01:06.000431'
+    - '2014-02-03 13:01:06.097957'
+    - debug
+  - - 1366
+    - There is NO WARRANTY, to the extent permitted by law.
+    - 2
+    - '2014-02-03 13:01:06.196299'
+    - '2014-02-03 13:01:06.445441'
+    - debug
+  - - 1367
+    - Written by John Gilmore and Jay Fenlason.
+    - 2
+    - '2014-02-03 13:01:07.380167'
+    - '2014-02-03 13:01:07.443509'
+    - debug
+  - - 1368
+    - Checking if you have ExtUtils::MakeMaker 6.31 ... Yes (6.84)
+    - 2
+    - '2014-02-03 13:01:07.650564'
+    - '2014-02-03 13:01:07.786242'
+    - debug
+  - - 1369
+    - Checking if you have ExtUtils::Install 1.46 ... Yes (1.54)
+    - 2
+    - '2014-02-03 13:01:07.916509'
+    - '2014-02-03 13:01:08.136174'
+    - debug
+  - - 1370
+    - Unpacking Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz
+    - 2
+    - '2014-02-03 13:01:08.360364'
+    - '2014-02-03 13:01:08.594078'
+    - debug
+  - - 1371
+    - --> Working on PINTO/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz
+    - 2
+    - '2014-02-03 13:01:08.725621'
+    - '2014-02-03 13:01:08.872541'
+    - debug
+  - - 1372
+    - Fetching file:///home/pinto/projects/pjam-on-rails/ui/public/repo/stacks/1/authors/id/P/PI/PINTO/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299.tar.gz
+      ... OK
+    - 2
+    - '2014-02-03 13:01:09.027134'
+    - '2014-02-03 13:01:09.221202'
+    - debug
+  - - 1373
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0
+    - 2
+    - '2014-02-03 13:01:09.495293'
+    - '2014-02-03 13:01:09.629583'
+    - debug
+  - - 1374
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/Build.PL
+    - 2
+    - '2014-02-03 13:01:09.942138'
+    - '2014-02-03 13:01:10.231785'
+    - debug
+  - - 1375
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/MANIFEST
+    - 2
+    - '2014-02-03 13:01:10.482934'
+    - '2014-02-03 13:01:10.704508'
+    - debug
+  - - 1376
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/META.yml
+    - 2
+    - '2014-02-03 13:01:10.958305'
+    - '2014-02-03 13:01:11.212700'
+    - debug
+  - - 1377
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/module_build.err.log
+    - 2
+    - '2014-02-03 13:01:11.399714'
+    - '2014-02-03 13:01:14.436585'
+    - debug
+  - - 1378
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/MANIFEST.SKIP
+    - 2
+    - '2014-02-03 13:01:14.747720'
+    - '2014-02-03 13:01:15.051320'
+    - debug
+  - - 1379
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/etc
+    - 2
+    - '2014-02-03 13:01:15.255675'
+    - '2014-02-03 13:01:15.418597'
+    - debug
+  - - 1380
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/etc/SnmpAdriver.conf
+    - 2
+    - '2014-02-03 13:01:15.780599'
+    - '2014-02-03 13:01:17.393271'
+    - debug
+  - - 1381
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib
+    - 2
+    - '2014-02-03 13:01:18.413459'
+    - '2014-02-03 13:01:18.606100'
+    - debug
+  - - 1382
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib/Adriver
+    - 2
+    - '2014-02-03 13:01:18.955595'
+    - '2014-02-03 13:01:19.028709'
+    - debug
+  - - 1383
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib/Adriver/GoodsBoomerang
+    - 2
+    - '2014-02-03 13:01:19.255537'
+    - '2014-02-03 13:01:19.461988'
+    - debug
+  - - 1384
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib/Adriver/GoodsBoomerang/SNMP.pm
+    - 2
+    - '2014-02-03 13:01:19.528790'
+    - '2014-02-03 13:01:19.611418'
+    - debug
+  - - 1385
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib/Adriver/GoodsBoomerang/SNMP
+    - 2
+    - '2014-02-03 13:01:19.786625'
+    - '2014-02-03 13:01:20.080484'
+    - debug
+  - - 1386
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib/Adriver/GoodsBoomerang/SNMP/Queue.pm
+    - 2
+    - '2014-02-03 13:01:20.324663'
+    - '2014-02-03 13:01:20.471886'
+    - debug
+  - - 1387
+    - Adriver-GoodsBoomerang-SNMP-v0.2.0/lib/Adriver/GoodsBoomerang/SNMP/ImageDownloadQueue.pm
+    - 2
+    - '2014-02-03 13:01:20.719950'
+    - '2014-02-03 13:01:20.880335'
+    - debug
+  - - 1388
+    - Entering Adriver-GoodsBoomerang-SNMP-v0.2.0
+    - 2
+    - '2014-02-03 13:01:21.214237'
+    - '2014-02-03 13:01:21.527991'
+    - debug
+  - - 1389
+    - Checking configure dependencies from META.yml
+    - 2
+    - '2014-02-03 13:01:21.807670'
+    - '2014-02-03 13:01:22.026152'
+    - debug
+  - - 1390
+    - Checking if you have Module::Build 0.340201 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:01:22.095266'
+    - '2014-02-03 13:01:22.346025'
+    - debug
+  - - 1391
+    - Checking if you have Module::Build 0.36 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:01:22.600624'
+    - '2014-02-03 13:01:22.912871'
+    - debug
+  - - 1392
+    - Running Build.PL
+    - 2
+    - '2014-02-03 13:01:23.242457'
+    - '2014-02-03 13:01:23.561629'
+    - debug
+  - - 1393
+    - Configuring Adriver-GoodsBoomerang-SNMP-v0.2.0 ... Created MYMETA.yml and MYMETA.json
+    - 2
+    - '2014-02-03 13:01:24.807862'
+    - '2014-02-03 13:01:24.967397'
+    - debug
+  - - 1394
+    - Creating new 'Build' script for 'Adriver-GoodsBoomerang-SNMP' version 'v0.2.0'
+    - 2
+    - '2014-02-03 13:01:25.237721'
+    - '2014-02-03 13:01:25.586093'
+    - debug
+  - - 1395
+    - Checking dependencies from MYMETA.json ...
+    - 2
+    - '2014-02-03 13:01:26.112530'
+    - '2014-02-03 13:01:26.387779'
+    - debug
+  - - 1396
+    - Checking if you have Adriver::GoodsBoomerang::Queue 0 ... Yes (v0.1.0)
+    - 2
+    - '2014-02-03 13:01:26.632513'
+    - '2014-02-03 13:01:26.988672'
+    - debug
+  - - 1397
+    - Checking if you have Module::Build 0 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:01:27.359034'
+    - '2014-02-03 13:01:27.686526'
+    - debug
+  - - 1398
+    - Checking if you have Adriver::SNMP 0 ... Yes (v0.1.5)
+    - 2
+    - '2014-02-03 13:01:28.113018'
+    - '2014-02-03 13:01:28.305202'
+    - debug
+  - - 1399
+    - OK
+    - 2
+    - '2014-02-03 13:01:28.476136'
+    - '2014-02-03 13:01:28.530037'
+    - debug
+  - - 1400
+    - Building and testing Adriver-GoodsBoomerang-SNMP-v0.2.0 ... Building Adriver-GoodsBoomerang-SNMP
+    - 2
+    - '2014-02-03 13:01:28.667818'
+    - '2014-02-03 13:01:28.744526'
+    - debug
+  - - 1401
+    - No tests defined.
+    - 2
+    - '2014-02-03 13:01:29.042470'
+    - '2014-02-03 13:01:29.096732'
+    - debug
+  - - 1402
+    - Building Adriver-GoodsBoomerang-SNMP
+    - 2
+    - '2014-02-03 13:01:29.192293'
+    - '2014-02-03 13:01:29.321739'
+    - debug
+  - - 1403
+    - OK
+    - 2
+    - '2014-02-03 13:01:29.392215'
+    - '2014-02-03 13:01:29.534403'
+    - debug
+  - - 1404
+    - Successfully installed Adriver-GoodsBoomerang-SNMP-v0.2.0
+    - 2
+    - '2014-02-03 13:01:29.675636'
+    - '2014-02-03 13:01:29.736100'
+    - debug
+  - - 1405
+    - Installing /home/pinto/projects/pjam-on-rails/ui/public/projects/1/cpanlib/lib/perl5/x86_64-linux-gnu-thread-multi/.meta/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299/MYMETA.json
+    - 2
+    - '2014-02-03 13:01:30.049467'
+    - '2014-02-03 13:01:30.377926'
+    - debug
+  - - 1406
+    - Installing /home/pinto/projects/pjam-on-rails/ui/public/projects/1/cpanlib/lib/perl5/x86_64-linux-gnu-thread-multi/.meta/Adriver-GoodsBoomerang-SNMP-v0.2.0.65299/install.json
+    - 2
+    - '2014-02-03 13:01:30.755008'
+    - '2014-02-03 13:01:31.079986'
+    - debug
+  - - 1407
+    - 1 distribution installed
+    - 2
+    - '2014-02-03 13:01:31.322348'
+    - '2014-02-03 13:01:31.377429'
+    - debug
+  - - 1408
+    - No changes were made
+    - 2
+    - '2014-02-03 13:01:33.447629'
+    - '2014-02-03 13:01:33.856552'
+    - debug
+  - - 1409
+    - cpanm (App::cpanminus) 1.7001 on perl 5.010001 built for x86_64-linux-gnu-thread-multi
+    - 2
+    - '2014-02-03 13:01:34.164888'
+    - '2014-02-03 13:01:34.236861'
+    - debug
+  - - 1410
+    - Work directory is /home/pinto/.cpanm/work/1391432493.8159
+    - 2
+    - '2014-02-03 13:01:34.500255'
+    - '2014-02-03 13:01:35.027502'
+    - debug
+  - - 1411
+    - You have make /usr/bin/make
+    - 2
+    - '2014-02-03 13:01:35.327629'
+    - '2014-02-03 13:01:35.826845'
+    - debug
+  - - 1412
+    - You have /usr/bin/wget
+    - 2
+    - '2014-02-03 13:01:36.223959'
+    - '2014-02-03 13:01:36.708896'
+    - debug
+  - - 1413
+    - ! 'You have /bin/tar: tar (GNU tar) 1.23'
+    - 2
+    - '2014-02-03 13:01:37.074195'
+    - '2014-02-03 13:01:37.379409'
+    - debug
+  - - 1414
+    - Copyright (C) 2010 Free Software Foundation, Inc.
+    - 2
+    - '2014-02-03 13:01:37.616390'
+    - '2014-02-03 13:01:38.008356'
+    - debug
+  - - 1415
+    - ! 'License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.'
+    - 2
+    - '2014-02-03 13:01:38.324581'
+    - '2014-02-03 13:01:38.377199'
+    - debug
+  - - 1416
+    - ! 'This is free software: you are free to change and redistribute it.'
+    - 2
+    - '2014-02-03 13:01:38.523389'
+    - '2014-02-03 13:01:38.585546'
+    - debug
+  - - 1417
+    - There is NO WARRANTY, to the extent permitted by law.
+    - 2
+    - '2014-02-03 13:01:38.731966'
+    - '2014-02-03 13:01:38.812773'
+    - debug
+  - - 1418
+    - Written by John Gilmore and Jay Fenlason.
+    - 2
+    - '2014-02-03 13:01:39.060135'
+    - '2014-02-03 13:01:39.137430'
+    - debug
+  - - 1419
+    - Checking if you have ExtUtils::MakeMaker 6.31 ... Yes (6.84)
+    - 2
+    - '2014-02-03 13:01:39.213407'
+    - '2014-02-03 13:01:39.395508'
+    - debug
+  - - 1420
+    - Checking if you have ExtUtils::Install 1.46 ... Yes (1.54)
+    - 2
+    - '2014-02-03 13:01:39.555737'
+    - '2014-02-03 13:01:39.687517'
+    - debug
+  - - 1421
+    - Unpacking Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz
+    - 2
+    - '2014-02-03 13:01:39.756869'
+    - '2014-02-03 13:01:39.812590'
+    - debug
+  - - 1422
+    - --> Working on PINTO/Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz
+    - 2
+    - '2014-02-03 13:01:39.992008'
+    - '2014-02-03 13:01:40.044955'
+    - debug
+  - - 1423
+    - Fetching file:///home/pinto/projects/pjam-on-rails/ui/public/repo/stacks/1/authors/id/P/PI/PINTO/Adriver-GoodsBoomerang-Utils-v0.2.0.65317.tar.gz
+      ... OK
+    - 2
+    - '2014-02-03 13:01:40.158724'
+    - '2014-02-03 13:01:40.227131'
+    - debug
+  - - 1424
+    - Adriver-GoodsBoomerang-Utils-v0.2.0
+    - 2
+    - '2014-02-03 13:01:40.298468'
+    - '2014-02-03 13:01:40.368694'
+    - debug
+  - - 1425
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/Build.PL
+    - 2
+    - '2014-02-03 13:01:40.440098'
+    - '2014-02-03 13:01:40.528421'
+    - debug
+  - - 1426
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/MANIFEST
+    - 2
+    - '2014-02-03 13:01:40.605604'
+    - '2014-02-03 13:01:40.712352'
+    - debug
+  - - 1427
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/META.yml
+    - 2
+    - '2014-02-03 13:01:40.791503'
+    - '2014-02-03 13:01:40.851989'
+    - debug
+  - - 1428
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/module_build.err.log
+    - 2
+    - '2014-02-03 13:01:40.941371'
+    - '2014-02-03 13:01:41.018808'
+    - debug
+  - - 1429
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/MANIFEST.SKIP
+    - 2
+    - '2014-02-03 13:01:41.091694'
+    - '2014-02-03 13:01:41.152010'
+    - debug
+  - - 1430
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/scripts
+    - 2
+    - '2014-02-03 13:01:41.225172'
+    - '2014-02-03 13:01:41.295744'
+    - debug
+  - - 1431
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/scripts/csv2json.pl
+    - 2
+    - '2014-02-03 13:01:41.375023'
+    - '2014-02-03 13:01:41.437445'
+    - debug
+  - - 1432
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/scripts/gb2_stat2redis.pl
+    - 2
+    - '2014-02-03 13:01:41.525052'
+    - '2014-02-03 13:01:41.687362'
+    - debug
+  - - 1433
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/scripts/shop2expire.sh
+    - 2
+    - '2014-02-03 13:01:41.758088'
+    - '2014-02-03 13:01:41.826888'
+    - debug
+  - - 1434
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/scripts/shop2update.sh
+    - 2
+    - '2014-02-03 13:01:41.925096'
+    - '2014-02-03 13:01:42.029194'
+    - debug
+  - - 1435
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/scripts/gb2_get_shops.pl
+    - 2
+    - '2014-02-03 13:01:42.108098'
+    - '2014-02-03 13:01:42.170746'
+    - debug
+  - - 1436
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/lib
+    - 2
+    - '2014-02-03 13:01:42.300749'
+    - '2014-02-03 13:01:42.387074'
+    - debug
+  - - 1437
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/lib/Adriver
+    - 2
+    - '2014-02-03 13:01:42.506368'
+    - '2014-02-03 13:01:42.660318'
+    - debug
+  - - 1438
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/lib/Adriver/GoodsBoomerang
+    - 2
+    - '2014-02-03 13:01:42.733833'
+    - '2014-02-03 13:01:42.787184'
+    - debug
+  - - 1439
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/lib/Adriver/GoodsBoomerang/Utils.pm
+    - 2
+    - '2014-02-03 13:01:42.849862'
+    - '2014-02-03 13:01:43.223726'
+    - debug
+  - - 1440
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/templates
+    - 2
+    - '2014-02-03 13:01:43.557057'
+    - '2014-02-03 13:01:44.060012'
+    - debug
+  - - 1441
+    - Adriver-GoodsBoomerang-Utils-v0.2.0/templates/update_products.tt2
+    - 2
+    - '2014-02-03 13:01:44.205420'
+    - '2014-02-03 13:01:44.543302'
+    - debug
+  - - 1442
+    - Entering Adriver-GoodsBoomerang-Utils-v0.2.0
+    - 2
+    - '2014-02-03 13:01:44.975445'
+    - '2014-02-03 13:01:45.291779'
+    - debug
+  - - 1443
+    - Checking configure dependencies from META.yml
+    - 2
+    - '2014-02-03 13:01:45.632434'
+    - '2014-02-03 13:01:48.943151'
+    - debug
+  - - 1444
+    - Checking if you have Module::Build 0.340201 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:01:49.221744'
+    - '2014-02-03 13:01:49.383605'
+    - debug
+  - - 1445
+    - Checking if you have Module::Build 0.36 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:01:49.455699'
+    - '2014-02-03 13:01:49.645115'
+    - debug
+  - - 1446
+    - Running Build.PL
+    - 2
+    - '2014-02-03 13:01:49.755254'
+    - '2014-02-03 13:01:50.165388'
+    - debug
+  - - 1447
+    - Configuring Adriver-GoodsBoomerang-Utils-v0.2.0 ... Created MYMETA.yml and MYMETA.json
+    - 2
+    - '2014-02-03 13:01:50.506931'
+    - '2014-02-03 13:01:50.816626'
+    - debug
+  - - 1448
+    - Creating new 'Build' script for 'Adriver-GoodsBoomerang-Utils' version 'v0.2.0'
+    - 2
+    - '2014-02-03 13:01:51.166550'
+    - '2014-02-03 13:01:51.347621'
+    - debug
+  - - 1449
+    - Checking dependencies from MYMETA.json ...
+    - 2
+    - '2014-02-03 13:01:51.433276'
+    - '2014-02-03 13:01:51.581599'
+    - debug
+  - - 1450
+    - Checking if you have DateTime 0 ... Yes (1.05)
+    - 2
+    - '2014-02-03 13:01:51.922054'
+    - '2014-02-03 13:01:52.241471'
+    - debug
+  - - 1451
+    - Checking if you have URI 0 ... Yes (1.60)
+    - 2
+    - '2014-02-03 13:01:52.562028'
+    - '2014-02-03 13:01:52.834481'
+    - debug
+  - - 1452
+    - Checking if you have Text::CSV 0 ... Yes (1.32)
+    - 2
+    - '2014-02-03 13:01:53.219192'
+    - '2014-02-03 13:01:53.735767'
+    - debug
+  - - 1453
+    - Checking if you have DateTime::Format::Strptime 0 ... Yes (1.54)
+    - 2
+    - '2014-02-03 13:01:53.905087'
+    - '2014-02-03 13:01:53.957959'
+    - debug
+  - - 1454
+    - Checking if you have Template 0 ... Yes (2.25)
+    - 2
+    - '2014-02-03 13:01:54.210026'
+    - '2014-02-03 13:01:54.532969'
+    - debug
+  - - 1455
+    - Checking if you have HTTP::Cookies 0 ... Yes (6.01)
+    - 2
+    - '2014-02-03 13:01:54.862735'
+    - '2014-02-03 13:01:55.192530'
+    - debug
+  - - 1456
+    - Checking if you have RedisDB 0 ... Yes (2.20)
+    - 2
+    - '2014-02-03 13:01:55.622027'
+    - '2014-02-03 13:01:56.078182'
+    - debug
+  - - 1457
+    - Checking if you have Params::Validate 0 ... Yes (1.08)
+    - 2
+    - '2014-02-03 13:01:56.339450'
+    - '2014-02-03 13:01:56.541096'
+    - debug
+  - - 1458
+    - Checking if you have POSIX 0 ... Yes (1.17)
+    - 2
+    - '2014-02-03 13:01:56.804335'
+    - '2014-02-03 13:01:57.325760'
+    - debug
+  - - 1459
+    - Checking if you have Text::CSV_XS 0 ... Yes (1.02)
+    - 2
+    - '2014-02-03 13:01:57.665192'
+    - '2014-02-03 13:01:57.986238'
+    - debug
+  - - 1460
+    - Checking if you have Module::Build 0 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:01:58.374985'
+    - '2014-02-03 13:01:58.442613'
+    - debug
+  - - 1461
+    - Checking if you have JSON 0 ... Yes (2.90)
+    - 2
+    - '2014-02-03 13:01:58.571688'
+    - '2014-02-03 13:01:58.640931'
+    - debug
+  - - 1462
+    - Checking if you have Getopt::Long::Descriptive 0 ... Yes (0.096)
+    - 2
+    - '2014-02-03 13:01:58.833499'
+    - '2014-02-03 13:01:59.099249'
+    - debug
+  - - 1463
+    - Checking if you have HTTP::Request 0 ... Yes (6.00)
+    - 2
+    - '2014-02-03 13:01:59.166523'
+    - '2014-02-03 13:01:59.250509'
+    - debug
+  - - 1464
+    - Checking if you have LWP 0 ... Yes (6.05)
+    - 2
+    - '2014-02-03 13:01:59.316761'
+    - '2014-02-03 13:01:59.492576'
+    - debug
+  - - 1465
+    - OK
+    - 2
+    - '2014-02-03 13:01:59.674957'
+    - '2014-02-03 13:01:59.840936'
+    - debug
+  - - 1466
+    - Building and testing Adriver-GoodsBoomerang-Utils-v0.2.0 ... Building Adriver-GoodsBoomerang-Utils
+    - 2
+    - '2014-02-03 13:02:00.167315'
+    - '2014-02-03 13:02:00.544109'
+    - debug
+  - - 1467
+    - No tests defined.
+    - 2
+    - '2014-02-03 13:02:01.202381'
+    - '2014-02-03 13:02:01.727167'
+    - debug
+  - - 1468
+    - Building Adriver-GoodsBoomerang-Utils
+    - 2
+    - '2014-02-03 13:02:02.165454'
+    - '2014-02-03 13:02:02.392591'
+    - debug
+  - - 1469
+    - OK
+    - 2
+    - '2014-02-03 13:02:02.664979'
+    - '2014-02-03 13:02:02.977237'
+    - debug
+  - - 1470
+    - Successfully installed Adriver-GoodsBoomerang-Utils-v0.2.0
+    - 2
+    - '2014-02-03 13:02:03.388116'
+    - '2014-02-03 13:02:03.451897'
+    - debug
+  - - 1471
+    - Installing /home/pinto/projects/pjam-on-rails/ui/public/projects/1/cpanlib/lib/perl5/x86_64-linux-gnu-thread-multi/.meta/Adriver-GoodsBoomerang-Utils-v0.2.0.65317/MYMETA.json
+    - 2
+    - '2014-02-03 13:02:03.653766'
+    - '2014-02-03 13:02:04.028462'
+    - debug
+  - - 1472
+    - Installing /home/pinto/projects/pjam-on-rails/ui/public/projects/1/cpanlib/lib/perl5/x86_64-linux-gnu-thread-multi/.meta/Adriver-GoodsBoomerang-Utils-v0.2.0.65317/install.json
+    - 2
+    - '2014-02-03 13:02:04.370851'
+    - '2014-02-03 13:02:05.125615'
+    - debug
+  - - 1473
+    - 1 distribution installed
+    - 2
+    - '2014-02-03 13:02:05.389573'
+    - '2014-02-03 13:02:05.674985'
+    - debug
+  - - 1474
+    - No changes were made
+    - 2
+    - '2014-02-03 13:02:07.795663'
+    - '2014-02-03 13:02:08.299695'
+    - debug
+  - - 1475
+    - cpanm (App::cpanminus) 1.7001 on perl 5.010001 built for x86_64-linux-gnu-thread-multi
+    - 2
+    - '2014-02-03 13:02:08.453164'
+    - '2014-02-03 13:02:08.582494'
+    - debug
+  - - 1476
+    - Work directory is /home/pinto/.cpanm/work/1391432527.8205
+    - 2
+    - '2014-02-03 13:02:08.673926'
+    - '2014-02-03 13:02:08.858141'
+    - debug
+  - - 1477
+    - You have make /usr/bin/make
+    - 2
+    - '2014-02-03 13:02:09.099962'
+    - '2014-02-03 13:02:09.176898'
+    - debug
+  - - 1478
+    - You have /usr/bin/wget
+    - 2
+    - '2014-02-03 13:02:09.249485'
+    - '2014-02-03 13:02:09.316292'
+    - debug
+  - - 1479
+    - ! 'You have /bin/tar: tar (GNU tar) 1.23'
+    - 2
+    - '2014-02-03 13:02:09.455224'
+    - '2014-02-03 13:02:09.623705'
+    - debug
+  - - 1480
+    - Copyright (C) 2010 Free Software Foundation, Inc.
+    - 2
+    - '2014-02-03 13:02:09.783444'
+    - '2014-02-03 13:02:09.873864'
+    - debug
+  - - 1481
+    - ! 'License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.'
+    - 2
+    - '2014-02-03 13:02:10.397662'
+    - '2014-02-03 13:02:10.523580'
+    - debug
+  - - 1482
+    - ! 'This is free software: you are free to change and redistribute it.'
+    - 2
+    - '2014-02-03 13:02:10.872991'
+    - '2014-02-03 13:02:11.282713'
+    - debug
+  - - 1483
+    - There is NO WARRANTY, to the extent permitted by law.
+    - 2
+    - '2014-02-03 13:02:11.679105'
+    - '2014-02-03 13:02:11.941421'
+    - debug
+  - - 1484
+    - Written by John Gilmore and Jay Fenlason.
+    - 2
+    - '2014-02-03 13:02:12.277780'
+    - '2014-02-03 13:02:12.920418'
+    - debug
+  - - 1485
+    - Checking if you have ExtUtils::MakeMaker 6.31 ... Yes (6.84)
+    - 2
+    - '2014-02-03 13:02:13.089025'
+    - '2014-02-03 13:02:13.242737'
+    - debug
+  - - 1486
+    - Checking if you have ExtUtils::Install 1.46 ... Yes (1.54)
+    - 2
+    - '2014-02-03 13:02:13.589661'
+    - '2014-02-03 13:02:13.909035'
+    - debug
+  - - 1487
+    - Unpacking boomerang2-bundle-0.2.1.65747.tar.gz
+    - 2
+    - '2014-02-03 13:02:14.221765'
+    - '2014-02-03 13:02:14.542830'
+    - debug
+  - - 1488
+    - --> Working on PINTO/boomerang2-bundle-0.2.1.65747.tar.gz
+    - 2
+    - '2014-02-03 13:02:14.874157'
+    - '2014-02-03 13:02:15.284186'
+    - debug
+  - - 1489
+    - Fetching file:///home/pinto/projects/pjam-on-rails/ui/public/repo/stacks/1/authors/id/P/PI/PINTO/boomerang2-bundle-0.2.1.65747.tar.gz
+      ... OK
+    - 2
+    - '2014-02-03 13:02:15.588533'
+    - '2014-02-03 13:02:15.798917'
+    - debug
+  - - 1490
+    - boomerang2-bundle-0.2.1
+    - 2
+    - '2014-02-03 13:02:16.299174'
+    - '2014-02-03 13:02:16.776119'
+    - debug
+  - - 1491
+    - boomerang2-bundle-0.2.1/Build.PL
+    - 2
+    - '2014-02-03 13:02:17.201787'
+    - '2014-02-03 13:02:17.482208'
+    - debug
+  - - 1492
+    - boomerang2-bundle-0.2.1/MANIFEST
+    - 2
+    - '2014-02-03 13:02:18.017304'
+    - '2014-02-03 13:02:18.239331'
+    - debug
+  - - 1493
+    - boomerang2-bundle-0.2.1/META.yml
+    - 2
+    - '2014-02-03 13:02:18.413710'
+    - '2014-02-03 13:02:18.473402'
+    - debug
+  - - 1494
+    - boomerang2-bundle-0.2.1/module_build.err.log
+    - 2
+    - '2014-02-03 13:02:18.622525'
+    - '2014-02-03 13:02:18.718041'
+    - debug
+  - - 1495
+    - boomerang2-bundle-0.2.1/lib
+    - 2
+    - '2014-02-03 13:02:18.790852'
+    - '2014-02-03 13:02:18.859508'
+    - debug
+  - - 1496
+    - boomerang2-bundle-0.2.1/lib/package.pm
+    - 2
+    - '2014-02-03 13:02:18.990807'
+    - '2014-02-03 13:02:19.126330'
+    - debug
+  - - 1497
+    - Entering boomerang2-bundle-0.2.1
+    - 2
+    - '2014-02-03 13:02:19.233224'
+    - '2014-02-03 13:02:19.323117'
+    - debug
+  - - 1498
+    - Checking configure dependencies from META.yml
+    - 2
+    - '2014-02-03 13:02:19.483159'
+    - '2014-02-03 13:02:19.601137'
+    - debug
+  - - 1499
+    - Checking if you have Module::Build 0 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:02:19.731285'
+    - '2014-02-03 13:02:19.809557'
+    - debug
+  - - 1500
+    - Checking if you have Module::Build 0.36 ... Yes (0.4203)
+    - 2
+    - '2014-02-03 13:02:19.897082'
+    - '2014-02-03 13:02:20.089656'
+    - debug
+  - - 1501
+    - Running Build.PL
+    - 2
+    - '2014-02-03 13:02:20.172415'
+    - '2014-02-03 13:02:20.281505'
+    - debug
+  - - 1502
+    - Configuring boomerang2-bundle-v0.2.1 ... No 'module_name' was provided and it
+      could not be inferred
+    - 2
+    - '2014-02-03 13:02:20.347196'
+    - '2014-02-03 13:02:20.451063'
+    - debug
+  - - 1503
+    - from other properties.  This will prevent a packlist from
+    - 2
+    - '2014-02-03 13:02:20.563899'
+    - '2014-02-03 13:02:20.623836'
+    - debug
+  - - 1504
+    - being written for this file.  Please set either 'module_name'
+    - 2
+    - '2014-02-03 13:02:20.704730'
+    - '2014-02-03 13:02:20.773011'
+    - debug
+  - - 1505
+    - or 'dist_version_from' in Build.PL.
+    - 2
+    - '2014-02-03 13:02:20.847276'
+    - '2014-02-03 13:02:20.915369'
+    - debug
+  - - 1506
+    - Created MYMETA.yml and MYMETA.json
+    - 2
+    - '2014-02-03 13:02:20.997070'
+    - '2014-02-03 13:02:21.065389'
+    - debug
+  - - 1507
+    - Creating new 'Build' script for 'boomerang2-bundle' version '0.2.1'
+    - 2
+    - '2014-02-03 13:02:21.141306'
+    - '2014-02-03 13:02:21.257577'
+    - debug
+  - - 1508
+    - Checking dependencies from MYMETA.json ...
+    - 2
+    - '2014-02-03 13:02:21.332657'
+    - '2014-02-03 13:02:21.401005'
+    - debug
+  - - 1509
+    - Checking if you have DBD::mysql 4.021 ... Yes (4.023)
+    - 2
+    - '2014-02-03 13:02:21.480482'
+    - '2014-02-03 13:02:21.548680'
+    - debug
+  - - 1510
+    - Checking if you have Adriver::SNMP 0 ... Yes (v0.1.5)
+    - 2
+    - '2014-02-03 13:02:21.681249'
+    - '2014-02-03 13:02:21.750626'
+    - debug
+  - - 1511
+    - Checking if you have DBI 0 ... Yes (1.630)
+    - 2
+    - '2014-02-03 13:02:25.183643'
+    - '2014-02-03 13:02:25.517398'
+    - debug
+  - - 1512
+    - OK
+    - 2
+    - '2014-02-03 13:02:25.866860'
+    - '2014-02-03 13:02:26.241767'
+    - debug
+  - - 1513
+    - Building and testing boomerang2-bundle-v0.2.1 ... Building boomerang2-bundle
+    - 2
+    - '2014-02-03 13:02:27.698267'
+    - '2014-02-03 13:02:29.164250'
+    - debug
+  - - 1514
+    - No tests defined.
+    - 2
+    - '2014-02-03 13:02:29.507353'
+    - '2014-02-03 13:02:29.788854'
+    - debug
+  - - 1515
+    - Building boomerang2-bundle
+    - 2
+    - '2014-02-03 13:02:29.897460'
+    - '2014-02-03 13:02:30.264735'
+    - debug
+  - - 1516
+    - OK
+    - 2
+    - '2014-02-03 13:02:30.597851'
+    - '2014-02-03 13:02:30.933097'
+    - debug
+  - - 1517
+    - Successfully installed boomerang2-bundle-v0.2.1
+    - 2
+    - '2014-02-03 13:02:31.236153'
+    - '2014-02-03 13:02:31.656339'
+    - debug
+  - - 1518
+    - Installing /home/pinto/projects/pjam-on-rails/ui/public/projects/1/cpanlib/lib/perl5/x86_64-linux-gnu-thread-multi/.meta/boomerang2-bundle-0.2.1.65747/MYMETA.json
+    - 2
+    - '2014-02-03 13:02:31.972224'
+    - '2014-02-03 13:02:32.505267'
+    - debug
+  - - 1519
+    - Installing /home/pinto/projects/pjam-on-rails/ui/public/projects/1/cpanlib/lib/perl5/x86_64-linux-gnu-thread-multi/.meta/boomerang2-bundle-0.2.1.65747/install.json
+    - 2
+    - '2014-02-03 13:02:32.831104'
+    - '2014-02-03 13:02:33.241079'
+    - debug
+  - - 1520
+    - 1 distribution installed
+    - 2
+    - '2014-02-03 13:02:33.453141'
+    - '2014-02-03 13:02:33.612226'
+    - debug
+  - - 1521
+    - final distribution archive has been successfully created and artefactored as
+      /home/pinto/projects/pjam-on-rails/ui/public/projects/1/builds/2/artefacts/boomerang2-bundle-0.2.1.tar.gz
+    - 2
+    - '2014-02-03 13:02:37.033632'
+    - '2014-02-03 13:02:38.491154'
+    - debug
+  - - 1522
+    - symlink /home/pinto/projects/pjam-on-rails/ui/public/projects/1/current.txt
+      successfully created
+    - 2
+    - '2014-02-03 13:02:38.578372'
+    - '2014-02-03 13:02:38.712940'
+    - debug
+  - - 1523
+    - succeeded async build for project ID:1 build ID:2
+    - 2
+    - '2014-02-03 13:02:39.279072'
+    - '2014-02-03 13:02:39.341403'
+    - info
+  - - 1524
+    - ! 'Errno::ETIMEDOUT : Connection timed out - connect(2)'
+    - 2
+    - '2014-02-03 13:03:00.419029'
+    - '2014-02-03 13:03:00.763906'
+    - error
+  - - 1525
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/connection.rb:67:in
+      `initialize'
+    - 2
+    - '2014-02-03 13:03:01.017695'
+    - '2014-02-03 13:03:01.329115'
+    - error
+  - - 1526
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/connection.rb:67:in
+      `new'
+    - 2
+    - '2014-02-03 13:03:01.753965'
+    - '2014-02-03 13:03:02.081149'
+    - error
+  - - 1527
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/connection.rb:67:in
+      `connect'
+    - 2
+    - '2014-02-03 13:03:02.423415'
+    - '2014-02-03 13:03:02.739254'
+    - error
+  - - 1528
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/client.rb:71:in
+      `connect'
+    - 2
+    - '2014-02-03 13:03:03.140994'
+    - '2014-02-03 13:03:03.269917'
+    - error
+  - - 1529
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/client.rb:58:in
+      `block in connect'
+    - 2
+    - '2014-02-03 13:03:03.346236'
+    - '2014-02-03 13:03:03.667351'
+    - error
+  - - 1530
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/client.rb:56:in
+      `each'
+    - 2
+    - '2014-02-03 13:03:04.154841'
+    - '2014-02-03 13:03:04.488907'
+    - error
+  - - 1531
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/xmpp4r-0.5.5/lib/xmpp4r/client.rb:56:in
+      `connect'
+    - 2
+    - '2014-02-03 13:03:11.329439'
+    - '2014-02-03 13:03:15.145306'
+    - error
+  - - 1532
+    - /home/pinto/projects/pjam-on-rails/ui/lib/build_async.rb:80:in `notify'
+    - 2
+    - '2014-02-03 13:03:18.270280'
+    - '2014-02-03 13:03:18.369856'
+    - error
+  - - 1533
+    - /home/pinto/projects/pjam-on-rails/ui/lib/build_async.rb:25:in `success'
+    - 2
+    - '2014-02-03 13:03:18.479139'
+    - '2014-02-03 13:03:18.553247'
+    - error
+  - - 1534
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/backend/base.rb:125:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:18.620746'
+    - '2014-02-03 13:03:18.778004'
+    - error
+  - - 1535
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/backend/base.rb:125:in
+      `hook'
+    - 2
+    - '2014-02-03 13:03:18.855390'
+    - '2014-02-03 13:03:18.919477'
+    - error
+  - - 1536
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/backend/base.rb:106:in
+      `block in invoke_job'
+    - 2
+    - '2014-02-03 13:03:19.012433'
+    - '2014-02-03 13:03:19.078038'
+    - error
+  - - 1537
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:19.153993'
+    - '2014-02-03 13:03:19.461161'
+    - error
+  - - 1538
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `block in initialize'
+    - 2
+    - '2014-02-03 13:03:19.528968'
+    - '2014-02-03 13:03:19.703167'
+    - error
+  - - 1539
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:19.770747'
+    - '2014-02-03 13:03:19.877997'
+    - error
+  - - 1540
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `execute'
+    - 2
+    - '2014-02-03 13:03:19.980370'
+    - '2014-02-03 13:03:20.078267'
+    - error
+  - - 1541
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:38:in
+      `run_callbacks'
+    - 2
+    - '2014-02-03 13:03:22.103811'
+    - '2014-02-03 13:03:22.327498'
+    - error
+  - - 1542
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/backend/base.rb:102:in
+      `invoke_job'
+    - 2
+    - '2014-02-03 13:03:22.697006'
+    - '2014-02-03 13:03:23.069371'
+    - error
+  - - 1543
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:206:in
+      `block (2 levels) in run'
+    - 2
+    - '2014-02-03 13:03:23.458194'
+    - '2014-02-03 13:03:23.785095'
+    - error
+  - - 1544
+    - /home/pinto/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/timeout.rb:69:in `timeout'
+    - 2
+    - '2014-02-03 13:03:24.021116'
+    - '2014-02-03 13:03:24.185928'
+    - error
+  - - 1545
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:206:in
+      `block in run'
+    - 2
+    - '2014-02-03 13:03:24.625432'
+    - '2014-02-03 13:03:24.794292'
+    - error
+  - - 1546
+    - /home/pinto/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+    - 2
+    - '2014-02-03 13:03:24.861894'
+    - '2014-02-03 13:03:25.191612'
+    - error
+  - - 1547
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:205:in
+      `run'
+    - 2
+    - '2014-02-03 13:03:25.528437'
+    - '2014-02-03 13:03:25.967728'
+    - error
+  - - 1548
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:267:in
+      `block in reserve_and_run_one_job'
+    - 2
+    - '2014-02-03 13:03:26.320016'
+    - '2014-02-03 13:03:26.710813'
+    - error
+  - - 1549
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:27.129607'
+    - '2014-02-03 13:03:27.377553'
+    - error
+  - - 1550
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `block in initialize'
+    - 2
+    - '2014-02-03 13:03:27.754496'
+    - '2014-02-03 13:03:27.810683'
+    - error
+  - - 1551
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:28.161509'
+    - '2014-02-03 13:03:28.485674'
+    - error
+  - - 1552
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `execute'
+    - 2
+    - '2014-02-03 13:03:28.736518'
+    - '2014-02-03 13:03:28.852360'
+    - error
+  - - 1553
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:38:in
+      `run_callbacks'
+    - 2
+    - '2014-02-03 13:03:28.911370'
+    - '2014-02-03 13:03:28.968927'
+    - error
+  - - 1554
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:267:in
+      `reserve_and_run_one_job'
+    - 2
+    - '2014-02-03 13:03:29.044853'
+    - '2014-02-03 13:03:29.110620'
+    - error
+  - - 1555
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:189:in
+      `block in work_off'
+    - 2
+    - '2014-02-03 13:03:29.195985'
+    - '2014-02-03 13:03:29.310753'
+    - error
+  - - 1556
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:188:in
+      `times'
+    - 2
+    - '2014-02-03 13:03:29.403258'
+    - '2014-02-03 13:03:29.528843'
+    - error
+  - - 1557
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:188:in
+      `work_off'
+    - 2
+    - '2014-02-03 13:03:29.644786'
+    - '2014-02-03 13:03:29.702239'
+    - error
+  - - 1558
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:153:in
+      `block (4 levels) in start'
+    - 2
+    - '2014-02-03 13:03:29.786509'
+    - '2014-02-03 13:03:29.852456'
+    - error
+  - - 1559
+    - /home/pinto/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+    - 2
+    - '2014-02-03 13:03:29.911671'
+    - '2014-02-03 13:03:29.977413'
+    - error
+  - - 1560
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:152:in
+      `block (3 levels) in start'
+    - 2
+    - '2014-02-03 13:03:30.079226'
+    - '2014-02-03 13:03:30.160504'
+    - error
+  - - 1561
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:30.219758'
+    - '2014-02-03 13:03:30.385411'
+    - error
+  - - 1562
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `block in initialize'
+    - 2
+    - '2014-02-03 13:03:30.453061'
+    - '2014-02-03 13:03:30.527156'
+    - error
+  - - 1563
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:30.594745'
+    - '2014-02-03 13:03:30.702263'
+    - error
+  - - 1564
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `execute'
+    - 2
+    - '2014-02-03 13:03:30.769633'
+    - '2014-02-03 13:03:30.835453'
+    - error
+  - - 1565
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:38:in
+      `run_callbacks'
+    - 2
+    - '2014-02-03 13:03:30.946024'
+    - '2014-02-03 13:03:31.018866'
+    - error
+  - - 1566
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:151:in
+      `block (2 levels) in start'
+    - 2
+    - '2014-02-03 13:03:31.111250'
+    - '2014-02-03 13:03:31.185790'
+    - error
+  - - 1567
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:150:in
+      `loop'
+    - 2
+    - '2014-02-03 13:03:31.253017'
+    - '2014-02-03 13:03:31.353393'
+    - error
+  - - 1568
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:150:in
+      `block in start'
+    - 2
+    - '2014-02-03 13:03:31.427941'
+    - '2014-02-03 13:03:31.502139'
+    - error
+  - - 1569
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/plugins/clear_locks.rb:7:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:31.561388'
+    - '2014-02-03 13:03:31.775145'
+    - error
+  - - 1570
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/plugins/clear_locks.rb:7:in
+      `block (2 levels) in <class:ClearLocks>'
+    - 2
+    - '2014-02-03 13:03:31.845856'
+    - '2014-02-03 13:03:31.968748'
+    - error
+  - - 1571
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:78:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:34.891677'
+    - '2014-02-03 13:03:35.424226'
+    - error
+  - - 1572
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:78:in
+      `block (2 levels) in add'
+    - 2
+    - '2014-02-03 13:03:35.860934'
+    - '2014-02-03 13:03:36.018393'
+    - error
+  - - 1573
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:36.369196'
+    - '2014-02-03 13:03:36.671410'
+    - error
+  - - 1574
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:60:in
+      `block in initialize'
+    - 2
+    - '2014-02-03 13:03:36.782572'
+    - '2014-02-03 13:03:36.951735'
+    - error
+  - - 1575
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:78:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:37.834850'
+    - '2014-02-03 13:03:37.910014'
+    - error
+  - - 1576
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:78:in
+      `block in add'
+    - 2
+    - '2014-02-03 13:03:38.124933'
+    - '2014-02-03 13:03:38.285096'
+    - error
+  - - 1577
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:38.344133'
+    - '2014-02-03 13:03:38.401608'
+    - error
+  - - 1578
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:65:in
+      `execute'
+    - 2
+    - '2014-02-03 13:03:38.460888'
+    - '2014-02-03 13:03:38.536643'
+    - error
+  - - 1579
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/lifecycle.rb:38:in
+      `run_callbacks'
+    - 2
+    - '2014-02-03 13:03:38.602776'
+    - '2014-02-03 13:03:38.667740'
+    - error
+  - - 1580
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/worker.rb:149:in
+      `start'
+    - 2
+    - '2014-02-03 13:03:38.744469'
+    - '2014-02-03 13:03:38.850975'
+    - error
+  - - 1581
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/command.rb:104:in
+      `run'
+    - 2
+    - '2014-02-03 13:03:38.926639'
+    - '2014-02-03 13:03:39.110956'
+    - error
+  - - 1582
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/command.rb:92:in
+      `block in run_process'
+    - 2
+    - '2014-02-03 13:03:39.334975'
+    - '2014-02-03 13:03:39.551059'
+    - error
+  - - 1583
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/application.rb:255:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:39.626523'
+    - '2014-02-03 13:03:39.727598'
+    - error
+  - - 1584
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/application.rb:255:in
+      `block in start_proc'
+    - 2
+    - '2014-02-03 13:03:39.793042'
+    - '2014-02-03 13:03:39.850852'
+    - error
+  - - 1585
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/application.rb:264:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:39.944230'
+    - '2014-02-03 13:03:40.059158'
+    - error
+  - - 1586
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/application.rb:264:in
+      `start_proc'
+    - 2
+    - '2014-02-03 13:03:40.134898'
+    - '2014-02-03 13:03:40.217998'
+    - error
+  - - 1587
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/application.rb:296:in
+      `start'
+    - 2
+    - '2014-02-03 13:03:40.276713'
+    - '2014-02-03 13:03:40.446897'
+    - error
+  - - 1588
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/controller.rb:73:in
+      `run'
+    - 2
+    - '2014-02-03 13:03:40.510017'
+    - '2014-02-03 13:03:40.567443'
+    - error
+  - - 1589
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons.rb:197:in
+      `block in run_proc'
+    - 2
+    - '2014-02-03 13:03:40.626258'
+    - '2014-02-03 13:03:40.683973'
+    - error
+  - - 1590
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/cmdline.rb:109:in
+      `call'
+    - 2
+    - '2014-02-03 13:03:40.753196'
+    - '2014-02-03 13:03:40.858907'
+    - error
+  - - 1591
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons/cmdline.rb:109:in
+      `catch_exceptions'
+    - 2
+    - '2014-02-03 13:03:40.930809'
+    - '2014-02-03 13:03:41.001113'
+    - error
+  - - 1592
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/daemons-1.1.9/lib/daemons.rb:196:in
+      `run_proc'
+    - 2
+    - '2014-02-03 13:03:41.068360'
+    - '2014-02-03 13:03:41.134378'
+    - error
+  - - 1593
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/command.rb:90:in
+      `run_process'
+    - 2
+    - '2014-02-03 13:03:41.192475'
+    - '2014-02-03 13:03:41.293887'
+    - error
+  - - 1594
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/command.rb:83:in
+      `block in daemonize'
+    - 2
+    - '2014-02-03 13:03:41.359916'
+    - '2014-02-03 13:03:41.426031'
+    - error
+  - - 1595
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/command.rb:81:in
+      `times'
+    - 2
+    - '2014-02-03 13:03:41.510924'
+    - '2014-02-03 13:03:41.667639'
+    - error
+  - - 1596
+    - /home/pinto/.rvm/gems/ruby-1.9.3-p448/gems/delayed_job-4.0.0/lib/delayed/command.rb:81:in
+      `daemonize'
+    - 2
+    - '2014-02-03 13:03:42.008820'
+    - '2014-02-03 13:03:42.336332'
+    - error
+  - - 1597
+    - ./bin/delayed_job:5:in `<main>'
+    - 2
+    - '2014-02-03 13:03:42.660912'
+    - '2014-02-03 13:03:42.917555'
+    - error
+  - - 1598
+    - finished async build for project ID:1 build ID:2
+    - 2
+    - '2014-02-03 13:03:43.242710'
+    - '2014-02-03 13:03:43.477341'
+    - info
+
+---
+settings:
+  columns:
+  - id
+  - perl5lib
+  - skip_missing_prerequisites
+  - pinto_downsteram_repositories
+  - created_at
+  - updated_at
+  - force_mode
+  - jabber_server
+  - jabber_login
+  - jabber_password
+  records: 
+  - - 2
+    - /usr/local/rle/lib/perl5
+    - ''
+    - http://cpan.webdev.x/CPAN
+    - '2014-02-03 10:39:04.662881'
+    - '2014-02-03 12:22:01.285540'
+    - false
+    - 
+    - melezhik@adriver.ru
+    - kwef23rl
