@@ -2,17 +2,22 @@ class SourcesController < ApplicationController
 
     def create
         @project = Project.find params[:project_id]
-        @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
 
-        begin
-            @project.sources.find(@project[:distribution_source_id])
-        rescue ActiveRecord::RecordNotFound => ex
-            @project.update({:distribution_source_id => @source[:id]})
-            @project.save
+        if @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
+            begin
+                @project.sources.find(@project[:distribution_source_id])
+            rescue ActiveRecord::RecordNotFound => ex
+                @project.update({:distribution_source_id => @source[:id]})
+                @project.save
+            end
+            flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
+            redirect_to project_path @project
+        else
+            flash[:alert] = "error has been occured when creating source"
+            render 'new'
         end
 
-        flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
-        redirect_to project_path @project
+
     end
 
     def destroy

@@ -59,7 +59,13 @@ class ProjectsController < ApplicationController
 private
 
   def project_params
-      params.require(:project).permit( :title,:text, :distribution_source_id )
+      params.require(:project).permit( 
+            :title, :text, 
+            :distribution_source_id,
+            :notify, 
+            :recipients
+     )
   end
+
 
 end

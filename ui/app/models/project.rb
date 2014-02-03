@@ -51,5 +51,8 @@ class Project < ActiveRecord::Base
     end
 
 
+    def notify?
+        notify == true
+    end
 end
 

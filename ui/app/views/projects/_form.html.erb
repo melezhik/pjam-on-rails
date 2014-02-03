@@ -26,6 +26,18 @@
     <%= f.label :text %><br>
     <%= f.text_area :text, :size => "100x10" %>
   </p>
+
+  <p>
+    <%= f.check_box :notify, { :value => true , :checked => @project[:notify] } %>
+    <%= f.label(:force_mode, "notify me on builds fails/successes") %>
+  </p>
+
+  <p>
+    <%= f.label :recipients %><br>
+    <%= f.text_area :recipients, :size => "100x2" %>
+  </p>
+
+
  <%- unless @project.sources_enabled.empty? %>
     <p>
         <%= f.label :distribution %>
@@ -44,7 +56,7 @@
 
  <%- unless @project.sources_ordered.empty? %>
  <p>       
-    <strong>Sources:</strong>
+    <h2>Update Project Sources</h2>
     <ol>   
     <% @project.sources_ordered.each do |item| %>
       <li>

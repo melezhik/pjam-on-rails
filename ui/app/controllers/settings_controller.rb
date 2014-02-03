@@ -43,10 +43,8 @@ private
       params.require(:setting).permit( 
             :perl5lib, :skip_missing_prerequisites, :pinto_downsteram_repositories, 
             :force_mode,
-            :notify, 
             :jabber_login,
-            :jabber_password,
-            :recipients
+            :jabber_password
      )
   end
 

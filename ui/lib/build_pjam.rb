@@ -43,8 +43,9 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
                  archive_name = _create_distribution_archive s
                  build_async.log :debug, "distribution archive #{archive_name} has been successfully created"
 
-
-                 _remove_distribution_from_pinto_repo archive_name, rev
+                 unless  _distribution_in_pinto_repo? archive_name, rev
+                     _remove_distribution_from_pinto_repo archive_name, rev
+                 end
 
                  archive_name_with_revision = _add_distribution_to_pinto_repo s, archive_name, rev
                  build_async.log :debug, "distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
@@ -77,17 +78,18 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
     end
 
       def _execute_command(cmd, raise_ex = true)
-
+        retval = false
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
             while line = stdout_err.gets
                 build_async.log :debug, line
             end
             exit_status = wait_thr.value
+            retval = exit_status.success?
             unless exit_status.success?
               raise "command #{cmd} failed" if raise_ex == true
            end
         end
-
+        retval
     end
 
 
@@ -101,6 +103,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
         cmd <<  "./Build dist --quiet 1>/dev/null"
         _execute_command(cmd.join(' && '))
         distro_name = `cd #{project.local_path}/#{build.local_path}/#{source.local_path} && ls *.gz`.chomp!
+    end
+
+    def _distribution_in_pinto_repo? archive_name, rev
+        archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
+        cmd =  "pinto -r #{settings.pinto_repo_root} list -s #{project.id} -D PINTO/#{archive_name_with_revision} --no-color"
+        _execute_command(cmd, false)
     end
 
 

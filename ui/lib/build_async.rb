@@ -16,12 +16,14 @@ class BuildAsync < Struct.new( :project, :build, :settings )
 
     def after(job)
         log :info, "finished async build for project ID:#{project.id} build ID:#{build.id}"
-        notify
     end
 
     def success(job)
         mark_build_as_succeeded
         log :info, "succeeded async build for project ID:#{project.id} build ID:#{build.id}"
+        if project.notify?
+            notify
+        end
     end        
 
 
@@ -32,6 +34,9 @@ class BuildAsync < Struct.new( :project, :build, :settings )
 
     def failure(job)
             mark_build_as_failed
+            if project.notify?
+                notify
+            end
     end
 
     def max_attempts
@@ -74,7 +79,7 @@ class BuildAsync < Struct.new( :project, :build, :settings )
         robot = Jabber::Client::new(Jabber::JID::new(settings.jabber_login))
         robot.connect
         robot.auth(settings.jabber_password)
-        settings.recipients.split('/s+').each do |r|
+        project.recipients.split('/s+').each do |r|
             message = Jabber::Message::new(r, "build ID:#{build.id} #{build.state} at #{build.updated_at}")
             message.set_type(:chat)
             robot.send message

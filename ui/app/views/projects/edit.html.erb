@@ -1,4 +1,9 @@
-<h2>Edit project <%= link_to "ID:#{@project[:id]}",  project_path(@project[:id]) %></h2>
+<%= link_to 'Back To Project', project_path(@project) %>
+<h2>Update Project Settings </h2>
+
+<pre>
+    ID : <%= @project[:id] %>
+</pre>
 
 <%= render 'form' %>
 
