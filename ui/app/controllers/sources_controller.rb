@@ -30,27 +30,24 @@ class SourcesController < ApplicationController
         redirect_to project_path @project
     end
     
+
+    # used to set order in sources list; lift the source to versy first level
+    def top
+	st = true
+	while (st == true ) do
+		@project = Project.find(params[:project_id])
+	        @source = @project.sources.find(params[:id])
+		st = _pop_up(@project, @source) 
+	end
+        flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url} now has order number: #{@source.sn}"
+        redirect_to [:edit, @project]
+    end
+
     # used to set order in sources list; lift the source to 1 level up
     def up
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
-
-        change = true
-        i = 0
-        @project.sources_ordered.reverse.each do |s|
-            i+=1
-            if s[:id] == @source[:id]
-                    change = true
-            elsif change == true
-                    sn = s[:sn]
-                    s.update({ :sn => i-1 })
-                    @source.update({ :sn => i })
-                    change = false
-            else
-                    s.update({ :sn => i })
-            end
-
-        end
+	_pop_up @project, @source
         flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url} now has order number: #{@source.sn}"
         redirect_to [:edit, @project]
     end
@@ -78,5 +75,29 @@ class SourcesController < ApplicationController
             render :edit            
         end
     end
+
+
+   def _pop_up project, source
+
+        change = false
+	changed = false
+        i = 0
+        project.sources_ordered.reverse.each do |s|
+            i+=1
+            if s[:id] == source[:id]
+                    change = true
+            elsif change == true
+                    sn = s[:sn]
+                    s.update({ :sn => i-1 })
+                    @source.update({ :sn => i })
+                    change = false
+		    changed = true	
+            else
+                    s.update({ :sn => i })
+            end
+
+        end
+	return changed
+   end
 
 end

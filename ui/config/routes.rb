@@ -32,6 +32,7 @@ Ui::Application.routes.draw do
         resources :sources do
             member do
                 post 'up'
+                post 'top'
                 post 'on'
                 post 'off'
             end
