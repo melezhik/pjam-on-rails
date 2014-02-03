@@ -1,6 +1,13 @@
+# bugs
+- bug with '<table cellpadding="2" cellspacing="2" border="0">'
+- notifications do not work for firewalled hosts
+- bootstrap css does not work for production environment
+
 # fixes
 - drop initialized column in projects table; I failed to do that with db:migrate engine +
 - drop jabber_server column in settings table +
+- current.txt no longer need
+- add time-stamp to artefacted archive name 
 
 # improvements
 - build logs should be multiple entries, inserts are faster than updates; +
