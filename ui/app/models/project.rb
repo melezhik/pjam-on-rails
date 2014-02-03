@@ -21,6 +21,10 @@ class Project < ActiveRecord::Base
         builds.select {|b| b.state == 'succeeded' and ! b.distribution_name.nil?  }.last
     end
 
+    def url_for_build build
+        "/projects/#{id}/builds/#{build.id}"
+    end
+
     def has_last_successfull_build?
          last_successfull_build.nil? == false
     end

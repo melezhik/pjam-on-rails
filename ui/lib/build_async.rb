@@ -80,7 +80,7 @@ class BuildAsync < Struct.new( :project, :build, :settings )
         robot.connect
         robot.auth(settings.jabber_password)
         project.recipients.split('/s+').each do |r|
-            message = Jabber::Message::new(r, "build ID:#{build.id} #{build.state} at #{build.updated_at}")
+            message = Jabber::Message::new(r, "build ID:#{build.id} #{build.state} at #{build.updated_at} - #{project.url_for_build(build)}")
             message.set_type(:chat)
             robot.send message
         end
