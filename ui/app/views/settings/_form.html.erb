@@ -24,6 +24,10 @@
     <%= f.text_field :pinto_downsteram_repositories, :size => "100" %>
   </p>
   <p>
+     <%= f.check_box :force_mode, { :value => true , :checked => @settings[:force_mode] } %>
+     <%= f.label(:force_mode, "forcefully create builds, even no changes in SCM found") %>
+  </p>
+  <p>
     <%= f.label :jabber_login %><br>
     <%= f.text_field :jabber_login, :size => "50" %>
   </p>
