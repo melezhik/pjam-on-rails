@@ -27,7 +27,7 @@ class SourcesController < ApplicationController
         url = @source.url
         @source.destroy
         flash[:notice] = "source ID:#{params[:id]}; Url: #{url} has been successfully deleted"
-        redirect_to project_path @project
+        redirect_to edit_project_path @project
     end
     
 
