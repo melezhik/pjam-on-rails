@@ -18,8 +18,9 @@
 <%- if @build.has_logs? %>
   <strong>Logs.</strong> 
     <pre>
+    <%- i = 0 %>	
     <% @log_entries.each do |l| %>
-        [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
+        <%= link_to "[#{i+=1}]", "##{i}", :id => "#{i+10}"  %> [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
     <% end %>
     </pre>
 <%- end %>

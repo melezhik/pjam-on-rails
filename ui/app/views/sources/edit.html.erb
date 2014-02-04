@@ -1,0 +1,9 @@
+<h2>Set source order for source ID: [<%= "#{@source[:id]}" %>] in project <%= link_to "ID:#{@project[:id]}",  project_path(@project[:id]) %></h2>
+
+<pre>
+	id : <%= "#{@source[:id]}" %>
+	url : <%= "#{@source[:url]}" %>
+	sequential number : <%= "#{@source[:sn]}" %>
+</pre>
+<%= render 'form' %>
+

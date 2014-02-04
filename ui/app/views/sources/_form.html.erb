@@ -1,0 +1,26 @@
+
+<%= form_for [@project, @source] do |f| %>
+  <% if @source.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@source.errors.count, "error") %> prohibited
+      this source from being reordered:</h2>
+    <ul>
+    <% @source.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :sn %><br>
+    <%= f.text_field :sn, :size => "20" %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+
+

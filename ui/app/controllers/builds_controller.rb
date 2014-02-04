@@ -32,7 +32,7 @@ class BuildsController < ApplicationController
             flash[:notice] = "build # #{@build.id} has been successfully annotated"
             redirect_to @project
         else
-            flash[:aler] = "error has been occured when annotation build # #{@build.id}"
+            flash[:alert] = "error has been occured when annotation build # #{@build.id}"
             render 'edit'
         end
     end

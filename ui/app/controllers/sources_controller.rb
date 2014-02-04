@@ -29,28 +29,25 @@ class SourcesController < ApplicationController
         flash[:notice] = "source ID:#{params[:id]}; Url: #{url} has been successfully deleted"
         redirect_to edit_project_path @project
     end
-    
 
-    # used to set order in sources list; lift the source to versy first level
-    def top
-	st = true
-	while (st == true ) do
-		@project = Project.find(params[:project_id])
-	        @source = @project.sources.find(params[:id])
-		st = _pop_up(@project, @source) 
-	end
-        flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url} now has order number: #{@source.sn}"
-        redirect_to [:edit, @project]
-    end
-
-    # used to set order in sources list; lift the source to 1 level up
-    def up
+    def edit
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
-	_pop_up @project, @source
-        flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url} now has order number: #{@source.sn}"
-        redirect_to [:edit, @project]
     end
+
+    def update 
+        @project = Project.find(params[:project_id])
+        @source = @project.sources.find(params[:id])
+        
+        if @source.update(source_params)
+            flash[:notice] = "source ID: #{@source.id} has been successfully reordered"
+            redirect_to @project
+        else
+            flash[:alert] = "error has been occured when reorder source ID: #{@source.id}"
+            render 'edit'
+        end
+    end
+
 
     def on
         @project = Project.find(params[:project_id])
@@ -76,28 +73,10 @@ class SourcesController < ApplicationController
         end
     end
 
+private
 
-   def _pop_up project, source
-
-        change = false
-	changed = false
-        i = 0
-        project.sources_ordered.reverse.each do |s|
-            i+=1
-            if s[:id] == source[:id]
-                    change = true
-            elsif change == true
-                    sn = s[:sn]
-                    s.update({ :sn => i-1 })
-                    @source.update({ :sn => i })
-                    change = false
-		    changed = true	
-            else
-                    s.update({ :sn => i })
-            end
-
-        end
-	return changed
-   end
+  def source_params
+      params.require( :source ).permit( :sn )
+  end
 
 end

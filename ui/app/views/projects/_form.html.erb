@@ -61,14 +61,13 @@
     <% @project.sources_ordered.each do |item| %>
       <li>
         <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}" %>
-        [ <%= link_to 'Delete', [ item.project, item], method: :delete, data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %>
-        <%= link_to 'Up', [ :up, item.project, item   ], method: :post   %>
-        <%= link_to 'Top', [ :top, item.project, item   ], method: :post   %>
+        [ <%= link_to "SN=#{item[:sn]}",  edit_project_source_path( @project, item ), title: "change sort order number for this source"   %>
         <% if item.enabled?  %>
             <%= link_to 'Off', [ :off, item.project, item   ], method: :post, title: "click to disable this source"  %>
         <% else %>
             <%= link_to 'On', [ :on, item.project, item   ], method: :post,  title: "click to enable this source" %>
-        <% end %> ]
+        <% end %>
+        <%= link_to 'Delete', [ item.project, item], method: :delete, data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %> ]
       </li>
     <% end %>
     </ol>
