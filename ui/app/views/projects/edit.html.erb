@@ -1,4 +1,4 @@
-<%= link_to 'Back To Project', project_path(@project) %>
+<%= link_to 'Back To Project', project_path(@project) %> | <%= link_to 'Run New Build', url_for([@project, :builds]), method: :post  %>
 <h2>Update Project Settings </h2>
 
 <pre>

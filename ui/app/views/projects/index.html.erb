@@ -38,7 +38,7 @@
 
       <td><%= link_to 'Show', project_path(item) %> |
         <%= link_to 'Edit', edit_project_path(item) %> |
-        <%= link_to 'Build', [item, item.builds.build], method: :post %> | 
+        <%= link_to 'Run New Build', [item, item.builds.build], method: :post %> | 
         <%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %>
       </td>
     </tr>
