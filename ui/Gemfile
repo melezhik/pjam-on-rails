@@ -59,13 +59,10 @@ gem "crack"
 
 gem "erubis"
 
-
 gem "xmpp4r"
 
 gem 'mysql2'
 
-#gem 'yaml_db'
-
-# gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
-
 gem 'yaml_db', :git => 'https://github.com/jetthoughts/yaml_db.git'
+
+

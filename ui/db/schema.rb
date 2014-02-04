@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203080246) do
+ActiveRecord::Schema.define(version: 20140204093133) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140203080246) do
     t.boolean  "released",          default: false
   end
 
-  add_index "builds", ["project_id"], name: "index_builds_on_project_id"
+  add_index "builds", ["project_id"], name: "index_builds_on_project_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140203080246) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "logs", force: true do |t|
     t.text     "chunk"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140203080246) do
     t.string   "level"
   end
 
-  add_index "logs", ["build_id"], name: "index_logs_on_build_id"
+  add_index "logs", ["build_id"], name: "index_logs_on_build_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140203080246) do
     t.string   "jabber_server"
     t.string   "jabber_login"
     t.string   "jabber_password"
+    t.string   "jabber_host"
   end
 
   create_table "sources", force: true do |t|
@@ -85,6 +86,6 @@ ActiveRecord::Schema.define(version: 20140203080246) do
     t.string   "last_rev"
   end
 
-  add_index "sources", ["project_id"], name: "index_sources_on_project_id"
+  add_index "sources", ["project_id"], name: "index_sources_on_project_id", using: :btree
 
 end

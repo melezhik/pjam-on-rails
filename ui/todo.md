@@ -1,6 +1,5 @@
 # bugs
 - bug with '<table cellpadding="2" cellspacing="2" border="0">'
-- notifications do not work for firewalled hosts
 - bootstrap css does not work for production environment
 
 # fixes

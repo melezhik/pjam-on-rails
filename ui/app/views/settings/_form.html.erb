@@ -28,6 +28,10 @@
      <%= f.label(:force_mode, "forcefully create builds, even no changes in SCM found") %>
   </p>
   <p>
+    <%= f.label :jabber_host %><br>
+    <%= f.text_field :jabber_host, :size => "50" %>
+  </p>
+  <p>
     <%= f.label :jabber_login %><br>
     <%= f.text_field :jabber_login, :size => "50" %>
   </p>
