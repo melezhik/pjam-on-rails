@@ -41,7 +41,7 @@ class SourcesController < ApplicationController
         
         if @source.update(source_params)
             flash[:notice] = "source ID: #{@source.id} has been successfully reordered"
-            redirect_to @project
+            redirect_to [ :edit, @project, @source ]
         else
             flash[:alert] = "error has been occured when reorder source ID: #{@source.id}"
             render 'edit'

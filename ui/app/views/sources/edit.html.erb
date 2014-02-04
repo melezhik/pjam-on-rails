@@ -1,9 +1,24 @@
-<h2>Set source order for source ID: [<%= "#{@source[:id]}" %>] in project <%= link_to "ID:#{@project[:id]}",  project_path(@project[:id]) %></h2>
+<strong>Set sort order for the source | <%= link_to "edit project",  edit_project_path(@project[:id]) %></strong>
 
 <pre>
-	id : <%= "#{@source[:id]}" %>
-	url : <%= "#{@source[:url]}" %>
-	sequential number : <%= "#{@source[:sn]}" %>
+	project ID : <%= "#{@project[:id]}" %>
+	source  ID : <%= "#{@source[:id]}" %>
+	url        : <%= "#{@source[:url]}" %>
+	sort order : <%= "#{@source[:sn]}" %>
 </pre>
+
+
+<pre>
+  <strong>Sources:</strong>
+<% @project.sources_ordered.each do |item| %>
+	<% if item[:id] == @source[:id] %>
+		<strong><%= item.url %> sort order: <%= item[:sn] %></strong>
+	<% else %>
+		<%= item.url %> | sort order: <%= item[:sn] %> | <%= link_to "change",  edit_project_source_path( @project, item ), title: "change sort order for this source; ID:#{item[:id]}"   %>
+	<% end %>
+<% end %>
+</pre>
+
+
 <%= render 'form' %>
 

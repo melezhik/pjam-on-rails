@@ -12,7 +12,7 @@
 <pre>
   <strong>Sources:</strong>
 <% @project.sources_ordered.each do |item| %>
-    <%= link_to item.url , item.url, title: "SCM TYPE: #{item.scm_type}" %> | rev: <%= item[:last_rev] %> | sorted order: <%= item[:sn] %> |
+    <%= link_to item.url , item.url, title: "SCM TYPE: #{item.scm_type}" %> | rev: <%= item[:last_rev] %>
 <% end %>
 </pre>
 <%- end %>
