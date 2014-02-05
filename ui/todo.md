@@ -1,8 +1,6 @@
 # bugs
-- bug with '<table cellpadding="2" cellspacing="2" border="0">'
 - bootstrap css does not work for production environment +
 	- workaround:  
-
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
 

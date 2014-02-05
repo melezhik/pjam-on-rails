@@ -47,9 +47,9 @@ end
 
 gem 'bootstrap-sass'
 
-#group :development do
+group :development do
   gem 'rails_layout'
-#end
+end
 
 gem 'delayed_job_active_record'
 
@@ -61,7 +61,10 @@ gem "erubis"
 
 gem "xmpp4r"
 
-gem 'mysql2'
+group :production do
+    gem 'mysql2'
+end
+
 
 gem 'yaml_db', :git => 'https://github.com/jetthoughts/yaml_db.git'
 
