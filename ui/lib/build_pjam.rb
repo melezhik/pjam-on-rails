@@ -95,7 +95,8 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
-        cmd <<  "#{_perl5lib_as_shell_variable} perl Build.PL --quiet 1>/dev/null"
+        cmd <<  _set_perl5lib
+	cmd <<  "perl Build.PL --quiet 1>/dev/null"
         cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
         cmd <<  "./Build manifest --quiet 1>/dev/null"
         cmd <<  "./Build dist --quiet 1>/dev/null"
@@ -127,7 +128,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("#{_perl5lib_as_shell_variable} pinto -r #{settings.pinto_repo_root} install -s #{project.id} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("#{_set_perl5lib} && pinto -r #{settings.pinto_repo_root} install -s #{project.id} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _create_final_distribution distribution_archive
@@ -166,11 +167,11 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
     end
 
 
-    def _perl5lib_as_shell_variable
+    def _set_perl5lib
         if settings.perl5lib.nil? or settings.perl5lib.empty?
-            "PERL5LIB=#{project.local_path}/cpanlib/lib/perl5"
+            "export PERL5LIB=#{project.local_path}/cpanlib/lib/perl5"
         else
-            "PERL5LIB=#{project.local_path}/cpanlib/lib/perl5" +  ( settings.perl5lib.split(/\s+/).join ':' )
+            "export PERL5LIB=#{project.local_path}/cpanlib/lib/perl5:" +  ( settings.perl5lib.split(/\s+/).join ':' )
         end
     end
 
