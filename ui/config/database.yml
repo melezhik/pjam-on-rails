@@ -8,14 +8,6 @@ development:
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
-#   adapter: mysql2
-#   encoding: utf8
-#   reconnect: true
-#   database: pinto
-#   pool: 5
-#   username: pinto
-#   password: pinto
-#   host: sql.webdev.x
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,10 +19,6 @@ test:
   timeout: 5000
 
 production:
-#  adapter: sqlite3
-#  database: db/production.sqlite3
-#  pool: 5
-#  timeout: 5000
    adapter: mysql2
    encoding: utf8
    reconnect: true
@@ -39,4 +27,5 @@ production:
    username: pinto
    password: pinto
    host: sql.webdev.x
+
 
