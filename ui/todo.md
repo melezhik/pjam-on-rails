@@ -1,7 +1,6 @@
 # bugs
 - bug with '<table cellpadding="2" cellspacing="2" border="0">'
 - bootstrap css does not work for production environment
-- jabber_server dublicates jabber_host
 
 # fixes
 - add time-stamp to artefacted archive's name 
