@@ -10,14 +10,6 @@ class Setting < ActiveRecord::Base
         end
     end
 
-    def perl5lib_as_shell_variable
-        if perl5lib.nil? or perl5lib.empty?
-            ''
-        else
-            'PERL5LIB=' + (perl5lib.split(/\s+/).join ':')
-        end
-    end
-
     def pinto_repo_root
         "#{Rails.public_path}/repo"
     end
