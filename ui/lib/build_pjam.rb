@@ -167,10 +167,10 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
 
 
     def _perl5lib_as_shell_variable
-        if perl5lib.nil? or perl5lib.empty?
-            "PERL5LIB=#{project.local_path}/cpanlib:"
+        if settings.perl5lib.nil? or settings.perl5lib.empty?
+            "PERL5LIB=#{project.local_path}/cpanlib/lib/perl5"
         else
-            "PERL5LIB=#{project.local_path}/cpanlib:" +  ( settings.perl5lib.split(/\s+/).join ':' )
+            "PERL5LIB=#{project.local_path}/cpanlib/lib/perl5" +  ( settings.perl5lib.split(/\s+/).join ':' )
         end
     end
 
