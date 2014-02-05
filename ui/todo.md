@@ -16,6 +16,7 @@
 	- compare pinto stacks
 	- compare projects configurations (sources list)
 - package-list - show packages from pinto stack
+- release  - mark build as released on production, which in turn make build locked
 - install distribution on client machine via http request to pjam
 - history - store projects modifications in database and show them - who, what and when change in project
 - pin / upin modules via pjam  ?
