@@ -1,3 +1,4 @@
+require 'open3'
 
 class ProjectsController < ApplicationController
 
@@ -25,7 +26,7 @@ class ProjectsController < ApplicationController
             flash[:notice] = "project # #{@project.id} has been successfully updated"
             redirect_to [:edit, @project]
         else
-            flash[:alert] = "error has been occured when updating project # #{@project.id} data"
+            flash[:alert] = "error has been occured when updating project ID:#{@project.id} data"
             render 'edit'
         end
     end
@@ -42,11 +43,24 @@ class ProjectsController < ApplicationController
         @projects = Project.all
     end
 
+    def copy
+        @project = Project.find(params[:id])
+
+        @project_copy = Project.new
+        @project_copy.update({ :title => @project.title + '-' + Time.new.to_i.to_s, :text => @project.text })
+
+        if @project_copy.save
+            flash[:notice] = "new project ID:#{@project_copy.id} has been successfully created as copy of ID:#{@project.id}"
+        else
+            flash[:alert] = "error has been occured when copy project:  #{@project_copy.errors.full_messages.join ' '}"
+        end
+        redirect_to controller: "projects"
+    end
 
     def destroy 
         @project = Project.find(params[:id])
         @project.destroy
-        flash[:notice] = "project # #{@project.id} has been successfully removed"
+        flash[:notice] = "project ID:#{@project.id} has been successfully removed"
         redirect_to controller: "projects"
     end
 
@@ -67,5 +81,19 @@ private
      )
   end
 
+  def _execute_command(cmd, raise_ex = true)
+    retval = false
+    Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
+        while line = stdout_err.gets
+            logger :debug, line
+        end
+        exit_status = wait_thr.value
+        retval = exit_status.success?
+        unless exit_status.success?
+          raise "command #{cmd} failed" if raise_ex == true
+       end
+    end
+    retval
+ end
 
 end

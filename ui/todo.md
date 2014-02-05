@@ -7,7 +7,6 @@
 # fixes
 - add time-stamp to artefacted archive's name 
 - store jabber password incrypted ? 
-- should apply PERL5LIB when creating distribution
 
 # new features
 - copy project - copy cpanlib and pinto stack into new project from another project
