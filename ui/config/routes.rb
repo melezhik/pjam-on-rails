@@ -15,6 +15,7 @@ Ui::Application.routes.draw do
 
         member do
             get 'last_successfull_build'
+            post 'copy'
         end
 
         resources :builds do
