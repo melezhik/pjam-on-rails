@@ -4,20 +4,21 @@
 - jabber_server dublicates jabber_host
 
 # fixes
-- add time-stamp to artefacted archive name 
-- store jabber password incrypted 
+- add time-stamp to artefacted archive's name 
+- store jabber password incrypted ? 
 - should apply PERL5LIB when creating distribution
 
 # new features
-- copy project - copies cpanlib and pinto stack into new project form another project
-- ability to lock the project ( forbide any project modifications and lock project's pinto stack)
-- ability to compare 2 projects ( compare two pinto stacks actually )
-- ability to reinstall distribution on client machine 
-- pin / upin дистрибутива в проекте через пинто
-- показывать список пакетов, дистрибутивов через пинто
-
-## builds
-- lock/unlock build +
+- copy project - copy cpanlib and pinto stack into new project from another project
+- lock project - forbide any project modifications and lock project's pinto stack
+- compare 2 projects 
+	- compare pinto stacks
+	- compare projects configurations (sources list)
+- package-list - show packages from pinto stack
+- install distribution on client machine via http request to pjam
+- history - store projects modifications in database and show them - who, what and when change in project
+- pin / upin modules via pjam  ?
+- ldap authoriazation ?
 
 ## settings
 - PINTO_DEBUG or VERBOSE parameter?
