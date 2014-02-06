@@ -37,20 +37,17 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
                     _execute_command "svn diff #{s.url} -r #{s.last_rev}:#{rev}"
                  end
 
+		 pinto_distro_rev =  "#{rev}-#{build.id}"
                  _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
                  build_async.log :debug, "source has been successfully checked out"
 
                  archive_name = _create_distribution_archive s
                  build_async.log :debug, "distribution archive #{archive_name} has been successfully created"
 
-                 if  _distribution_in_pinto_repo? archive_name, rev
-                     _remove_distribution_from_pinto_repo archive_name, rev
-                 end
-
-                 archive_name_with_revision = _add_distribution_to_pinto_repo s, archive_name, rev
+                 archive_name_with_revision = _add_distribution_to_pinto_repo s, archive_name, pinto_distro_rev
                  build_async.log :debug, "distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
 
-		 _distribution_in_pinto_repo! archive_name, rev 
+		 _distribution_in_pinto_repo! archive_name, pinto_distro_rev
 
                  s.update({ :last_rev => rev })    
                  s.save
@@ -79,7 +76,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
 
       def _execute_command(cmd, raise_ex = true)
         retval = false
-	build_async.log :debug, "running command: #{cmd}"
+	build_async.log :info, "running command: #{cmd}"
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
             while line = stdout_err.gets
                 build_async.log :debug, line
@@ -87,11 +84,11 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
             exit_status = wait_thr.value
             retval = exit_status.success?
             unless exit_status.success?
-	      build_async.log :debug, "command failed"
+	      build_async.log :info, "command failed"
               raise "command #{cmd} failed" if raise_ex == true
            end
         end
-	build_async.log :debug, "command succeeded"
+	build_async.log :info, "command succeeded"
         retval
     end
 
