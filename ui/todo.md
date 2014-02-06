@@ -8,6 +8,10 @@
 - add time-stamp to artefacted archive's name 
 - store jabber password incrypted ? 
 
+# improvements
+- check that distribution archive was actually added to pinto ( with pinto add  command ) with pinto list command - useful for pinto incompatible distributions
+- add :info log messages for every BuildPjam step
+
 # new features
 - copy project - copy cpanlib and pinto stack into new project from another project
 - lock project - forbide any project modifications and lock project's pinto stack
