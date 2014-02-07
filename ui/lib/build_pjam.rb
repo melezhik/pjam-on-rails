@@ -175,10 +175,6 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
             _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_last_stack} #{_stack} --no-color"
          end
 
-         unless File.exist? "#{settings.pinto_repo_root}/stacks/#{project.id}"
-             _execute_command "pinto --root=#{settings.pinto_repo_root} new #{project.id}"
-             build_async.log :debug, "stack named #{project.id} has been successfully created"
-         end
 
     end
 
