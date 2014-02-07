@@ -138,7 +138,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :settings  )
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("#{_set_perl5lib} && pinto -r #{settings.pinto_repo_root} install -s #{project.id} -v --no-color -o 'self-contained' -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("#{_set_perl5lib} && PINTO_DEBUG=1 pinto -r #{settings.pinto_repo_root} install -s #{project.id} -v --no-color -o 'self-contained' -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _create_final_distribution distribution_archive
