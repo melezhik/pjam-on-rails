@@ -95,7 +95,7 @@ private
     retval = false
     Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
         while line = stdout_err.gets
-            logger :debug, line
+            logger.debug line
         end
         exit_status = wait_thr.value
         retval = exit_status.success?

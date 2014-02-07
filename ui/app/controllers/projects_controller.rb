@@ -45,15 +45,15 @@ class ProjectsController < ApplicationController
 
     def copy
         @project = Project.find(params[:id])
+       # @project_copy = Project.new
+       # @project_copy.update({ :title => @project.title + '-' + Time.new.to_i.to_s, :text => @project.text })
 
-        @project_copy = Project.new
-        @project_copy.update({ :title => @project.title + '-' + Time.new.to_i.to_s, :text => @project.text })
-
-        if @project_copy.save
-            flash[:notice] = "new project ID:#{@project_copy.id} has been successfully created as copy of ID:#{@project.id}"
-        else
-            flash[:alert] = "error has been occured when copy project:  #{@project_copy.errors.full_messages.join ' '}"
-        end
+       # if @project_copy.save
+       #     flash[:notice] = "new project ID:#{@project_copy.id} has been successfully created as copy of ID:#{@project.id}"
+       # else
+       #     flash[:alert] = "error has been occured when copy project:  #{@project_copy.errors.full_messages.join ' '}"
+       # end
+        flash[:alert] = "copy project feature temporary disabled"
         redirect_to controller: "projects"
     end
 
