@@ -117,7 +117,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
 
     def _check_distribution_in_pinto_repo archive_name, rev, mode = true
         archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
-        cmd =  "pinto -r #{settings.pinto_repo_root} list -s #{build.id} -D #{archive_name_with_revision} --no-color"
+        cmd =  "pinto -r #{settings.pinto_repo_root} list -s #{_stack} -D #{archive_name_with_revision} --no-color"
         _execute_command(cmd, mode)
     end
 	
@@ -132,13 +132,13 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd << "mv #{archive_name} #{archive_name_with_revision}"
-        cmd <<  "pinto -r #{settings.pinto_repo_root} add -s #{build.id} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
+        cmd <<  "pinto -r #{settings.pinto_repo_root} add -s #{_stack} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
         archive_name_with_revision
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("#{_set_perl5lib} && PINTO_DEBUG=1 pinto -r #{settings.pinto_repo_root} install -s #{build.id} -v --no-color -o 'self-contained' -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("#{_set_perl5lib} && PINTO_DEBUG=1 pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color -o 'self-contained' -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _create_final_distribution distribution_archive
@@ -170,9 +170,9 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
          end
 
          if last_build.nil?
-            _execute_command "pinto --root=#{settings.pinto_repo_root} new #{build.id}"
+            _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
          else   
-            _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{last_build.id} #{build.id}"
+            _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_last_stack} #{_stack} --no-color"
          end
 
          unless File.exist? "#{settings.pinto_repo_root}/stacks/#{project.id}"
@@ -182,7 +182,14 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
 
     end
 
+    def _last_stack
+	"#{project.id}-#{last_build.id}"
+    end
 
+    def _stack
+	"#{project.id}-#{build.id}"
+    end
+		
     def _set_perl5lib
         if settings.perl5lib.nil? or settings.perl5lib.empty?
             "export PERL5LIB=#{project.local_path}/cpanlib/lib/perl5"

@@ -9,17 +9,19 @@
 - store jabber password incrypted ? 
 
 # new features
-- copy project - copy cpanlib and pinto stack into new project from another project
-- lock project - forbide any project modifications and lock project's pinto stack
-- compare 2 projects 
+- delete project should also kill all stacks related to project's builds?
+- copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build
+- lock project - forbide any project modifications
+- lock build should also lock build's stack
+- compare 2 projects - I am not sure If I need this when I may compare builds ... Also I may put current project configuration into the build 
 	- compare pinto stacks
 	- compare projects configurations (sources list)
-- package-list - show packages from pinto stack
+- package list - show packages ( from pinto stack ) for given build 
 - release  - mark build as released on production, which in turn make build locked
-- install distribution on client machine via http request to pjam
-- history - store projects modifications in database and show them - who, what and when change in project
 - pin / upin modules via pjam  ?
 - ldap authoriazation ?
+- history - store projects modifications in database and show them - who, what and when change project
+- install distribution on client machine via http request to pjam
 
 ## settings
 - PINTO_DEBUG or VERBOSE parameter?

@@ -49,7 +49,7 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         build = Build.find(params[:id])
 
-        _execute_command( "pinto --root=#{Setting.take.pinto_repo_root} kill #{build.id}", false)
+        _execute_command( "pinto --root=#{Setting.take.pinto_repo_root} kill #{@project.id}-#{build.id}", false)
         if build.locked?
             flash[:alert] = "cannot delete locked build! ID:#{params[:id]}"
         else
