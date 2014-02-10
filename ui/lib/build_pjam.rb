@@ -62,7 +62,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
 
                  if project.distribution_source.url == s.url
                      final_distribution_archive = archive_name_with_revision
-  		     final_distribution_revision = rev
+  		     final_distribution_revision = pinto_distro_rev
                  else
                      new_distribution = distributions.new
                      new_distribution.update({ :revision => rev, :url => s[:url], :distribution => archive_name_with_revision })
@@ -160,7 +160,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
 
 	original_distribution_archive_dir = final_distribution_archive.sub(".#{revision}.tar.gz",'')
 
-	final_distribution_archive_with_timestamp = final_distribution_archive.sub('.tar.gz',".tar.gz-#{timestamp}")
+	final_distribution_archive_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}.tar.gz")
 	final_distribution_archive_dir_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}")
 	
         cmd = []
