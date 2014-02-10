@@ -2,7 +2,7 @@ require 'fileutils'
 require 'crack'
 require 'open3'
 
-class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :settings  )
+class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :distributions, :settings  )
 
     def run
 
@@ -28,33 +28,42 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
              repo_info = Crack::XML.parse xml
              rev = repo_info["info"]["entry"]["commit"]["revision"]
              build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
-             if (settings.force_mode == false and  ! s.last_rev.nil?) and s.last_rev == rev and ! ( project.distribution_source.url == s.url )
-                 build_async.log :debug, "this revison is already processed, nothing to do here"
-             else
-                 if (! s.last_rev.nil? and ! rev.nil? )
-                    build_async.log :debug,  "changes for #{s.url} between #{rev} and #{s.last_rev}"
-                    _execute_command "svn log #{s.url} -r #{s.last_rev}:#{rev}"
-                    _execute_command "svn diff #{s.url} -r #{s.last_rev}:#{rev}"
-                 end
 
-		 pinto_distro_rev =  "#{rev}-#{build.id}"
-                 _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
-                 build_async.log :debug, "source has been successfully checked out"
+             if (! s.last_rev.nil? and ! rev.nil? )
+                build_async.log :debug,  "changes for #{s.url} between #{rev} and #{s.last_rev}"
+                _execute_command "svn log #{s.url} -r #{s.last_rev}:#{rev}"
+                _execute_command "svn diff #{s.url} -r #{s.last_rev}:#{rev}"
+                s.update({ :last_rev => rev })    
+                s.save!
+             end
+
+        	 pinto_distro_rev =  "#{rev}-#{build.id}"
+             _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
+             build_async.log :debug, "source has been successfully checked out"
+            
+             if (distributions.take) and ! (project.distribution_source.url == s.url) and record = distributions.where(" url = ? AND revision ", s[:url], rev )
+                 archive_name_with_revision = record[:dsitribution]
+             else
 
                  archive_name = _create_distribution_archive s
                  build_async.log :debug, "distribution archive #{archive_name} has been successfully created"
 
                  archive_name_with_revision = _add_distribution_to_pinto_repo s, archive_name, pinto_distro_rev
+                 # paranoid check:
+    		     _distribution_in_pinto_repo! archive_name_with_revision
                  build_async.log :debug, "distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
 
-		 _distribution_in_pinto_repo! archive_name, pinto_distro_rev
+                 if project.distribution_source.url == s.url
+                     distribution_archive = [ archive_name_with_revision, archive_name ] 
+                 else
+                     new_distribution = distributions.new
+                     new_distribution.update({ :revision => rev, :url => s[:url], :distribution => archive_name_with_revision })
+                     new_distribution.save!
+                 end
 
-                 s.update({ :last_rev => rev })    
-                 s.save
-                 distributions_list << archive_name_with_revision
-                 distribution_archive = [ archive_name_with_revision, archive_name ] if project.distribution_source.url == s.url
-                                
              end
+
+             distributions_list << archive_name_with_revision
 
         end
 
@@ -76,7 +85,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
 
       def _execute_command(cmd, raise_ex = true)
         retval = false
-	build_async.log :info, "running command: #{cmd}"
+    	build_async.log :info, "running command: #{cmd}"
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
             while line = stdout_err.gets
                 build_async.log :debug, line
@@ -88,7 +97,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
               raise "command #{cmd} failed" if raise_ex == true
            end
         end
-	build_async.log :info, "command succeeded"
+	    build_async.log :info, "command succeeded"
         retval
     end
 
@@ -98,7 +107,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
         cmd <<  _set_perl5lib
-	cmd <<  "perl Build.PL --quiet 1>/dev/null"
+	    cmd <<  "perl Build.PL --quiet 1>/dev/null"
         cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
         cmd <<  "./Build manifest --quiet 1>/dev/null"
         cmd <<  "./Build dist --quiet 1>/dev/null"
@@ -106,21 +115,11 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :sett
         distro_name = `cd #{project.local_path}/#{build.local_path}/#{source.local_path} && ls *.gz`.chomp!
     end
 
-    def _distribution_in_pinto_repo? archive_name, rev
-	_check_distribution_in_pinto_repo archive_name, rev, false
-    end
-
-    def _distribution_in_pinto_repo! archive_name, rev
-	_check_distribution_in_pinto_repo archive_name, rev, true
-    end
-
-
-    def _check_distribution_in_pinto_repo archive_name, rev, mode = true
-        archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
+    def _distribution_in_pinto_repo! archive_name_with_revision
         cmd =  "pinto -r #{settings.pinto_repo_root} list -s #{_stack} -D #{archive_name_with_revision} --no-color"
-        _execute_command(cmd, mode)
+        _execute_command(cmd)
     end
-	
+
     def _remove_distribution_from_pinto_repo archive_name, rev
         archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
         cmd =  "pinto -r #{settings.pinto_repo_root} delete PINTO/#{archive_name_with_revision} --no-color"

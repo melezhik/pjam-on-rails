@@ -8,7 +8,7 @@ class BuildsController < ApplicationController
         last_build = @project.builds.last
         @build = @project.builds.create
         @build.save
-        Delayed::Job.enqueue(BuildAsync.new(@project, last_build, @build, Setting.take, { :root_url => root_url  } ),0, Time.zone.now) 
+        Delayed::Job.enqueue(BuildAsync.new(@project, last_build, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
         flash[:notice] = "build # #{@build.id} for project # #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
         redirect_to project_path(@project)
     
