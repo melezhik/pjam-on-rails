@@ -7,6 +7,8 @@
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment
+- chomp and delete '/' on the end of SRM urls  when writting to distribution table 
+
 
 # new features
 - delete project should also kill all stacks related to project's builds?
