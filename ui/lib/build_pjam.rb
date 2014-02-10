@@ -29,14 +29,18 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
              rev = repo_info["info"]["entry"]["commit"]["revision"]
              build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
 
+             if (! s.last_rev.nil? and ! rev.nil?  and ! (project.distribution_source.url == s.url) and s.last_rev == rev  and settings.force_mode == false )
+		build_async.log :debug, "already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
+		next
+	     end
+
              if (! s.last_rev.nil? and ! rev.nil? )
                 build_async.log :debug,  "changes for #{s.url} between #{rev} and #{s.last_rev}"
                 _execute_command "svn log #{s.url} -r #{s.last_rev}:#{rev}"
                 _execute_command "svn diff #{s.url} -r #{s.last_rev}:#{rev}"
-                s.update({ :last_rev => rev })    
-                s.save!
              end
 
+	
         	 pinto_distro_rev =  "#{rev}-#{build.id}"
              _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
              build_async.log :debug, "source has been successfully checked out"
@@ -66,6 +70,9 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
              end
 
              distributions_list << archive_name_with_revision
+
+             s.update({ :last_rev => rev })    
+             s.save!
 
         end
 
