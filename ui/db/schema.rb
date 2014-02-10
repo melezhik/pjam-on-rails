@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140210072228) do
     t.boolean  "released",          default: false
   end
 
-  add_index "builds", ["project_id"], name: "index_builds_on_project_id"
+  add_index "builds", ["project_id"], name: "index_builds_on_project_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140210072228) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "distributions", force: true do |t|
     t.string   "revision"
@@ -58,10 +58,17 @@ ActiveRecord::Schema.define(version: 20140210072228) do
     t.string   "level"
   end
 
-  add_index "logs", ["build_id"], name: "index_logs_on_build_id"
+  add_index "logs", ["build_id"], name: "index_logs_on_build_id", using: :btree
 
-# Could not dump table "projects" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "projects", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "distribution_source_id"
+    t.boolean  "notify",                 default: true
+    t.text     "recipients"
+  end
 
   create_table "settings", force: true do |t|
     t.text     "perl5lib"
@@ -70,7 +77,6 @@ ActiveRecord::Schema.define(version: 20140210072228) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "force_mode",                    default: false
-    t.string   "jabber_server"
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"
@@ -87,6 +93,6 @@ ActiveRecord::Schema.define(version: 20140210072228) do
     t.string   "last_rev"
   end
 
-  add_index "sources", ["project_id"], name: "index_sources_on_project_id"
+  add_index "sources", ["project_id"], name: "index_sources_on_project_id", using: :btree
 
 end

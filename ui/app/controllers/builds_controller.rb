@@ -45,6 +45,12 @@ class BuildsController < ApplicationController
         @log_entries = @build.all_log_entries
     end
 
+    def list
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+        @list = `pinto --root=#{Setting.take.pinto_repo_root} list -s #{@project.id}-#{@build.id} --no-color --format '%a/%f' | sort | uniq `.split "\n"
+    end
+
     def destroy
         @project = Project.find(params[:project_id])
         build = Build.find(params[:id])
