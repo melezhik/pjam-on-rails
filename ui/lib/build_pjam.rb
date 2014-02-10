@@ -41,8 +41,10 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
              _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
              build_async.log :debug, "source has been successfully checked out"
             
-             if (distributions.take) and ! (project.distribution_source.url == s.url) and record = distributions.where(" url = ? AND revision ", s[:url], rev )
-                 archive_name_with_revision = record[:dsitribution]
+             if ! (project.distribution_source.url == s.url) and record = distributions.find_by(url: s[:url], revision: rev)
+                 build_async.log :debug, "distribution was already pulled before as #{record[:distribution]}"
+                 archive_name_with_revision = record[:distribution]
+                 _pull_distribution_into_pinto_repo archive_name_with_revision # re-pulling distribution again, just in case 
              else
 
                  archive_name = _create_distribution_archive s
@@ -120,6 +122,11 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
         _execute_command(cmd)
     end
 
+    def _pull_distribution_into_pinto_repo archive_name_with_revision
+        cmd =  "pinto -r #{settings.pinto_repo_root} pull -s #{_stack} PINTO/#{archive_name_with_revision} --no-color"
+        _execute_command(cmd)
+    end
+
     def _remove_distribution_from_pinto_repo archive_name, rev
         archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
         cmd =  "pinto -r #{settings.pinto_repo_root} delete PINTO/#{archive_name_with_revision} --no-color"
@@ -174,7 +181,7 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
             _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_last_stack} #{_stack} --no-color"
          end
 
-
+         sleep 5 # to privent race conditions ... because of pinto copy command does not create stack immediately
     end
 
     def _last_stack

@@ -3,6 +3,7 @@
 	- workaround:  
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
+- add sleep after stack copy command to privent race conditions +
 
 # fixes
 - add time-stamp to artefacted archive's name 
@@ -11,7 +12,7 @@
 # new features
 - delete project should also kill all stacks related to project's builds?
 - copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build
-- lock project - forbide any project modifications
+- lock project - forbide any project modifications ?
 - lock build should also lock build's stack
 - compare 2 projects - I am not sure If I need this when I may compare builds ... Also I may put current project configuration into the build 
 	- compare pinto stacks
