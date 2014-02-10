@@ -80,8 +80,6 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
 
         distribution_archive_local_path = _create_final_distribution distribution_archive
         build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
-        build.update({ :distribution_name => distribution_archive[1] })
-        build.save
 
     end
 
@@ -156,9 +154,14 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
         cmd << "cd #{distribution_archive[1].sub('.tar.gz','')}"
         cmd << "cp -r #{project.local_path}/cpanlib ."
         cmd << "cd ../"
-        cmd << "tar -czf #{distribution_archive[1]}  #{distribution_archive[1].sub('.tar.gz','')}"
+	final_distribution_name = distribution_archive[1].sub('.tar.gz',"-#{Time.now.strftime '%Y-%m-%d_%H-%M-%S'}.tar.gz")
+        cmd << "tar -czf #{final_distribution_name}  #{distribution_archive[1].sub('.tar.gz','')}"
         _execute_command(cmd.join(' && '))
-        "#{project.local_path}/#{build.local_path}/artefacts/#{distribution_archive[1]}"        
+
+        build.update({ :distribution_name => final_distribution_name })
+        build.save
+
+        "#{project.local_path}/#{build.local_path}/artefacts/#{final_distribution_name}"        
     end
 
 

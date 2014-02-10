@@ -3,11 +3,10 @@
 	- workaround:  
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
-- add sleep after stack copy command to privent race conditions +
 
 # fixes
-- add time-stamp to artefacted archive's name 
 - store jabber password incrypted ? 
+- add PINTO_LOCKFILE_TIMEOUT to pjam environment
 
 # new features
 - delete project should also kill all stacks related to project's builds?
