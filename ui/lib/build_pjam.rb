@@ -14,7 +14,8 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
          _initialize
 
         distributions_list = []
-        distribution_archive = []
+        final_distribution_archive = nil
+        final_distribution_revision = nil
         project.sources_enabled.each  do |s|
 
              build_async.log :info,  "processing source: #{s[:url]}"
@@ -60,7 +61,8 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
                  build_async.log :debug, "distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
 
                  if project.distribution_source.url == s.url
-                     distribution_archive = [ archive_name_with_revision, archive_name ] 
+                     final_distribution_archive = archive_name_with_revision
+  		     final_distribution_revision = rev
                  else
                      new_distribution = distributions.new
                      new_distribution.update({ :revision => rev, :url => s[:url], :distribution => archive_name_with_revision })
@@ -80,12 +82,12 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
             _install_pinto_distribution archive_name 
         end
 
-        if distribution_archive.empty?
-            raise "distribution archive not found!" 
+        if final_distribution_archive.nil?
+            raise "final distribution archive not found!" 
         end
 
 
-        distribution_archive_local_path = _create_final_distribution distribution_archive
+        distribution_archive_local_path = _artefact_final_distribution final_distribution_archive, final_distribution_revision
         build_async.log :debug, "final distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
 
     end
@@ -152,23 +154,31 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
         _execute_command("#{_set_perl5lib} && pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
-    def _create_final_distribution distribution_archive
+    def _artefact_final_distribution final_distribution_archive, revision
+
+	timestamp = Time.now.strftime '%Y-%m-%d_%H-%M-%S'
+
+	original_distribution_archive_dir = final_distribution_archive.sub(".#{revision}.tar.gz",'')
+
+	final_distribution_archive_with_timestamp = final_distribution_archive.sub('.tar.gz',".tar.gz-#{timestamp}")
+	final_distribution_archive_dir_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}")
+	
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/artefacts/"
-        cmd << "cp #{settings.pinto_repo_root}/authors/id/P/PI/PINTO/#{distribution_archive[0]} ."
-        cmd << "gunzip  #{distribution_archive[0]}"
-        cmd << "tar -xf #{distribution_archive[0].sub('.gz','')}"
-        cmd << "cd #{distribution_archive[1].sub('.tar.gz','')}"
+        cmd << "cp #{settings.pinto_repo_root}/authors/id/P/PI/PINTO/#{final_distribution_archive} ."
+        cmd << "gunzip  #{final_distribution_archive}"
+        cmd << "tar -xf #{final_distribution_archive.sub('.gz','')}"
+	cmd << "mv #{original_distribution_archive_dir} #{final_distribution_archive_dir_with_timestamp}"
+        cmd << "cd #{final_distribution_archive_dir_with_timestamp}"
         cmd << "cp -r #{project.local_path}/cpanlib ."
         cmd << "cd ../"
-	final_distribution_name = distribution_archive[1].sub('.tar.gz',"-#{Time.now.strftime '%Y-%m-%d_%H-%M-%S'}.tar.gz")
-        cmd << "tar -czf #{final_distribution_name}  #{distribution_archive[1].sub('.tar.gz','')}"
+        cmd << "tar -czf #{final_distribution_archive_with_timestamp} #{final_distribution_archive_dir_with_timestamp}"
         _execute_command(cmd.join(' && '))
 
-        build.update({ :distribution_name => final_distribution_name })
+        build.update({ :distribution_name => final_distribution_archive_with_timestamp })
         build.save
 
-        "#{project.local_path}/#{build.local_path}/artefacts/#{final_distribution_name}"        
+        "#{project.local_path}/#{build.local_path}/artefacts/#{final_distribution_archive_with_timestamp}"        
     end
 
 
