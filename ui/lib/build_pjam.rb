@@ -63,7 +63,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
                  if project.distribution_source.url == s.url
                      final_distribution_archive = archive_name_with_revision
-  		     final_distribution_revision = pinto_distro_rev
+          		     final_distribution_revision = pinto_distro_rev
                  else
                      new_distribution = distributions.new
                      new_distribution.update({ :revision => rev, :url => s[:url], :distribution => archive_name_with_revision })
@@ -197,9 +197,9 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          end
 
          if build.has_ancestor?
-            _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
-         else   
             _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_ancestor_stack} #{_stack} --no-color"
+         else   
+            _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
          end
 
          build.update({ :has_stack => true })
