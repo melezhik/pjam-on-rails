@@ -34,7 +34,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
              if (! s.last_rev.nil? and ! rev.nil?  and ! (project.distribution_source.url == s.url) and s.last_rev == rev  and settings.force_mode == false )
     	 	    build_async.log :debug, "already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
 	    	    next
-	     end
+    	     end
 
              if (! s.last_rev.nil? and ! rev.nil? )
                 build_async.log :debug,  "changes for #{s.url} between #{rev} and #{s.last_rev}"
@@ -47,7 +47,8 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
              _execute_command "svn co #{s.url} #{project.local_path}/#{build.local_path}/#{s.local_path} -q"
              build_async.log :debug, "source has been successfully checked out"
             
-             if ! (project.distribution_source.url == s.url) and record = distributions.find_by(url: s[:url], revision: rev)
+             
+             if ! (project.distribution_source.url == s.url) and record = distributions.find_by(indexed_url: s[:indexed_url], revision: rev)
                  build_async.log :debug, "distribution was already pulled before as #{record[:distribution]}"
                  archive_name_with_revision = record[:distribution]
                  _pull_distribution_into_pinto_repo archive_name_with_revision # re-pulling distribution again, just in case 
