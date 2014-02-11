@@ -1,5 +1,5 @@
 
-<strong>Build Distributions Listing </strong> |  <%= link_to 'Back To Project', project_path(@project) %>
+<strong>List of distributions for the build ID:<%= @build.id %></strong> |  <%= link_to 'Back To Project', project_path(@project) %>
 
 <pre>
   <strong>Project ID:</strong> <%= @project.id %>
@@ -7,21 +7,12 @@
   <strong>State:</strong> <%= @build.state %>
 </pre>
 
-<% if ! @build.comment.nil?  %>
-  <strong>Annotation:</strong>
 <pre>
-<%= @build.comment %>
-</pre>
+<%- i = 0 %>	
+<% @list.each do |d| %>
+  <%= d  %>
 <% end %>
-
-
-  <strong>Packages.</strong> 
-    <pre>
-    <%- i = 0 %>	
-    <% @list.each do |d| %>
-        <%= d  %>
-    <% end %>
-    </pre>
+</pre>
 
 [ 
 

@@ -2,16 +2,17 @@ require 'fileutils'
 require 'crack'
 require 'open3'
 
-class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :distributions, :settings  )
+class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings  )
 
     def run
 
-         raise "distribution source should be set for this project" if project.has_distribution_source? == false
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
          build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
 
          _initialize
+
+         raise "distribution source should be set for this project" if project.has_distribution_source? == false
 
         distributions_list = []
         final_distribution_archive = nil
@@ -31,8 +32,8 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
              build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
 
              if (! s.last_rev.nil? and ! rev.nil?  and ! (project.distribution_source.url == s.url) and s.last_rev == rev  and settings.force_mode == false )
-		build_async.log :debug, "already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
-		next
+    	 	    build_async.log :debug, "already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
+	    	    next
 	     end
 
              if (! s.last_rev.nil? and ! rev.nil? )
@@ -156,19 +157,19 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
 
     def _artefact_final_distribution final_distribution_archive, revision
 
-	timestamp = Time.now.strftime '%Y-%m-%d_%H-%M-%S'
+	    timestamp = Time.now.strftime '%Y-%m-%d_%H-%M-%S'
 
-	original_distribution_archive_dir = final_distribution_archive.sub(".#{revision}.tar.gz",'')
+	    original_distribution_archive_dir = final_distribution_archive.sub(".#{revision}.tar.gz",'')
 
-	final_distribution_archive_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}.tar.gz")
-	final_distribution_archive_dir_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}")
+	    final_distribution_archive_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}.tar.gz")
+	    final_distribution_archive_dir_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}")
 	
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/artefacts/"
         cmd << "cp #{settings.pinto_repo_root}/authors/id/P/PI/PINTO/#{final_distribution_archive} ."
         cmd << "gunzip  #{final_distribution_archive}"
         cmd << "tar -xf #{final_distribution_archive.sub('.gz','')}"
-	cmd << "mv #{original_distribution_archive_dir} #{final_distribution_archive_dir_with_timestamp}"
+    	cmd << "mv #{original_distribution_archive_dir} #{final_distribution_archive_dir_with_timestamp}"
         cmd << "cd #{final_distribution_archive_dir_with_timestamp}"
         cmd << "cp -r #{project.local_path}/cpanlib ."
         cmd << "cd ../"
@@ -195,21 +196,24 @@ class BuildPjam < Struct.new( :build_async, :project, :last_build, :build, :dist
              build_async.log :debug, "pinto repository has been successfully created with root at: #{settings.pinto_repo_root}"
          end
 
-         if last_build.nil?
+         if build.has_ancestor?
             _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
          else   
-            _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_last_stack} #{_stack} --no-color"
+            _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_ancestor_stack} #{_stack} --no-color"
          end
 
+         build.update({ :has_stack => true })
+         build.save!
          sleep 5 # to privent race conditions ... because of pinto copy command does not create stack immediately
     end
 
-    def _last_stack
-	"#{project.id}-#{last_build.id}"
+    def _ancestor_stack
+        ancestor = build.ancestor
+	    "#{project.id}-#{ancestor.id}"
     end
 
     def _stack
-	"#{project.id}-#{build.id}"
+	    "#{project.id}-#{build.id}"
     end
 		
     def _set_perl5lib

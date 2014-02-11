@@ -35,5 +35,13 @@ class Build < ActiveRecord::Base
     def short_comment
         (comment.split "\n").first + ' ... '
     end
+
+    def ancestor
+         Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
+    end
+
+    def has_ancestor?
+        ! ancestor.nil?
+    end
 end
 

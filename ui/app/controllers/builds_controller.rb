@@ -5,10 +5,9 @@ class BuildsController < ApplicationController
     def create
 
         @project = Project.find(params[:project_id])
-        last_build = @project.builds.last
         @build = @project.builds.create
         @build.save
-        Delayed::Job.enqueue(BuildAsync.new(@project, last_build, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
+        Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
         flash[:notice] = "build # #{@build.id} for project # #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
         redirect_to project_path(@project)
     
@@ -51,11 +50,19 @@ class BuildsController < ApplicationController
         @list = `pinto --root=#{Setting.take.pinto_repo_root} list -s #{@project.id}-#{@build.id} --no-color --format '%a/%f' | sort | uniq `.split "\n"
     end
 
+    def changes
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+        @ancestor = @build.ancestor
+        @diff = `pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@ancestor.id}  --no-color `.split "\n"
+    end
+
     def destroy
         @project = Project.find(params[:project_id])
         build = Build.find(params[:id])
 
-        _execute_command( "pinto --root=#{Setting.take.pinto_repo_root} kill #{@project.id}-#{build.id}", false)
+        `pinto --root=#{Setting.take.pinto_repo_root} kill #{@project.id}-#{build.id}`
+
         if build.locked?
             flash[:alert] = "cannot delete locked build! ID:#{params[:id]}"
         else
@@ -96,20 +103,5 @@ private
   def builds_params
       params.require( :build ).permit( :comment )
   end
-
-  def _execute_command(cmd, raise_ex = true)
-    retval = false
-    Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
-        while line = stdout_err.gets
-            logger.debug line
-        end
-        exit_status = wait_thr.value
-        retval = exit_status.success?
-        unless exit_status.success?
-          raise "command #{cmd} failed" if raise_ex == true
-       end
-    end
-    retval
- end
 
 end

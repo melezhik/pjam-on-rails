@@ -1,5 +1,8 @@
-<strong>Build Log </strong> | <%= link_to 'Back To Project', project_path(@project) %>
-
+<strong>Build Log </strong> |
+    <%= link_to 'Back To Project', project_path(@project) %> |
+    <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> | 
+    <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
+    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
 <pre>
   <strong>Project ID:</strong> <%= @project.id %>
   <strong>Build ID:</strong> <%= @build.id %>
@@ -14,7 +17,7 @@
 <% end %>
 
 <%- if @build.has_logs? %>
-  <strong>Logs. Last <%= @build.recent_log_entries_number %> entries.</strong> | <%= link_to 'Full Log', full_log_project_build_path(@project,@build) %> | <%= link_to 'List', list_project_build_path(@project,@build) %> 
+  <strong>Logs. Last <%= @build.recent_log_entries_number %> entries.</strong>
     <pre>
     <% @log_entries.each do |l| %>
         [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>

@@ -20,6 +20,7 @@ Ui::Application.routes.draw do
 
         resources :builds do
             member do
+                get 'changes'
                 get 'list'
                 get 'full_log'
                 post 'lock'

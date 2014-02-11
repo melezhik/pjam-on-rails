@@ -1,0 +1,22 @@
+<strong>List of changes between build ID:<%= @build.id %> and build ID:<%= @ancestor.id %></strong> |  <%= link_to 'Back To Project', project_path(@project) %>
+
+<pre>
+  <strong>Project ID:</strong> <%= @project.id %>
+  <strong>Build ID:</strong> <%= @build.id %>
+  <strong>State:</strong> <%= @build.state %>
+</pre>
+
+<pre>
+<%- i = 0 %>
+<% @diff.each do |l| %>
+  <%= l  %>
+<% end %>
+</pre>
+
+[
+
+ <%= link_to 'Back To Project', project_path(@project) %>
+
+]
+
+
