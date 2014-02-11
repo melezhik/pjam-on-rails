@@ -118,10 +118,18 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
         cmd <<  _set_perl5lib
-	    cmd <<  "perl Build.PL --quiet 1>/dev/null"
-        cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
-        cmd <<  "./Build manifest --quiet 1>/dev/null"
-        cmd <<  "./Build dist --quiet 1>/dev/null"
+
+        if File.exists? "#{project.local_path}/#{build.local_path}/#{source.local_path}/Build.PL"
+	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
+            cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
+            cmd <<  "./Build manifest --quiet 1>/dev/null"
+            cmd <<  "./Build dist --quiet 1>/dev/null"
+        else
+	        cmd <<  "perl Makefile.PL 1>/dev/null"
+            cmd <<  "make realclean && perl Makefile.PL 1>/dev/null"
+            cmd <<  "make manifest 1>/dev/null"
+            cmd <<  "make dist 1>/dev/null"
+        end
         _execute_command(cmd.join(' && '))
         distro_name = `cd #{project.local_path}/#{build.local_path}/#{source.local_path} && ls *.gz`.chomp!
     end

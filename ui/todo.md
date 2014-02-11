@@ -7,8 +7,6 @@
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment
-- sanitize utls before inserting into distribution table - chomp, delete traling slashes and remove schema 
-
 
 # new features
 - delete project should also kill all stacks related to project's builds?
