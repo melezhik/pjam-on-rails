@@ -13,12 +13,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          _initialize
 
          raise "distribution source should be set for this project" if project.has_distribution_source? == false
-
-        distributions_list = []
-        final_distribution_archive = nil
-        final_distribution_revision = nil
-        project.sources_enabled.each  do |s|
-
+    
+             distributions_list = []
+             final_distribution_archive = nil
+             final_distribution_revision = nil
+             project.sources_enabled.each  do |s|
+    
              build_async.log :info,  "processing source: #{s[:url]}"
 
              FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{s.local_path}"
