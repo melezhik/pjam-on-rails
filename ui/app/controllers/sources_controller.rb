@@ -1,11 +1,8 @@
-require 'uri'
-
 class SourcesController < ApplicationController
     def create
 
         @project = Project.find params[:project_id]
         @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
-        @source.update({ :indexed_url => (URI.split(@source.url)[2] + URI.split(@source.url)[5]).sub(/\/$/,"") })
         @source.save!
 
         begin

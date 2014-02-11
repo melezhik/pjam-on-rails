@@ -48,7 +48,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
              build_async.log :debug, "source has been successfully checked out"
             
              
-             if ! (project.distribution_source.url == s.url) and record = distributions.find_by(indexed_url: s[:indexed_url], revision: rev)
+             if ! (project.distribution_source.url == s.url) and record = distributions.find_by(indexed_url: s._indexed_url, revision: rev)
                  build_async.log :debug, "distribution was already pulled before as #{record[:distribution]}"
                  archive_name_with_revision = record[:distribution]
                  _pull_distribution_into_pinto_repo archive_name_with_revision # re-pulling distribution again, just in case 
@@ -67,7 +67,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
           		     final_distribution_revision = pinto_distro_rev
                  else
                      new_distribution = distributions.new
-                     new_distribution.update({ :revision => rev, :url => s[:url], :distribution => archive_name_with_revision })
+                     new_distribution.update({ :revision => rev, :url => s[:url], :distribution => archive_name_with_revision,  :indexed_url => s._indexed_url })
                      new_distribution.save!
                  end
 
