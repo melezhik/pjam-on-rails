@@ -64,13 +64,17 @@ class SourcesController < ApplicationController
     def off
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
-        if @source.update({:state => false})
-            flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url}  has been sucessfully disabled"
-            redirect_to [:edit, @project]
-        else
-            flash[:alert] = "error has been occured when disabling source ID:#{params[:id]}; Url: #{@source.url}"
-            render :edit            
-        end
+
+        #if @source.update({:state => false})
+        #    flash[:notice] = "source ID:#{params[:id]}; Url: #{@source.url}  has been sucessfully disabled"
+        #    redirect_to [:edit, @project]
+        #else
+        #    flash[:alert] = "error has been occured when disabling source ID:#{params[:id]}; Url: #{@source.url}"
+        #    render :edit            
+        #end
+
+        redirect_to [:edit, @project]
+        flash[:alert] = "`off source' feature is temporary disabled"
     end
 
 private

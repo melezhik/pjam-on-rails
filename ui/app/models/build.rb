@@ -27,11 +27,6 @@ class Build < ActiveRecord::Base
         70
     end
 
-    def locked?
-        locked == true
-    end
-
-
     def short_comment
         (comment.split "\n").first + ' ... '
     end
@@ -43,5 +38,18 @@ class Build < ActiveRecord::Base
     def has_ancestor?
         ! ancestor.nil?
     end
+
+    def locked?
+        locked == true
+    end
+
+    def stackable?
+        has_stack == true
+    end
+
+    def released?
+        released == true
+    end
+
 end
 

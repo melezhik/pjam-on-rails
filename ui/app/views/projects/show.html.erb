@@ -46,7 +46,8 @@
         <th>Status</th>
         <th>Updated</th>
         <th>Artefacts</th>
-        <th>Locked</th>
+        <th>Locked?</th>
+        <th>Released?</th>
         <th>Annotation</th>
         <th>Actions</th>
       </tr>
@@ -80,6 +81,13 @@
                 <% end %>
             </td>
             <td>
+                <% if item.released?  %>
+                    yes 
+                <% else %>
+                    no
+                <% end %>
+            </td>
+            <td>
                 <% if ! item.comment.nil?  %>
                     <i><%= item.short_comment %></i>
                 <% else %>
@@ -87,12 +95,17 @@
                 <% end %>
             </td>
             <td>
-                <%= link_to "delete", [@project, item], :method => :delete %> |
-                <% if item.locked?  %>
-                    <%= link_to "unlock", [:unlock, @project, item ], :method => :post , :title => 'keep this build forever' %> 
-                <% else %>
-                    <%= link_to "lock", [:lock, @project, item], :method => :post , :title => 'keep this build forever'  %> 
-                <% end %> |
+                <% unless item.released?  %>
+                    <%= link_to "delete", [@project, item], :method => :delete %> |
+                <% end %>
+                <% if item.locked? and ! item.released? %>
+                    <%= link_to "unlock", [:unlock, @project, item ], :method => :post , :title => 'keep this build forever' %> |
+                <% elsif ! item.released?  %>
+                    <%= link_to "lock", [:lock, @project, item], :method => :post , :title => 'keep this build forever'  %>  |
+                <% end %>
+                <% unless item.released?  %>
+                    <%= link_to "release", [ :release, @project, item ], :method => :post , :title => 'mark this build as released' %> |
+                <% end %> 
                 <%= link_to "annotate", edit_project_build_path(@project, item)  %> 
             </td>
             </tr>

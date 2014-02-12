@@ -45,6 +45,7 @@ class ProjectsController < ApplicationController
 
     def copy
         @project = Project.find(params[:id])
+
        # @project_copy = Project.new
        # @project_copy.update({ :title => @project.title + '-' + Time.new.to_i.to_s, :text => @project.text })
 
@@ -53,15 +54,21 @@ class ProjectsController < ApplicationController
        # else
        #     flash[:alert] = "error has been occured when copy project:  #{@project_copy.errors.full_messages.join ' '}"
        # end
-        flash[:alert] = "copy project feature temporary disabled"
+
+        flash[:alert] = "`copy project' feature is temporary disabled"
         redirect_to controller: "projects"
     end
 
     def destroy 
         @project = Project.find(params[:id])
-        @project.destroy
-        flash[:notice] = "project ID:#{@project.id} has been successfully removed"
+
+        #@project.destroy
+        #flash[:notice] = "project ID:#{@project.id} has been successfully removed"
+        #redirect_to controller: "projects"
+
+        flash[:alert] = "`destroy project' feature is temporary disabled"
         redirect_to controller: "projects"
+
     end
 
     def last_successfull_build

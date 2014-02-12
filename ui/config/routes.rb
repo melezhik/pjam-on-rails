@@ -25,6 +25,7 @@ Ui::Application.routes.draw do
                 get 'full_log'
                 post 'lock'
                 post 'unlock'
+                post 'release'
             end
 
             resources :logs do

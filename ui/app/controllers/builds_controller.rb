@@ -29,14 +29,13 @@ class BuildsController < ApplicationController
         @build = Build.find(params[:id])
         
         if @build.update(builds_params)
-            flash[:notice] = "build # #{@build.id} has been successfully annotated"
+            flash[:notice] = "build ID:#{@build.id} has been successfully annotated"
             redirect_to @project
         else
-            flash[:alert] = "error has been occured when annotation build # #{@build.id}"
+            flash[:alert] = "error has been occured when annotating build ID:#{@build.id}"
             render 'edit'
         end
     end
-
 
     def full_log
         @project = Project.find(params[:project_id])
@@ -63,8 +62,8 @@ class BuildsController < ApplicationController
 
         `pinto --root=#{Setting.take.pinto_repo_root} kill #{@project.id}-#{build.id}`
 
-        if build.locked?
-            flash[:alert] = "cannot delete locked build! ID:#{params[:id]}"
+        if build.locked? or  build.released?
+            flash[:alert] = "cannot delete locked  or released build! ID:#{params[:id]}"
         else
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
             build.destroy
@@ -74,9 +73,31 @@ class BuildsController < ApplicationController
 
     end
 
+    def release 
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+
+        if @build.stackable?
+            `pinto --root=#{Setting.take.pinto_repo_root} lock -s #{@project.id}-#{@build.id} --no-color`
+        end
+        
+        if @build.update({ :released => true, :locked => true })
+            flash[:notice] = "build ID:#{@build.id} has been successfully marked as released"
+            redirect_to @project
+        else
+            flash[:alert] = "error has been occured when trying to mark this build as released ID:#{@build.id}"
+            render 'edit'
+        end
+    end
+
     def lock
         @project = Project.find(params[:project_id])
         @build = @project.builds.find(params[:id])
+
+        if @build.stackable?
+            `pinto --root=#{Setting.take.pinto_repo_root} lock -s #{@project.id}-#{@build.id} --no-color`
+        end
+
         if @build.update({:locked => true })
             flash[:notice] = "build ID:#{params[:id]}; has been sucessfully locked"
             redirect_to [@project]
