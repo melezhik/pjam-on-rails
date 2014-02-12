@@ -77,9 +77,6 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])
 
-        if @build.stackable?
-            `pinto --root=#{Setting.take.pinto_repo_root} lock -s #{@project.id}-#{@build.id} --no-color`
-        end
         
         if @build.update({ :released => true, :locked => true })
             flash[:notice] = "build ID:#{@build.id} has been successfully marked as released"
@@ -93,10 +90,6 @@ class BuildsController < ApplicationController
     def lock
         @project = Project.find(params[:project_id])
         @build = @project.builds.find(params[:id])
-
-        if @build.stackable?
-            `pinto --root=#{Setting.take.pinto_repo_root} lock -s #{@project.id}-#{@build.id} --no-color`
-        end
 
         if @build.update({:locked => true })
             flash[:notice] = "build ID:#{params[:id]}; has been sucessfully locked"
