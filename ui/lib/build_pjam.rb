@@ -12,7 +12,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
          _initialize
 
-         raise "distribution source should be set for this project" if project.has_distribution_source? == false
+         raise "distribution source should be set for this project" unless project.has_distribution_source?
     
              distributions_list = []
              final_distribution_archive = nil

@@ -50,6 +50,14 @@ class Project < ActiveRecord::Base
         end
     end
 
+    def distribution_indexed_url
+        url = if has_distribution_source? == true
+            distribution_source._indexed_url
+        else
+            nil
+        end
+    end
+
     def local_path
         "#{Rails.public_path}/projects/#{id}"
     end

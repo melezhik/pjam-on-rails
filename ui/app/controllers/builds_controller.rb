@@ -5,8 +5,16 @@ class BuildsController < ApplicationController
     def create
 
         @project = Project.find(params[:project_id])
-        @build = @project.builds.create
-        @build.save
+        @build = @project.builds.create!
+        @build.save!
+
+         # snapshoting current configuration before schedulling new build
+         @project.sources_enabled.each  do |s|
+            @build.snapshots.create({ :indexed_url => s._indexed_url } ).save!
+         end
+
+         @build.snapshots.create({ :indexed_url => @project.distribution_indexed_url, :is_distribution_url => true   } ).save!
+
         Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
         flash[:notice] = "build # #{@build.id} for project # #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
         redirect_to project_path(@project)

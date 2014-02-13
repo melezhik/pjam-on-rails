@@ -19,6 +19,7 @@ Ui::Application.routes.draw do
         end
 
         resources :builds do
+
             member do
                 get 'changes'
                 get 'list'
@@ -29,6 +30,9 @@ Ui::Application.routes.draw do
             end
 
             resources :logs do
+            end
+
+            resources :shanpshots do
             end
     
         end
