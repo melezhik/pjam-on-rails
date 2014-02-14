@@ -78,13 +78,19 @@ class BuildsController < ApplicationController
 
         s = StringIO.new
         
-        Diff::LCS::HTMLDiff.new( 
-            @precendent.snapshots.map {|i| i[:indexed_url]}, 
-            @build.snapshots.map {|i| i[:indexed_url]} , 
-            :title => "diff #{@build.id} #{@precendent.id}" ,
-            :output => s
-        ).run
-        @snapshot_diff = s.string
+        if  @precendent.snapshots.empty?
+            @snapshot_diff = "insufficient data for build ID: #{@precendent.id}"
+        elsif  @build.snapshots.empty?
+            @snapshot_diff = "insufficient data for build ID: #{@build.id}"
+        else
+            Diff::LCS::HTMLDiff.new( 
+                @precendent.snapshots.map {|i| i[:indexed_url] || 'NULL'}, 
+                @build.snapshots.map {|i| i[:indexed_url] || 'NULL'} , 
+                :title => "diff #{@build.id} #{@precendent.id}" ,
+                :output => s
+            ).run
+            @snapshot_diff = s.string
+        end
     end
 
     def destroy
@@ -98,7 +104,7 @@ class BuildsController < ApplicationController
         else
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
             build.destroy
-            flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
+            flash[:notice] = "build ID:#{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
         end
         redirect_to project_path(@project)
 
