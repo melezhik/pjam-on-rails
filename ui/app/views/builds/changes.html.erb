@@ -12,7 +12,7 @@
     <th>Configuration Difference</th>
   </tr>
   <tr>
-    <td>
+    <td valign=top>
 <pre>
 <%- i = 0 %>
 <% @pinto_diff.each do |l| %>
@@ -20,10 +20,8 @@
 <% end %>
 </pre>
    </td>
-    <td>
-<pre>
+    <td valign=top>
   <%= raw(@snapshot_diff) %>
-</pre>
    </td>
  </tr>   
 </table>

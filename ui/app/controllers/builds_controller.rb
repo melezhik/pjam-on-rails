@@ -70,8 +70,8 @@ class BuildsController < ApplicationController
         s = StringIO.new
         
         Diff::LCS::HTMLDiff.new( 
-            @build.snapshots.map {|i| i[:indexed_url]} , 
             @build.precedent.snapshots.map {|i| i[:indexed_url]}, 
+            @build.snapshots.map {|i| i[:indexed_url]} , 
             :title => "diff #{@build.id} #{@build.precedent.id}" ,
             :output => s
         ).run
