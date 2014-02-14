@@ -1,4 +1,4 @@
-<strong>List of changes between build ID:<%= @build.id %> and build ID:<%= @ancestor.id %></strong> |  <%= link_to 'Back To Project', project_path(@project) %>
+<strong>List of changes between build ID:<%= @build.id %> and build ID:<%= @precendent.id %></strong> |  <%= link_to 'Back To Project', project_path(@project) %>
 
 <pre>
   <strong>Project ID:</strong> <%= @project.id %>
@@ -10,6 +10,7 @@
   <tr>
     <th>Distribution Difference</th>
     <th>Configuration Difference</th>
+    <th>Choose other builds to compare</th>
   </tr>
   <tr>
     <td valign=top>
@@ -23,7 +24,13 @@
     <td valign=top>
   <%= raw(@snapshot_diff) %>
    </td>
- </tr>   
+    <td valign=top>
+        <%= form_for([@project, @build], url: { action: "changes" }, method: :get  ) do |f| %>
+             <%= f.select :id, options_for_select(@project.builds.reverse.map {|b| b.id}) %>
+             <%= f.submit "Compare" %> 
+       <% end %>
+    </td>
+ </tr>
 </table>
 
 [

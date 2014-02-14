@@ -61,18 +61,27 @@ class BuildsController < ApplicationController
     end
 
     def changes
+
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])
-        @ancestor = @build.ancestor
-        @pinto_diff = `pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@ancestor.id}  --no-color `.split "\n"
+
+
+        if ! params[:build].nil? and  ! params[:build][:id].nil?
+            @precendent =  Build.find(params[:build][:id]) 
+        else
+            @precendent =  @build.precedent 
+        end
+
+        @pinto_diff = `pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@precendent.id}  --no-color `.split "\n"
+
         Diff::LCS::HTMLDiff.can_expand_tabs = false
 
         s = StringIO.new
         
         Diff::LCS::HTMLDiff.new( 
-            @build.precedent.snapshots.map {|i| i[:indexed_url]}, 
+            @precendent.snapshots.map {|i| i[:indexed_url]}, 
             @build.snapshots.map {|i| i[:indexed_url]} , 
-            :title => "diff #{@build.id} #{@build.precedent.id}" ,
+            :title => "diff #{@build.id} #{@precendent.id}" ,
             :output => s
         ).run
         @snapshot_diff = s.string
