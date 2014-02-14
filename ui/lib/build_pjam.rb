@@ -2,7 +2,7 @@ require 'fileutils'
 require 'crack'
 require 'open3'
 
-class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings  )
+class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
 
     def run
 
@@ -117,7 +117,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{source.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
-        cmd <<  _set_perl5lib
+        cmd <<  _set_perl5lib("#{env[:public_path]}/cpanlib/perl5")
 
         if File.exists? "#{project.local_path}/#{build.local_path}/#{source.local_path}/Build.PL"
 	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
@@ -219,12 +219,16 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 	    "#{project.id}-#{build.id}"
     end
 		
-    def _set_perl5lib
-        if settings.perl5lib.nil? or settings.perl5lib.empty?
-            "export PERL5LIB=#{project.local_path}/cpanlib/lib/perl5"
-        else
-            "export PERL5LIB=#{project.local_path}/cpanlib/lib/perl5:" +  ( settings.perl5lib.split(/\s+/).join ':' )
+    def _set_perl5lib path = nil
+
+        inc = [ "#{project.local_path}/cpanlib/lib/perl5" ]
+        inc << path unless path.nil?
+        if ! (settings.perl5lib.nil?) and ! (settings.perl5lib.empty?)
+            settings.perl5lib.split(/\s+/).each do |p|
+                inc << p
+            end
         end
+        "export PERL5LIB=#{inc.join(':')}"
     end
 
 end
