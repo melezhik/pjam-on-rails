@@ -36,6 +36,10 @@ class Build < ActiveRecord::Base
          Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
     end
 
+    def precedent
+         Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ?', project_id, id ).first
+    end
+
     def has_ancestor?
         ! ancestor.nil?
     end

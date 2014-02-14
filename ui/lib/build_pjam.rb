@@ -73,15 +73,15 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
              end
 
-             distributions_list << archive_name_with_revision
+             distributions_list << { :archive_name_with_revision => archive_name_with_revision, :revision => rev, :source => s }
 
-             s.update({ :last_rev => rev })    
-             s.save!
 
         end
 
-        distributions_list.each do |archive_name|
-            _install_pinto_distribution archive_name 
+        distributions_list.each do |item|
+            _install_pinto_distribution item[:archive_name_with_revision]
+             item[:source].update({ :last_rev => item[:revision] })    
+             item[:source].save!
         end
 
         if final_distribution_archive.nil?
@@ -142,12 +142,6 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     def _pull_distribution_into_pinto_repo archive_name_with_revision
         cmd =  "pinto -r #{settings.pinto_repo_root} pull -s #{_stack} PINTO/#{archive_name_with_revision} --no-color"
         _execute_command(cmd)
-    end
-
-    def _remove_distribution_from_pinto_repo archive_name, rev
-        archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
-        cmd =  "pinto -r #{settings.pinto_repo_root} delete PINTO/#{archive_name_with_revision} --no-color"
-        _execute_command(cmd, true)
     end
 
     def _add_distribution_to_pinto_repo source, archive_name, rev

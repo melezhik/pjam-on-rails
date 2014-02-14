@@ -6,12 +6,27 @@
   <strong>State:</strong> <%= @build.state %>
 </pre>
 
+<table collspan=7 cellpadding=7>
+  <tr>
+    <th>Distribution Difference</th>
+    <th>Configuration Difference</th>
+  </tr>
+  <tr>
+    <td>
 <pre>
 <%- i = 0 %>
-<% @diff.each do |l| %>
+<% @pinto_diff.each do |l| %>
   <%= l  %>
 <% end %>
 </pre>
+   </td>
+    <td>
+<pre>
+  <%= raw(@snapshot_diff) %>
+</pre>
+   </td>
+ </tr>   
+</table>
 
 [
 

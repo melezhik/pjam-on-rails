@@ -69,3 +69,5 @@ end
 gem 'yaml_db', :git => 'https://github.com/jetthoughts/yaml_db.git'
 
 
+gem "diff-lcs"
+
