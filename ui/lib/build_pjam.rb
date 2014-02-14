@@ -221,8 +221,10 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 		
     def _set_perl5lib path = nil
 
-        inc = [ "#{project.local_path}/cpanlib/lib/perl5" ]
+        inc = []
         inc << path unless path.nil?
+        inc << "#{project.local_path}/cpanlib/lib/perl5"
+
         if ! (settings.perl5lib.nil?) and ! (settings.perl5lib.empty?)
             settings.perl5lib.split(/\s+/).each do |p|
                 inc << p
