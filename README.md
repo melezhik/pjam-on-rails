@@ -8,26 +8,25 @@ Continues Integration server for PERL applications.
 * SCM integration ( subversion )
 * sends builds notifications by jabber
 * keeps artefacts
-* keeps change logs for configuration settings - _todo_
+* shows changes of configuration settings and artefacts
 * this is the ruby on rails application
-* simple, yet usefull gui powered by bootstrap
+* web ui powered by bootstrap
 
 
-# installation
+# Installation
 
     git clone https://github.com/melezhik/pjam-on-rails.git
     cd pjam-on-rails/ui
-    bundle install
-    rake db:migrate
-    ./bin/delayed_job start  
-    rails server # starts at 127.0.0.1:3000
+    bundle install # install ruby dependencies 
+    rake db:migrate # create database 
+    ./bin/delayed_job start # start builds scheduler  
+    rails server # start as 127.0.0.1:3000
   
-# prerequisites
+# Prerequisites
 - nodejs
-- sqlite or mysql client, depends on configuration
+- mysql / sqlite client
 
+# See also
+- ruby on rails
+- pinto
 
-
-
-  
-  
