@@ -20,15 +20,25 @@ Your perl applications builder. Yeah, this is a continues integration server for
     nano config/databases.yml # setup database backend 
     rake db:migrate # initialize database 
     ./bin/delayed_job start # start builds scheduler  
-    rails server # start pjam server binded to 127.0.0.1:3000
+    RAILS_ENV=production rails server -d # start pjam server binded to 127.0.0.1:3000
   
 # Prerequisites
 - nodejs
 - libmysql # variant for debian
 
 # Configuration
+All you have to do is to setup database used as data backend. Choose any driver you like, but mysql is recommended for production usage:
 
     nano config/databases.yml
+    cat config/databases.yml
+    
+    production:
+        adapter: mysql
+        database: pjam_data
+        username: root
+        password: supersecret
+        host: localhost
+    
 
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
