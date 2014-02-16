@@ -31,6 +31,6 @@ Your perl applications builder. Yeah, this is a continues integration server for
     nano config/databases.yml
 
 # See also
-- ruby on rails
-- pinto
-
+- [pinto](https://github.com/thaljef/Pinto)
+- [ruby on rails](http://rubyonrails.org)
+- [subversion](http://subversion.tigris.org)
