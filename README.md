@@ -18,7 +18,8 @@ Your perl applications builder. Yeah, this is a continues integration server for
     cd pjam-on-rails/ui
     bundle install # install ruby dependencies
     nano config/databases.yml # setup database backend 
-    rake db:migrate # initialize database 
+    rake db:migrate # initialize database
+    bundle exec rake assets:precompile
     ./bin/delayed_job start # start builds scheduler  
     RAILS_ENV=production rails server -d # start pjam server binded to 127.0.0.1:3000
   
