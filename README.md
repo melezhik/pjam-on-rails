@@ -3,28 +3,28 @@
 Continues Integration server for PERL applications.
 
 # Features
-* creates builds for perl applications using [pinto](https://github.com/thaljef/Pinto) 
-* asynchronous execution of build tasks
-* SCM integration ( subversion )
+* creates perl applications builds 
+* uses [pinto](https://github.com/thaljef/Pinto) inside to handle dependencies
+* checkouts sources from subversion SCM 
+* asynchronously executes build tasks
 * sends builds notifications by jabber
 * keeps artefacts
-* shows changes of configuration settings and artefacts
+* shows differences between builds
 * this is the ruby on rails application
-* web ui powered by bootstrap
-
 
 # Installation
 
     git clone https://github.com/melezhik/pjam-on-rails.git
     cd pjam-on-rails/ui
-    bundle install # install ruby dependencies 
-    rake db:migrate # create database 
+    bundle install # install ruby dependencies
+    nano config/database.yml # setup database backend 
+    rake db:migrate # initialize database 
     ./bin/delayed_job start # start builds scheduler  
-    rails server # start as 127.0.0.1:3000
+    rails server # start pjam server binded to 127.0.0.1:3000
   
 # Prerequisites
 - nodejs
-- mysql / sqlite client
+- libmysql # variant for debian
 
 # See also
 - ruby on rails
