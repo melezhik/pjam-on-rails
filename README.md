@@ -1,6 +1,6 @@
 # pjam-on-rails
 
-Your perl applications builder. Yeah, this is the continues integration server for perl applications.
+Your perl applications builder. Yeah, this is a continues integration server for perl applications.
 
 # Features
 * creates perl applications builds 
@@ -17,7 +17,7 @@ Your perl applications builder. Yeah, this is the continues integration server f
     git clone https://github.com/melezhik/pjam-on-rails.git
     cd pjam-on-rails/ui
     bundle install # install ruby dependencies
-    nano config/database.yml # setup database backend 
+    nano config/databases.yml # setup database backend 
     rake db:migrate # initialize database 
     ./bin/delayed_job start # start builds scheduler  
     rails server # start pjam server binded to 127.0.0.1:3000
@@ -25,6 +25,10 @@ Your perl applications builder. Yeah, this is the continues integration server f
 # Prerequisites
 - nodejs
 - libmysql # variant for debian
+
+# Configuration
+
+    nano config/databases.yml
 
 # See also
 - ruby on rails
