@@ -1,11 +1,11 @@
 # pjam-on-rails
 
-Continues Integration server for PERL applications.
+Your perl applications builder. Yeah, this is the continues integration server for perl applications.
 
 # Features
 * creates perl applications builds 
 * uses [pinto](https://github.com/thaljef/Pinto) inside to handle dependencies
-* checkouts sources from subversion SCM 
+* checkouts sources from subversion VCS 
 * asynchronously executes build tasks
 * sends builds notifications by jabber
 * keeps artefacts
