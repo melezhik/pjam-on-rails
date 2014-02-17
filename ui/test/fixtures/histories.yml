@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  commiter: MyString
+  action: MyString
+  project_id: 
+
+two:
+  commiter: MyString
+  action: MyString
+  project_id: 

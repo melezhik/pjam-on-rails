@@ -9,7 +9,8 @@ class BuildsController < ApplicationController
 
         @project = Project.find(params[:project_id])
         @build = @project.builds.create!
-        @build.save!
+
+        @project.history.create!( { :commiter => request.remote_host, :action => 'run build' })
 
          # snapshoting current configuration before schedulling new build
          @project.sources_enabled.each  do |s|
@@ -91,6 +92,8 @@ class BuildsController < ApplicationController
             ).run
             @snapshot_diff = s.string
         end
+
+        @history = History.order( id: :desc ).where('project_id = ? AND created_at >= ?  AND created_at <= ? ', @project[:id], @precendent[:created_at], @build[:created_at] );
 
     end
 

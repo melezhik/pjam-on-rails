@@ -10,6 +10,7 @@
   <tr>
     <th>Distribution Difference</th>
     <th>Configuration Difference</th>
+    <th>Change Log</th>
     <th>Choose other builds to compare</th>
   </tr>
   <tr>
@@ -23,6 +24,14 @@
    </td>
     <td valign=top>
   <%= raw(@snapshot_diff) %>
+   </td>
+    <td valign=top>
+<pre>
+<%- i = 0 %>
+<% @history.each do |l| %>
+  <%= l[:created_at]  %>; by <%= l[:commiter] || 'anonimous' %> ; <%= l[:action] %>
+<% end %>
+</pre>
    </td>
     <td valign=top>
         <%= form_for([@project, @build], url: { action: "changes" }, method: :get  ) do |f| %>

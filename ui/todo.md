@@ -10,6 +10,7 @@
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment 
+- differences between 2 pinto stacks - take into account STDERR (usefull when stacks have no diferrence)
 
 # new features
 - copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build
