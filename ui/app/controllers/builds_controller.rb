@@ -18,7 +18,7 @@ class BuildsController < ApplicationController
 
          @build.snapshots.create({ :indexed_url => @project.distribution_indexed_url, :is_distribution_url => true   } ).save!
 
-        Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
+        Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
         flash[:notice] = "build # #{@build.id} for project # #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
         redirect_to project_path(@project)
     
@@ -78,13 +78,20 @@ class BuildsController < ApplicationController
 
         s = StringIO.new
         
-        Diff::LCS::HTMLDiff.new( 
-            @precendent.snapshots.sort.map {|i| i[:indexed_url]}, 
-            @build.snapshots.sort.map {|i| i[:indexed_url]} , 
-            :title => "diff #{@build.id} #{@precendent.id}" ,
-            :output => s
-        ).run
-        @snapshot_diff = s.string
+        if  @precendent.snapshots.empty?
+            @snapshot_diff = "insufficient data for build ID: #{@precendent.id}"
+        elsif  @build.snapshots.empty?
+            @snapshot_diff = "insufficient data for build ID: #{@build.id}"
+        else
+            Diff::LCS::HTMLDiff.new( 
+                @precendent.snapshots.sort.map { |i| ( i[:is_distribution_url] == true ? ' * ' : '' ) + (i[:indexed_url] || 'NULL') }, 
+                @build.snapshots.sort.map {|i| ( i[:is_distribution_url] == true ? ' * ' : '' ) +  (i[:indexed_url] || 'NULL') } , 
+                :title => "diff #{@build.id} #{@precendent.id}" ,
+                :output => s
+            ).run
+            @snapshot_diff = s.string
+        end
+
     end
 
     def destroy
@@ -98,7 +105,7 @@ class BuildsController < ApplicationController
         else
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
             build.destroy
-            flash[:notice] = "build # #{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
+            flash[:notice] = "build ID:#{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
         end
         redirect_to project_path(@project)
 

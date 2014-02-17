@@ -1,33 +1,47 @@
 # pjam-on-rails
 
-Continues Integration server for PERL applications.
+Your perl applications builder. Yeah, this is a continues integration server for perl applications.
 
 # Features
-* creates builds for perl applications using [pinto](https://github.com/thaljef/Pinto) 
-* asynchronous execution of build tasks
-* SCM integration ( subversion )
+* creates perl applications builds 
+* uses [pinto](https://github.com/thaljef/Pinto) inside to handle dependencies
+* checkouts sources from subversion VCS 
+* asynchronously executes build tasks
 * sends builds notifications by jabber
 * keeps artefacts
-* keeps change logs for configuration settings - _todo_
+* shows differences between builds
 * this is the ruby on rails application
-* simple, yet usefull gui powered by bootstrap
 
-
-# installation
+# Installation
 
     git clone https://github.com/melezhik/pjam-on-rails.git
     cd pjam-on-rails/ui
-    bundle install
-    rake db:migrate
-    ./bin/delayed_job start  
-    rails server # starts at 127.0.0.1:3000
+    bundle install # install ruby dependencies
+    nano config/databases.yml # setup database backend 
+    rake db:migrate # initialize database
+    bundle exec rake assets:precompile
+    ./bin/delayed_job start # start builds scheduler  
+    RAILS_ENV=production rails server -d # start pjam server binded to 127.0.0.1:3000
   
-# prerequisites
+# Prerequisites
 - nodejs
-- sqlite or mysql client, depends on configuration
+- libmysql # variant for debian
 
+# Configuration
+All you have to do is to setup database used as data backend. Choose any driver you like, but mysql is recommended for production usage:
 
+    nano config/databases.yml
+    cat config/databases.yml
+    
+    production:
+        adapter: mysql
+        database: pjam_data
+        username: root
+        password: supersecret
+        host: localhost
+    
 
-
-  
-  
+# See also
+- [pinto](https://github.com/thaljef/Pinto)
+- [ruby on rails](http://rubyonrails.org)
+- [subversion](http://subversion.tigris.org)

@@ -5,7 +5,7 @@ class BuildAsync < Struct.new( :project, :build, :distribution, :settings, :env 
 
 
     def perform
-        pj = BuildPjam.new self, project, build, distribution, settings 
+        pj = BuildPjam.new self, project, build, distribution, settings, env 
         pj.run 
     end
 
