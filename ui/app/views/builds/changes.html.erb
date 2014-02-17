@@ -29,7 +29,7 @@
 <pre>
 <%- i = 0 %>
 <% @history.each do |l| %>
-  <%= l[:created_at]  %>; by <%= l[:commiter] || 'anonimous' %> ; <%= l[:action] %>
+  <%= l[:created_at]  %>; by <%= l[:commiter].nil? ? 'anonimous' : Resolv.new.getname(l[:commiter])  %> ; <%= l[:action] %>
 <% end %>
 </pre>
    </td>
