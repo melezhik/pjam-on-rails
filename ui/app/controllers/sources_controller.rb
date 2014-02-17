@@ -11,6 +11,8 @@ class SourcesController < ApplicationController
             @project.update({:distribution_source_id => @source[:id]})
         end
 
+        @project.history.create!( { :commiter => request.remote_host, :action => "add #{@source._indexed_url}" }) 
+
         if @project.save
             flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
         else
@@ -24,8 +26,10 @@ class SourcesController < ApplicationController
 
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
+        indexed_url =  @source._indexed_url
         url = @source.url
         @source.destroy
+        @project.history.create!( { :commiter => request.remote_host, :action => "remove #{indexed_url}" }) 
         flash[:notice] = "source ID:#{params[:id]}; Url: #{url} has been successfully deleted"
         redirect_to edit_project_path @project
     end
@@ -38,6 +42,8 @@ class SourcesController < ApplicationController
     def update 
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
+
+        @project.history.create!( { :commiter => request.remote_host, :action => "update project" }) 
         
         if @source.update(source_params)
             flash[:notice] = "source ID: #{@source.id} has been successfully reordered"
