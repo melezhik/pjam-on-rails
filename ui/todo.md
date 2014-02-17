@@ -14,9 +14,6 @@
 # new features
 - copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build
 - lock project - forbid any project modifications
-- compare 2 projects - I am not sure If I need this when I may compare builds ... Also I may put current project configuration into the build 
-	- compare pinto stacks - partly done
-	- compare projects configurations (sources list) - partly done
 - pin / upin / pull modules via pjam  ?
 - ldap authoriazation ?
 - history - store projects modifications in database and show them - who, what and when change project
