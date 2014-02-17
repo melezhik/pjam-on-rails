@@ -4,13 +4,15 @@
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
 
+# improvements
+- use radio buttons instead of popup list when set project artefact
+
 # refactoring
-- distribution_source should be renamed to application ?
+- distribution_source should be renamed to application or arftefact ?
 
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment 
-- differences between 2 pinto stacks - take into account STDERR (usefull when stacks have no diferrence)
 
 # new features
 - copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build

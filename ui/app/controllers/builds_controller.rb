@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'diff/lcs'
 require 'diff/lcs/htmldiff'
+require 'open3'
 
 class BuildsController < ApplicationController
 
@@ -73,7 +74,7 @@ class BuildsController < ApplicationController
             @precendent =  @build.precedent 
         end
 
-        @pinto_diff = `pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@precendent.id}  --no-color `.split "\n"
+        @pinto_diff = execute_command("pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@precendent.id}  --no-color", false)
 
         Diff::LCS::HTMLDiff.can_expand_tabs = false
 
@@ -158,5 +159,24 @@ private
   def builds_params
       params.require( :build ).permit( :comment )
   end
+
+  def execute_command(cmd, raise_ex = true )
+    res = []
+    logger.debug "running command: #{cmd}"
+    Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
+        while line = stdout_err.gets
+            logger.debug line
+            res << line.chomp
+        end
+        exit_status = wait_thr.value
+        retval = exit_status.success?
+        unless exit_status.success?
+          logger.debug "command failed"
+          raise "command #{cmd} failed" if raise_ex == true
+       end
+    end
+        logger.debug "command succeeded"
+    res
+end
 
 end
