@@ -84,8 +84,8 @@ class BuildsController < ApplicationController
             @snapshot_diff = "insufficient data for build ID: #{@build.id}"
         else
             Diff::LCS::HTMLDiff.new( 
-                @precendent.snapshots.sort.map { |i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) + (i[:indexed_url] || 'NULL') }, 
-                @build.snapshots.sort.map {|i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) +  (i[:indexed_url] || 'NULL') } , 
+                @precendent.snapshots.map { |i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) + (i[:indexed_url] || 'NULL') }.sort, 
+                @build.snapshots.map {|i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) +  (i[:indexed_url] || 'NULL') }.sort , 
                 :title => "diff #{@build.id} #{@precendent.id}" ,
                 :output => s
             ).run
