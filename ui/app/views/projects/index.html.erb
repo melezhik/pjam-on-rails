@@ -2,7 +2,7 @@
 
 <h1>Projects List</h1>
  
-<table collspan=7 cellpadding=7>
+<table class="table">
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -11,14 +11,8 @@
     <th>Actions</th>
   </tr>
  
-  <% i = 0 %>
   <% @projects.each do |item| %>
-    <% i+=1; if i.even? %>    
-        <% color = '#CCCCFF' %>
-    <% else %>
-        <% color = '#66CCCC' %>
-    <% end %>
-    <tr bgcolor="<%= color %>">
+    <tr>
       <td><%= link_to item.title , project_path(item) %></td>
       <td><%= item.text %></td>
       <td>

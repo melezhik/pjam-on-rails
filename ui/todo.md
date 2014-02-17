@@ -3,9 +3,11 @@
 	- workaround:  
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
+- Resolv.new.getname require read access to /etc/hosts
 
 # improvements
 - use radio buttons instead of popup list when set project artefact
+- use https://github.com/jwebcat/tables-sass for tables as whole ( now it's copied and pasted to app/assets/stylesheets/project.css.scss )
 
 # refactoring
 - distribution_source should be renamed to application or arftefact ?

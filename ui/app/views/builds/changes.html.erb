@@ -6,12 +6,11 @@
   <strong>State:</strong> <%= @build.state %>
 </pre>
 
-<table collspan=7 cellpadding=7>
+<table class="table">
   <tr>
     <th>Distribution Difference</th>
     <th>Configuration Difference</th>
     <th>Change Log</th>
-    <th>Choose other builds to compare</th>
   </tr>
   <tr>
     <td valign=top>
@@ -32,8 +31,7 @@
   <%= l[:created_at]  %>; by <%= l[:commiter].nil? ? 'anonimous' : Resolv.new.getname(l[:commiter])  %> ; <%= l[:action] %>
 <% end %>
 </pre>
-   </td>
-    <td valign=top>
+Compare with other builds:
         <%= form_for([@project, @build], url: { action: "changes" }, method: :get  ) do |f| %>
              <%= f.select :id, options_for_select(@project.builds.reverse.map {|b| b.id}) %>
              <%= f.submit "Compare" %> 
