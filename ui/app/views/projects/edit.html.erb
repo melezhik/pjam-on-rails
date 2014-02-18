@@ -11,7 +11,7 @@
 <%= form_for([@project, @project.sources.build]) do |f| %>
   <p>
     <%= f.label :scm_type %>
-    <%= f.select :scm_type, options_for_select(%w[svn git]) %>
+    <%= f.select :scm_type, options_for_select(%w[svn]) %>
   </p>
   <p>
     <%= f.label :url %><br />
