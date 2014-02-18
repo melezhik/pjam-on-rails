@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
         
         if @project.update(project_params)
             flash[:notice] = "project # #{@project.id} has been successfully updated"
+            @project.history.create!( { :commiter => request.remote_host, :action => "update project ID: #{@project.id}" })
             redirect_to [:edit, @project]
         else
             flash[:alert] = "error has been occured when updating project ID:#{@project.id} data"

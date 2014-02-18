@@ -11,14 +11,14 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = @project.builds.create!
 
-        @project.history.create!( { :commiter => request.remote_host, :action => "run build ID: #{build.id}" })
-
          # snapshoting current configuration before schedulling new build
          @project.sources_enabled.each  do |s|
             @build.snapshots.create({ :indexed_url => s._indexed_url } ).save!
          end
 
          @build.snapshots.create({ :indexed_url => @project.distribution_indexed_url, :is_distribution_url => true   } ).save!
+
+         @project.history.create!( { :commiter => request.remote_host, :action => "run build ID: #{@build.id}" })
 
         Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
         flash[:notice] = "build # #{@build.id} for project # #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
@@ -42,6 +42,7 @@ class BuildsController < ApplicationController
         @build = Build.find(params[:id])
         
         if @build.update(builds_params)
+            @project.history.create!( { :commiter => request.remote_host, :action => "annotate build ID: #{@build.id}" })
             flash[:notice] = "build ID:#{@build.id} has been successfully annotated"
             redirect_to @project
         else
@@ -117,6 +118,7 @@ class BuildsController < ApplicationController
         else
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
             build.destroy
+            @project.history.create!( { :commiter => request.remote_host, :action => "delete build ID: #{params[:id]}" })
             flash[:notice] = "build ID:#{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
         end
         redirect_to project_path(@project)
@@ -130,6 +132,7 @@ class BuildsController < ApplicationController
         
         if @build.update({ :released => true, :locked => true })
             flash[:notice] = "build ID:#{@build.id} has been successfully marked as released"
+            @project.history.create!( { :commiter => request.remote_host, :action => "release build ID: #{@build.id}" })
             redirect_to @project
         else
             flash[:alert] = "error has been occured when trying to mark this build as released ID:#{@build.id}"
@@ -143,6 +146,7 @@ class BuildsController < ApplicationController
 
         if @build.update({:locked => true })
             flash[:notice] = "build ID:#{params[:id]}; has been sucessfully locked"
+            @project.history.create!( { :commiter => request.remote_host, :action => "lock build ID: #{@build.id}" })
             redirect_to [@project]
         else
             flash[:alert] = "error has been occured when locking build ID:#{params[:id]}"
@@ -155,6 +159,7 @@ class BuildsController < ApplicationController
         @build = @project.builds.find(params[:id])
         if @build.update({:locked => false })
             flash[:notice] = "build ID:#{params[:id]}; has been sucessfully unlocked"
+            @project.history.create!( { :commiter => request.remote_host, :action => "unlock build ID: #{@build.id}" })
             redirect_to [@project]
         else
             flash[:alert] = "error has been occured when unlocking build ID:#{params[:id]}"

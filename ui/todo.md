@@ -5,8 +5,6 @@
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
 
 # improvements
-- use radio buttons instead of popup list when set project artefact
-- build actions (delete, release, annotate, lock, unlock) should be recorded into project's history 
 - cpanlib inheritance - replace project's cpanlib by ancestor build's cpanlib when starting new build 
 
 # refactoring
