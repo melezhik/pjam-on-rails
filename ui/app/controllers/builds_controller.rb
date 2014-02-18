@@ -129,7 +129,7 @@ class BuildsController < ApplicationController
 
          @project = Project.find(params[:project_id])
          @build = Build.find(params[:id])
-         @build_popup = @project.builds.create!({ :released => @build.released, :locked => @build.locked })
+         @build_popup = @project.builds.create!({ :released => @build.released, :locked => @build.locked, :comment => "popped up from build ID:#{@build.id}\n" + (@build.comment || '') })
 
          execute_command "pinto --root=#{Setting.take.pinto_repo_root} copy #{@project.id}-#{@build.id} #{@project.id}-#{@build_popup.id}  --no-color", true
 
