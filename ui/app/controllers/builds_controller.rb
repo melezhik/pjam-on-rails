@@ -119,10 +119,42 @@ class BuildsController < ApplicationController
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
             build.destroy
             @project.history.create!( { :commiter => request.remote_host, :action => "delete build ID: #{params[:id]}" })
-            flash[:notice] = "build ID:#{params[:id]} for project # #{params[:project_id]} has been successfully deleted"
+            flash[:notice] = "build ID:#{params[:id]} for project ID:#{params[:project_id]} has been successfully deleted"
         end
         redirect_to project_path(@project)
 
+    end
+
+    def popup
+
+         @project = Project.find(params[:project_id])
+         @build = Build.find(params[:id])
+         @build_popup = @project.builds.create!({ :released => @build.released, :locked => @build.locked })
+
+         execute_command "pinto --root=#{Setting.take.pinto_repo_root} copy #{@project.id}-#{@build.id} #{@project.id}-#{@build_popup.id}  --no-color", true
+
+         @build_popup.update({ :has_stack => true })
+         @build_popup.save!
+
+         # copy all data from build to build_popup
+         @build.snapshots.each  do |s|
+            @build_popup.snapshots.create({ :indexed_url => s[:indexed_url], :is_distribution_url => s[:is_distribution_url] } ).save!
+         end
+
+
+         FileUtils.mkdir_p "#{@project.local_path}/#{@build_popup.local_path}/"
+         FileUtils.cp_r "#{@project.local_path}/#{@build.local_path}/artefacts/", "#{@project.local_path}/#{@build_popup.local_path}/"
+         # override common cpanlib by build's cpanlib
+         FileUtils.rm_rf "#{@project.local_path}/cpanlib/"
+         FileUtils.cp_r "#{@project.local_path}/#{@build.local_path}/artefacts/#{@build[:distribution_name].sub('.tar.gz','')}/cpanlib/", "#{@project.local_path}/"
+
+         @build_popup.update({ :distribution_name => @build[:distribution_name], :state => 'succeeded' })
+         @build_popup.save!
+
+         @project.history.create!( { :commiter => request.remote_host, :action => "popup build ID: #{@build.id}" })
+         flash[:notice] = "build ID:#{@build.id} for project ID:#{params[:project_id]} has been successfully popped up"
+         redirect_to project_path(@project)
+    
     end
 
     def release 

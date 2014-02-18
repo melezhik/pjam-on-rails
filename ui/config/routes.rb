@@ -31,6 +31,7 @@ Ui::Application.routes.draw do
                 post 'lock'
                 post 'unlock'
                 post 'release'
+                post 'popup'
             end
 
             resources :logs do
