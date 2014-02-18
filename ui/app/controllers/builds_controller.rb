@@ -11,7 +11,7 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = @project.builds.create!
 
-        @project.history.create!( { :commiter => request.remote_host, :action => 'run build' })
+        @project.history.create!( { :commiter => request.remote_host, :action => "run build ID: #{build.id}" })
 
          # snapshoting current configuration before schedulling new build
          @project.sources_enabled.each  do |s|
