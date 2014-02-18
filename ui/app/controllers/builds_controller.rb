@@ -81,9 +81,9 @@ class BuildsController < ApplicationController
         s = StringIO.new
         
         if  @precendent.snapshots.empty?
-            @snapshot_diff = "insufficient data for build ID: #{@precendent.id}"
+            @snapshot_diff = "<pre>insufficient data for build ID: #{@precendent.id}</pre>"
         elsif  @build.snapshots.empty?
-            @snapshot_diff = "insufficient data for build ID: #{@build.id}"
+            @snapshot_diff = "<pre>insufficient data for build ID: #{@build.id}</pre>"
         else
             Diff::LCS::HTMLDiff.new( 
                 @precendent.snapshots.map { |i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) + (i[:indexed_url] || 'NULL') }.sort, 
