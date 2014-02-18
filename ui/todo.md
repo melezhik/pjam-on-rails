@@ -11,7 +11,7 @@
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
 - when popup build also override project's sources from build snapshot 
-- rename popup to somewhat more meaningfull ...
+- rename popup to somewhat more meaningfull ... - build rallback ? 
 
 # new features
 - delete all sources
@@ -21,7 +21,7 @@
 - ability to pin / upin / pull modules via pjam  ?
 - add ldap authoriazation ?
 - install distribution on client machine via http request to pjam
-- new settings parameter - `PINTO_DEBUG' or `VERBOSE' 
+- new settings parameter - 'PINTO_DEBUG' or 'VERBOSE' 
 - build purger - should delete old builds
 
 
