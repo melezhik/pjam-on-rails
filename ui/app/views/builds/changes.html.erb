@@ -35,7 +35,7 @@
         <%= l[:created_at]  %>
     </td>
     <td>
-        <%= l[:commiter].nil? ? 'anonimous' : Resolv.new.getname(l[:commiter])  %>
+        <%= l[:commiter].nil? ? 'anonimous' : begin c = Resolv.new.getname(l[:commiter]) rescue l[:commiter] else c end   %>
     </td>
     <td>
         <%= l[:action] %>
