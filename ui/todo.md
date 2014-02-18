@@ -22,5 +22,6 @@
 - add ldap authoriazation ?
 - install distribution on client machine via http request to pjam
 - new settings parameter - `PINTO_DEBUG' or `VERBOSE' 
+- build purger - should delete old builds
 
 
