@@ -91,9 +91,17 @@ class BuildsController < ApplicationController
                 :title => "diff #{@build.id} #{@precendent.id}" ,
                 :output => s
             ).run
+
             @snapshot_diff = s.string
+            @snapshot_diff.sub!(/<html>.*<body>/m) { "" } 
+            @snapshot_diff.gsub! '<h1>', '<strong>'
+            @snapshot_diff.gsub! '</h1>', '</strong>'
+            @snapshot_diff.sub! '</html>', ''
+            @snapshot_diff.sub! '</body>', ''
+
         end
 
+    
         @history = History.order( id: :desc ).where('project_id = ? AND created_at >= ?  AND created_at <= ? ', @project[:id], @precendent[:created_at], @build[:created_at] );
 
     end

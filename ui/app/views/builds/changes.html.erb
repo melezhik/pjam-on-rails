@@ -9,13 +9,12 @@
 <table class="table">
   <tr>
     <th>Distribution Difference</th>
-    <th>Configuration Difference</th>
-    <th>Change Log</th>
+    <th>Change Log / Source Changes</th>
+    <th>Choose other builds</th>
   </tr>
   <tr>
     <td valign=top>
 <pre>
-<%- i = 0 %>
 <% @pinto_diff.each do |l| %>
   <%= l  %>
 <% end %>
@@ -23,15 +22,28 @@
    </td>
     <td valign=top>
   <%= raw(@snapshot_diff) %>
+  <table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Commiter</th>
+    <th>Action</th>
+  </tr>
+  <% @history.each do |l| %>
+  <tr>
+    <td>
+        <%= l[:created_at]  %>
+    </td>
+    <td>
+        <%= l[:commiter].nil? ? 'anonimous' : Resolv.new.getname(l[:commiter])  %>
+    </td>
+    <td>
+        <%= l[:action] %>
+    </td>
+  </tr>  
+  <% end %>
+  </table>
    </td>
-    <td valign=top>
-<pre>
-<%- i = 0 %>
-<% @history.each do |l| %>
-  <%= l[:created_at]  %>; by <%= l[:commiter].nil? ? 'anonimous' : Resolv.new.getname(l[:commiter])  %> ; <%= l[:action] %>
-<% end %>
-</pre>
-Compare with other builds:
+    <td>
         <%= form_for([@project, @build], url: { action: "changes" }, method: :get  ) do |f| %>
              <%= f.select :id, options_for_select(@project.builds.reverse.map {|b| b.id}) %>
              <%= f.submit "Compare" %> 

@@ -1,9 +1,6 @@
 
 <strong>Build Log </strong> |  
     <%= link_to 'Back To Project', project_path(@project) %> |
-    <%= link_to "Last #{@build.recent_log_entries_number} entries", project_build_path(@project,@build), :title => 'Last Entries' %> |
-    <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
-    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
 
 <pre>
   <strong>Project ID:</strong> <%= @project.id %>
@@ -19,15 +16,16 @@
 <% end %>
 
 
-<%- if @build.has_logs? %>
-  <strong>Logs.</strong> 
+  <strong>All Logs </strong>  |
+    <%= link_to "Last #{@build.recent_log_entries_number} entries", project_build_path(@project,@build), :title => 'Last Entries' %> |
+    <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
+    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
     <pre>
     <%- i = 0 %>	
     <% @log_entries.each do |l| %>
         <%= link_to "[#{i+=1}]", "##{i}", :id => "#{i+10}"  %> [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
     <% end %>
     </pre>
-<%- end %>
 
 [ 
 
