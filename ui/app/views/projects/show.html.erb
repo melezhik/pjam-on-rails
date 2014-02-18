@@ -37,7 +37,7 @@
   <strong>Builds History.</strong>
 </pre>
 
-    <table class="table table-striped">
+    <table class="table table-bordered">
       <tr>
         <th>NN</th>
         <th>Log</th>
@@ -50,6 +50,14 @@
         <th>Actions</th>
       </tr>
     <% @project.builds.reverse.each do |item| %>
+        <% if item[:state] == 'succeeded'  %>
+        <% tr_class = 'success' %>
+        <% elsif item[:state] == 'failed' %>
+        <% tr_class = 'error' %>
+        <% else %>
+        <% tr_class = 'info' %>
+        <% end %>
+
         <tr>
             <% i+=1 %>
             <td>
