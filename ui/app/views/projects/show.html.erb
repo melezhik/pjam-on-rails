@@ -113,8 +113,7 @@
                     <%= link_to "release", [ :release, @project, item ], :method => :post , :title => 'mark this build as released' %> |
                 <% end %> 
                 <%= link_to "annotate", edit_project_build_path(@project, item)  %> |
-                <%= link_to "changes", changes_project_build_path(@project, item)  %> |
-                <%= link_to "popup", popup_project_build_path(@project, item), :method => :post   %> 
+                <%= link_to "changes", changes_project_build_path(@project, item)  %>
             </td>
             </tr>
     <% end %>

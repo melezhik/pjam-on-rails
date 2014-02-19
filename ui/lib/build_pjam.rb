@@ -9,6 +9,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
          build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
+         build_async.log :debug,  "build ancestor: #{build.has_ancestor? ? build.ancestor.id : 'not set'}"
 
          _initialize
 
@@ -205,6 +206,16 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
             _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
          end
 
+        if build.has_parent?
+             # override installbase by parent's install base
+             FileUtils.rm_rf "#{project.local_path}/cpanlib/"
+             parent_cpanlib_path = "#{project.local_path}/#{build.ancestor.local_path}/artefacts/#{build.ancestor[:distribution_name].sub('.tar.gz','')}/cpanlib/"
+             FileUtils.cp_r "#{parent_cpanlib_path}", "#{project.local_path}/"
+             build_async.log :debug,  "install base #{project.local_path}/cpanlib  has been successfully overriden by #{parent_cpanlib_path}"
+         else
+             build_async.log :debug,  "use install base #{project.local_path}/cpanlib as is"
+         end
+   
          build.update({ :has_stack => true })
          build.save!
          sleep 5 # to privent race conditions ... because of pinto copy command does not create stack immediately

@@ -10,8 +10,6 @@
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
-- when popup build also override project's sources from build snapshot 
-- rename popup to somewhat more meaningfull ... - build rallback ? 
 
 # new features
 - delete all sources

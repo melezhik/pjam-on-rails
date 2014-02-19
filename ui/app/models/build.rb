@@ -6,6 +6,8 @@ class Build < ActiveRecord::Base
     has_many :snapshots, :dependent => :destroy
 
 #    validates :comment, presence: true , length: { minimum: 10 }
+
+    attr_accessor :parent_id
     
     def local_path
         "builds/#{id}"
@@ -33,11 +35,19 @@ class Build < ActiveRecord::Base
     end
 
     def ancestor
-         Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
+         if parent_id.nil?
+             Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
+         else
+             Build.limit(1).order( id: :desc ).where('project_id = ? AND id = ? ', project_id, parent_id ).first
+         end
     end
 
     def precedent
          Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ?', project_id, id ).first
+    end
+
+    def has_parent?
+        parent_id.nil? == false
     end
 
     def has_ancestor?
