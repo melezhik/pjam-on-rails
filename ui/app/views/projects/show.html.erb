@@ -102,7 +102,7 @@
             </td>
             <td>
                 <% unless item.released?  %>
-                    <%= link_to "delete", [@project, item], :method => :delete %> |
+                    <%= link_to "delete", [@project, item], :method => :delete, :title => 'permanently delete this build' %> |
                 <% end %>
                 <% if item.locked? and ! item.released? %>
                     <%= link_to "unlock", [:unlock, @project, item ], :method => :post , :title => 'keep this build forever' %> |
@@ -112,9 +112,10 @@
                 <% unless item.released?  %>
                     <%= link_to "release", [ :release, @project, item ], :method => :post , :title => 'mark this build as released' %> |
                 <% end %> 
-                <%= link_to "annotate", edit_project_build_path(@project, item)  %> |
-                <%= link_to "log", [@project, item]  %> |
-                <%= link_to "changes", changes_project_build_path(@project, item)  %>
+                <%= link_to "annotate", edit_project_build_path(@project, item), :title => 'add description for this build'  %> |
+                <%= link_to "log", [@project, item],  :title => 'show build log' %> |
+                <%= link_to "configuration", configuration_project_build_path(@project, item), :title => 'show build configuration'  %> |
+                <%= link_to "changes", changes_project_build_path(@project, item),  :title => 'last changes applied to build' %>
             </td>
             </tr>
     <% end %>

@@ -16,11 +16,11 @@
 <% end %>
 
 
-  <strong>All Logs </strong>  |
+  <strong>Full Log</strong>  |
     <%= link_to "Last #{@build.recent_log_entries_number} entries", project_build_path(@project,@build), :title => 'Last Entries' %> |
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
-    <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %>
-    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
+    <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
+    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %>
     <pre>
     <%- i = 0 %>	
     <% @log_entries.each do |l| %>
