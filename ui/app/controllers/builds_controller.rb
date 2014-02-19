@@ -48,6 +48,12 @@ class BuildsController < ApplicationController
         @log_entries = @build.recent_log_entries
     end
 
+    def configuration
+        @project = Project.find(params[:project_id])
+        @build = Build.find(params[:id])
+        @data = @build.snapshots
+    end
+
     def edit
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])

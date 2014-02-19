@@ -13,18 +13,24 @@
 </pre>
 <% end %>
 
-  <strong>Logs - last <%= @build.recent_log_entries_number %> entries</strong> |
-    <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> | 
+  <strong>Build Configuration</strong> |
+    <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
-    <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
     <%= link_to 'Fork', fork_project_build_path(@project,@build), :method => :post, :title => 'fork this build' %>
-    <pre>
-    <% @log_entries.each do |l| %>
-        [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
-    <% end %>
-    </pre>
 
+    <table class="table table-bordered">
+      <tr>
+        <th>URL</th>
+        <th>Is Application?</th>
+      </tr>
+    <% @data.each do |item| %>
+    <tr>
+        <td><%= item[:indexed_url] %></td>
+        <td><%= item[:is_distribution_url]? 'yes' : 'no'  %></td>
+    </tr>
+    <% end %>
+    </table>
 [ 
 
  <%= link_to 'Back To Project', project_path(@project) %> 

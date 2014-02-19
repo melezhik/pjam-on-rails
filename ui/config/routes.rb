@@ -28,6 +28,7 @@ Ui::Application.routes.draw do
                 get 'changes'
                 get 'list'
                 get 'full_log'
+                get 'configuration'
                 post 'lock'
                 post 'unlock'
                 post 'release'
