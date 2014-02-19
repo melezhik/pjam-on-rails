@@ -11,19 +11,35 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = @project.builds.create!
 
-         # snapshoting current configuration before schedulling new build
-         @project.sources_enabled.each  do |s|
-            @build.snapshots.create({ :indexed_url => s._indexed_url } ).save!
-         end
-
-         @build.snapshots.create({ :indexed_url => @project.distribution_indexed_url, :is_distribution_url => true   } ).save!
-
-         @project.history.create!( { :commiter => request.remote_host, :action => "run build ID: #{@build.id}" })
+        make_snapshot @project, @build
+        @project.history.create!( { :commiter => request.remote_host, :action => "run build ID: #{@build.id}" })
 
         Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
-        flash[:notice] = "build # #{@build.id} for project # #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
+        flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
         redirect_to project_path(@project)
     
+    end
+
+    def fork
+
+        @project = Project.find(params[:project_id])
+        @parent_build = Build.find(params[:id])
+
+        if @parent_build.succeeded?
+
+            @build = @project.builds.create!({ :parent_id => @parent_build.id })
+
+            make_snapshot @project, @build
+            @project.history.create!( { :commiter => request.remote_host, :action => "run forked build ID: #{@build.id}; parent ID: #{@parent_build.id}" })
+
+            Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
+            flash[:notice] = "forked build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now};  parent ID: #{@build.parent_id}"
+        else
+            flash[:alert] = "cannot fork unsucceded build; build ID:#{@parent_build.id}; state:#{@parent_build.state}"
+        end
+
+        redirect_to project_path(@project)
+
     end
 
     def show
@@ -190,6 +206,15 @@ private
     end
         logger.debug "command succeeded"
     res
-end
+
+  end
+
+   def make_snapshot project, build
+         # snapshoting current configuration before schedulling new build
+         project.sources_enabled.each  do |s|
+            build.snapshots.create({ :indexed_url => s._indexed_url } ).save!
+         end
+         build.snapshots.create({ :indexed_url => project.distribution_indexed_url, :is_distribution_url => true   } ).save!
+   end  
 
 end

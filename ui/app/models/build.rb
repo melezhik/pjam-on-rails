@@ -6,8 +6,6 @@ class Build < ActiveRecord::Base
     has_many :snapshots, :dependent => :destroy
 
 #    validates :comment, presence: true , length: { minimum: 10 }
-
-    attr_accessor :parent_id
     
     def local_path
         "builds/#{id}"
@@ -66,5 +64,8 @@ class Build < ActiveRecord::Base
         released == true
     end
 
+    def succeeded?
+        state == 'succeeded'
+    end
 end
 
