@@ -17,7 +17,7 @@ development:
    pool: 5
    username: pinto
    password: pinto
-   host: sql.webdev.x
+   host: pjam.db.local
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -36,6 +36,7 @@ production:
    pool: 5
    username: pinto
    password: pinto
-   host: sql.webdev.x
+   host: pjam.db.local
+
 
 
