@@ -18,7 +18,7 @@
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
     <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
-    <%= link_to 'Fork', fork_project_build_path(@project,@build), :method => :post, :title => 'fork this build' %>
+    <%= link_to 'Rebuild', rebuil_project_build_path(@project,@build), :method => :post, :title => 'rebuild this build' %>
     <pre>
     <% @log_entries.each do |l| %>
         [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>

@@ -32,7 +32,7 @@ Ui::Application.routes.draw do
                 post 'lock'
                 post 'unlock'
                 post 'release'
-                post 'fork'
+                post 'rebuild'
             end
 
             resources :logs do

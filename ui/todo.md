@@ -6,8 +6,6 @@
 
 # refactoring
 - distribution_source should be renamed to application or arftefact ?
-- rename fork build into rebuild action?
-
 
 # fixes
 - store jabber password incrypted ? 
