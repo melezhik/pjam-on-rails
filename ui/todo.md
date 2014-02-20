@@ -6,18 +6,19 @@
 
 # refactoring
 - distribution_source should be renamed to application or arftefact ?
+- rename fork build into rebuild action?
+
 
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
 
 # new features
-- ability to setup projects very first stack 
+- apply build's configuration to project
 - delete all sources
 - handle svn.exteranls - which result in multiple sources being added via single url
 - copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build ...
 - lock project - forbid any project modifications
-- ability to pin / upin / pull modules via pjam  ?
 - add ldap authoriazation ?
 - install distribution on client machine via http request to pjam
 - new settings parameter - 'PINTO_DEBUG' or 'VERBOSE' 
