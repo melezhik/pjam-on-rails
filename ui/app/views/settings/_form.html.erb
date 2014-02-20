@@ -12,6 +12,10 @@
   </div>
   <% end %>
   <p>
+     <%= f.check_box :verbose, { :value => true , :checked => @settings[:verbose] } %>
+     <%= f.label(:verbose, "verbose logging") %>
+  </p>
+  <p>
     <%= f.label :perl5lib %><br>
     <%= f.text_field :perl5lib, :size => "100" %>
   </p>

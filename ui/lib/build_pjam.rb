@@ -6,6 +6,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
     def run
 
+         build_async.log :debug,  "settings.verbose: #{settings[:verbose]}"
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
          build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
@@ -156,7 +157,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("#{_set_perl5lib} && pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color -o 'v' -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("#{_set_perl5lib} && pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color #{cpanm_flags} -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _artefact_final_distribution final_distribution_archive, revision
@@ -251,6 +252,13 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         "export PERL5LIB=#{inc.join(':')}"
     end
 
+    def cpanm_flags
+        if settings.verbose?
+            '-o v'
+        else
+            ''
+        end
+    end
 end
 
 
