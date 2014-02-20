@@ -8,6 +8,7 @@
     <th>Text</th>
     <th>Last Build</th>
     <th>Artefacts</th>
+    <th>Builds Total / Builds Succeeded </th>
     <th>Actions</th>
   </tr>
  
@@ -29,7 +30,10 @@
             ---
         <% end %>
       </td>
-
+      <td>
+            <%= Build.where("project_id = ?",item.id).count %> /
+            <%= Build.where("project_id = ? and state = ?",item.id, 'succeeded' ).count %>
+      </td>  
       <td><%= link_to 'Show', project_path(item) %> |
         <%= link_to 'Edit', edit_project_path(item) %> |
         <%= link_to 'Run New Build', [item, item.builds.build], method: :post %> | 
