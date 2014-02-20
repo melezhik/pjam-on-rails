@@ -201,9 +201,16 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          end
 
          if build.has_ancestor?
+             build_async.log :info, "using ancestor's stack for this build - #{_ancestor_stack}"
             _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_ancestor_stack} #{_stack} --no-color"
          else   
-            _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
+            if File.exist? "#{settings.pinto_repo_root}/stacks/#{project.id}"
+                build_async.log :info, "using predefined stack for this build - #{project.id}"
+                _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{project.id} #{_stack} --no-color"
+            else
+                build_async.log :info, "neither ancestor's nor predefined stacks available for this build, creating very first one -  #{_stack}"
+                _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
+            end
          end
 
         if build.has_parent?
