@@ -12,6 +12,7 @@
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
 
 # new features
+- ability to setup projects very first stack 
 - delete all sources
 - handle svn.exteranls - which result in multiple sources being added via single url
 - copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build ...
