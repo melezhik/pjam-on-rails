@@ -22,6 +22,7 @@ Ui::Application.routes.draw do
 
         member do
             get 'last_successfull_build'
+            get 'activity'
             post 'copy'
         end
 

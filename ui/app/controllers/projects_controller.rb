@@ -44,6 +44,11 @@ class ProjectsController < ApplicationController
         @projects = Project.all
     end
 
+    def activity
+        @project = Project.find(params[:id])
+        @history = History.limit(50).order( id: :desc ).where(' project_id = ? ', @project.id )
+    end
+
     def copy
         @project = Project.find(params[:id])
 
