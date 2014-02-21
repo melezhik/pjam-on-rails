@@ -11,6 +11,9 @@ Ui::Application.routes.draw do
 
     resources :welcome 
 
+    resource :activity do
+    end
+
     resource :settings do
     end
 
