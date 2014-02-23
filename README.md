@@ -48,7 +48,7 @@ A brief explanation for pjam concept as terminology terms.
  
 - Pjam - a name of build server. Pjam-on-rails - an "official" name, bear in mind
 that an application is written on ruby on rails framework.
-- Project - is the collection of sequential builds. Project describe a configuration to be applied to the next build to be run. Different builds may be compared.
+- Project - is the collection of sequential builds. Project describes a configuration to be applied to the next build to be run. Different builds may be compared.
 - Build - is the result of pjam builder, every build has a state and if build is succeeded has a number of artefacts. Build "inherit" it's configuration from projects when it is scheduled to builds queue. Build describe how and which source code from  VCS  is being build.  
 - Pjam builder - is the builds scheduler, which  asynchronously process the queue of builds, under the hood pjam builder implemented by active_job jam
 - Artefacts - a number of files, data resulted in successful build. Actually an archive of Perl modules for an application to be installed.
