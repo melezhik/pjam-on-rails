@@ -12,6 +12,7 @@
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
+- should setup verbose with MODULEBUILDRC when verbosity is set
 
 # new features
 - apply build's configuration to project
@@ -21,7 +22,6 @@
 - lock project - forbid any project modifications
 - add ldap authoriazation ?
 - install distribution on client machine via http request to pjam
-- new settings parameter - 'PINTO_DEBUG' or 'VERBOSE' 
 - build purger - should delete old builds
 
 
