@@ -31,32 +31,35 @@
   </p>
 
 
- <%- unless @project.sources_ordered.empty? %>
-
-    <ol>   
-    <% @project.sources_ordered.each do |item| %>
-      <li>
-        <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}" %> 
-        <%= f.radio_button(:distribution_source_id,item.id, { :checked => item.id == @project.distribution_source_id ? true : false, :title => 'mark this source as application source' }) %>
-        <% if item.enabled?  %>
-            [ <%= link_to 'Off', [ :off, item.project, item   ], method: :post, title: "click to disable this source"  %>
-        <% else %>
-            [ <%= link_to 'On', [ :on, item.project, item   ], method: :post,  title: "click to enable this source" %>
-        <% end %>
-        <%= link_to 'Delete', [ item.project, item], method: :delete, data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %> ]
-      </li>
-    <% end %>
-    </ol>
-
-
-<%= link_to "Change Source Sort Order",  edit_project_source_path( @project, @project.sources_ordered.first ) %>
-
-<% end %>
-
   <p>
     <%= f.submit %>
   </p>
 
  <% end %>
+
+ <%- unless @project.sources_ordered.empty? %>
+
+<h2> Change project sources </h2>
+    <ol>   
+    <% @project.sources_ordered.each do |item| %>
+      <li>
+
+        <% if item.id == @project.distribution_source_id %>
+             <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Source" %> [ This is an application source
+        <% else %>
+             <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn};" %>
+            [ <%= link_to 'App', [ :app, item.project, item   ], method: :post,  title: "mark this source as an application source" %>
+        <% end %>
+        <%= link_to 'Delete', [ item.project, item], method: :delete, title: "remove this source", data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %> ]
+      </li>
+    <% end %>
+    </ol>
+
+
+[ <%= link_to "Change sources sort order",  edit_project_source_path( @project, @project.sources_ordered.first ) %> ]
+
+<% end %>
+
+
 
 

@@ -2,9 +2,9 @@
   <strong>Title:</strong> <%= @project.title %>
   <strong>Description:</strong> <%= @project.text %>
         <% if @project.has_distribution_source? == true %>
-  <strong>Distribution Source:</strong> <%= @project.distribution_url %>
+  <strong>Application Source:</strong> <%= @project.distribution_url %>
         <% else %>
-  <strong>Distribution Source:</strong> not set
+  <strong>Application Source:</strong> not set
         <% end %>
 </pre>
 

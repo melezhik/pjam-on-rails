@@ -40,6 +40,7 @@ class SourcesController < ApplicationController
     end
 
     def update 
+
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
 
@@ -54,6 +55,21 @@ class SourcesController < ApplicationController
         end
     end
 
+
+    def app
+
+        @project = Project.find(params[:project_id])
+        @source = @project.sources.find(params[:id])
+        
+        if @project.update({ :distribution_source_id => @source.id })
+            flash[:notice] = "source ID: #{@source.id} has been successfully marked as an application source for project ID: #{@project.id}"
+            @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{@source.id}; indexed_url: #{@source._indexed_url} as an application source for project ID: #{@project.id}" })
+            redirect_to [:edit, @project]
+        else
+            flash[:alert] = "error has been occured when trying to mark source ID: #{@source.id} as an application source for project ID: #{@project.id}"
+            redirect_to edit_project_path @project
+        end
+    end
 
     def on
         @project = Project.find(params[:project_id])

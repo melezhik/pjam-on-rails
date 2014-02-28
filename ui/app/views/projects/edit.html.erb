@@ -7,7 +7,7 @@
 
 <%= render 'form' %>
 
-<h2>Add a source</h2>
+<h2>Add source to project</h2>
 <%= form_for([@project, @project.sources.build]) do |f| %>
   <p>
     <%= f.label 'VCS' %>

@@ -51,6 +51,7 @@ Ui::Application.routes.draw do
             member do
                 post 'on'
                 post 'off'
+                post 'app'
             end
         end
     end
