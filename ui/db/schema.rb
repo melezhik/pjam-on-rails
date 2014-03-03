@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220091837) do
+ActiveRecord::Schema.define(version: 20140303080519) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140220091837) do
     t.integer  "distribution_source_id"
     t.boolean  "notify",                 default: true
     t.text     "recipients"
+    t.boolean  "verbose",                default: false
   end
 
   create_table "settings", force: true do |t|
@@ -93,7 +94,6 @@ ActiveRecord::Schema.define(version: 20140220091837) do
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"
-    t.boolean  "verbose",                       default: false
   end
 
   create_table "snapshots", force: true do |t|
