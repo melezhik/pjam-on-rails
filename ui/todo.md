@@ -13,6 +13,7 @@
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
 - should setup verbose with MODULEBUILDRC when verbosity is set
+- verbose should be project not global setting
 
 # new features
 - apply build's configuration to project
