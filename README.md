@@ -20,11 +20,13 @@ Perl build server. Yeah, this is a another continues integration server for Perl
     cd pjam-on-rails/ui
     bundle install # install ruby dependencies
     nano config/databases.yml # setup database backend 
+    export RAILS_ENV=production
     rake db:migrate # initialize database
     bundle exec rake assets:precompile
     ./bin/delayed_job start # start builds scheduler  
-    RAILS_ENV=production rails server -d # start pjam server binded to 127.0.0.1:3000
-  
+    rails server -d # start pjam server binded to 127.0.0.1:3000
+
+
 # Prerequisites
 - nodejs
 - libmysql 
@@ -41,7 +43,25 @@ All you need is to setup database configuration. Choose any driver you like, but
         username: root
         password: supersecret
         host: localhost
-    
+
+
+# None production/development configuration
+
+For none production pjam usage you should omit exporting RAILS_ENV. In this case you may use sqlite database engine instead of mysql: 
+
+    nano config/databases.yml
+    cat config/databases.yml
+
+    development:
+        adapter: sqlite3
+        database: db/development.sqlite3
+        pool: 5
+        timeout: 5000
+
+    rake db:migrate # initialize database
+    ./bin/delayed_job start # start builds scheduler  
+    rails server -d # start pjam server binded to 127.0.0.1:3000
+
 # Terminology
 
 A brief explanation for pjam concept as terminology terms.
