@@ -14,10 +14,6 @@ class Setting < ActiveRecord::Base
         "#{Rails.public_path}/repo"
     end
 
-    def verbose?
-        verbose
-    end
-
     def pinto_config
         "#{pinto_repo_root}/.pinto/config/pinto.ini"
     end

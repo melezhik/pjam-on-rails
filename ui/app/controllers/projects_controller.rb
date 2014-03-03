@@ -89,7 +89,7 @@ private
       params.require(:project).permit( 
             :title, :text, 
             :distribution_source_id,
-            :notify, 
+            :notify, :verbose, 
             :recipients
      )
   end

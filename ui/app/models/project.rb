@@ -67,5 +67,10 @@ class Project < ActiveRecord::Base
     def notify?
         notify == true
     end
+
+    def verbose?
+        verbose
+    end
+
 end
 
