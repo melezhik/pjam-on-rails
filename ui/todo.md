@@ -13,6 +13,9 @@
 # fixes
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
+- force_mode should be in project.settings instead of global.settings
+- skip missing prerequisites should be in project.settings instead of global.settings
+
 
 # new features
 - apply build's configuration to project
