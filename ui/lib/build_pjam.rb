@@ -142,7 +142,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     end
 
     def _pull_distribution_into_pinto_repo archive_name_with_revision
-        cmd =  "pinto -r #{settings.pinto_repo_root} pull -s #{_stack} PINTO/#{archive_name_with_revision} --no-color"
+        cmd =  "pinto -r #{settings.pinto_repo_root} pull -s #{_stack} PINTO/#{archive_name_with_revision} #{settings.skip_missing_prerequisites_as_pinto_param} --no-color"
         _execute_command(cmd)
     end
 

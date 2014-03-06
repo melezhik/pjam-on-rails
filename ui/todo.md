@@ -8,6 +8,7 @@
 
 # refactoring
 - distribution_source should be renamed to application or arftefact ?
+- pull/add should be done in transactional way
 
 # fixes
 - store jabber password incrypted ? 
