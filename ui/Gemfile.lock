@@ -91,6 +91,7 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    redcarpet (3.1.1)
     safe_yaml (1.0.1)
     sass (3.2.14)
     sass-rails (4.0.1)
@@ -141,6 +142,7 @@ DEPENDENCIES
   mysql2
   rails (= 4.0.2)
   rails_layout
+  redcarpet
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
