@@ -4,14 +4,14 @@
 
   <table class="table-bordered table-striped table">
   <tr>
-    <th>Date</th>
+    <th>Time</th>
     <th>Commiter</th>
     <th>Action</th>
   </tr>
   <% @history.each do |l| %>
   <tr>
     <td>
-        <%= l[:created_at]  %>
+        <%= l[:created_at].strftime('%B %d, %Y at %H:%M')  %>
     </td>
     <td>
         <%= l[:commiter].nil? ? 'anonimous' : begin c = Resolv.new.getname(l[:commiter]) rescue l[:commiter] else c end   %>

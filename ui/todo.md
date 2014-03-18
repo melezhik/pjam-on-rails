@@ -11,7 +11,6 @@
 - pull/add should be done in transactional way
 
 # improvements
-- all times should be converted to localtime format ( builds, logs )
 - activity log should show which project build belongs to 
 - rename rebuild to revert 
 - rebuild build should also apply build sources ( required to add schema column to snapshots table )
