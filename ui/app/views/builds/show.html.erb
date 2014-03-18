@@ -22,7 +22,7 @@
     <%= link_to 'Rebuild', rebuild_project_build_path(@project,@build), :method => :post, :title => 'rebuild this build' %>
     <pre>
     <% @log_entries.each do |l| %>
-        [<%= l.level %>] at <%= l.updated_at %> <%= l.chunk  %>
+        [<%= l.level %>] <%= l.updated_at.strftime('%B %d, %Y at %H:%M') %> <%= l.chunk  %>
     <% end %>
     </pre>
 
