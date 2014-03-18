@@ -18,7 +18,7 @@
       <td><%= item.text %></td>
       <td>
         <% if ! item.last_build.nil? %>
-            <%= link_to "ID: #{item.last_build.id}", [item, item.last_build] %> - <%= item.last_build[:state] %> at <%= item.last_build[:updated_at] %>
+            <%= link_to "ID: #{item.last_build.id}", [item, item.last_build] %> - <%= item.last_build[:state] %> <%= item.last_build[:updated_at].strftime('%B %d, %Y at %H:%M') %>
         <% else %>
             ---
         <% end %>

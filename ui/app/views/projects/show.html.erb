@@ -71,7 +71,7 @@
                 <%= item[:state] %>
             </td>
             <td>
-                <%= item[:updated_at] %>
+                <%= item[:updated_at].strftime('%B %d, %Y at %H:%M') %>
             </td>
             <td>
             <% if item.distribution_name.nil? == false %>
