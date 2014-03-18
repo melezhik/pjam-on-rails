@@ -116,6 +116,7 @@
                 <%= link_to "annotate", edit_project_build_path(@project, item), :title => 'add description for this build'  %> |
                 <%= link_to "log", [@project, item],  :title => 'show build log' %> |
                 <%= link_to "configuration", configuration_project_build_path(@project, item), :title => 'show build configuration'  %> |
+                <%= link_to 'distributions list', list_project_build_path(@project, item), :title => 'list of distribution archives' %> |
                 <%= link_to "changes", changes_project_build_path(@project, item),  :title => 'last changes applied to build' %>
             </td>
             </tr>
