@@ -12,8 +12,6 @@
 
 # improvements
 - activity log should show which project build belongs to 
-- rename rebuild to revert 
-- rebuild build should also apply build sources ( required to add schema column to snapshots table )
 
 # fixes
 - store jabber password incrypted ? 
