@@ -14,9 +14,6 @@ Perl build server. Yeah, this is a another continues integration server for Perl
 * show project activity logs
 * this is a ruby on rails application
 
-# Screenshots
-
-![build changes](https://raw.githubusercontent.com/melezhik/pjam-on-rails/master/ui/samples/pjam-build-diff.png "build changes")
 
 # Installation
 
