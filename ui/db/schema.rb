@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303080519) do
+ActiveRecord::Schema.define(version: 20140319064445) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140303080519) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "force_mode",                    default: false
+    t.string   "jabber_server"
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"
@@ -102,6 +103,8 @@ ActiveRecord::Schema.define(version: 20140303080519) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_distribution_url", default: false
+    t.string   "schema",              default: "http"
+    t.string   "scm_type",            default: "svn"
   end
 
   add_index "snapshots", ["build_id"], name: "index_snapshots_on_build_id", using: :btree

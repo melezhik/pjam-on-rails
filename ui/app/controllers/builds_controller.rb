@@ -20,7 +20,7 @@ class BuildsController < ApplicationController
     
     end
 
-    def rebuild
+    def revert
 
         @project = Project.find(params[:project_id])
         @parent_build = Build.find(params[:id])
@@ -30,12 +30,12 @@ class BuildsController < ApplicationController
             @build = @project.builds.create!({ :parent_id => @parent_build.id })
 
             make_snapshot @project, @build
-            @project.history.create!( { :commiter => request.remote_host, :action => "rebuild build ID: #{@parent_build.id}; new build ID: #{@parent_build.id}" })
+            @project.history.create!( { :commiter => request.remote_host, :action => "revert build ID: #{@parent_build.id}; new build ID: #{@parent_build.id}" })
 
             Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
             flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now};  parent build ID: #{@build.parent_id}"
         else
-            flash[:alert] = "cannot rebuild unsucceded build; parent build ID:#{@parent_build.id}; state:#{@parent_build.state}"
+            flash[:alert] = "cannot revert unsucceded build; parent build ID:#{@parent_build.id}; state:#{@parent_build.state}"
         end
 
         redirect_to project_path(@project)

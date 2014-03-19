@@ -19,7 +19,7 @@
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distribution archives' %> |
     <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
-    <%= link_to 'Rebuild', rebuild_project_build_path(@project,@build), :method => :post, :title => 'rebuild this build' %>
+    <%= link_to 'Revert', revert_project_build_path(@project,@build), :method => :post, :title => 'revert project to this build' %>
     <pre>
     <% @log_entries.each do |l| %>
         [<%= l.level %>] <%= l.updated_at.strftime('%B %d, %Y at %H:%M') %> <%= l.chunk  %>
