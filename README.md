@@ -16,7 +16,7 @@ Perl build server. Yeah, this is a another continues integration server for Perl
 
 # Screenshots
 
-![build changes](https://raw.github.com/melezhik/pjam-in-rails/ui/samples/pjam-buil-diff.png "build changes")
+![build changes](https://raw.githubusercontent.com/melezhik/pjam-on-rails/master/ui/samples/pjam-build-diff.png "build changes")
 
 # Installation
 
