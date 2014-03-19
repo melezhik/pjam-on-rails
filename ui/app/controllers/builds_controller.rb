@@ -29,13 +29,37 @@ class BuildsController < ApplicationController
 
             @build = @project.builds.create!({ :parent_id => @parent_build.id })
 
+            # remove all project's sources 
+            @project.sources.each  do |s|
+                indexed_url =  s._indexed_url
+                s.destroy!
+                @project.history.create!( { :commiter => request.remote_host, :action => "remove #{indexed_url}" })
+            end
+
+            # create new project's sources based on snapshot for parent build
+            i = 0
+            app_url = @parent_build.snapshots.where('is_distribution_url = ? ', true).first[:indexed_url]
+            @parent_build.snapshots.order(id: :desc).where('is_distribution_url = ? ', false).each do |s|
+                i += 1    
+                new_source = @project.sources.create({ :scm_type => s[:scm_type] , :url => "#{s[:schema]}://#{s[:indexed_url]}", :sn => i*2 })
+                new_source.save!
+                @project.history.create!( { :commiter => request.remote_host, :action => "add #{new_source._indexed_url}" })
+                if s[:indexed_url] == app_url
+                    @project.update!({ :distribution_source_id => new_source.id })
+                    @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{new_source.id}; indexed_url: #{new_source._indexed_url} as an application source for project ID: #{@project.id}" })
+                end
+            end
+
+            # re-read project data from DB
+            @project = Project.find(params[:project_id])
+
             make_snapshot @project, @build
-            @project.history.create!( { :commiter => request.remote_host, :action => "revert build ID: #{@parent_build.id}; new build ID: #{@parent_build.id}" })
+            @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}; new build ID: #{@build.id}" })
 
             Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
             flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now};  parent build ID: #{@build.parent_id}"
         else
-            flash[:alert] = "cannot revert unsucceded build; parent build ID:#{@parent_build.id}; state:#{@parent_build.state}"
+            flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{@parent_build.id}; state:#{@parent_build.state}"
         end
 
         redirect_to project_path(@project)
