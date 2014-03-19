@@ -3,7 +3,7 @@
 	- workaround:  
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
-- error in `build changes` function when it's only single build in project
+- `build changes` for very first build raise and error
 
 # refactoring
 - distribution_source should be renamed to application_id
