@@ -3,13 +3,15 @@
 	- workaround:  
 	bundle exec rake assets:precompile + config.serve_static_assets = true in config/environments/production.rb 
 	http://stackoverflow.com/questions/17904949/rails-app-not-serving-assets-in-production-environment
+- error in `build changes` function when it's only single build in project
 
 # refactoring
-- distribution_source should be renamed to application or arftefact ?
-- pull/add should be done in transactional way
+- distribution_source should be renamed to application_id
+- pull/add should be done in transactional way ( need to rewrite lib/build_pjam.rb )
 
 # improvements
 - activity log should show which project build belongs to 
+- remove `copy project` notions from code
 
 # fixes
 - store jabber password incrypted ? 
@@ -18,13 +20,11 @@
 - skip missing prerequisites should be in project.settings instead of global.settings
 
 # new features
-- apply build's configuration to project ?
-- delete all sources ( already done  in revert build function )
-- handle svn.exteranls - which result in multiple sources being added via single url
-- copy project - copy cpanlib and pinto stack into new project from another project - I am not sure If I need this when I have one stack per one build ...
+- install distribution on client machine via http request to pjam
+- delete all sources ( already done  in `revert build` function )
+- handle svn.exteranls to allow add multiple sources as single url
 - lock project - forbid any project modifications
 - add ldap authoriazation ?
-- install distribution on client machine via http request to pjam
 - build purger - should delete old builds
 
 
