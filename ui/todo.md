@@ -10,6 +10,7 @@
 - pull/add should be done in transactional way ( need to rewrite lib/build_pjam.rb )
 
 # improvements
+- it'd be good to apply build to anothe project - the as revert build in the project, but for another project - good basis for easy build branches (dev/stage/production)
 - activity log should show which project build belongs to 
 - remove `copy project` notions from code
 
