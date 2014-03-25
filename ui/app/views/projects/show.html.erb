@@ -21,7 +21,7 @@
 
  <%= link_to 'Edit Project', edit_project_path(@project) %> | 
  <%= link_to 'Run New Build', url_for([@project, :builds]), method: :post  %> |
- <%= link_to 'Delete Project', project_path(@project), method: :delete, data: { confirm:    "You are about to delete project # #{@project[:id]}. Are you shure ?" }  %> |
+ <%= link_to 'Delete Project', project_path(@project), method: :delete, data: { confirm:    "You are about to delete project # #{@project[:id]}. Are you shure ?" }  %>
 <%- if @project.has_last_successfull_build? == true %>
  | <%= link_to 'Last Successfull Build', project_path(@project) + '/last_successfull_build'  %>
 <% end %>
