@@ -11,8 +11,12 @@
 # improvements
 - activity log should show which project build belongs to 
 - build.changes popuplist should show not only show ids, but build annotations  ( for easier build comparisons )
+- build configuration page should have `build actions` navigation bar
 
 # fixes
+- class names renamings
+	- rename build_async.rb to build_create_async.rb
+	- rename build_pjam.rb to build_create.rb
 - build revert action should create builds with `successfull` not `reverted` state 
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
