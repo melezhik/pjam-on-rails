@@ -214,19 +214,9 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
             end
          end
 
-        if build.has_parent?
-             # override installbase by parent's install base
-             FileUtils.rm_rf "#{project.local_path}/cpanlib/"
-             parent_cpanlib_path = "#{project.local_path}/#{build.ancestor.local_path}/artefacts/#{build.ancestor[:distribution_name].sub('.tar.gz','')}/cpanlib/"
-             FileUtils.cp_r "#{parent_cpanlib_path}", "#{project.local_path}/"
-             build_async.log :debug,  "install base #{project.local_path}/cpanlib  has been successfully overriden by #{parent_cpanlib_path}"
-         else
-             build_async.log :debug,  "use install base #{project.local_path}/cpanlib as is"
-         end
-   
          build.update({ :has_stack => true })
          build.save!
-         sleep 5 # to privent race conditions ... because of pinto copy command does not create stack immediately
+         sleep 5 # wait for awhile, because `pinto copy` command does not create stack immediately
     end
 
     def _ancestor_stack

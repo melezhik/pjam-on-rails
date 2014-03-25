@@ -54,10 +54,25 @@ class BuildsController < ApplicationController
             @project = Project.find(params[:project_id])
 
             make_snapshot @project, @build
+
+            # override installbase by parent's install base
+            FileUtils.rm_rf "#{@project.local_path}/cpanlib/"
+            parent_cpanlib_path = "#{@project.local_path}/#{@parent_build.local_path}/artefacts/#{@parent_build[:distribution_name].sub('.tar.gz','')}/cpanlib/"
+            FileUtils.cp_r "#{parent_cpanlib_path}", "#{@project.local_path}/"
+            @project.history.create!( { :commiter => request.remote_host, :action => "override install base #{@project.local_path}/cpanlib by #{parent_cpanlib_path}" })
+
+            settings = Setting.take
+            copy_stack_cmd = "pinto --root=#{settings.pinto_repo_root} copy #{@project.id}-#{@parent_build.id} #{@project.id}-#{@build.id} --no-color"
+
+            execute_command copy_stack_cmd
+            @project.history.create!( { :commiter => request.remote_host, :action => copy_stack_cmd })
+
+            @build.update({ :has_stack => true, :state => 'reverted' })
+            @build.save!
+
             @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}; new build ID: #{@build.id}" })
 
-            Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
-            flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now};  parent build ID: #{@build.parent_id}"
+            flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
         else
             flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{@parent_build.id}; state:#{@parent_build.state}"
         end
@@ -121,35 +136,41 @@ class BuildsController < ApplicationController
             @precendent =  @build.precedent 
         end
 
-        @pinto_diff = execute_command("pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@precendent.id}  --no-color", false)
-
-        Diff::LCS::HTMLDiff.can_expand_tabs = false
-
-        s = StringIO.new
-        
-        if  @precendent.snapshots.empty?
-            @snapshot_diff = "<pre>insufficient data for build ID: #{@precendent.id}</pre>"
-        elsif  @build.snapshots.empty?
-            @snapshot_diff = "<pre>insufficient data for build ID: #{@build.id}</pre>"
+        if @precendent.nil?
+            flash[:alert] = "cannot find precendent for build ID:#{@build.id}"
+            redirect_to project_path(@project,@build)
         else
-            Diff::LCS::HTMLDiff.new( 
-                @precendent.snapshots.map { |i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) + (i[:indexed_url] || 'NULL') }.sort, 
-                @build.snapshots.map {|i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) +  (i[:indexed_url] || 'NULL') }.sort , 
-                :title => "diff #{@build.id} #{@precendent.id}" ,
-                :output => s
-            ).run
 
-            @snapshot_diff = s.string
-            @snapshot_diff.sub!(/<html>.*<body>/m) { "" } 
-            @snapshot_diff.gsub! '<h1>', '<strong>'
-            @snapshot_diff.gsub! '</h1>', '</strong>'
-            @snapshot_diff.sub! '</html>', ''
-            @snapshot_diff.sub! '</body>', ''
+            @pinto_diff = execute_command("pinto --root=#{Setting.take.pinto_repo_root} diff #{@project.id}-#{@build.id} #{@project.id}-#{@precendent.id}  --no-color", false)
+    
+            Diff::LCS::HTMLDiff.can_expand_tabs = false
+    
+            s = StringIO.new
+            
+            if  @precendent.snapshots.empty?
+                @snapshot_diff = "<pre>insufficient data for build ID: #{@precendent.id}</pre>"
+            elsif  @build.snapshots.empty?
+                @snapshot_diff = "<pre>insufficient data for build ID: #{@build.id}</pre>"
+            else
+                Diff::LCS::HTMLDiff.new( 
+                    @precendent.snapshots.map { |i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) + (i[:indexed_url] || 'NULL') }.sort, 
+                    @build.snapshots.map {|i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) +  (i[:indexed_url] || 'NULL') }.sort , 
+                    :title => "diff #{@build.id} #{@precendent.id}" ,
+                    :output => s
+                ).run
+    
+                @snapshot_diff = s.string
+                @snapshot_diff.sub!(/<html>.*<body>/m) { "" } 
+                @snapshot_diff.gsub! '<h1>', '<strong>'
+                @snapshot_diff.gsub! '</h1>', '</strong>'
+                @snapshot_diff.sub! '</html>', ''
+                @snapshot_diff.sub! '</body>', ''
+    
+            end
+
+            @history = History.order( id: :desc ).where('project_id = ? AND created_at >= ?  AND created_at <= ? ', @project[:id], @precendent[:created_at], @build[:created_at] );
 
         end
-
-    
-        @history = History.order( id: :desc ).where('project_id = ? AND created_at >= ?  AND created_at <= ? ', @project[:id], @precendent[:created_at], @build[:created_at] );
 
     end
 

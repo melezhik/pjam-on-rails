@@ -23,20 +23,19 @@ Ui::Application.routes.draw do
         member do
             get 'last_successfull_build'
             get 'activity'
-            post 'copy'
         end
 
         resources :builds do
 
             member do
-                get 'changes'
-                get 'list'
-                get 'full_log'
-                get 'configuration'
-                post 'lock'
-                post 'unlock'
-                post 'release'
-                post 'revert'
+                get     'changes'
+                get     'list'
+                get     'full_log'
+                get     'configuration'
+                post    'lock'
+                post    'unlock'
+                post    'release'
+                post    'revert'
             end
 
             resources :logs do
