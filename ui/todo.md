@@ -10,6 +10,7 @@
 
 # improvements
 - activity log should show which project build belongs to 
+- build.changes popuplist should show not only build ids, but build annotations - to easier build comparisons
 
 # fixes
 - store jabber password incrypted ? 
