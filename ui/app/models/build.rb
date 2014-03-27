@@ -12,15 +12,19 @@ class Build < ActiveRecord::Base
     end
 
     def components 
-       snapshots.order( id: :asc ).where(' is_distribution_url = ? ', true )
+       snapshots.order( id: :asc )
     end
 
     def main_component  
-       snapshots.where(' is_distribution_url = ? ', false ).first
+       snapshots.where(' is_distribution_url = ? ', true ).first
     end
 
     def has_main_component?
-        ! app_component.nil?
+        ! main_component.nil?
+    end
+
+    def has_components?
+        ! snapshots.empty?
     end
 
     def has_logs?

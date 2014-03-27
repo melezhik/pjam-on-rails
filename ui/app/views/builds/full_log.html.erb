@@ -22,6 +22,9 @@
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
     <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %>
+    <% unless @build.released?  %>
+    | <%= link_to "Delete", [@project, @build], :method => :delete, :title => 'permanently delete this build' %>
+    <% end %>
     <pre>
     <%- i = 0 %>	
     <% @log_entries.each do |l| %>

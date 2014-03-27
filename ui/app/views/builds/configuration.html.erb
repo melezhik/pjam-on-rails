@@ -22,13 +22,19 @@
 
     <table class="table-bordered table-striped table">
       <tr>
-        <th>URL</th>
-        <th>Is Application?</th>
+        <th>Component</th>
+        <th>Schema</th>
+        <th>SCM Type</th>
+        <th>Is Main ?</th>
+        <th>revision</th>
       </tr>
     <% @data.each do |item| %>
     <tr>
         <td><%= item[:indexed_url] %></td>
+        <td><%= item[:schema] %></td>
+        <td><%= item[:scm_type] %></td>
         <td><%= item[:is_distribution_url]? 'yes' : 'no'  %></td>
+        <td><%= item[:revision] || '---' %></td>
     </tr>
     <% end %>
     </table>

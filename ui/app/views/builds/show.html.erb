@@ -20,6 +20,10 @@
     <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
     <%= link_to 'Revert', revert_project_build_path(@project,@build), :method => :post, :title => 'revert project to this build' %>
+    <% unless @build.released?  %>
+    | <%= link_to "Delete", [@project, @build], :method => :delete, :title => 'permanently delete this build' %>
+    <% end %>
+
     <pre>
     <% @log_entries.each do |l| %>
         [<%= l.level %>] <%= l.updated_at.strftime('%B %d, %Y at %H:%M') %> <%= l.chunk  %>
