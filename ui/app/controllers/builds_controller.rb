@@ -38,15 +38,14 @@ class BuildsController < ApplicationController
 
             # create new project's sources based on snapshot for parent build
             i = 0
-            app_url = @parent_build.snapshots.where('is_distribution_url = ? ', true).first[:indexed_url]
-            @parent_build.snapshots.order(id: :desc).where('is_distribution_url = ? ', false).each do |s|
+            @parent_build.components.each do |cmp|
                 i += 1    
-                new_source = @project.sources.create({ :scm_type => s[:scm_type] , :url => "#{s[:schema]}://#{s[:indexed_url]}", :sn => i*2 })
+                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*2 })
                 new_source.save!
-                @project.history.create!( { :commiter => request.remote_host, :action => "add #{new_source._indexed_url}" })
-                if s[:indexed_url] == app_url
+                @project.history.create!( { :commiter => request.remote_host, :action => "add #{cmp.indexed_url}" })
+                if cmp.main?
                     @project.update!({ :distribution_source_id => new_source.id })
-                    @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{new_source.id}; indexed_url: #{new_source._indexed_url} as an application source for project ID: #{@project.id}" })
+                    @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{new_source.id}; indexed_url: #{cmp.indexed_url} as an main application component source for project ID: #{@project.id}" })
                 end
             end
 
@@ -271,10 +270,13 @@ private
    def make_snapshot project, build
          # snapshoting current configuration before schedulling new build
          project.sources_enabled.each  do |s|
-            build.snapshots.create({ :indexed_url => s._indexed_url, :revision => s.last_rev  } ).save!
+            s = build.snapshots.create!({ :indexed_url => s._indexed_url, :revision => s.last_rev  } )
+            s.save!
+            if project.distribution_indexed_url == s._indexed_url
+                s.update!( { :is_distribution_url => true } )
+                s.save!
+            end
          end
-         build.snapshots.create({ :indexed_url => project.distribution_indexed_url, :is_distribution_url => true   } )
-  
    end  
 
 end
