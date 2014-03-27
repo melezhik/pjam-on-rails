@@ -11,6 +11,18 @@ class Build < ActiveRecord::Base
         "builds/#{id}"
     end
 
+    def components 
+       snapshots.order( id: :asc ).where(' is_distribution_url = ? ', true )
+    end
+
+    def main_component  
+       snapshots.where(' is_distribution_url = ? ', false ).first
+    end
+
+    def has_main_component?
+        ! app_component.nil?
+    end
+
     def has_logs?
         logs.empty? == false
     end

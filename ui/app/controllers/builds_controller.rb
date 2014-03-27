@@ -263,9 +263,10 @@ private
    def make_snapshot project, build
          # snapshoting current configuration before schedulling new build
          project.sources_enabled.each  do |s|
-            build.snapshots.create({ :indexed_url => s._indexed_url } ).save!
+            build.snapshots.create({ :indexed_url => s._indexed_url, :revision => s.last_rev  } ).save!
          end
-         build.snapshots.create({ :indexed_url => project.distribution_indexed_url, :is_distribution_url => true   } ).save!
+         build.snapshots.create({ :indexed_url => project.distribution_indexed_url, :is_distribution_url => true   } )
+  
    end  
 
 end

@@ -1,11 +1,11 @@
 # coding: UTF-8
 require 'xmpp4r'
 
-class BuildAsync < Struct.new( :project, :build, :distribution, :settings, :env  )
+class BuildAsync < Struct.new( :project, :build, :distributions, :settings, :env  )
 
 
     def perform
-        pj = BuildPjam.new self, project, build, distribution, settings, env 
+        pj = BuildPjam.new self, project, build, distributions, settings, env 
         pj.run 
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319064445) do
+ActiveRecord::Schema.define(version: 20140326124916) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20140319064445) do
     t.boolean  "is_distribution_url", default: false
     t.string   "schema",              default: "http"
     t.string   "scm_type",            default: "svn"
+    t.string   "revision"
   end
 
   add_index "snapshots", ["build_id"], name: "index_snapshots_on_build_id", using: :btree
