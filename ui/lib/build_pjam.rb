@@ -51,7 +51,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
              build_async.log :debug, "component's source code has been successfully checked out"
             
              
-             if ! ( cmp.main? and record = distributions.find_by(indexed_url: cmp.indexed_url, revision: rev)
+             if ! ( cmp.main? and record = distributions.find_by(indexed_url: cmp.indexed_url, revision: rev) )
                  build_async.log :debug, "component's distribution is already pulled before as #{record[:distribution]}"
                  archive_name_with_revision = record[:distribution]
                  _pull_distribution_into_pinto_repo archive_name_with_revision # re-pulling distribution again, just in case 
@@ -95,7 +95,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
         distribution_archive_local_path = _artefact_final_distribution final_distribution_archive, final_distribution_revision
         build_async.log :debug, "main component's distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
-        build_async.log :info "done"
+        build_async.log :info,  "done"
     end
 
       def _execute_command(cmd, raise_ex = true)
