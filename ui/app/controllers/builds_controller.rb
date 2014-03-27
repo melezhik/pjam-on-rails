@@ -160,8 +160,8 @@ class BuildsController < ApplicationController
                 @snapshot_diff = "<pre>insufficient data for build ID: #{@build.id}</pre>"
             else
                 Diff::LCS::HTMLDiff.new( 
-                    @precendent.snapshots.map { |i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) + (i[:indexed_url] || 'NULL') }.sort, 
-                    @build.snapshots.map {|i| ( i[:is_distribution_url] == true ? '(app) ' : '' ) +  (i[:indexed_url] || 'NULL') }.sort , 
+                    @precendent.components.map  { |cmp| ( cmp.main? ? '(app) ' : '' ) +  (cmp[:indexed_url] || 'NULL') }.sort, 
+                    @build.components.map       {|cmp|  ( cmp.main? ? '(app) ' : '' ) +  (cmp[:indexed_url] || 'NULL') }.sort , 
                     :title => "diff #{@build.id} #{@precendent.id}" ,
                     :output => s
                 ).run
@@ -270,11 +270,11 @@ private
    def make_snapshot project, build
          # snapshoting current configuration before schedulling new build
          project.sources_enabled.each  do |s|
-            s = build.snapshots.create!({ :indexed_url => s._indexed_url, :revision => s.last_rev  } )
-            s.save!
+            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url, :revision => s.last_rev  } )
+            cmp.save!
             if project.distribution_indexed_url == s._indexed_url
-                s.update!( { :is_distribution_url => true } )
-                s.save!
+                cmp.update!( { :is_distribution_url => true } )
+                cmp.save!
             end
          end
    end  
