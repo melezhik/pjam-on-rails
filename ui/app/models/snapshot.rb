@@ -9,7 +9,7 @@ class Snapshot < ActiveRecord::Base
     end
 
     def url
-        schema + '://' + indexed_url 
+        schema + '://' +  ( indexed_url  || 'NULL' )
     end
 
     def main?

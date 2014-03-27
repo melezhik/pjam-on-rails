@@ -17,16 +17,18 @@
 - class names renamings
 	- rename build_async.rb to build_create_async.rb
 	- rename build_pjam.rb to build_create.rb
-- build revert action should create builds with `successfull` not `reverted` state 
 - store jabber password incrypted ? 
 - add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
 - force_mode should be in project.settings instead of global.settings
 - skip missing prerequisites should be in project.settings instead of global.settings
 
 # new features
-- build revert action should asyncronous? ( as build creation action )
-- build snapshots should have revisions ( copied from project )
-- build_pjam.jb - should iterate through build snapshot, not project sources 
+
+- this two will probably make `build creation` in pure transactional way:
+    - build_pjam.rb - cpanlib should be copied from latest_build, global cpanlib should be depricated
+    - build revert action should be asyncronous? ( as build creation action )
+
+- sources.last_rev should be depricated and removed
 - install distribution on client machine via http request to pjam
 - delete all sources ( already done  in `revert build` function )
 - handle svn.exteranls to allow add multiple sources as single url
