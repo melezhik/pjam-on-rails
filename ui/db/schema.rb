@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20140319064445) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "force_mode",                    default: false
-    t.string   "jabber_server"
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"

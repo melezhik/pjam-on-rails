@@ -67,8 +67,16 @@ class BuildsController < ApplicationController
             execute_command copy_stack_cmd
             @project.history.create!( { :commiter => request.remote_host, :action => copy_stack_cmd })
 
-            @build.update({ :has_stack => true, :state => 'reverted' })
+            @build.update({ :has_stack => true, :state => 'succeeded' })
             @build.save!
+
+            FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}/"
+            FileUtils.cp_r "#{@project.local_path}/#{@parent_build.local_path}/artefacts/", "#{@project.local_path}/#{@build.local_path}/"
+
+            @build.update({ :distribution_name => @parent_build[:distribution_name] })
+            @build.save!
+
+            @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build data to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/" })
 
             @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}; new build ID: #{@build.id}" })
 
