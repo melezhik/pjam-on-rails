@@ -26,8 +26,16 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
              FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
              FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"       
-
              build_async.log :debug,  "component's local path: #{project.local_path}/#{build.local_path}/#{cmp.local_path} has been successfully created"
+
+             if build.has_ancestor?
+                 ancestor_cpanlib_path = "#{project.local_path}/#{build.ancestor.local_path}/cpanlib/"
+                 FileUtils.cp_r "#{ancestor_cpanlib_path}", "#{project.local_path}/#{build.local_path}"
+                 build_async.log :debug, "copied ancestor cpanlib path: #{ancestor_cpanlib_path} to #{project.local_path}/#{build.local_path}/cpanlib"
+             else
+                 build_async.log :debug, "build has no ancestor, just create #{project.local_path}/#{build.local_path}/cpanlib"
+             end
+
              _execute_command "svn info #{cmp.url}" # check if repository available
              xml = `svn --xml info #{cmp.url}`.force_encoding("UTF-8")
              repo_info = Crack::XML.parse xml
@@ -161,7 +169,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("#{_set_perl5lib} && #{modulebuildrc} pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color #{cpanm_flags} -l #{project.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("#{_set_perl5lib} && #{modulebuildrc} pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color #{cpanm_flags} -l #{project.local_path}/#{build.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _artefact_final_distribution final_distribution_archive, revision
@@ -180,7 +188,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         cmd << "tar -xf #{final_distribution_archive.sub('.gz','')}"
     	cmd << "mv #{original_distribution_archive_dir} #{final_distribution_archive_dir_with_timestamp}"
         cmd << "cd #{final_distribution_archive_dir_with_timestamp}"
-        cmd << "cp -r #{project.local_path}/cpanlib ."
+        cmd << "cp -r #{project.local_path}/#{build.local_path}/cpanlib ."
         cmd << "cd ../"
         cmd << "tar -czf #{final_distribution_archive_with_timestamp} #{final_distribution_archive_dir_with_timestamp}"
         _execute_command(cmd.join(' && '))
@@ -236,7 +244,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
         inc = []
         inc << path unless path.nil?
-        inc << "#{project.local_path}/cpanlib/lib/perl5"
+        inc << "#{project.local_path}/#{build.local_path}/cpanlib/lib/perl5"
 
         if ! (settings.perl5lib.nil?) and ! (settings.perl5lib.empty?)
             settings.perl5lib.split(/\s+/).each do |p|

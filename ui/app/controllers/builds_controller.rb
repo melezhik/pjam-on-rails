@@ -54,12 +54,6 @@ class BuildsController < ApplicationController
 
             make_snapshot @project, @build
 
-            # override installbase by parent's install base
-            FileUtils.rm_rf "#{@project.local_path}/cpanlib/"
-            parent_cpanlib_path = "#{@project.local_path}/#{@parent_build.local_path}/artefacts/#{@parent_build[:distribution_name].sub('.tar.gz','')}/cpanlib/"
-            FileUtils.cp_r "#{parent_cpanlib_path}", "#{@project.local_path}/"
-            @project.history.create!( { :commiter => request.remote_host, :action => "override install base #{@project.local_path}/cpanlib by #{parent_cpanlib_path}" })
-
             settings = Setting.take
             copy_stack_cmd = "pinto --root=#{settings.pinto_repo_root} copy #{@project.id}-#{@parent_build.id} #{@project.id}-#{@build.id} --no-color"
 
@@ -69,13 +63,18 @@ class BuildsController < ApplicationController
             @build.update({ :has_stack => true, :state => 'succeeded' })
             @build.save!
 
+            ancestor_cpanlib_path = "#{@project.local_path}/#{@parent_build.local_path}/cpanlib/"
+            FileUtils.cp_r "#{ancestor_cpanlib_path}", "#{@project.local_path}/#{@build.local_path}"
+
+            @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build cpanlib to new build: #{ancestor_cpanlib_path} -> #{@project.local_path}/#{@build.local_path}/cpanlib" })
+    
             FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}/"
             FileUtils.cp_r "#{@project.local_path}/#{@parent_build.local_path}/artefacts/", "#{@project.local_path}/#{@build.local_path}/"
 
+            @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build artefacts to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/" })
+
             @build.update({ :distribution_name => @parent_build[:distribution_name] })
             @build.save!
-
-            @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build data to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/" })
 
             @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}; new build ID: #{@build.id}" })
 

@@ -49,15 +49,11 @@ class Build < ActiveRecord::Base
     end
 
     def ancestor
-         if parent_id.nil?
-             Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
-         else
-             Build.limit(1).order( id: :desc ).where('project_id = ? AND id = ? ', project_id, parent_id ).first
-         end
+         Build.limit(1).order( id: :desc ).where(' project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
     end
 
     def precedent
-         Build.limit(1).order( id: :desc ).where('project_id = ? AND id < ?', project_id, id ).first
+         Build.limit(1).order( id: :desc ).where(' project_id = ? AND id < ? ', project_id, id ).first
     end
 
     def has_parent?
@@ -65,7 +61,7 @@ class Build < ActiveRecord::Base
     end
 
     def has_ancestor?
-        ! ancestor.nil?
+        ancestor.nil? == false
     end
 
     def locked?
