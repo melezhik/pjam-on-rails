@@ -24,10 +24,6 @@
 
 # new features
 
-- this two will probably make `build creation` in pure transactional way:
-    - build_pjam.rb - cpanlib should be copied from latest_build, global cpanlib should be depricated
-    - build revert action should be asyncronous? ( as build creation action )
-
 - sources.last_rev should be depricated and removed
 - install distribution on client machine via http request to pjam
 - delete all sources ( already done  in `revert build` function )
