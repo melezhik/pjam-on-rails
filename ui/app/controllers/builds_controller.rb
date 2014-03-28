@@ -63,12 +63,13 @@ class BuildsController < ApplicationController
             @build.update({ :has_stack => true, :state => 'succeeded' })
             @build.save!
 
+            FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}/"
+
             ancestor_cpanlib_path = "#{@project.local_path}/#{@parent_build.local_path}/cpanlib/"
             FileUtils.cp_r "#{ancestor_cpanlib_path}", "#{@project.local_path}/#{@build.local_path}"
 
             @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build cpanlib to new build: #{ancestor_cpanlib_path} -> #{@project.local_path}/#{@build.local_path}/cpanlib" })
     
-            FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}/"
             FileUtils.cp_r "#{@project.local_path}/#{@parent_build.local_path}/artefacts/", "#{@project.local_path}/#{@build.local_path}/"
 
             @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build artefacts to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/" })
