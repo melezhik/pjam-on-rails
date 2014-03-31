@@ -36,7 +36,8 @@ class BuildsController < ApplicationController
                 @project.history.create!( { :commiter => request.remote_host, :action => "remove #{indexed_url}" })
             end
 
-            # create new project's sources based on snapshot for parent build
+            # creates new project's sources based on snapshot for parent build
+            # creates new build's shanpshot as copy of parent's build one
             i = 0
             @parent_build.components.each do |cmp|
                 i += 1    
@@ -47,12 +48,16 @@ class BuildsController < ApplicationController
                     @project.update!({ :distribution_source_id => new_source.id })
                     @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{new_source.id}; indexed_url: #{cmp.indexed_url} as an main application component source for project ID: #{@project.id}" })
                 end
+                cmp_new = @build.snapshots.create!({ 
+                    :indexed_url => cmp[:indexed_url], :revision => cmp[:revision], 
+                    :scm_type => cmp[:scm_type], :schema => cmp[:schema],
+                    :is_distribution_url => cmp[:is_distribution_url] 
+                })
+                cmp_new.save!
             end
 
             # re-read project data from DB
             @project = Project.find(params[:project_id])
-
-            make_snapshot @project, @build
 
             settings = Setting.take
             copy_stack_cmd = "pinto --root=#{settings.pinto_repo_root} copy #{@project.id}-#{@parent_build.id} #{@project.id}-#{@build.id} --no-color"
