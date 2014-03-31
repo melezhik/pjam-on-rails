@@ -41,7 +41,7 @@ class Build < ActiveRecord::Base
     end
 
     def all_log_entries
-         logs.order( :id => :desc )
+         logs.order( :id => :asc )
     end
 
     def recent_log_entries_number
