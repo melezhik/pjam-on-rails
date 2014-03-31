@@ -20,76 +20,84 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
              distributions_list = []
              final_distribution_archive = nil
              final_distribution_revision = nil
-             build.components.each  do |cmp|
-    
-             build_async.log :info,  "processing component: #{cmp[:indexed_url]}"
 
-             FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
-             FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"       
-             build_async.log :debug,  "component's local path: #{project.local_path}/#{build.local_path}/#{cmp.local_path} has been successfully created"
 
              if build.has_ancestor?
-                 ancestor_cpanlib_path = "#{project.local_path}/#{build.ancestor.local_path}/cpanlib/"
-                 FileUtils.cp_r "#{ancestor_cpanlib_path}", "#{project.local_path}/#{build.local_path}"
+                 ancestor_cpanlib_path = "#{project.local_path}/#{build.ancestor.local_path}/cpanlib/*"
+                 _execute_command  "cp -r #{ancestor_cpanlib_path} #{project.local_path}/#{build.local_path}/cpanlib/"
                  build_async.log :debug, "copied ancestor cpanlib path: #{ancestor_cpanlib_path} to #{project.local_path}/#{build.local_path}/cpanlib"
              else
                  build_async.log :debug, "build has no ancestor, just create #{project.local_path}/#{build.local_path}/cpanlib"
              end
 
-             _execute_command "svn info #{cmp.url}" # check if repository available
-             xml = `svn --xml info #{cmp.url}`.force_encoding("UTF-8")
-             repo_info = Crack::XML.parse xml
-             rev = repo_info["info"]["entry"]["commit"]["revision"]
-             build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
+             build.components.each  do |cmp|
 
-             if (! cmp.revision.nil? and ! rev.nil?  and ! cmp.main? and cmp.revision == rev  and settings.force_mode == false )
-    	 	    build_async.log :debug, "this component is already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
-	    	    next
-    	     end
-
-             if (! cmp.revision.nil? and ! rev.nil? )
-                build_async.log :debug,  "changes found for #{cmp.url} between #{rev} and #{cmp.revision}"
-                _execute_command "svn log #{cmp.url} -r #{cmp.revision}:#{rev}"
-                _execute_command "svn diff #{cmp.url} -r #{cmp.revision}:#{rev}"
-             end
-
-	
-        	 pinto_distro_rev =  "#{rev}-#{build.id}"
-             _execute_command "svn co #{cmp.url} #{project.local_path}/#{build.local_path}/#{cmp.local_path} -q"
-             build_async.log :debug, "component's source code has been successfully checked out"
-            
-             
-             if ( ! cmp.main? and record = distributions.find_by(indexed_url: cmp.indexed_url, revision: rev) )
-                 build_async.log :debug, "component's distribution is already pulled before as #{record[:distribution]}"
-                 archive_name_with_revision = record[:distribution]
-                 _pull_distribution_into_pinto_repo archive_name_with_revision # re-pulling distribution again, just in case 
-             else
-
-                 archive_name = _create_distribution_archive cmp
-                 build_async.log :debug, "component's distribution archive #{archive_name} has been successfully created"
-
-                 archive_name_with_revision = _add_distribution_to_pinto_repo cmp, archive_name, pinto_distro_rev
-
-                 # paranoid check:
-    		     _distribution_in_pinto_repo! archive_name_with_revision
-                 build_async.log :debug, "component's distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
-
-                 if cmp.main?
-                     final_distribution_archive = archive_name_with_revision
-          		     final_distribution_revision = pinto_distro_rev
-                     build_async.log :debug, "application main distribution archive : #{final_distribution_archive}"
-                     build_async.log :debug, "application main distribution revision : #{final_distribution_revision}"
-                 else
-                     new_distribution = distributions.new
-                     new_distribution.update({ :revision => rev, :url => cmp.url, :distribution => archive_name_with_revision,  :indexed_url => cmp.indexed_url })
-                     new_distribution.save!
+                 build_async.log :info,  "processing component: #{cmp[:indexed_url]}"
+    
+                 FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
+                 FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
+                 build_async.log :debug,  "component's local path: #{project.local_path}/#{build.local_path}/#{cmp.local_path} has been successfully created"
+    
+                 if build.has_ancestor? and record = build.ancestor.component_by_indexed_url(cmp[:indexed_url])
+                        cmp.update!({ :revision => record[:revision] })
+                        cmp.save!
+                        build_async.log :debug, "found revsion: #{record[:revision]} in ancestor build for component: #{cmp[:indexed_url]}"
                  end
-
-             end
-
-             distributions_list << { :archive_name_with_revision => archive_name_with_revision, :revision => rev, :cmp => cmp }
-
-
+        
+                 _execute_command "svn info #{cmp.url}" # check if repository available
+                 xml = `svn --xml info #{cmp.url}`.force_encoding("UTF-8")
+                 repo_info = Crack::XML.parse xml
+                 rev = repo_info["info"]["entry"]["commit"]["revision"]
+                 build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
+                    
+                 if (! cmp.revision.nil? and ! rev.nil?  and ! cmp.main? and cmp.revision == rev  and settings.force_mode == false )
+    	 	        build_async.log :debug, "this component is already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
+	    	        next
+    	         end
+    
+                 if (! cmp.revision.nil? and ! rev.nil? )
+                    build_async.log :debug,  "changes found for #{cmp.url} between #{rev} and #{cmp.revision}"
+                    _execute_command "svn log #{cmp.url} -r #{cmp.revision}:#{rev}"
+                    _execute_command "svn diff #{cmp.url} -r #{cmp.revision}:#{rev}"
+                 end
+    
+	    
+        	     pinto_distro_rev =  "#{rev}-#{build.id}"
+                 _execute_command "svn co #{cmp.url} #{project.local_path}/#{build.local_path}/#{cmp.local_path} -q"
+                 build_async.log :debug, "component's source code has been successfully checked out"
+                
+                 
+                 if ( ! cmp.main? and record = distributions.find_by(indexed_url: cmp.indexed_url, revision: rev) )
+                     build_async.log :debug, "component's distribution is already pulled before as #{record[:distribution]}"
+                     archive_name_with_revision = record[:distribution]
+                     _pull_distribution_into_pinto_repo archive_name_with_revision # re-pulling distribution again, just in case 
+                 else
+    
+                     archive_name = _create_distribution_archive cmp
+                     build_async.log :debug, "component's distribution archive #{archive_name} has been successfully created"
+    
+                     archive_name_with_revision = _add_distribution_to_pinto_repo cmp, archive_name, pinto_distro_rev
+    
+                     # paranoid check:
+    		         _distribution_in_pinto_repo! archive_name_with_revision
+                     build_async.log :debug, "component's distribution archive #{archive_name_with_revision} has been successfully added to pinto repository"
+    
+                     if cmp.main?
+                         final_distribution_archive = archive_name_with_revision
+          		         final_distribution_revision = pinto_distro_rev
+                         build_async.log :debug, "application main distribution archive : #{final_distribution_archive}"
+                         build_async.log :debug, "application main distribution revision : #{final_distribution_revision}"
+                     else
+                         new_distribution = distributions.new
+                         new_distribution.update({ :revision => rev, :url => cmp.url, :distribution => archive_name_with_revision,  :indexed_url => cmp.indexed_url })
+                         new_distribution.save!
+                     end
+    
+                 end
+    
+                 distributions_list << { :archive_name_with_revision => archive_name_with_revision, :revision => rev, :cmp => cmp }
+    
+    
         end
 
         distributions_list.each do |item|
@@ -203,6 +211,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     def _initialize
 
          FileUtils.mkdir_p "#{project.local_path}/repo"
+         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/cpanlib/"
          FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
 
          build_async.log :info,  "project's local path has been successfully created: #{project.local_path}"

@@ -19,6 +19,10 @@ class Build < ActiveRecord::Base
        snapshots.where(' is_distribution_url = ? ', true ).first
     end
 
+    def component_by_indexed_url indexed_url
+       snapshots.where(' indexed_url = ? ', indexed_url ).first
+    end
+
     def has_main_component?
         ! main_component.nil?
     end

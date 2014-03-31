@@ -40,7 +40,7 @@ class BuildsController < ApplicationController
             i = 0
             @parent_build.components.each do |cmp|
                 i += 1    
-                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*2, :last_rev => cmp[:revision] })
+                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*2  })
                 new_source.save!
                 @project.history.create!( { :commiter => request.remote_host, :action => "add #{cmp.indexed_url}" })
                 if cmp.main?
@@ -270,7 +270,7 @@ private
    def make_snapshot project, build
          # snapshoting current configuration before schedulling new build
          project.sources_enabled.each  do |s|
-            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url, :revision => s.last_rev  } )
+            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url   } )
             cmp.save!
             if project.distribution_indexed_url == s._indexed_url
                 cmp.update!( { :is_distribution_url => true } )
