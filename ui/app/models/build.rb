@@ -37,11 +37,11 @@ class Build < ActiveRecord::Base
 
 
     def recent_log_entries
-         logs.order(created_at: :desc).limit(recent_log_entries_number).reverse
+         logs.order( :id => :desc ).limit(recent_log_entries_number).reverse
     end
 
     def all_log_entries
-         logs
+         logs.order( :id => :desc )
     end
 
     def recent_log_entries_number

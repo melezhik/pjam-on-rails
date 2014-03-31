@@ -25,15 +25,19 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @parent_build = Build.find(params[:id])
 
+        @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}" } )
+
         if @parent_build.succeeded?
 
             @build = @project.builds.create!({ :parent_id => @parent_build.id })
+
+            log @build, :info, "create build ID:#{@build.id}"
 
             # remove all project's sources 
             @project.sources.each  do |s|
                 indexed_url =  s._indexed_url
                 s.destroy!
-                @project.history.create!( { :commiter => request.remote_host, :action => "remove #{indexed_url}" })
+                log @build, :debug, "remove #{indexed_url}"
             end
 
             # creates new project's sources based on snapshot for parent build
@@ -43,10 +47,10 @@ class BuildsController < ApplicationController
                 i += 1    
                 new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*2  })
                 new_source.save!
-                @project.history.create!( { :commiter => request.remote_host, :action => "add #{cmp.indexed_url}" })
+                log @build, :debug, "add #{cmp.indexed_url} to project ID:#{@project.id}"
                 if cmp.main?
                     @project.update!({ :distribution_source_id => new_source.id })
-                    @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{new_source.id}; indexed_url: #{cmp.indexed_url} as an main application component source for project ID: #{@project.id}" })
+                    log @build, :debug, "mark source ID: #{new_source.id}; indexed_url: #{cmp.indexed_url} as an main application component source for project ID: #{@project.id}"
                 end
                 cmp_new = @build.snapshots.create!({ 
                     :indexed_url => cmp[:indexed_url], :revision => cmp[:revision], 
@@ -62,8 +66,9 @@ class BuildsController < ApplicationController
             settings = Setting.take
             copy_stack_cmd = "pinto --root=#{settings.pinto_repo_root} copy #{@project.id}-#{@parent_build.id} #{@project.id}-#{@build.id} --no-color"
 
+            log @build, :debug, "running command: #{copy_stack_cmd}"
             execute_command copy_stack_cmd
-            @project.history.create!( { :commiter => request.remote_host, :action => copy_stack_cmd })
+            log @build, :debug, "command: #{copy_stack_cmd} succeeded"
 
             @build.update({ :has_stack => true, :state => 'succeeded' })
             @build.save!
@@ -73,16 +78,16 @@ class BuildsController < ApplicationController
             ancestor_cpanlib_path = "#{@project.local_path}/#{@parent_build.local_path}/cpanlib/"
             FileUtils.cp_r "#{ancestor_cpanlib_path}", "#{@project.local_path}/#{@build.local_path}"
 
-            @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build cpanlib to new build: #{ancestor_cpanlib_path} -> #{@project.local_path}/#{@build.local_path}/cpanlib" })
+            log @build, :debug, "copy parent build cpanlib to new build: #{ancestor_cpanlib_path} -> #{@project.local_path}/#{@build.local_path}/cpanlib"
     
             FileUtils.cp_r "#{@project.local_path}/#{@parent_build.local_path}/artefacts/", "#{@project.local_path}/#{@build.local_path}/"
 
-            @project.history.create!( { :commiter => request.remote_host, :action => "copy parent build artefacts to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/" })
+            log @build, :debug, "copy parent build artefacts to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/"
 
             @build.update({ :distribution_name => @parent_build[:distribution_name] })
             @build.save!
 
-            @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}; new build ID: #{@build.id}" })
+            log @build, :info,  "successfully reverted project to build ID: #{@parent_build.id}; new build ID: #{@build.id}"
 
             flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
         else
@@ -283,5 +288,22 @@ private
             end
          end
    end  
+
+    def log build, level, chunk
+        lines = [] 
+        if chunk.class == Array
+            lines  =  chunk
+        else
+            lines =  ((chunk || "").split "\n")
+        end
+        lines.map {|ll| ll || "" }.each do |l|
+            l.chomp!
+            log_entry = build.logs.create!
+            log_entry.update!( { :level => level, :chunk => l } )
+            log_entry.save!
+        end
+        build.save!
+    end
+
 
 end
