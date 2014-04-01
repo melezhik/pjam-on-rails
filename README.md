@@ -63,26 +63,38 @@ For none production pjam usage you should omit exporting RAILS_ENV. In this case
     ./bin/delayed_job start # start builds scheduler  
     rails server -d # start pjam server binded to 127.0.0.1:3000
 
-## Pinto repository root
+## Pinto repository root directory
 
 Will be created in ~/.pjam/repo directory. To migrate existed one simply run following:
 
     mkdir -p  ~/.pjam/repo/ && cp -r /path/to/existed/repo/root  ~/.pjam/repo
 
-## Arfefacts root
+## Artefacts root directory
 
 Will be created in ~/.pjam/projects directory. 
 
 # Terminology
 
-A brief explanation for pjam concept as terminology terms.
+A brief explanation for pjam concept.
  
-- Pjam - a name of build server. Pjam-on-rails - an "official" name, bear in mind
-that an application is written on ruby on rails framework.
-- Project - is the collection of sequential builds. Project describes a configuration to be applied to the next build to be run. Different builds may be compared.
-- Build - is the result of pjam builder, every build has a state and if build is succeeded has a number of artefacts. Build "inherit" it's configuration from projects when it is scheduled to builds queue. Build describe how and which source code from  VCS  is being build.  
-- Pjam builder - is the builds scheduler, which  asynchronously process the queue of builds, under the hood pjam builder implemented by active_job jam
-- Artefacts - a number of files, data resulted in successful build. Actually an archive of Perl modules for an application to be installed.
+- Pjam - a name of the build server. Pjam-on-rails - an "official" name, bear in mind that pjam application is written on ruby on rails framework.
+
+- An application - is arbitruary perl application with source code checked out from VCS.
+
+- Project describes an application build configuration. This configuration to be applied to next build to be run.  The configuration is the list of components. Every component is the represented by url in VCS.  Also project has a _main_ application component  which distribution is created from. Hereby components are just dependencies for an application to be build.
+
+- Build is the result of build process run by user, when build starts:
+    - project configuration is applied to build environment as components list
+    - new pinto stacks is created as a copy of pinto stack of previous build
+    - new install base is created as a copy of istall base of previous build
+    - build is added to builds queue ( see note about build scheduler )
+
+- Different builds may be compared. 
+
+- Build scheduler - asynchronous scheduler processing the build's queue. Using delayed_job under the hood
+- Artefacts - files created during the process of creating build
+     - Install base - an local directory with all of the dependencies for application
+     - Distribution archive - archived install base directory
  
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
