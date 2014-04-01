@@ -67,7 +67,7 @@ For none production pjam usage you should omit exporting RAILS_ENV. In this case
 
 Will be created in ~/.pjam/repo directory. To migrate existed one simply run following:
 
-    mkdir -p  ~/.pjam/repo/ && cp -r /path/to/existed/repo/root/*  ~/.pjam/repo/
+    mkdir -p  ~/.pjam/repo/ && cp -r /path/to/existed/repo/root  ~/.pjam/repo
 
 
 
