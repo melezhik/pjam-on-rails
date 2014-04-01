@@ -60,7 +60,7 @@ class Project < ActiveRecord::Base
     end
 
     def local_path
-        "#{Rails.public_path}/projects/#{id}"
+        "#{ENV['HOME']}/.pjam/projects/#{id}"
     end
 
 

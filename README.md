@@ -69,7 +69,9 @@ Will be created in ~/.pjam/repo directory. To migrate existed one simply run fol
 
     mkdir -p  ~/.pjam/repo/ && cp -r /path/to/existed/repo/root  ~/.pjam/repo
 
+## Arfefacts root
 
+Will be created in ~/.pjam/projects directory. 
 
 # Terminology
 
