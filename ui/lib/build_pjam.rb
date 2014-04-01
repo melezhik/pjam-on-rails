@@ -210,7 +210,6 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
     def _initialize
 
-         FileUtils.mkdir_p "#{project.local_path}/repo"
          FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/cpanlib/"
          FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
 
@@ -218,6 +217,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          build_async.log :info,  "build's local path has been successfully created: #{project.local_path}/#{build.local_path}"
 
          unless File.exist? "#{settings.pinto_repo_root}/.pinto"
+             FileUtils.mkdir_p "#{settings.pinto_repo_root}"
              _execute_command "pinto --root=#{settings.pinto_repo_root} init"
              build_async.log :debug, "pinto repository has been successfully created with root at: #{settings.pinto_repo_root}"
          end

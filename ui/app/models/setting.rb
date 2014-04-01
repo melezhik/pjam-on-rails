@@ -11,7 +11,7 @@ class Setting < ActiveRecord::Base
     end
 
     def pinto_repo_root
-        "#{Rails.public_path}/repo"
+        "#{ENV['HOME']}/.pjam/repo"
     end
 
     def pinto_config

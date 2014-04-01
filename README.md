@@ -46,7 +46,7 @@ All you need is to setup database configuration. Choose any driver you like, but
         host: localhost
 
 
-# None production/development configuration
+## None production/development configuration
 
 For none production pjam usage you should omit exporting RAILS_ENV. In this case you may use sqlite database engine instead of mysql: 
 
@@ -62,6 +62,14 @@ For none production pjam usage you should omit exporting RAILS_ENV. In this case
     rake db:migrate # initialize database
     ./bin/delayed_job start # start builds scheduler  
     rails server -d # start pjam server binded to 127.0.0.1:3000
+
+## Pinto repository root
+
+Will be created in ~/.pjam/repo directory. To migrate existed one simply run following:
+
+    mkdir -p  ~/.pjam/repo/ && cp -r /path/to/existed/repo/root/*  ~/.pjam/repo/
+
+
 
 # Terminology
 

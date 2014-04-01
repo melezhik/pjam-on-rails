@@ -11,7 +11,6 @@
 # improvements
 - activity log should show which project build belongs to 
 - build.changes popuplist should show not only show ids, but build annotations  ( for easier build comparisons )
-- build configuration page should have `build actions` navigation bar
 
 # fixes
 - class names renamings
