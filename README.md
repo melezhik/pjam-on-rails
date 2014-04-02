@@ -80,39 +80,39 @@ A brief explanation for pjam concept in glossary way.
 - `Pjam` - a name of the build server. Pjam-on-rails - a long, "official" name, bear in mind that pjam application is written on ruby on rails framework.
 
 - `Application` - is arbitruary perl application. A `component` - is a part of application, an arbitrary source code stored in VCS. In pjam model an application is the _list_ of components. 
-Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file.
+Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file, placed at component's root directory
+in VCS.
 
-- A pjam `dependency`. Is one of two types of things:
-    - a CPAN module - get resolved from cpan repository
+- A pjam `dependency`  is one of two types of things:
+    - a CPAN module - get resolved from cpan repository;
     - a component; a component of course may depend on CPAN modules
 
 - Pjam `project` is and application _view_ in pjam GUI.
 
-- `Build proccess` - the process of creation of distribution archive for an application. Schematically it does following
-     - every component is visited, converted into pinto distirbution archive and added to pinto repository.
-     - then every pinto distribution is installed into local directory - `build install base`
-     - then build install base is archived - we have so called build artefact.
+- `Build proccess` - the process of creation of distribution archive for an application. Schematically it does following:
+     - every component in application list is visited, converted into pinto distirbution archive and added to pinto repository.
+     - then every component's distribution achive is fetched from pinto repository and installed into local directory - `build install base`.
+     - then build install base is archived, archived build install base called artefact.
 
 
-- Pjam `Build` is the snapshot for two types of things:
+- Pjam `build` is the snapshot for two types of things:
     - an application's components list 
-    - a pinto local repository - implimented as pinto stack
+    - a pinto local repository ( the snapshot is implimented as pinto stack )
+    - Build has:
+        - an `install base` - local directory with all of the application dependencies.
+        - a `state` : 'succeeded'|'failed'. Succeeded build state means build process has finished successfully and build has a artefact.
+        - an attached `pinto stack`, which represents all module's versions installed into build install base.
 
-- Build has:
-    - an install base - local directory with all of the dependencies for an application
-    - a state : 'succeeded'|'failed'. Succeeded build means build process has finished successfully and build has a artefact.
-    - an attached pinto stack, which represent all modules version installed into build install base
+- Build `"inheritance"` . The term of build inheritance may be described as follows. When build process starts:
+    - project's components list is snapshoted and attached to build
+    - new pinto stack is created as a copy of pinto stack for previous build
+    - new install base is created as a copy of install base for previous build
+    - new build process is scheduled and build is added to builds queue ( see note about build scheduler )
 
-- Build `"inheritance"` . When build process starts:
-    - project's components list is applied to build environment
-    - new pinto stack is created as a copy of pinto stack of previous build
-    - new install base is created as a copy of istall base of previous build
-    - build is added to builds queue ( see note about build scheduler )
+- `Sequences of builds`.  User changes an application component's list and initiates the build processes resulting in build sequences for given project. 
+Different builds in the sequence may be compared. 
 
-- `Sequences of builds`.  User change an application component's list and initiate build processes, which in  turn results in build sequences for given project. 
-Different builds may be compared. 
-
-- `Build scheduler` - asynchronous scheduler processing the build's queue. Build schediler uses delayed_job under the hood.
+- `Build scheduler` - asynchronous scheduler processing the builds queue. Build schediler uses delayed_job under the hood.
 
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
