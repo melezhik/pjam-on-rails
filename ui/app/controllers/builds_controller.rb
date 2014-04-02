@@ -256,7 +256,7 @@ class BuildsController < ApplicationController
          @build = Build.find(params[:id])
          @project = Project.find(params[:project_id])
          archive_path =  "#{@project.local_path}/#{@build.local_path}/artefacts/#{params[:archive]}"
-         logger.debug "download #{archive_path}"   
+         logger.info "download #{archive_path}"   
          send_file archive_path
     end
 
