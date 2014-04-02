@@ -95,7 +95,7 @@ Components may also be treated as perl modules, but not necessarily should be pe
 
 
 - Pjam `Build` is the snapshot for two types of things:
-    - an application's componets list 
+    - an application's components list 
     - a pinto local repository - implimented as pinto stack
 
 - Build has:
