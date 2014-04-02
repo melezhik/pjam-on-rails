@@ -73,29 +73,47 @@ Will be created in ~/.pjam/repo directory. To migrate existed one simply run fol
 
 Will be created in ~/.pjam/projects directory. 
 
-# Terminology
+# Glossary
 
-A brief explanation for pjam concept.
+A brief explanation for pjam concept in glossary way.
  
-- Pjam - a name of the build server. Pjam-on-rails - an "official" name, bear in mind that pjam application is written on ruby on rails framework.
+- `Pjam` - a name of the build server. Pjam-on-rails - a long, "official" name, bear in mind that pjam application is written on ruby on rails framework.
 
-- An application - is arbitruary perl application with source code checked out from VCS.
+- `Application` - is arbitruary perl application. A `component` - is a part of application, an arbitrary source code stored in VCS. In pjam model an application is the _list_ of components. 
+Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file.
 
-- Project describes an application build configuration. This configuration to be applied to next build to be run.  The configuration is the list of components. Every component is the represented by url in VCS.  Also project has a _main_ application component  which distribution is created from. Hereby components are just dependencies for an application to be build.
+- A pjam `dependency`. Is one of two types of things:
+    - a CPAN module - get resolved from cpan repository
+    - a component; a component of course may depend on CPAN modules
 
-- Build is the result of build process run by user, when build starts:
-    - project configuration is applied to build environment as components list
-    - new pinto stacks is created as a copy of pinto stack of previous build
+- Pjam `project` is and application _view_ in pjam GUI.
+
+- `Build proccess` - the process of creation of distribution archive for an application. Schematically it does following
+     - every component is visited, converted into pinto distirbution archive and added to pinto repository.
+     - then every pinto distribution is installed into local directory - `build install base`
+     - then build install base is archived - we have so called build artefact.
+
+
+- Pjam `Build` is the snapshot for two types of things:
+    - an application's componets list 
+    - a pinto local repository - implimented as pinto stack
+
+- Build has:
+    - an install base - local directory with all of the dependencies for an application
+    - a state : 'succeeded'|'failed'. Succeeded build means build process has finished successfully and build has a artefact.
+    - an attached pinto stack, which represent all modules version installed into build install base
+
+- Build `"inheritance"` . When build process starts:
+    - project's components list is applied to build environment
+    - new pinto stack is created as a copy of pinto stack of previous build
     - new install base is created as a copy of istall base of previous build
     - build is added to builds queue ( see note about build scheduler )
 
-- Different builds may be compared. 
+- `Sequences of builds`.  User change an application component's list and initiate build processes, which in  turn results in build sequences for given project. 
+Different builds may be compared. 
 
-- Build scheduler - asynchronous scheduler processing the build's queue. Using delayed_job under the hood
-- Artefacts - files created during the process of creating build
-     - Install base - an local directory with all of the dependencies for application
-     - Distribution archive - archived install base directory
- 
+- `Build scheduler` - asynchronous scheduler processing the build's queue. Build schediler uses delayed_job under the hood.
+
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
 - [ruby on rails](http://rubyonrails.org)
