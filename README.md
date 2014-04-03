@@ -1,6 +1,6 @@
 # pjam-on-rails
 
-Perl build server. Yeah, this is a another continues integration server for Perl applications.
+Perl build server.
 
 # Features
 * creates perl applications builds 
@@ -83,19 +83,23 @@ A brief explanation for pjam concept in glossary way.
 Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file, placed at component's root directory
 in VCS.
 
-- A pjam `dependency`  is one of two types of things:
+- `Pjam dependency`  is one of two types of things:
     - a CPAN module - get resolved from cpan repository;
     - a component; a component of course may depend on CPAN modules
 
-- Pjam `project` is and application _view_ in pjam GUI.
+- `Pjam project` is and application _view_ in pjam GUI.
+
 
 - `Build proccess` - the process of creation of distribution archive for an application. Schematically it does following:
+
      - every component in application list is visited, converted into pinto distirbution archive and added to pinto repository.
+
      - then every component's distribution achive is fetched from pinto repository and installed into local directory - `build install base`.
+
      - then build install base is archived, archived build install base called artefact.
 
 
-- Pjam `build` is the snapshot for two types of things:
+- `Pjam build` is the snapshot for two types of things:
     - an application's components list 
     - a pinto local repository ( the snapshot is implimented as pinto stack )
     - Build has:
@@ -103,14 +107,15 @@ in VCS.
         - a `state` : 'succeeded'|'failed'. Succeeded build state means build process has finished successfully and build has a artefact.
         - an attached `pinto stack`, which represents all module's versions installed into build install base.
 
-- Build `"inheritance"` . The term of build inheritance may be described as follows. When build process starts:
+- `Sequences of builds`.  User changes an application component's list and initiates the build processes resulting in build sequences for given project. 
+Different builds in the sequence may be compared. 
+
+- `Build "inheritance"` . The term of build inheritance may be described as follows. When build process starts:
     - project's components list is snapshoted and attached to build
     - new pinto stack is created as a copy of pinto stack for previous build
     - new install base is created as a copy of install base for previous build
     - new build process is scheduled and build is added to builds queue ( see note about build scheduler )
 
-- `Sequences of builds`.  User changes an application component's list and initiates the build processes resulting in build sequences for given project. 
-Different builds in the sequence may be compared. 
 
 - `Build scheduler` - asynchronous scheduler processing the builds queue. Build schediler uses delayed_job under the hood.
 
