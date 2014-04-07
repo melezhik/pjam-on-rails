@@ -28,7 +28,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
                  build_async.log :debug, "copied ancestor cpanlib path: #{ancestor_cpanlib_path} to #{project.local_path}/#{build.local_path}/cpanlib"
              else
                  FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/cpanlib/"
-                 _execute_command  "touch #{project.local_path}/#{build.local_path}/cpanlib/.exists"
+                 _execute_command  "touch #{project.local_path}/#{build.local_path}/cpanlib/exists"
                  build_async.log :debug, "build has no ancestor, just create #{project.local_path}/#{build.local_path}/cpanlib"
              end
 
