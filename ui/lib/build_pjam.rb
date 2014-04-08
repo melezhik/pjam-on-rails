@@ -267,7 +267,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
     def modulebuildrc
         if project.verbose?
-            "export MODULEBUILDRC=#{settings.pinto_repo_root}/../.modulebuildrc && "
+            "export MODULEBUILDRC=#{settings.modulebuildrc} && "
         else
             ''
         end

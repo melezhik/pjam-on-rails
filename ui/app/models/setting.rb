@@ -22,6 +22,10 @@ class Setting < ActiveRecord::Base
         "#{Rails.root}/templates/pinto.ini.erb"
     end
 
+    def modulebuildrc
+        "#{Rails.root}/public/.modulebuildrc"
+    end
+
     def update_pinto_config
         template = File.read(pinto_config_erb)
         template = Erubis::Eruby.new(template)
