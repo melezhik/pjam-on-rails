@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326124916) do
+ActiveRecord::Schema.define(version: 20140407151700) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140326124916) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "force_mode",                    default: false
+    t.string   "jabber_server"
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"
@@ -118,6 +119,8 @@ ActiveRecord::Schema.define(version: 20140326124916) do
     t.integer  "sn",         default: 0
     t.boolean  "state",      default: true
     t.string   "last_rev"
+    t.string   "git_branch"
+    t.string   "git_folder"
   end
 
   add_index "sources", ["project_id"], name: "index_sources_on_project_id", using: :btree

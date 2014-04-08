@@ -11,10 +11,14 @@
 <%= form_for([@project, @project.sources.build]) do |f| %>
   <p>
     <%= f.label 'VCS' %>
-    <%= f.select :scm_type, options_for_select(%w[svn]) %>
+    <%= f.select :scm_type, options_for_select(['svn', 'git' ]),  {}, :onChange=>"javascript: if (this.selectedIndex == 1) { \n this.form.source_git_branch.disabled = false; \n this.form.source_git_folder.disabled = false; \n }; \n\n if (this.selectedIndex == 0 ) { \n this.form.source_git_branch.disabled = true; \n this.form.source_git_folder.disabled = true; \n this.form.source_git_branch.value = ''; this.form.source_git_folder.value = ''; };  "  %>
+    <%= f.label :git_branch %>
+    <%= f.text_field :git_branch, :disabled => true %>
+    <%= f.label :git_folder %>
+    <%= f.text_field :git_folder, :disabled => true %>
   </p>
   <p>
-    <%= f.label :url %><br />
+    <%= f.label :url %>
     <%= f.text_field :url %>
   </p>
   <p>
