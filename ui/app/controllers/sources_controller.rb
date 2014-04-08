@@ -8,21 +8,27 @@ class SourcesController < ApplicationController
             flash[:alert] = "error has been occured when creating source: not valid URI - #{params[:source].permit( :url )[:url]}"
         else
 
-            @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
-            @source.save!
-    
-            begin
-                @project.sources.find(@project[:distribution_source_id])
-            rescue ActiveRecord::RecordNotFound => ex
-                @project.update({:distribution_source_id => @source[:id]})
-            end
-    
-            @project.history.create!( { :commiter => request.remote_host, :action => "add #{@source._indexed_url}" }) 
-    
-            if @project.save
-                flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
-            else
-                flash[:alert] = "error has been occured when creating source: #{@project.errors.full_messages.join ' '}"
+            if #{params[:source].permit( :scm_type )[:scm_type] == 'git'
+                flash[:alert] = "git scm type is not currently supported"
+            else 
+            
+                @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
+                @source.save!
+        
+                begin
+                    @project.sources.find(@project[:distribution_source_id])
+                rescue ActiveRecord::RecordNotFound => ex
+                    @project.update({:distribution_source_id => @source[:id]})
+                end
+        
+                @project.history.create!( { :commiter => request.remote_host, :action => "add #{@source._indexed_url}" }) 
+        
+                if @project.save
+                    flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
+                else
+                    flash[:alert] = "error has been occured when creating source: #{@project.errors.full_messages.join ' '}"
+                end
+        
             end
     
         end
