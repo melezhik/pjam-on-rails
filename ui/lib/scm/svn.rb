@@ -17,7 +17,7 @@ class SCM::Svn < Struct.new( :component )
     end
 
     def checkout_cmd path
-        "svn export export --force -q #{component.url} #{path}"
+        "svn export --force -q #{component.url} #{path}"
     end
 end
 

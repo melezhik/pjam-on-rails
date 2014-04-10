@@ -50,7 +50,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
                  build_async.log :debug,  "component's scm hanlder class: #{scm_hanlder.class}"
 
-                 _execute_command scm_hanlder.check_repository_command # check if repository available
+                 _execute_command scm_hanlder.check_repository_cmd # check if repository available
                  rev = scm_hanlder.last_revision
 
                  build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
