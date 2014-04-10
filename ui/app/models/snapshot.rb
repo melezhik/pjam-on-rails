@@ -9,7 +9,11 @@ class Snapshot < ActiveRecord::Base
     end
 
     def url
-        schema + '://' +  ( indexed_url  || 'NULL' )
+        if scm_type == 'svn'
+            schema + '://' +  ( indexed_url  || 'NULL' )
+        elsif scm_type == 'git'
+            indexed_url
+        end
     end
 
     def main?

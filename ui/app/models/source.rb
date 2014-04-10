@@ -9,7 +9,11 @@ class Source < ActiveRecord::Base
     end
 
     def _indexed_url
-        URI.split(url)[2] + (URI.split(url)[5]).sub(/\/$/,"")
+        if scm_type == 'svn'
+            URI.split(url)[2] + (URI.split(url)[5]).sub(/\/$/,"")
+        elsif scm_type == 'git'
+            url + '/tree/' + ( git_branch || 'master' ) + '/' + ( git_folder || '' )
+        end
     end
 
 end
