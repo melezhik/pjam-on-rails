@@ -8,11 +8,11 @@ class SourcesController < ApplicationController
             flash[:alert] = "error has been occured when creating source: not valid URI - #{params[:source].permit( :url )[:url]}"
         else
 
-            if #{params[:source].permit( :scm_type )[:scm_type] == 'git'
-                flash[:alert] = "git scm type is not currently supported"
-            else 
+            #if #{params[:source].permit( :scm_type )[:scm_type] == 'git'
+            #    flash[:alert] = "git scm type is not currently supported"
+            #else 
             
-                @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
+                @source = @project.sources.create( params[:source].permit( :url, :scm_type, :git_branch, :git_folder ) )
                 @source.save!
         
                 begin
@@ -29,7 +29,7 @@ class SourcesController < ApplicationController
                     flash[:alert] = "error has been occured when creating source: #{@project.errors.full_messages.join ' '}"
                 end
         
-            end
+            #end
     
         end
 

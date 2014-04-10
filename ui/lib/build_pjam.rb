@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'crack'
 require 'open3'
 
 class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
@@ -46,10 +45,14 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
                         build_async.log :debug, "found revsion: #{record[:revision]} in ancestor build for component: #{cmp[:indexed_url]}"
                  end
         
-                 _execute_command "svn info #{cmp.url}" # check if repository available
-                 xml = `svn --xml info #{cmp.url}`.force_encoding("UTF-8")
-                 repo_info = Crack::XML.parse xml
-                 rev = repo_info["info"]["entry"]["commit"]["revision"]
+                 # constructs scm specific object for component 
+                 scm_hanlder = SCM::Factory.create cmp
+
+                 build_async.log :debug,  "component's scm hanlder class: #{scm_hanlder.class}"
+
+                 _execute_command scm_hanlder.check_repository_command # check if repository available
+                 rev = scm_hanlder.last_revision
+
                  build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
                     
                  if (! cmp.revision.nil? and ! rev.nil?  and ! cmp.main? and cmp.revision == rev  and settings.force_mode == false )
@@ -59,15 +62,14 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     
                  if (! cmp.revision.nil? and ! rev.nil? )
                     build_async.log :debug,  "changes found for #{cmp.url} between #{rev} and #{cmp.revision}"
-                    _execute_command "svn log #{cmp.url} -r #{cmp.revision}:#{rev}"
-                    _execute_command "svn diff #{cmp.url} -r #{cmp.revision}:#{rev}"
+                    _execute_command scm_hanlder.changes_cmd rev
                  end
-    
 	    
         	     pinto_distro_rev =  "#{rev}-#{build.id}"
-                 _execute_command "svn co #{cmp.url} #{project.local_path}/#{build.local_path}/#{cmp.local_path} -q"
+
+                 _execute_command(scm_hanlder.checkout_cmd("#{project.local_path}/#{build.local_path}/#{cmp.local_path}"))
+
                  build_async.log :debug, "component's source code has been successfully checked out"
-                
                  
                  if ( ! cmp.main? and record = distributions.find_by(indexed_url: cmp.indexed_url, revision: rev) )
                      build_async.log :debug, "component's distribution is already pulled before as #{record[:distribution]}"
