@@ -289,7 +289,7 @@ private
    def make_snapshot project, build
          # snapshoting current configuration before schedulling new build
          project.sources_enabled.each  do |s|
-            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url, :scm_type => s.scm_type, :git_folder => s.git_folder, :git_branch => s.git_branch, :schema => s.schema    } )
+            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url, :scm_type => s.scm_type, :git_folder => s.git_folder, :git_branch => s.git_branch    } )
             cmp.save!
             if project.distribution_indexed_url == s._indexed_url
                 cmp.update!( { :is_distribution_url => true } )

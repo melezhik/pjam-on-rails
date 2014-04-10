@@ -23,22 +23,26 @@
     <table class="table-bordered table-striped table">
       <tr>
         <th>Component</th>
+        <th>URL</th>
         <th>Schema</th>
         <th>SCM Type</th>
         <th>Git Branch</th>
         <th>Git Folder</th>
         <th>Is Main ?</th>
         <th>revision</th>
+        <th>ID</th>
       </tr>
     <% @data.each do |item| %>
     <tr>
         <td><%= item[:indexed_url] %></td>
+        <td><%= item.url %></td>
         <td><%= item[:schema] %></td>
         <td><%= item[:scm_type] %></td>
-        <td><%= item[:git_branch] || '---' %></td>
+        <td><%= item[:git_branch] || 'master' %></td>
         <td><%= item[:git_folder] || '---' %></td>
         <td><%= item[:is_distribution_url]? 'yes' : 'no'  %></td>
         <td><%= item[:revision] || '---' %></td>
+        <td><%= item[:id] %></td>
     </tr>
     <% end %>
     </table>

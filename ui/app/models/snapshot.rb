@@ -12,7 +12,7 @@ class Snapshot < ActiveRecord::Base
         if scm_type == 'svn'
             schema + '://' +  ( indexed_url  || 'NULL' )
         elsif scm_type == 'git'
-            indexed_url
+            indexed_url.split(' ').first
         end
     end
 

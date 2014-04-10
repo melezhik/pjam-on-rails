@@ -12,7 +12,7 @@ class Source < ActiveRecord::Base
         if scm_type == 'svn'
             URI.split(url)[2] + (URI.split(url)[5]).sub(/\/$/,"")
         elsif scm_type == 'git'
-            url + '/tree/' + ( git_branch || 'master' ) + '/' + ( git_folder || '' )
+            url + ' ' + ( git_branch || 'master' ) + ' ' + ( git_folder || '' )
         end
     end
 

@@ -12,9 +12,17 @@ class SourcesController < ApplicationController
             #    flash[:alert] = "git scm type is not currently supported"
             #else 
             
-                @source = @project.sources.create( params[:source].permit( :url, :scm_type, :git_branch, :git_folder ) )
+
+                @source = @project.sources.create( params[:source].permit( :url, :scm_type ) )
                 @source.save!
-        
+
+                [ :git_branch , :git_folder].each do |f|
+                    if ( !(params[:source].permit(f)[f].nil?) and !(params[:source].permit(f)[f].empty?) )
+                        @source.update!(f => params[:source].permit(f)[f] )
+                        @source.save!        
+                    end
+                end
+
                 begin
                     @project.sources.find(@project[:distribution_source_id])
                 rescue ActiveRecord::RecordNotFound => ex
