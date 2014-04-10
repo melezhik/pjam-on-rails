@@ -46,12 +46,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
                  end
         
                  # constructs scm specific object for component 
-                 scm_hanlder = SCM::Factory.create cmp
+                 scm_handler = SCM::Factory.create cmp
 
-                 build_async.log :debug,  "component's scm hanlder class: #{scm_hanlder.class}"
+                 build_async.log :debug,  "component's scm hanlder class: #{scm_handler.class}"
 
-                 _execute_command scm_hanlder.check_repository_cmd # check if repository available
-                 rev = scm_hanlder.last_revision
+                 _execute_command scm_handler.check_repository_cmd # check if repository available
+                 rev = scm_handler.last_revision
 
                  build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
                     
@@ -62,12 +62,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     
                  if (! cmp.revision.nil? and ! rev.nil? )
                     build_async.log :debug,  "changes found for #{cmp.url} between #{rev} and #{cmp.revision}"
-                    _execute_command scm_hanlder.changes_cmd rev
+                    _execute_command scm_handler.changes_cmd rev
                  end
 	    
         	     pinto_distro_rev =  "#{rev}-#{build.id}"
 
-                 _execute_command(scm_hanlder.checkout_cmd("#{project.local_path}/#{build.local_path}/#{cmp.local_path}"))
+                 _execute_command(scm_handler.checkout_cmd("#{project.local_path}/#{build.local_path}/#{cmp.local_path}"))
 
                  build_async.log :debug, "component's source code has been successfully checked out"
                  

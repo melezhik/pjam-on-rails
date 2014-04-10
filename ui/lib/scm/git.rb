@@ -2,10 +2,11 @@ class SCM::Git < Struct.new( :component )
 
     def last_revision
         cmd = check_repository_cmd
-        cmd << "git log -1 --pretty=format:'%h'"
+        cmd << " git log -1 --pretty=format:'%h'"
         unless component[:git_folder].nil?
             cmd << " #{component[:git_folder]}"
         end
+        `cmd`.chomp
     end
 
     def check_repository_cmd
@@ -30,7 +31,7 @@ class SCM::Git < Struct.new( :component )
         if component[:git_folder].nil?
             cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}"
         else
-            cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}/git-repo/ && cp -r #{path}/git-repo/* #{path}/ && rm -rf #{path}/git-repo/"
+            cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}/git-repo/ && cp -r #{path}/git-repo/#{component[:git_folder]}/* #{path}/ && rm -rf #{path}/git-repo/"
         end
     end
 

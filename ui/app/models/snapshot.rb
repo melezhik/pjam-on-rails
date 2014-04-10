@@ -10,10 +10,11 @@ class Snapshot < ActiveRecord::Base
 
     def url
         if scm_type == 'svn'
-            schema + '://' +  ( indexed_url  || 'NULL' )
+            r = schema + '://' +  ( indexed_url  || 'NULL' )
         elsif scm_type == 'git'
-            indexed_url.split(' ').first
+            r = indexed_url.split(" ").first
         end
+        r
     end
 
     def main?
