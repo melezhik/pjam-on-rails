@@ -12,9 +12,9 @@
   <strong>Sources:</strong>
 <% @project.sources_ordered.each do |item| %>
 	<% if item[:id] == @source[:id] %>
-		<strong><%= item.url %> sort order: <%= item[:sn] %></strong>
+		<strong><%= item._indexed_url %> sort order: <%= item[:sn] %></strong>
 	<% else %>
-		<%= item.url %> | sort order: <%= item[:sn] %> | <%= link_to "change",  edit_project_source_path( @project, item ), title: "change sort order for this source; ID:#{item[:id]}"   %>
+		<%= item._indexed_url %> | sort order: <%= item[:sn] %> | <%= link_to "change",  edit_project_source_path( @project, item ), title: "change sort order for this source; ID:#{item[:id]}"   %>
 	<% end %>
 <% end %>
 </pre>
