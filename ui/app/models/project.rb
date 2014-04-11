@@ -43,13 +43,6 @@ class Project < ActiveRecord::Base
         sources.find distribution_source_id
     end
 
-    def distribution_url
-        url = if has_distribution_source? == true
-            distribution_source[:url]
-        else
-            nil
-        end
-    end
 
     def distribution_indexed_url
         url = if has_distribution_source? == true

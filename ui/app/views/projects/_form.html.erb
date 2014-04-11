@@ -50,9 +50,9 @@
       <li>
 
         <% if item.id == @project.distribution_source_id %>
-             <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Source" %> [ This is an application source
+             <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Main Component" %> [ Application Main Component
         <% else %>
-             <%= link_to item.url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn};" %>
+             <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn};" %>
             [ <%= link_to 'App', [ :app, item.project, item   ], method: :post,  title: "mark this source as an application source" %>
         <% end %>
         <%= link_to 'Delete', [ item.project, item], method: :delete, title: "remove this source", data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %> ]

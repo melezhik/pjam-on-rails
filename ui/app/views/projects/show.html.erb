@@ -2,7 +2,7 @@
   <strong>Title:</strong> <%= @project.title %>
   <strong>Description:</strong> <%= @project.text %>
         <% if @project.has_distribution_source? == true %>
-  <strong>Application Source:</strong> <%= @project.distribution_url %>
+  <strong>Application Main Component:</strong> <%= @project.distribution_indexed_url %>
         <% else %>
   <strong>Application Source:</strong> not set
         <% end %>
