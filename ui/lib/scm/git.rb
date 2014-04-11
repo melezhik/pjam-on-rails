@@ -19,9 +19,9 @@ class SCM::Git < Struct.new( :component, :path )
     def checkout_cmd
         cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}/git-repo/"
         if component[:git_folder].nil?
-            cmd << " && cp -r #{component.url} #{path}/git-repo/*  #{path}/ "
+            cmd << " && cp -r #{path}/git-repo/*  #{path}/ "
         else
-            cmd << " && cp -r #{component.url} #{path}/git-repo/#{component[:git_folder]}/*  #{path}/ "
+            cmd << " && cp -r #{path}/git-repo/#{component[:git_folder]}/*  #{path}/ "
         end
     end
 
