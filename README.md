@@ -5,7 +5,7 @@ Pinto based build server for perl applications.
 # Features
 * creates perl applications builds 
 * uses [pinto](https://github.com/thaljef/Pinto) inside to handle dependencies
-* checkouts sources from subversion VCS
+* supports subversion and git SCMs
 * both Makefile.PL, Build.PL systems support 
 * asynchronously executes build tasks
 * sends builds notifications by jabber
