@@ -1,5 +1,5 @@
 require 'crack'
-class SCM::Svn < Struct.new( :component )
+class SCM::Svn < Struct.new( :component, :path )
 
     def last_revision
         xml = `svn --xml info #{component.url}`.force_encoding("UTF-8")
@@ -7,16 +7,11 @@ class SCM::Svn < Struct.new( :component )
         repo_info["info"]["entry"]["commit"]["revision"]
     end
 
-    def check_repository_cmd
-        "svn info #{component.url}"
-    end
-
-
     def changes_cmd revision
         "svn log #{component.url} -r #{component.revision}:#{revision} && svn diff #{component.url} -r #{component.revision}:#{revision}"
     end
 
-    def checkout_cmd path
+    def checkout_cmd
         "svn export --force -q #{component.url} #{path}"
     end
 end

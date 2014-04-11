@@ -1,37 +1,25 @@
-class SCM::Git < Struct.new( :component )
+class SCM::Git < Struct.new( :component, :path )
 
     def last_revision
-        cmd = check_repository_cmd
-        cmd << " git log -1 --pretty=format:'%h'"
+        cmd = "cd #{path} && git log -1 --pretty=format:'%h' 2>&1"
         unless component[:git_folder].nil?
             cmd << " #{component[:git_folder]}"
         end
-        `cmd`.chomp
-    end
-
-    def check_repository_cmd
-        cmd = "rm -rf  /tmp/.pjam/#{component.local_path} && mkdir -p /tmp/.pjam/#{component.local_path} && cd /tmp/.pjam/#{component.local_path} && "
-        cmd << "git init && git remote add -t #{component[:git_branch] || 'master'} origin #{component.url} && git pull origin"
-        unless component[:git_folder].nil?
-            cmd << " && ls -l #{component[:git_folder]}"
-        end
-        cmd
+        `#{cmd}`.chomp
     end
 
     def changes_cmd revision
-        cmd = check_repository_cmd + " && git log #{component.revision} #{revision}"
+        cmd = "cd #{path} && git log #{component.revision} #{revision}"
         unless component[:git_folder].nil?
             cmd << " #{component[:git_folder]}"
         end
-        cmd << " && rm -rf /tmp/.pjam/#{component.local_path}"
         cmd
     end
 
-    def checkout_cmd path
-        if component[:git_folder].nil?
-            cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}"
-        else
-            cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}/git-repo/ && cp -r #{path}/git-repo/#{component[:git_folder]}/* #{path}/ && rm -rf #{path}/git-repo/"
+    def checkout_cmd
+        cmd = "git clone -b #{component[:git_branch] || 'master'} #{component.url} #{path}"
+        unless component[:git_folder].nil?
+            cmd << " && ls -l #{path}/#{component[:git_folder]}"
         end
     end
 

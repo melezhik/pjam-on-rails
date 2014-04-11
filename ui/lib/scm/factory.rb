@@ -1,10 +1,10 @@
 module SCM::Factory
-    def self.create component
+    def self.create component, path
         case component.scm_type
         when 'git'
-            SCM::Git.new component
+            SCM::Git.new component, path
         when 'svn'
-            SCM::Svn.new component
+            SCM::Svn.new component, path
         else
             raise "unknown scm type: #{component.scm_type}"
         end    
