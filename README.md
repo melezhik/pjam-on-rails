@@ -1,6 +1,6 @@
 # pjam-on-rails
 
-Perl build server.
+Pinto based build server for perl applications.
 
 # Features
 * creates perl applications builds 
@@ -25,7 +25,7 @@ Perl build server.
     rake db:migrate # initialize database
     bundle exec rake assets:precompile
     ./bin/delayed_job start # start builds scheduler  
-    rails server -d # start pjam server binded to 127.0.0.1:3000
+    rails server -d # start pjam server binded to 0.0.0.0:3000
 
 
 # Prerequisites
