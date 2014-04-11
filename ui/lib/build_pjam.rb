@@ -64,6 +64,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
                  if (! cmp.revision.nil? and ! rev.nil? )
                     build_async.log :debug,  "changes found for #{cmp.url} between #{rev} and #{cmp.revision}"
                     _execute_command scm_handler.changes_cmd rev
+                    _execute_command scm_handler.diff_cmd rev
                  end
 	    
         	     pinto_distro_rev =  "#{rev}-#{build.id}"

@@ -9,9 +9,17 @@ class SCM::Git < Struct.new( :component, :path )
     end
 
     def changes_cmd revision
-        cmd = "cd #{path}/git-repo/ && git log #{component.revision} #{revision}"
+        cmd = "cd #{path}/git-repo/ && git log --abbrev-commit #{component.revision}..#{revision}"
         unless component[:git_folder].nil?
-            cmd << " #{component[:git_folder]}"
+            cmd << " -- #{component[:git_folder]}"
+        end
+        cmd
+    end
+
+    def diff_cmd revision
+        cmd = "cd #{path}/git-repo/ && git diff #{component.revision} #{revision}"
+        unless component[:git_folder].nil?
+            cmd << " -- #{component[:git_folder]}"
         end
         cmd
     end

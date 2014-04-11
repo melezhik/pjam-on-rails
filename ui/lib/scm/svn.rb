@@ -8,8 +8,13 @@ class SCM::Svn < Struct.new( :component, :path )
     end
 
     def changes_cmd revision
-        "svn log #{component.url} -r #{component.revision}:#{revision} && svn diff #{component.url} -r #{component.revision}:#{revision}"
+        "svn log #{component.url} -r #{component.revision}:#{revision}"
     end
+
+    def diff_cmd revision
+        "svn diff #{component.url} -r #{component.revision}:#{revision}"
+    end
+
 
     def checkout_cmd
         "svn export --force -q #{component.url} #{path}"
