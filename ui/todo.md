@@ -9,6 +9,7 @@
 - pull/add should be done in transactional way ( need to rewrite lib/build_pjam.rb )
 
 # improvements
+- need to higlight some log lines, may be this would require new log levels ( now it's error, debug, info )
 - activity log should show which project build belongs to 
 - build.changes popuplist should show not only show ids, but build annotations  ( for easier build comparisons )
 
@@ -23,7 +24,7 @@
 
 # new features
 
-- sources.last_rev should be depricated and removed
+- column sources.last_rev should be depricated and removed
 - install distribution on client machine via http request to pjam
 - delete all sources ( already done  in `revert build` function )
 - handle svn.exteranls to allow add multiple sources as single url
