@@ -126,9 +126,8 @@ Here I "drop" some common actions may be done with restfull api as well
 
 ## copy build from project to another project 
 
+    # <project-id>  - the project you want to copy build to, <build-id> - the build you want to copy 
     curl -X POST http://you-pjam-server/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
-
-Where <project-id>  - the project you want to copy build to, <build-id> - the build you want to copy 
 
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
