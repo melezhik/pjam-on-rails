@@ -122,12 +122,14 @@ Different builds in the sequence may be compared.
 
 # RESTfull API
 
-Here I "drop" some common actions may be done with restfull api as well
+Here I "drop" some common actions which may be done with restfull api as well
 
-## copy build from project to another project 
+## copy build from one project to another project 
 
-    # <project-id>  - the project you want to copy build to, <build-id> - the build you want to copy 
     curl -X POST http://your-pjam-server/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
+
+- `build-id`    - the build ID which you want to copy 
+- `project-id`  - the project ID where you want to copy build to
 
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
