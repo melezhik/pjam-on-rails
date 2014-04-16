@@ -23,13 +23,14 @@ class BuildsController < ApplicationController
     def revert
 
         @project = Project.find(params[:project_id])
-        @parent_build = Build.find(params[:id])
+        parent_build = Build.find(params[:id])
+        parent_project =  Project.find(parent_build.project_id)
 
-        @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{@parent_build.id}" } )
+        @project.history.create!( { :commiter => request.remote_host, :action => "revert project to build ID: #{parent_build.id}" } )
 
-        if @parent_build.succeeded?
+        if parent_build.succeeded?
 
-            @build = @project.builds.create!({ :parent_id => @parent_build.id })
+            @build = @project.builds.create!({ :parent_id => parent_build.id })
 
             log @build, :info, "create build ID:#{@build.id}"
 
@@ -43,7 +44,7 @@ class BuildsController < ApplicationController
             # creates new project's sources based on snapshot for parent build
             # creates new build's shanpshot as copy of parent's build one
             i = 0
-            @parent_build.components.each do |cmp|
+            parent_build.components.each do |cmp|
                 i += 1    
                 new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*10, :git_branch => cmp[:git_branch], :git_folder => cmp[:git_folder]  })
                 new_source.save!
@@ -68,7 +69,7 @@ class BuildsController < ApplicationController
             @project = Project.find(params[:project_id])
 
             settings = Setting.take
-            copy_stack_cmd = "pinto --root=#{settings.pinto_repo_root} copy #{@project.id}-#{@parent_build.id} #{@project.id}-#{@build.id} --no-color"
+            copy_stack_cmd = "pinto --root=#{settings.pinto_repo_root} copy #{parent_project.id}-#{parent_build.id} #{@project.id}-#{@build.id} --no-color"
 
             log @build, :debug, "running command: #{copy_stack_cmd}"
             execute_command copy_stack_cmd
@@ -79,23 +80,23 @@ class BuildsController < ApplicationController
 
             FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}/"
 
-            ancestor_cpanlib_path = "#{@project.local_path}/#{@parent_build.local_path}/cpanlib/"
+            ancestor_cpanlib_path = "#{parent_project.local_path}/#{parent_build.local_path}/cpanlib/"
             FileUtils.cp_r "#{ancestor_cpanlib_path}", "#{@project.local_path}/#{@build.local_path}"
 
             log @build, :debug, "copy parent build cpanlib to new build: #{ancestor_cpanlib_path} -> #{@project.local_path}/#{@build.local_path}/cpanlib"
     
-            FileUtils.cp_r "#{@project.local_path}/#{@parent_build.local_path}/artefacts/", "#{@project.local_path}/#{@build.local_path}/"
+            FileUtils.cp_r "#{parent_project.local_path}/#{parent_build.local_path}/artefacts/", "#{@project.local_path}/#{@build.local_path}/"
 
-            log @build, :debug, "copy parent build artefacts to new build: #{@project.local_path}/#{@parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/"
+            log @build, :debug, "copy parent build artefacts to new build: #{parent_project.local_path}/#{parent_build.local_path}/artefacts/ -> #{@project.local_path}/#{@build.local_path}/"
 
-            @build.update({ :distribution_name => @parent_build[:distribution_name] })
+            @build.update({ :distribution_name => parent_build[:distribution_name] })
             @build.save!
 
-            log @build, :info,  "successfully reverted project to build ID: #{@parent_build.id}; new build ID: #{@build.id}"
+            log @build, :info,  "successfully reverted project to build ID: #{parent_build.id}; new build ID: #{@build.id}"
 
             flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
         else
-            flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{@parent_build.id}; state:#{@parent_build.state}"
+            flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{parent_build.id}; state:#{parent_build.state}"
         end
 
         redirect_to project_path(@project)
