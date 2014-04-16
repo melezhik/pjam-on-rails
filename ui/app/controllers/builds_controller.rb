@@ -45,7 +45,7 @@ class BuildsController < ApplicationController
             i = 0
             @parent_build.components.each do |cmp|
                 i += 1    
-                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*2  })
+                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*10, :git_branch => cmp[:git_branch], :git_folder => cmp[:git_folder]  })
                 new_source.save!
                 log @build, :debug, "add #{cmp.indexed_url} to project ID:#{@project.id}"
                 if cmp.main?
@@ -53,9 +53,13 @@ class BuildsController < ApplicationController
                     log @build, :debug, "mark source ID: #{new_source.id}; indexed_url: #{cmp.indexed_url} as an main application component source for project ID: #{@project.id}"
                 end
                 cmp_new = @build.snapshots.create!({ 
-                    :indexed_url => cmp[:indexed_url], :revision => cmp[:revision], 
-                    :scm_type => cmp[:scm_type], :schema => cmp[:schema],
-                    :is_distribution_url => cmp[:is_distribution_url] 
+                    :indexed_url => cmp[:indexed_url], 
+                    :revision => cmp[:revision], 
+                    :scm_type => cmp[:scm_type], 
+                    :schema => cmp[:schema],
+                    :is_distribution_url => cmp[:is_distribution_url],
+                    :git_branch => cmp[:git_branch], 
+                    :git_folder => cmp[:git_folder]
                 })
                 cmp_new.save!
             end
