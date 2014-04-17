@@ -1,5 +1,13 @@
-<strong>Build Log </strong> |
-    <%= link_to 'Back To Project', project_path(@project) %>
+  <%= link_to 'Back To Project', project_path(@project) %> |
+  <strong>Configuration</strong> |
+    <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
+    <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distributions archives' %> |
+    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
+    <%= link_to 'Revert', revert_project_build_path(@project,@build), :method => :post, :title => 'revert project to this build' %>
+    <% unless @build.released?  %>
+    | <%= link_to "Delete", [@project, @build], :method => :delete, :title => 'permanently delete this build' %>
+    <% end %>
+
 <pre>
   <strong>Project Title:</strong> <%= @project.title %>
   <strong>Project ID:</strong> <%= @project.id %>
@@ -14,11 +22,6 @@
 </pre>
 <% end %>
 
-  <strong>Build Configuration</strong> |
-    <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
-    <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of disribution archives' %> |
-    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
-    <%= link_to 'Revert', revert_project_build_path(@project,@build), :method => :post, :title => 'revert project to this build' %>
 
     <table class="table-bordered table-striped table">
       <tr>

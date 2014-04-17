@@ -14,7 +14,7 @@ class BuildsController < ApplicationController
         make_snapshot @project, @build
         @project.history.create!( { :commiter => request.remote_host, :action => "run build ID: #{@build.id}" })
 
-        Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url, :public_path => Rails.public_path  } ),0, Time.zone.now ) 
+        Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
         flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
         redirect_to project_path(@project)
     

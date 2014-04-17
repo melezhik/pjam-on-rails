@@ -105,6 +105,7 @@
                 <% end %>
             </td>
             <td>
+                <%= link_to "view log", full_log_project_build_path(@project,item) , :title => 'show build log' %> |
                 <% unless item.released?  %>
                     <%= link_to "delete", [@project, item], :method => :delete, :title => 'permanently delete this build' %> |
                 <% end %>
@@ -117,10 +118,10 @@
                     <%= link_to "release", [ :release, @project, item ], :method => :post , :title => 'mark this build as released' %> |
                 <% end %> 
                 <%= link_to "annotate", edit_project_build_path(@project, item), :title => 'add description for this build'  %> |
-                <%= link_to "log", [@project, item],  :title => 'show build log' %> |
                 <%= link_to "configuration", configuration_project_build_path(@project, item), :title => 'show build configuration'  %> |
                 <%= link_to 'distributions list', list_project_build_path(@project, item), :title => 'list of distribution archives' %> |
-                <%= link_to "changes", changes_project_build_path(@project, item),  :title => 'last changes applied to build' %>
+                <%= link_to "changes", changes_project_build_path(@project, item),  :title => 'last changes applied to build' %> |
+                <%= link_to 'revert', revert_project_build_path(@project,item), :method => :post, :title => 'revert project to this build' %>
             </td>
             </tr>
     <% end %>

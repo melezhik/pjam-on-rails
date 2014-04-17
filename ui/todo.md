@@ -13,7 +13,6 @@
 - build.changes popuplist should show not only show ids, but build annotations  ( for easier build comparisons )
 
 # fixes
-- `env[:public_path]` should be removed ( due to uselessness ) in build\_pjam, instead build\_pjam should use ~/lib/ when creating distributions for components, should notice about this in documentation.
 - column sources.last_rev should be depricated and removed
 - class names renamings
 	- rename build_async.rb to build_create_async.rb

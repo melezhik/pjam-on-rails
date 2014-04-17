@@ -144,7 +144,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{cmp.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
-        cmd <<  _set_perl5lib("#{env[:public_path]}/cpanlib/perl5")
+        cmd <<  _set_perl5lib()
 
         if File.exists? "#{project.local_path}/#{build.local_path}/#{cmp.local_path}/Build.PL"
 	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
