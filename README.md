@@ -106,11 +106,11 @@ The process of creation of distribution archive for an application. Schematicall
 
 ### Pinto phase
 
-- every component in application list is visited, converted into pinto distirbution archive and added to pinto repository - this is called `pinto` phase.
+- every component in application list is visited, converted into pinto distirbution archive and added to pinto repository - this is called __pinto phase__.
 
 ### Compile pahse
 
-- then every component's distribution achive is fetched from pinto repository and installed into local directory - `build install base` - this is called `compile` phase.
+- then every component's distribution achive is fetched from pinto repository and installed into local directory - __build install base__ - this is called __compile phase__.
 
 ### Creating of artefacts
 
@@ -120,9 +120,9 @@ The process of creation of distribution archive for an application. Schematicall
 
 Build is the "snapshot" of application ( the list of components ) plus some build's data. 
 
-When the build starts project's components list is copied to build. The list of builds components is called `build configuration`.
+When the build starts project's components list is copied to build. The list of builds components is called __build configuration__.
 
-### Build's data
+### Build data
 The three type of things:
 - an __install base__ - local directory with all of the application dependencies.
 - an 'attached' __pinto stack__, which represents all module's versions installed into build install base.
@@ -151,10 +151,12 @@ Here I "drop" some common actions which may be done with restfull api as well
 
 ## copy build from one project to another project 
 
+
     curl -X POST http://your-pjam-server/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
 
-- `build-id`    - the build ID which you want to copy 
-- `project-id`  - the project ID where you want to copy build to
+
+- __build-id__    - the build ID which you want to copy 
+- __project-id__  - the project ID where you want to copy build to
 
 
 # PERL5LIB
