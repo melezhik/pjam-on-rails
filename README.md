@@ -169,5 +169,5 @@ Here I "drop" some common actions which may be done with restfull api as well
 # See also
 - [pinto](https://github.com/thaljef/Pinto)
 - [ruby on rails](http://rubyonrails.org)
-- [delayed jon](https://github.com/collectiveidea/delayed_job)
+- [delayed job](https://github.com/collectiveidea/delayed_job)
 
