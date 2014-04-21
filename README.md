@@ -73,9 +73,9 @@ Will be created in ~/.pjam/repo directory. To migrate existed one simply run fol
 
 Will be created in ~/.pjam/projects directory. 
 
-# Glossary
+# Gory details
 
-A brief explanation for pjam concept in glossary way.
+This is a concise explanation for pjam object model.
  
 ## Pjam 
 
@@ -83,9 +83,11 @@ Is a name of the build server. Pjam-on-rails - a long, "official" name, bear in 
 
 ## Application
 
-Is arbitruary perl application. A `component` - is a part of application, an arbitrary source code stored in VCS. In pjam model an application is the _list_ of components. 
-Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file, placed at component's root directory
-in VCS.
+Is arbitruary perl application. 
+
+## Component
+
+Is a part of application, an arbitrary source code stored in VCS. In pjam model an application is the _list_ of components.  Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file, placed at component's root directory in VCS.
 
 ## Pjam dependency
 
@@ -102,26 +104,29 @@ Is and application _view_ in pjam GUI.
 
 The process of creation of distribution archive for an application. Schematically it does following:
 
+### Pinto phase
+
 - every component in application list is visited, converted into pinto distirbution archive and added to pinto repository - this is called `pinto` phase.
+
+### Compile pahse
+
 - then every component's distribution achive is fetched from pinto repository and installed into local directory - `build install base` - this is called `compile` phase.
+
+### Creating of artefacts
+
 - then build install base is archived, archived build install base called artefact.
 
-
 ## Pjam build
+Build is the "snapshot" of application ( the list of components ) plus build data.
 
-Is the snapshot for two types of things:
-
-    - an application's components list 
-    - a pinto local repository ( the snapshot is implimented as pinto stack )
-    - Build has:
-        - an `install base` - local directory with all of the application dependencies.
-        - a `state` : 'succeeded'|'failed'. Succeeded build state means build process has finished successfully and build has a artefact.
-        - an attached `pinto stack`, which represents all module's versions installed into build install base.
+### Build data is:
+- an `install base` - local directory with all of the application dependencies.
+- a `state` - the build state, on of the following: `schedulled|processing|succeeded|failed`. Succeeded build state means build process has finished successfully and build has a artefact.
+- an attached `pinto stack`, which represents all module's versions installed into build install base.
 
 ## Sequences of builds
 
-This mechanism is described as  folows: 
-User changes an application component's list and initiates the build processes resulting in build sequences for given project.  Different builds in the sequence may be compared. 
+This mechanism is described as  folows. User changes an application component's list and initiates the build processes resulting in build sequences for given project.  Different builds in the sequence may be compared. 
 
 ## Build "inheritance" 
 
