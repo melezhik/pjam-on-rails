@@ -65,17 +65,17 @@ For none production pjam usage you should omit exporting RAILS_ENV. In this case
 
 ## Pinto repository root directory
 
-Will be created in ~/.pjam/repo directory. To migrate existed one simply run following:
+Will be created in $HOME/.pjam/repo directory. To migrate existed one simply run following:
 
-    mkdir -p  ~/.pjam/repo/ && cp -r /path/to/existed/repo/root  ~/.pjam/repo
+    mkdir -p  $HOME/.pjam/repo/ && cp -r /path/to/existed/repo/root  $HOME/.pjam/repo
 
 ## Artefacts root directory
 
-Will be created in ~/.pjam/projects directory. 
+Will be created in $HOME/.pjam/projects directory. 
 
 # Gory details
 
-This is a concise explanation for pjam object model.
+This is a concise explanation of pjam object model.
  
 ## Pjam 
 
@@ -93,8 +93,8 @@ Is a part of application, an arbitrary source code stored in VCS. In pjam model 
 
 This is the one of two types of things:
 
-- a CPAN module - get resolved from cpan repository;
-- a component; a component of course may depend on CPAN modules
+- a __CPAN module__ - get resolved from cpan repository;
+- a __component__; a components of course may depend on CPAN modules
 
 ## Pjam project  
 
@@ -102,23 +102,23 @@ Is and application _view_ in pjam GUI.
 
 ## Build proccess 
 
-The process of creation of distribution archive for an application. Schematically it does following:
+The process of creation of distribution archive for an application. Schematically it may be described as following:
 
 ### Pinto phase
 
-- every component in application list is visited, converted into pinto distirbution archive and added to pinto repository - this is called __pinto phase__.
+- every component in application list is visited and converted into pinto distirbution archive and then is added to pinto repository - this is called __pinto phase__.
 
 ### Compile pahse
 
-- then every component's distribution achive is fetched from pinto repository and installed into local directory - __build install base__ - this is called __compile phase__.
+- when pinto phase is finished, every component's distribution achive is fetched from pinto repository and installed into local directory - __build install base__ - this is called __compile phase__.
 
 ### Creating of artefacts
 
-- then build install base is archived, archived build install base called artefact.
+- if pinto phase is finshed successfully then build install base is archived, archived build install base called __build artefact__.
 
 ## Pjam build
 
-Build is the "snapshot" of application ( the list of components ) plus some build's data. 
+Build is the "snapshot" of application plus some build's data. 
 
 When the build starts project's components list is copied to build. The list of builds components is called __build configuration__.
 
@@ -163,8 +163,7 @@ Here I "drop" some common actions which may be done with restfull api as well
 
 - You may setup $PERL5LIB variable via pjam/settings/ page. Pjam will add PERL5LIB both to pinto and compile phases.
 
-- Also be noticed, that pjam add $HOME/lib/perl5 to $PERL5LIB during pinto phase. That may be usefull when one want to use
-(Module::Build, ExtUtils::MakeMaker or Module::Install ) which installed localy.
+- Also be noticed, that pjam add $HOME/lib/perl5 to $PERL5LIB during pinto phase. That may be usefull when one want to use (Module::Build, ExtUtils::MakeMaker or Module::Install ) which installed locally.
 
 
 # See also
