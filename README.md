@@ -126,7 +126,7 @@ When the build starts project's components list is copied to build. The list of 
 The three type of things:
 - an __install base__ - local directory with all of the application dependencies.
 - an 'attached' __pinto stack__, which represents all module's versions installed into build install base.
-- a __ build state__ - the build state, on of the following: `schedulled|processing|succeeded|failed`. Succeeded build state means build process has finished successfully and build has a artefact.
+- a __build state__ - the build state, on of the following: `schedulled|processing|succeeded|failed`. Succeeded build state means build process has finished successfully and build has a artefact.
 
 ## Sequences of builds
 
