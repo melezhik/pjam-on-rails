@@ -117,12 +117,16 @@ The process of creation of distribution archive for an application. Schematicall
 - then build install base is archived, archived build install base called artefact.
 
 ## Pjam build
-Build is the "snapshot" of application ( the list of components ) plus build data.
 
-### Build data is:
-- an `install base` - local directory with all of the application dependencies.
-- a `state` - the build state, on of the following: `schedulled|processing|succeeded|failed`. Succeeded build state means build process has finished successfully and build has a artefact.
-- an attached `pinto stack`, which represents all module's versions installed into build install base.
+Build is the "snapshot" of application ( the list of components ) plus some build's data. 
+
+When the build starts project's components list is copied to build. The list of builds components is called `build configuration`.
+
+### Build's data
+The three type of things:
+- an __install base__ - local directory with all of the application dependencies.
+- an 'attached' __pinto stack__, which represents all module's versions installed into build install base.
+- a __ build state__ - the build state, on of the following: `schedulled|processing|succeeded|failed`. Succeeded build state means build process has finished successfully and build has a artefact.
 
 ## Sequences of builds
 
@@ -132,11 +136,9 @@ This mechanism is described as  folows. User changes an application component's 
 
 The term of build inheritance may be described as follows. When build process starts:
 
-    - project's components list is snapshoted and attached to build
-    - new pinto stack is created as a copy of pinto stack for previous build
-    - new install base is created as a copy of install base for previous build
-    - new build process is scheduled and build is added to builds queue ( see note about build scheduler )
-
+- new pinto stack is created as a copy of pinto stack for previous build
+- new install base is created as a copy of install base for previous build
+- new build process is scheduled and build is added to builds queue ( see note about build scheduler )
 
 ## Build scheduler 
 
