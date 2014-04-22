@@ -98,7 +98,7 @@ This is the one of two types of things:
 
 ## Pjam project  
 
-Is and application _view_ in pjam GUI.
+Is an application _view_ in pjam GUI.
 
 ## Build proccess 
 
@@ -108,7 +108,7 @@ The process of creation of distribution archive for an application. Schematicall
 
 - every component in application list is visited and converted into pinto distirbution archive and then is added to pinto repository - this is called __pinto phase__.
 
-### Compile pahse
+### Compile phase
 
 - when pinto phase is finished, every component's distribution achive is fetched from pinto repository and installed into local directory - __build install base__ - this is called __compile phase__.
 
