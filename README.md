@@ -149,6 +149,14 @@ Is the asynchronous scheduler which processes the builds queue. Build schediler 
 
 Here I "drop" some common actions which may be done with restfull api as well
 
+## run build
+
+
+    curl -X POST http://your-pjam-server/projects/<project-id>/builds -d '' -f -o /dev/null
+
+- __project-id__  - the project ID where you want to run build 
+
+
 ## copy build from one project to another project 
 
 
