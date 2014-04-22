@@ -4,6 +4,7 @@
  
 <table class="table-bordered table-striped table">
   <tr>
+    <th>ID</th>
     <th>Title</th>
     <th>Text</th>
     <th>Last Build</th>
@@ -14,6 +15,7 @@
  
   <% @projects.each do |item| %>
     <tr>
+      <td><%= item[:id] %></td>
       <td><%= link_to item.title , project_path(item) %></td>
       <td><%= item.text %></td>
       <td>
