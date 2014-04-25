@@ -162,12 +162,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     end
 
     def _distribution_in_pinto_repo! archive_name_with_revision
-        cmd =  "pinto -r #{settings.pinto_repo_root} list -s #{_stack} -D #{archive_name_with_revision} --no-color"
+        cmd =  "export PINTO_LOCKFILE_TIMEOUT=10000 && pinto -r #{settings.pinto_repo_root} list -s #{_stack} -D #{archive_name_with_revision} --no-color"
         _execute_command(cmd)
     end
 
     def _pull_distribution_into_pinto_repo archive_name_with_revision
-        cmd =  "pinto -r #{settings.pinto_repo_root} pull -s #{_stack} PINTO/#{archive_name_with_revision} #{settings.skip_missing_prerequisites_as_pinto_param} --no-color"
+        cmd =  "export PINTO_LOCKFILE_TIMEOUT=10000 && pinto -r #{settings.pinto_repo_root} pull -s #{_stack} PINTO/#{archive_name_with_revision} #{settings.skip_missing_prerequisites_as_pinto_param} --no-color"
         _execute_command(cmd)
     end
 
@@ -176,13 +176,13 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{cmp.local_path}"
         cmd << "mv #{archive_name} #{archive_name_with_revision}"
-        cmd <<  "pinto -r #{settings.pinto_repo_root} add -s #{_stack} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
+        cmd <<  "export PINTO_LOCKFILE_TIMEOUT=10000 &&  pinto -r #{settings.pinto_repo_root} add -s #{_stack} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
         archive_name_with_revision
     end
 
     def _install_pinto_distribution archive_name
-        _execute_command("#{_set_perl5lib} && #{modulebuildrc} pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color #{cpanm_flags} -l #{project.local_path}/#{build.local_path}/cpanlib  PINTO/#{archive_name}") 
+        _execute_command("#{_set_perl5lib} && #{modulebuildrc} export PINTO_LOCKFILE_TIMEOUT=10000 &&  pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color #{cpanm_flags} -l #{project.local_path}/#{build.local_path}/cpanlib  PINTO/#{archive_name}") 
     end
 
     def _artefact_final_distribution final_distribution_archive, revision
@@ -229,14 +229,14 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
          if build.has_ancestor?
              build_async.log :info, "using ancestor's stack for this build - #{_ancestor_stack}"
-            _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{_ancestor_stack} #{_stack} --no-color"
+            _execute_command "export PINTO_LOCKFILE_TIMEOUT=10000 && pinto --root=#{settings.pinto_repo_root} copy #{_ancestor_stack} #{_stack} --no-color"
          else   
             if File.exist? "#{settings.pinto_repo_root}/stacks/#{project.id}"
                 build_async.log :info, "using predefined stack for this build - #{project.id}"
-                _execute_command "pinto --root=#{settings.pinto_repo_root} copy #{project.id} #{_stack} --no-color"
+                _execute_command "export PINTO_LOCKFILE_TIMEOUT=10000 && pinto --root=#{settings.pinto_repo_root} copy #{project.id} #{_stack} --no-color"
             else
                 build_async.log :info, "neither ancestor's nor predefined stacks available for this build, creating very first one -  #{_stack}"
-                _execute_command "pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
+                _execute_command "export PINTO_LOCKFILE_TIMEOUT=10000 && pinto --root=#{settings.pinto_repo_root} new #{_stack} --no-color"
             end
          end
 
