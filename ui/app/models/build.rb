@@ -49,7 +49,13 @@ class Build < ActiveRecord::Base
     end
 
     def short_comment
-        (comment.split "\n").first + ' ... '
+        #if (! comment.nil? ) and ! comment.empty?
+        #    fc = comment.split "\n".first
+        #    fc + ' ... '
+        #else
+        #    nil
+        #end
+        comment
     end
 
     def ancestor
