@@ -13,7 +13,7 @@ class Source < ActiveRecord::Base
         if scm_type == 'svn'
             begin
                 res = URI.split(url)[2] + (URI.split(url)[5]).sub(/\/$/,"")
-            rescue Exception => ex
+            rescue URI::InvalidURIError => ex
                 res = url
             end
         elsif scm_type == 'git'
