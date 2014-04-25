@@ -18,7 +18,6 @@
 	- rename build_async.rb to build_create_async.rb
 	- rename build_pjam.rb to build_create.rb
 - store jabber password incrypted ? 
-- add PINTO_LOCKFILE_TIMEOUT to pjam environment ?
 - force_mode should be in project.settings instead of global.settings
 - skip missing prerequisites should be in project.settings instead of global.settings
 - distribution_source should be renamed to application_id
