@@ -28,7 +28,6 @@
 - install distribution on client machine via http request to pjam
 - delete all sources ( already done  in `revert build` function ) - may be replaced by pjam file
 - lock project - forbid any project modifications
-- build purger - utility to delete old builds ( maybe done with pjam restapi )
 
 
 
