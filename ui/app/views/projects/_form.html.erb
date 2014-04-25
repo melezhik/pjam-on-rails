@@ -44,13 +44,13 @@
 
  <%- unless @project.sources_ordered.empty? %>
 
-<h2> Change project sources </h2>
+<h2> Change project components </h2>
     <ol>   
     <% @project.sources_ordered.each do |item| %>
       <li>
 
         <% if item.id == @project.distribution_source_id %>
-             <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Main Component" %> [ Application Main Component
+             [<%= item[:scm_type] %>] <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Main Component" %> [ Application Main Component
         <% else %>
              <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn};" %>
             [ <%= link_to 'App', [ :app, item.project, item   ], method: :post,  title: "mark this source as an application source" %>
