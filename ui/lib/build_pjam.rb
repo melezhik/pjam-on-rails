@@ -125,9 +125,17 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
         retval = false
     	build_async.log :info, "running command: #{cmd}"
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
+
+            chunk = ""
+
             while line = stdout_err.gets
-                build_async.log :debug, line
+                chunk << line
             end
+
+            unless chunk.empty?
+                build_async.log :debug, chunk
+            end
+
             exit_status = wait_thr.value
             retval = exit_status.success?
             unless exit_status.success?

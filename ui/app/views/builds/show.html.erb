@@ -24,11 +24,11 @@
 <% end %>
 
 
-    <pre>
-    <% @log_entries.each do |l| %>
-        [<%= l.level %>] <%= l.updated_at.strftime('%B %d, %Y at %H:%M') %> <%= l.chunk  %>
-    <% end %>
-    </pre>
+<pre>
+<% @log_entries.each do |l| %>
+<%= l.chunk  %>
+<% end %>
+</pre>
 
 [ 
 
