@@ -127,28 +127,24 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     	build_async.log :info, "running command: #{cmd}"
 
         chunk = ""
-        i = 5
 
         Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
 
+            i = 0; chunk = []
             while line = stdout_err.gets
+                i += 1
                 chunk << line
-                i =+ 1
-                if i > 10 # save 20 lines chunk into database
-                    unless chunk.empty?
-                        build_async.log :debug, "[#{i}] > #{chunk}"
-                        chunk = ""
-                    end
-                    i = 0
+                if chunk.size > 10
+                    build_async.log :debug,  ( chunk.join "" )
+                    chunk = []
                 end
             end
 
-            # write first/last chunk here
-            unless chunk.empty?
-                build_async.log :debug, "[#{i}] > #{chunk}"
-                chunk = ""
+            # write first / last chunk
+            if chunk.size > 10
+                build_async.log :debug,  ( chunk.join "\n" )
             end
-
+    
             exit_status = wait_thr.value
             retval = exit_status.success?
             unless exit_status.success?
