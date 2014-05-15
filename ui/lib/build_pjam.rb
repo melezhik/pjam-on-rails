@@ -122,29 +122,46 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
     end
 
       def _execute_command(cmd, raise_ex = true)
+
         retval = false
     	build_async.log :info, "running command: #{cmd}"
-        Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
 
-            chunk = ""
+        chunk = ""
+        i = 5
+
+        Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
 
             while line = stdout_err.gets
                 chunk << line
+                i =+ 1
+                if i > 10 # save 20 lines chunk into database
+                    unless chunk.empty?
+                        build_async.log :debug, "[#{i}] > #{chunk}"
+                        chunk = ""
+                    end
+                    i = 0
+                end
             end
 
+            # write first/last chunk here
             unless chunk.empty?
-                build_async.log :debug, chunk
+                build_async.log :debug, "[#{i}] > #{chunk}"
+                chunk = ""
             end
 
             exit_status = wait_thr.value
             retval = exit_status.success?
             unless exit_status.success?
-	      build_async.log :info, "command failed"
-              raise "command #{cmd} failed" if raise_ex == true
-           end
+
+	        build_async.log :info, "command failed"
+                raise "command #{cmd} failed" if raise_ex == true
+            end
+
         end
+
 	    build_async.log :info, "command succeeded"
         retval
+
     end
 
 
