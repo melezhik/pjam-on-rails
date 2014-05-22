@@ -133,7 +133,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
             i = 0; chunk = []
             while line = stdout_err.gets
                 i += 1
-                chunk << line.chomp
+                chunk << line
                 if chunk.size > 30
                     build_async.log :debug,  ( chunk.join "" )
                     chunk = []
@@ -142,7 +142,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
             # write first / last chunk
             unless chunk.empty?
-                build_async.log :debug,  ( chunk.join "\n" )
+                build_async.log :debug,  ( chunk.join "" )
             end
     
             exit_status = wait_thr.value
