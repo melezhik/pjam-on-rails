@@ -133,7 +133,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
             i = 0; chunk = []
             while line = stdout_err.gets
                 i += 1
-                chunk << line
+                chunk << line.chomp
                 if chunk.size > 30
                     build_async.log :debug,  ( chunk.join "" )
                     chunk = []
