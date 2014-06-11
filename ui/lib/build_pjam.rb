@@ -141,8 +141,8 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
             end
 
             # write first / last chunk
-            if chunk.size > 30
-                build_async.log :debug,  ( chunk.join "\n" )
+            unless chunk.empty?
+                build_async.log :debug,  ( chunk.join "" )
             end
     
             exit_status = wait_thr.value
