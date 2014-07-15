@@ -75,3 +75,10 @@ gem "redcarpet"
 
 gem "unicorn"
 
+
+gem 'devise'
+gem 'devise_ldap_authenticatable'
+
+gem 'cancancan'
+gem 'role_model'
+
