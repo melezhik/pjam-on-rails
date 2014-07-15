@@ -35,7 +35,7 @@ class SourcesController < ApplicationController
                 @project.update({:distribution_source_id => @source[:id]})
             end
     
-            @project.history.create!( { :commiter => request.remote_host, :action => "add #{@source._indexed_url}" }) 
+            @project.history.create!( { :commiter => current_user.username, :action => "add #{@source._indexed_url}" }) 
     
             if @project.save
                 flash[:notice] = "source ID:#{@source[:id]} has been successfully created"
@@ -56,7 +56,7 @@ class SourcesController < ApplicationController
         indexed_url =  @source._indexed_url
         url = @source.url
         @source.destroy
-        @project.history.create!( { :commiter => request.remote_host, :action => "remove #{indexed_url}" }) 
+        @project.history.create!( { :commiter => current_user.username, :action => "remove #{indexed_url}" }) 
         flash[:notice] = "source ID:#{params[:id]}; Url: #{url} has been successfully deleted"
         redirect_to edit_project_path @project
     end
@@ -71,7 +71,7 @@ class SourcesController < ApplicationController
         @project = Project.find(params[:project_id])
         @source = @project.sources.find(params[:id])
 
-        @project.history.create!( { :commiter => request.remote_host, :action => "update project" }) 
+        @project.history.create!( { :commiter => current_user.username, :action => "update project" }) 
         
         if @source.update(source_params)
             flash[:notice] = "source ID: #{@source.id} has been successfully reordered"
@@ -90,7 +90,7 @@ class SourcesController < ApplicationController
         
         if @project.update({ :distribution_source_id => @source.id })
             flash[:notice] = "source ID: #{@source.id} has been successfully marked as an application source for project ID: #{@project.id}"
-            @project.history.create!( { :commiter => request.remote_host, :action => "mark source ID: #{@source.id}; indexed_url: #{@source._indexed_url} as an application source for project ID: #{@project.id}" })
+            @project.history.create!( { :commiter => current_user.username, :action => "mark source ID: #{@source.id}; indexed_url: #{@source._indexed_url} as an application source for project ID: #{@project.id}" })
             redirect_to [:edit, @project]
         else
             flash[:alert] = "error has been occured when trying to mark source ID: #{@source.id} as an application source for project ID: #{@project.id}"

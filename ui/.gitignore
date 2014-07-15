@@ -21,3 +21,6 @@ public/repo
 public/assets/
 cpanlib/
 
+database.yml
+ldap.yml
+

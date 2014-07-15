@@ -33,9 +33,11 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt (3.1.7)
     bootstrap-sass (3.1.0.1)
       sass (~> 3.2)
     builder (3.1.4)
+    cancancan (1.8.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -51,6 +53,15 @@ GEM
     delayed_job_active_record (4.0.0)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise_ldap_authenticatable (0.8.1)
+      devise (>= 3.0)
+      net-ldap (>= 0.3.1, < 0.6.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -71,6 +82,8 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     mysql2 (0.3.15)
+    net-ldap (0.5.1)
+    orm_adapter (0.5.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -94,6 +107,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     redcarpet (3.1.1)
+    role_model (0.8.1)
     safe_yaml (1.0.1)
     sass (3.2.14)
     sass-rails (4.0.1)
@@ -130,6 +144,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
     xmpp4r (0.5.5)
 
 PLATFORMS
@@ -137,10 +153,13 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  cancancan
   coffee-rails (~> 4.0.0)
   crack
   daemons
   delayed_job_active_record
+  devise
+  devise_ldap_authenticatable
   diff-lcs
   erubis
   jbuilder (~> 1.2)
@@ -149,6 +168,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_layout
   redcarpet
+  role_model
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

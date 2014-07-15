@@ -1,5 +1,8 @@
 class SettingsController < ApplicationController
 
+
+    load_and_authorize_resource param_method: :settings_params
+
     def new
         Setting.new
     end
