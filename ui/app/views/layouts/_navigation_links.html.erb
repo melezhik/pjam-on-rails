@@ -1,12 +1,5 @@
 <%# add navigation links to this file %>
-<%= link_to 'Projects List', projects_path %> | 
-<%= link_to 'New Project', new_project_path %> | 
-<%= link_to 'Configuration', edit_settings_path,  title: "click to edit configuration settings" %> |
-<%= link_to 'Activity Log', activity_path,  title: "Show activity log" %> |
-<%= link_to 'About', welcome_index_path  %> |
-<% if user_signed_in? %>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-<% else %>
-<%= link_to('Login', new_user_session_path)  %>  
-<% end %>
+<%= link_to 'Projects List', projects_path %> | <%= link_to 'New Project', new_project_path %> | <%= link_to 'Configuration', edit_settings_path,  title: "click to edit configuration settings" %> |
+<%= link_to 'Activity Log', activity_path,  title: "Show activity log" %> |<%= link_to 'About', welcome_index_path  %> |
+<% if user_signed_in? %><%= link_to('Logout', destroy_user_session_path, :method => :delete) %><% else %><%= link_to('Login', new_user_session_path) %><% end %>
 

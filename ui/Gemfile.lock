@@ -34,7 +34,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt (3.1.7)
-    bootstrap-sass (3.1.0.1)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.1.4)
     cancancan (1.8.4)
@@ -109,7 +109,7 @@ GEM
     redcarpet (3.1.1)
     role_model (0.8.1)
     safe_yaml (1.0.1)
-    sass (3.2.14)
+    sass (3.3.10)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
@@ -152,7 +152,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (~> 2.3.2.2)
   cancancan
   coffee-rails (~> 4.0.0)
   crack
@@ -169,7 +169,7 @@ DEPENDENCIES
   rails_layout
   redcarpet
   role_model
-  sass-rails (~> 4.0.0)
+  sass-rails
   sdoc
   sqlite3
   turbolinks

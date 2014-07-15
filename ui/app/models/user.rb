@@ -2,7 +2,7 @@ require 'role_model'
 class User < ActiveRecord::Base
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :ldap_authenticatable, :rememberable, :trackable, :validatable
+    devise :ldap_authenticatable, :trackable, :validatable
 
     validates :username, presence: true, uniqueness: true
 
