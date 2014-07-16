@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715113206) do
+ActiveRecord::Schema.define(version: 20140716071711) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20140715113206) do
     t.datetime "updated_at"
     t.string   "username"
     t.integer  "roles_mask"
+    t.string   "remember_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
