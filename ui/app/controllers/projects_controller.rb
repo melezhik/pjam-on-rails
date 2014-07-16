@@ -3,6 +3,7 @@ require 'open3'
 class ProjectsController < ApplicationController
 
 
+    skip_before_filter :authenticate_user!, :only => [ :last_successfull_build ]
     def new
         @project = Project.new
     end

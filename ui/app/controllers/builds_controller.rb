@@ -6,7 +6,7 @@ require 'open3'
 class BuildsController < ApplicationController
 
 
-    skip_before_filter :authenticate_user!, :only => [:destroy]
+    skip_before_filter :authenticate_user!, :only => [ :destroy, :download ]
 
     def create
 
@@ -209,10 +209,15 @@ class BuildsController < ApplicationController
         else
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
             build.destroy
-            @project.history.create!( { :commiter => current_user.username, :action => "delete build ID: #{params[:id]}" })
-            flash[:notice] = "build ID:#{params[:id]} for project ID:#{params[:project_id]} has been successfully deleted"
+            if user_signed_in?
+                @project.history.create!( { :commiter => current_user.username, :action => "delete build ID: #{params[:id]}" })
+                flash[:notice] = "build ID:#{params[:id]} for project ID:#{params[:project_id]} has been successfully deleted"
+                redirect_to project_path(@project)
+            else
+                @project.history.create!( { :action => "delete build ID: #{params[:id]}" })
+                render :nothing => true, :status => 200     
+            end
         end
-        redirect_to project_path(@project)
 
     end
 
