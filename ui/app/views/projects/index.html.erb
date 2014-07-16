@@ -36,7 +36,8 @@
             <%= Build.where("project_id = ?",item.id).count %> /
             <%= Build.where("project_id = ? and state = ?",item.id, 'succeeded' ).count %>
       </td>  
-      <td><%= link_to 'Show', project_path(item) %> | <%= link_to 'Edit', edit_project_path(item) %> | <%= link_to 'Run New Build', [item, item.builds.build], method: :post %> | <%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %> | <%= link_to 'Acitivity Log', activity_project_path(item), :title => "show project's activity log"  %>
+      <td>
+        <%= link_to 'Show', project_path(item) %> | <%= link_to 'Edit', edit_project_path(item) %> |<%= link_to 'Run New Build', [item, item.builds.build], method: :post %> | <%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %> | <%= link_to 'Acitivity Log', activity_project_path(item), :title => "show project's activity log"  %>
       </td>
     </tr>
   <% end %>
