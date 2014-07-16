@@ -6,6 +6,8 @@ require 'open3'
 class BuildsController < ApplicationController
 
 
+    skip_before_filter :authenticate_user!, :only => [:destroy]
+
     def create
 
         @project = Project.find(params[:project_id])
