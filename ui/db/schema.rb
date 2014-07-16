@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140715113206) do
   add_index "histories", ["project_id"], name: "index_histories_on_project_id", using: :btree
 
   create_table "logs", force: true do |t|
-    t.text     "chunk"
+    t.binary   "chunk"
     t.integer  "build_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20140715113206) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "force_mode",                    default: false
-    t.string   "jabber_server"
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"

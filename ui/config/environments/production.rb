@@ -77,4 +77,12 @@ Ui::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.log_level = :debug
+
+  config.action_mailer.default_url_options = { host: 'http://pinto.webdev.x:3000', port: 3000 }
+
+  config.action_mailer.delivery_method = :smtp
+
+
 end

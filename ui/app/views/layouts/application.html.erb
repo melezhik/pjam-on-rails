@@ -19,7 +19,7 @@
            <div class="row">
             <div class="span12">
             <% if user_signed_in? %>
-                <small>logged as <strong><%= current_user.username %></strong></small>
+                <small>logged as <strong><%= current_user.username %></strong></small><br>
             <% end %>
               <%= render 'layouts/messages' %>
               <%= yield %>
