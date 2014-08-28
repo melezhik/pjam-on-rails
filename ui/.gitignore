@@ -13,8 +13,9 @@
 /db/*.yml
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+log/
+tmp/
+
 public/projects
 public/repo
 

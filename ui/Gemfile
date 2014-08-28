@@ -68,9 +68,6 @@ gem "diff-lcs"
 
 gem "redcarpet"
 
-gem "unicorn"
-
-
 gem 'devise'
 gem 'devise_ldap_authenticatable'
 
@@ -80,13 +77,10 @@ gem 'role_model'
 
 # Use SCSS for stylesheets
 
-#gem 'foundation-rails'
-#gem 'compass'
-#gem 'compass-rails'
-#gem 'zurb-foundation'
-
 gem 'bootstrap-sass'
 gem 'sass-rails'
+
+gem 'eye'
 
 
 
